@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
+		58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6EF2C43D22500C12C1E /* ContentView.swift */; };
+		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
+		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
+		58EEF6FF2C43D22800C12C1E /* YouthFridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6FE2C43D22800C12C1E /* YouthFridgeTests.swift */; };
+		58EEF7092C43D22800C12C1E /* YouthFridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF7082C43D22800C12C1E /* YouthFridgeUITests.swift */; };
+		58EEF70B2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF70A2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		58EEF6FB2C43D22800C12C1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58EEF6E22C43D22500C12C1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58EEF6E92C43D22500C12C1E;
+			remoteInfo = YouthFridge;
+		};
+		58EEF7052C43D22800C12C1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 58EEF6E22C43D22500C12C1E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 58EEF6E92C43D22500C12C1E;
+			remoteInfo = YouthFridge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
+		58EEF6EF2C43D22500C12C1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		58EEF6FA2C43D22800C12C1E /* YouthFridgeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouthFridgeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58EEF6FE2C43D22800C12C1E /* YouthFridgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeTests.swift; sourceTree = "<group>"; };
+		58EEF7042C43D22800C12C1E /* YouthFridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouthFridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58EEF7082C43D22800C12C1E /* YouthFridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeUITests.swift; sourceTree = "<group>"; };
+		58EEF70A2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58EEF6E72C43D22500C12C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF6F72C43D22800C12C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF7012C43D22800C12C1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		58EEF6E12C43D22500C12C1E = {
+			isa = PBXGroup;
+			children = (
+				58EEF6EC2C43D22500C12C1E /* YouthFridge */,
+				58EEF6FD2C43D22800C12C1E /* YouthFridgeTests */,
+				58EEF7072C43D22800C12C1E /* YouthFridgeUITests */,
+				58EEF6EB2C43D22500C12C1E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		58EEF6EB2C43D22500C12C1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF6EA2C43D22500C12C1E /* YouthFridge.app */,
+				58EEF6FA2C43D22800C12C1E /* YouthFridgeTests.xctest */,
+				58EEF7042C43D22800C12C1E /* YouthFridgeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF71B2C43D26800C12C1E /* Resource */,
+				58EEF71A2C43D25D00C12C1E /* Extension */,
+				58EEF7192C43D25400C12C1E /* General */,
+				58EEF7182C43D24A00C12C1E /* Service */,
+				58EEF7172C43D24000C12C1E /* View */,
+				58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */,
+				58EEF6EF2C43D22500C12C1E /* ContentView.swift */,
+				58EEF6F32C43D22800C12C1E /* Preview Content */,
+			);
+			path = YouthFridge;
+			sourceTree = "<group>";
+		};
+		58EEF6F32C43D22800C12C1E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		58EEF6FD2C43D22800C12C1E /* YouthFridgeTests */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF6FE2C43D22800C12C1E /* YouthFridgeTests.swift */,
+			);
+			path = YouthFridgeTests;
+			sourceTree = "<group>";
+		};
+		58EEF7072C43D22800C12C1E /* YouthFridgeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF7082C43D22800C12C1E /* YouthFridgeUITests.swift */,
+				58EEF70A2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift */,
+			);
+			path = YouthFridgeUITests;
+			sourceTree = "<group>";
+		};
+		58EEF7172C43D24000C12C1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58EEF7182C43D24A00C12C1E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		58EEF7192C43D25400C12C1E /* General */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		58EEF71A2C43D25D00C12C1E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		58EEF71B2C43D26800C12C1E /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				58EEF6F12C43D22800C12C1E /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58EEF6E92C43D22500C12C1E /* YouthFridge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58EEF70E2C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridge" */;
+			buildPhases = (
+				58EEF6E62C43D22500C12C1E /* Sources */,
+				58EEF6E72C43D22500C12C1E /* Frameworks */,
+				58EEF6E82C43D22500C12C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YouthFridge;
+			productName = YouthFridge;
+			productReference = 58EEF6EA2C43D22500C12C1E /* YouthFridge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		58EEF6F92C43D22800C12C1E /* YouthFridgeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58EEF7112C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeTests" */;
+			buildPhases = (
+				58EEF6F62C43D22800C12C1E /* Sources */,
+				58EEF6F72C43D22800C12C1E /* Frameworks */,
+				58EEF6F82C43D22800C12C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58EEF6FC2C43D22800C12C1E /* PBXTargetDependency */,
+			);
+			name = YouthFridgeTests;
+			productName = YouthFridgeTests;
+			productReference = 58EEF6FA2C43D22800C12C1E /* YouthFridgeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		58EEF7032C43D22800C12C1E /* YouthFridgeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58EEF7142C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeUITests" */;
+			buildPhases = (
+				58EEF7002C43D22800C12C1E /* Sources */,
+				58EEF7012C43D22800C12C1E /* Frameworks */,
+				58EEF7022C43D22800C12C1E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				58EEF7062C43D22800C12C1E /* PBXTargetDependency */,
+			);
+			name = YouthFridgeUITests;
+			productName = YouthFridgeUITests;
+			productReference = 58EEF7042C43D22800C12C1E /* YouthFridgeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58EEF6E22C43D22500C12C1E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					58EEF6E92C43D22500C12C1E = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					58EEF6F92C43D22800C12C1E = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 58EEF6E92C43D22500C12C1E;
+					};
+					58EEF7032C43D22800C12C1E = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = 58EEF6E92C43D22500C12C1E;
+					};
+				};
+			};
+			buildConfigurationList = 58EEF6E52C43D22500C12C1E /* Build configuration list for PBXProject "YouthFridge" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 58EEF6E12C43D22500C12C1E;
+			productRefGroup = 58EEF6EB2C43D22500C12C1E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58EEF6E92C43D22500C12C1E /* YouthFridge */,
+				58EEF6F92C43D22800C12C1E /* YouthFridgeTests */,
+				58EEF7032C43D22800C12C1E /* YouthFridgeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58EEF6E82C43D22500C12C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
+				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF6F82C43D22800C12C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF7022C43D22800C12C1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58EEF6E62C43D22500C12C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */,
+				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF6F62C43D22800C12C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EEF6FF2C43D22800C12C1E /* YouthFridgeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58EEF7002C43D22800C12C1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EEF7092C43D22800C12C1E /* YouthFridgeUITests.swift in Sources */,
+				58EEF70B2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		58EEF6FC2C43D22800C12C1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58EEF6E92C43D22500C12C1E /* YouthFridge */;
+			targetProxy = 58EEF6FB2C43D22800C12C1E /* PBXContainerItemProxy */;
+		};
+		58EEF7062C43D22800C12C1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 58EEF6E92C43D22500C12C1E /* YouthFridge */;
+			targetProxy = 58EEF7052C43D22800C12C1E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		58EEF70C2C43D22800C12C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		58EEF70D2C43D22800C12C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58EEF70F2C43D22800C12C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"YouthFridge/Preview Content\"";
+				DEVELOPMENT_TEAM = G62DUX396A;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		58EEF7102C43D22800C12C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"YouthFridge/Preview Content\"";
+				DEVELOPMENT_TEAM = G62DUX396A;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		58EEF7122C43D22800C12C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouthFridge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YouthFridge";
+			};
+			name = Debug;
+		};
+		58EEF7132C43D22800C12C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridgeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YouthFridge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/YouthFridge";
+			};
+			name = Release;
+		};
+		58EEF7152C43D22800C12C1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridgeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YouthFridge;
+			};
+			name = Debug;
+		};
+		58EEF7162C43D22800C12C1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = G62DUX396A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.YouthFridgeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = YouthFridge;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58EEF6E52C43D22500C12C1E /* Build configuration list for PBXProject "YouthFridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58EEF70C2C43D22800C12C1E /* Debug */,
+				58EEF70D2C43D22800C12C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58EEF70E2C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58EEF70F2C43D22800C12C1E /* Debug */,
+				58EEF7102C43D22800C12C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58EEF7112C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58EEF7122C43D22800C12C1E /* Debug */,
+				58EEF7132C43D22800C12C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58EEF7142C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58EEF7152C43D22800C12C1E /* Debug */,
+				58EEF7162C43D22800C12C1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58EEF6E22C43D22500C12C1E /* Project object */;
+}

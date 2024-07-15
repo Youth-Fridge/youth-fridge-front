@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
+		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
+		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
+		5817D5EF2C4502360081323E /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EE2C4502360081323E /* MainTabType.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6EF2C43D22500C12C1E /* ContentView.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
@@ -14,6 +18,8 @@
 		58EEF6FF2C43D22800C12C1E /* YouthFridgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6FE2C43D22800C12C1E /* YouthFridgeTests.swift */; };
 		58EEF7092C43D22800C12C1E /* YouthFridgeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF7082C43D22800C12C1E /* YouthFridgeUITests.swift */; };
 		58EEF70B2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF70A2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift */; };
+		58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF71D2C43EAC000C12C1E /* Colors.xcassets */; };
+		58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
+		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
+		5817D5EE2C4502360081323E /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6EF2C43D22500C12C1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,8 @@
 		58EEF7042C43D22800C12C1E /* YouthFridgeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YouthFridgeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF7082C43D22800C12C1E /* YouthFridgeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeUITests.swift; sourceTree = "<group>"; };
 		58EEF70A2C43D22800C12C1E /* YouthFridgeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		58EEF71D2C43EAC000C12C1E /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5817D5ED2C4502270081323E /* MainTab */ = {
+			isa = PBXGroup;
+			children = (
+				5817D5EE2C4502360081323E /* MainTabType.swift */,
+			);
+			path = MainTab;
+			sourceTree = "<group>";
+		};
 		58EEF6E12C43D22500C12C1E = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +154,7 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5817D5ED2C4502270081323E /* MainTab */,
 				58EEF71C2C43D7D400C12C1E /* Login */,
 			);
 			path = View;
@@ -156,6 +177,7 @@
 		58EEF71A2C43D25D00C12C1E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -163,6 +185,7 @@
 		58EEF71B2C43D26800C12C1E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				58EEF71D2C43EAC000C12C1E /* Colors.xcassets */,
 				58EEF6F12C43D22800C12C1E /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -171,6 +194,9 @@
 		58EEF71C2C43D7D400C12C1E /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5817D5E72C44F13D0081323E /* LoginView.swift */,
+				5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */,
+				5817D5EB2C44F1B10081323E /* LoginIntroView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -279,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
 			);
@@ -306,7 +333,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */,
+				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
+				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
+				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
+				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
+				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

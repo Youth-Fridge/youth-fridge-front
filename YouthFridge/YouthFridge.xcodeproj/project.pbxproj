@@ -11,6 +11,18 @@
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
 		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
 		5817D5EF2C4502360081323E /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EE2C4502360081323E /* MainTabType.swift */; };
+		5817D5F12C4503360081323E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F02C4503360081323E /* MainTabView.swift */; };
+		5817D5F72C4504970081323E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F62C4504970081323E /* HomeView.swift */; };
+		5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F82C4504A30081323E /* SmallClassView.swift */; };
+		5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FA2C4504AB0081323E /* NewsView.swift */; };
+		5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FC2C4504B50081323E /* MyPageView.swift */; };
+		5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FE2C4509CF0081323E /* HomeViewModel.swift */; };
+		5817D6012C450FA10081323E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6002C450FA10081323E /* CardView.swift */; };
+		5817D6032C450FB60081323E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6022C450FB60081323E /* Card.swift */; };
+		5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6042C454C640081323E /* MyPageViewModel.swift */; };
+		5817D6072C454CAA0081323E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6062C454CAA0081323E /* DIContainer.swift */; };
+		5817D6092C454CBD0081323E /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6082C454CBD0081323E /* Services.swift */; };
+		5817D60B2C4552360081323E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D60A2C4552360081323E /* User.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6EF2C43D22500C12C1E /* ContentView.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
@@ -44,6 +56,18 @@
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		5817D5EE2C4502360081323E /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
+		5817D5F02C4503360081323E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		5817D5F62C4504970081323E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		5817D5F82C4504A30081323E /* SmallClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallClassView.swift; sourceTree = "<group>"; };
+		5817D5FA2C4504AB0081323E /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		5817D5FC2C4504B50081323E /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		5817D5FE2C4509CF0081323E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		5817D6002C450FA10081323E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		5817D6022C450FB60081323E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		5817D6042C454C640081323E /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
+		5817D6062C454CAA0081323E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		5817D6082C454CBD0081323E /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		5817D60A2C4552360081323E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6EF2C43D22500C12C1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -87,8 +111,46 @@
 			isa = PBXGroup;
 			children = (
 				5817D5EE2C4502360081323E /* MainTabType.swift */,
+				5817D5F02C4503360081323E /* MainTabView.swift */,
 			);
 			path = MainTab;
+			sourceTree = "<group>";
+		};
+		5817D5F22C45046A0081323E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				5817D5F62C4504970081323E /* HomeView.swift */,
+				5817D5FE2C4509CF0081323E /* HomeViewModel.swift */,
+				5817D6002C450FA10081323E /* CardView.swift */,
+				5817D6022C450FB60081323E /* Card.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5817D5F32C4504760081323E /* SmallClass */ = {
+			isa = PBXGroup;
+			children = (
+				5817D5F82C4504A30081323E /* SmallClassView.swift */,
+			);
+			path = SmallClass;
+			sourceTree = "<group>";
+		};
+		5817D5F42C4504800081323E /* News */ = {
+			isa = PBXGroup;
+			children = (
+				5817D5FA2C4504AB0081323E /* NewsView.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		5817D5F52C4504850081323E /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				5817D5FC2C4504B50081323E /* MyPageView.swift */,
+				5817D6042C454C640081323E /* MyPageViewModel.swift */,
+				5817D60A2C4552360081323E /* User.swift */,
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		58EEF6E12C43D22500C12C1E = {
@@ -154,6 +216,10 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5817D5F52C4504850081323E /* MyPage */,
+				5817D5F42C4504800081323E /* News */,
+				5817D5F32C4504760081323E /* SmallClass */,
+				5817D5F22C45046A0081323E /* Home */,
 				5817D5ED2C4502270081323E /* MainTab */,
 				58EEF71C2C43D7D400C12C1E /* Login */,
 			);
@@ -163,6 +229,7 @@
 		58EEF7182C43D24A00C12C1E /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				5817D6082C454CBD0081323E /* Services.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -170,6 +237,7 @@
 		58EEF7192C43D25400C12C1E /* General */ = {
 			isa = PBXGroup;
 			children = (
+				5817D6062C454CAA0081323E /* DIContainer.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -332,13 +400,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5817D6012C450FA10081323E /* CardView.swift in Sources */,
+				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
+				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,
 				58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
+				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
+				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
+				5817D6092C454CBD0081323E /* Services.swift in Sources */,
+				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
+				5817D6032C450FB60081323E /* Card.swift in Sources */,
 				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
+				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
+				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
 				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
+				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
+				5817D60B2C4552360081323E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

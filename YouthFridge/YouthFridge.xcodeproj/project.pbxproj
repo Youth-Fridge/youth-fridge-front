@@ -23,6 +23,7 @@
 		5817D6072C454CAA0081323E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6062C454CAA0081323E /* DIContainer.swift */; };
 		5817D6092C454CBD0081323E /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6082C454CBD0081323E /* Services.swift */; };
 		5817D60B2C4552360081323E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D60A2C4552360081323E /* User.swift */; };
+		5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D60D2C457CC50081323E /* MyActivityView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6EF2C43D22500C12C1E /* ContentView.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		5817D6062C454CAA0081323E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		5817D6082C454CBD0081323E /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		5817D60A2C4552360081323E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5817D60D2C457CC50081323E /* MyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6EF2C43D22500C12C1E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -146,11 +148,20 @@
 		5817D5F52C4504850081323E /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				5817D60C2C457CA60081323E /* MyActivity */,
 				5817D5FC2C4504B50081323E /* MyPageView.swift */,
 				5817D6042C454C640081323E /* MyPageViewModel.swift */,
 				5817D60A2C4552360081323E /* User.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		5817D60C2C457CA60081323E /* MyActivity */ = {
+			isa = PBXGroup;
+			children = (
+				5817D60D2C457CC50081323E /* MyActivityView.swift */,
+			);
+			path = MyActivity;
 			sourceTree = "<group>";
 		};
 		58EEF6E12C43D22500C12C1E = {
@@ -405,6 +416,7 @@
 				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,
 				58EEF6F02C43D22500C12C1E /* ContentView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
+				5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */,
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,

@@ -9,7 +9,24 @@ import SwiftUI
 
 struct StartView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Image("logo")
+                .resizable()
+                .frame(width:96,height: 96)
+            Image("typelogo")
+                .resizable()
+                .frame(width: 140,height: 26)
+            Text("만나서 반가워요")
+                .font(.system(size: 40, weight: .bold))
+                .multilineTextAlignment(.center)
+                .padding(.top)
+            Text("든든히 한 끼 함께 해요!")
+                .font(.system(size: 24, weight: .medium))
+                .multilineTextAlignment(.center)
+            
+           
+                
+        }
     }
 }
 

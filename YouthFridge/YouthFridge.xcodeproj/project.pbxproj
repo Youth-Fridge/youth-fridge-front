@@ -33,6 +33,7 @@
 		5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6262C4657030081323E /* OnboardingStartView.swift */; };
 		5817D6292C4657440081323E /* ResearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6282C4657440081323E /* ResearchView.swift */; };
 		5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62A2C465B5B0081323E /* ResearchViewModel.swift */; };
+		5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62C2C479C890081323E /* ProfileResearchView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -87,6 +88,7 @@
 		5817D6262C4657030081323E /* OnboardingStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingStartView.swift; sourceTree = "<group>"; };
 		5817D6282C4657440081323E /* ResearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchView.swift; sourceTree = "<group>"; };
 		5817D62A2C465B5B0081323E /* ResearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewModel.swift; sourceTree = "<group>"; };
+		5817D62C2C479C890081323E /* ProfileResearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				5817D6242C4656B50081323E /* StartView.swift */,
 				5817D6262C4657030081323E /* OnboardingStartView.swift */,
 				5817D6282C4657440081323E /* ResearchView.swift */,
+				5817D62C2C479C890081323E /* ProfileResearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +514,7 @@
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
+				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
 				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,
 				5817D6142C462FE70081323E /* ActivityCardView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,

@@ -9,9 +9,13 @@ import SwiftUI
 
 // ViewModel 정의
 class ResearchViewModel: ObservableObject {
-    @Published var categories: [String]
+    @Published var categories: [String] = []
     
     init() {
+        loadCategories()
+    }
+    
+    func loadCategories() {
         self.categories = [
             "⏰ 바쁘다 바빠 간편식이 최고야!",
             "🧑🏻‍🍳 오늘은 내가 요리사, 자취 요리 만렙!",

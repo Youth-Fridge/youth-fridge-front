@@ -852,7 +852,7 @@
 				58EEF70D2C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		58EEF70E2C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridge" */ = {
 			isa = XCConfigurationList;
@@ -861,7 +861,7 @@
 				58EEF7102C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		58EEF7112C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeTests" */ = {
 			isa = XCConfigurationList;
@@ -870,7 +870,7 @@
 				58EEF7132C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		58EEF7142C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeUITests" */ = {
 			isa = XCConfigurationList;
@@ -879,7 +879,7 @@
 				58EEF7162C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

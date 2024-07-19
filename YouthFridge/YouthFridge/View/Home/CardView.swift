@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CardView: View {
+    @ObservedObject var viewModel: CardViewModel
     let card: Card
     let backgroundColor: Color
-    
+    let tags: [String]
     var body: some View {
         HStack(spacing: 15) {
             VStack(alignment: .leading, spacing: 10) {
@@ -19,36 +20,35 @@ struct CardView: View {
                         .fill(Color.gray)
                         .frame(width: 50, height: 30)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("장금이")
-                            .font(.headline)
-                        HStack(spacing: 15) {
-                            Text("먹부림좌")
-                            Text("즐거움")
-                            Text("낭만")
+                        HStack(spacing: 5) {
+                            Text("장금이")
+                                .font(.system(size: 10))
+                            Spacer()
+                            HStack(spacing: 5) {
+                                ForEach(viewModel.card.tags, id: \.self) { tag in
+                                    TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+                                }
+                            }
                         }
                         .font(.subheadline)
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .padding(.horizontal, 6)
-                        .background(Color.gray1)
                         .cornerRadius(4)
                     }
                 }
-                Text(card.title)
+                Text(viewModel.card.title)
                     .font(.title2)
                     .bold()
                 HStack {
-                    Image(systemName: "calendar")
+                    Image("clock")
                     Text(card.date)
                 }
                 HStack {
-                    Image(systemName: "mappin.and.ellipse")
+                    Image("map-pin")
                     Text(card.location)
                 }
             }
             Spacer()
-            Image(card.imageName)
-                .resizable()
-                .frame(width: 50, height: 50)
         }
         .padding()
         .background(backgroundColor)
@@ -56,3 +56,17 @@ struct CardView: View {
         .foregroundColor(.white)
     }
 }
+struct TextWithBackground: View {
+    let text: String
+    let backgroundColor: Color
+
+    var body: some View {
+        Text(text)
+            .padding(5)
+            .background(Color.white)
+            .foregroundColor(Color.gray4Color)
+            .cornerRadius(10)
+    }
+}
+
+

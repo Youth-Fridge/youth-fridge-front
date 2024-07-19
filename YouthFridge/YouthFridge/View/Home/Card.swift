@@ -12,5 +12,5 @@ struct Card: Identifiable {
     let title: String
     let date: String
     let location: String
-    let imageName: String
+    let tags: [String]
 }

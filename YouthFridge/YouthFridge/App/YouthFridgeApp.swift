@@ -11,7 +11,7 @@ import SwiftUI
 struct YouthFridgeApp: App {
     var body: some Scene {
         WindowGroup {
-            OnboardingStartView()
+            ProfileResearchView()
         }
     }
 }

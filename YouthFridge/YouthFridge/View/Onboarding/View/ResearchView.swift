@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-struct CustomProgressViewStyle: ProgressViewStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        ProgressView(configuration)
-            .accentColor(Color.sub2Color)
-    }
-}
-
 struct ResearchView: View {
     @StateObject private var viewModel = ResearchViewModel()
     @State private var selectedCategory: Int? = nil

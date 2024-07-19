@@ -12,14 +12,43 @@ struct MyPageView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                welcomeMessage
-                profileView
-                activityList
+            ZStack {
+                VStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        welcomeMessage
+                        profileView
+                        activityList
+                    }
+                }
+                .padding(.top, 15)
+                
+                VStack {
+                    navigationBar
+                }
             }
-            .padding()
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: Image(viewModel.myUser!.profilePicture)
+                .resizable()
+                .frame(width: 40, height: 40)
+            )
+        }
+    }
+    
+    var navigationBar: some View {
+        VStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .frame(height: 15)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
+            .edgesIgnoringSafeArea(.bottom)
+            .frame(height: 40)
+            .foregroundColor(.white)
+            .shadow(radius: 5)
+            Spacer()
         }
     }
     
@@ -31,8 +60,15 @@ struct MyPageView: View {
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
                 VStack(alignment: .leading, spacing: 7) {
-                    Text("\(user.name)님")
-                        .font(.headline)
+                    HStack {
+                        Text("\(user.name) 님")
+                            .font(.headline)
+                        
+                        Spacer()
+                        
+                        Image("right-arrow")
+                            .foregroundColor(.gray)
+                    }
                     Text("초대 모임 예정일")
                         .font(.subheadline)
                         .foregroundColor(.main1Color)
@@ -51,15 +87,18 @@ struct MyPageView: View {
     }
     
     var welcomeMessage: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 5) {
             if let user = viewModel.myUser {
-                Text("\(user.name)님,")
+                Text("\(user.name) 님,")
                     .font(.system(size: 24))
                     .fontWeight(.bold)
+                    .padding(.top, 25)
+                    .padding(.leading, 25)
                 
                 Text("오늘도 건강한 식사하세요!")
                     .font(.system(size: 18))
                     .multilineTextAlignment(.leading)
+                    .padding(.leading, 25)
             } else {
                 Text("Loading...")
                     .font(.title3)
@@ -70,36 +109,60 @@ struct MyPageView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color.sub1)
     }
-
-
+    
+    
     
     var activityList: some View {
-            List {
-                ForEach(activityItems, id: \.self) { item in
-                    ActivityCell(title: item)
+        List {
+            ForEach(activityItems, id: \.self) { item in
+                if item == "내 활동" {
+                    ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역", "스크랩"])
+                } else {
+                    ActivityCell(title: item, subTitles: nil)
                 }
             }
-            .listStyle(PlainListStyle())
         }
-        
-        let activityItems = ["내 활동", "문의", "회원탈퇴"]
+        .listStyle(PlainListStyle())
     }
+    
+    let activityItems = ["내 활동", "문의", "회원탈퇴"]
+}
+
+
+
 
 struct ActivityCell: View {
     var title: String
+    var subTitles: [String]?
     
     var body: some View {
         HStack {
             Text(title)
-                .font(.system(size: 18,weight: .bold))
+                .font(.system(size: 18, weight: .bold))
                 .foregroundColor(.black)
+                .listSectionSeparator(.hidden)
             
             Spacer()
             
-            Image(systemName: "chevron.right")
-                            .foregroundColor(.gray)
+            Image("right-arrow")
+                .foregroundColor(.gray)
         }
         .padding(.vertical, 10)
+        
+        if let subTitles = subTitles {
+            VStack(spacing: 0) {
+                ForEach(subTitles, id: \.self) { subTitle in
+                    HStack {
+                        Text(subTitle)
+                            .font(.system(size: 16))
+                        
+                        Spacer()
+                    }
+                    .padding(.vertical, 5)
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+        }
     }
 }
 

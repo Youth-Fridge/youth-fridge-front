@@ -13,14 +13,14 @@ struct CardView: View {
     let backgroundColor: Color
     let tags: [String]
     var body: some View {
-        HStack(spacing: 15) {
+        HStack(spacing: 10) {
             VStack(alignment: .leading, spacing: 10) {
                 HStack(spacing: 6) {
                     Circle()
                         .fill(Color.gray)
                         .frame(width: 50, height: 30)
                     VStack(alignment: .leading, spacing: 2) {
-                        HStack(spacing: 5) {
+                        HStack() {
                             Text("장금이")
                                 .font(.system(size: 10))
                             Spacer()
@@ -28,9 +28,9 @@ struct CardView: View {
                                 ForEach(viewModel.card.tags, id: \.self) { tag in
                                     TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
                                 }
+                               
                             }
                         }
-                        .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.horizontal, 6)
                         .cornerRadius(4)
@@ -39,14 +39,20 @@ struct CardView: View {
                 Text(viewModel.card.title)
                     .font(.title2)
                     .bold()
+                    .padding(.leading,40)
                 HStack {
                     Image("clock")
                     Text(card.date)
+                        .font(.system(size: 10))
+                        
                 }
+                .padding(.leading,40)
                 HStack {
                     Image("map-pin")
                     Text(card.location)
+                        .font(.system(size: 10))
                 }
+                .padding(.leading,40)
             }
             Spacer()
         }
@@ -62,10 +68,12 @@ struct TextWithBackground: View {
 
     var body: some View {
         Text(text)
+            .font(.system(size: 10))
             .padding(5)
             .background(Color.white)
             .foregroundColor(Color.gray4Color)
-            .cornerRadius(10)
+            .cornerRadius(20)
+        
     }
 }
 

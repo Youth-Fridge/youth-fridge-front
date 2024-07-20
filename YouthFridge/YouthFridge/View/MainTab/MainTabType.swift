@@ -19,7 +19,7 @@ enum MainTabType: String,CaseIterable {
         case .home:
             return "홈"
         case .smallClass:
-            return "소모임"
+            return "생활밥서"
         case .news:
             return "뉴스레터"
         case .mypage:

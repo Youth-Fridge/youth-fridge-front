@@ -22,9 +22,7 @@ struct MyPageView: View {
                 }
                 .padding(.top, 15)
                 
-                VStack {
-                    navigationBar
-                }
+                ShadowNavigationBar()
             }
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
@@ -32,23 +30,6 @@ struct MyPageView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
             )
-        }
-    }
-    
-    var navigationBar: some View {
-        VStack {
-            LinearGradient(
-                gradient: Gradient(colors: [Color.black.opacity(0.1), Color.clear]),
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .frame(height: 15)
-            .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-            .edgesIgnoringSafeArea(.bottom)
-            .frame(height: 40)
-            .foregroundColor(.white)
-            .shadow(radius: 5)
-            Spacer()
         }
     }
     

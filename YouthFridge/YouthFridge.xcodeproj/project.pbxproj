@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
 		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
@@ -65,6 +66,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A971D052C4C413D009F3B13 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5817D5ED2C4502270081323E /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +184,7 @@
 		5817D5F52C4504850081323E /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				0A971D052C4C413D009F3B13 /* Components */,
 				5817D61B2C4650480081323E /* MyActivityDetail */,
 				5817D60C2C457CA60081323E /* MyActivity */,
 				5817D5FC2C4504B50081323E /* MyPageView.swift */,
@@ -534,6 +545,7 @@
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
 				5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */,
+				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,

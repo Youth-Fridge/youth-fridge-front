@@ -11,14 +11,13 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @State private var currentIndex = 0
     @State private var daysRemaining = 21 // 남은 일수
-
+    private let colors: [Color] = [.red, .blue, .green, .orange]
+    private let banners = ["banner1","banner2","banner3"]
     private let cards = [
         Card(title: "초계 국수 만들어요", date: "7월 30일 화요일 오후 7시", location: "안서초등학교", tags: ["메뉴 추천","건강식","요리"]),
         Card(title: "김치 담그기", date: "8월 15일 토요일 오전 10시", location: "시청 앞 광장",tags: ["메뉴 추천","건강식","요리"]),
         Card(title: "떡 만들기", date: "9월 5일 일요일 오후 2시", location: "문화센터",tags: ["메뉴 추천","건강식","요리"])
     ]
-    
-    private let banners = ["배너1","배너2","배너3"]
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -28,7 +27,7 @@ struct HomeView: View {
                             CardView(
                                 viewModel: CardViewModel(card: cards[index]),
                                 card: cards[index],
-                                backgroundColor: index % 2 == 0 ? .main1Color : .sub3Color,
+                                backgroundColor: index % 2 == 0 ? .green1Color : .sub3Color,
                                 tags: cards[index].tags
                             )
                             .frame(width: 340)
@@ -66,19 +65,21 @@ struct HomeView: View {
                         .foregroundColor(.black)
                     Spacer()
                 }
+                TabView(selection: $currentIndex) {
+                    ForEach(banners.indices, id: \.self) { index in
+                        Image(banners[index])
+                            .resizable()
+                            .scaledToFill()
+                            .tag(index)
+                        
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .padding(.bottom,30)
+                .padding(.leading,25)
+                .padding(.trailing,25)
                 
-                ScrollView(.horizontal, showsIndicators: false) {
-                                   HStack() {
-                                       ForEach(banners, id: \.self) { banner in
-                                           BannerView(title: banner)
-                                               .frame(width: UIScreen.main.bounds.width - 40)
-                                       }
-                                   }
-                                   .padding(.leading, 20)
-                               }
-                               .frame(height: 200)
-
-                .padding(.horizontal)
+            
             }
             
             .navigationBarTitleDisplayMode(.inline)
@@ -129,7 +130,7 @@ struct HomeView: View {
             .padding()
             .background(
                 LinearGradient(
-                    gradient: Gradient(colors: [Color.black.opacity(0.8), Color.black.opacity(0.1)]),
+                    gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.1)]),
                     startPoint: .top,
                     endPoint: .bottom
                 )
@@ -137,6 +138,7 @@ struct HomeView: View {
             )
         }
         .frame(height: 252)
+        .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 0)
     }
 
     private func startTimer() {
@@ -209,21 +211,9 @@ private func smallestCardView() -> some View {
     .padding(.leading, 10)
     .background(Color.sub2Color)
     .cornerRadius(10)
+    .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 0)
 }
-struct BannerView: View {
-    let title: String
 
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.gray.opacity(0.5))
-                .frame(height: 150)
-            Text(title)
-                .font(.title)
-                .foregroundColor(.white)
-        }
-    }
-}
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(viewModel: .init())

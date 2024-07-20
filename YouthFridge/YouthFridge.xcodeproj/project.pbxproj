@@ -35,7 +35,6 @@
 		5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62A2C465B5B0081323E /* ResearchViewModel.swift */; };
 		5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62C2C479C890081323E /* ProfileResearchView.swift */; };
 		5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */; };
-		5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6322C4A6B830081323E /* VerticalBlurView.swift */; };
 		5817D6352C4A79250081323E /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6342C4A79250081323E /* CardViewModel.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
@@ -93,7 +92,6 @@
 		5817D62A2C465B5B0081323E /* ResearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResearchViewModel.swift; sourceTree = "<group>"; };
 		5817D62C2C479C890081323E /* ProfileResearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchView.swift; sourceTree = "<group>"; };
 		5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
-		5817D6322C4A6B830081323E /* VerticalBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBlurView.swift; sourceTree = "<group>"; };
 		5817D6342C4A79250081323E /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 				5817D5FE2C4509CF0081323E /* HomeViewModel.swift */,
 				5817D6002C450FA10081323E /* CardView.swift */,
 				5817D6022C450FB60081323E /* Card.swift */,
-				5817D6322C4A6B830081323E /* VerticalBlurView.swift */,
 				5817D6342C4A79250081323E /* CardViewModel.swift */,
 			);
 			path = Home;
@@ -533,7 +530,6 @@
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
-				5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,

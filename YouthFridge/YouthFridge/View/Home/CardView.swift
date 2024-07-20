@@ -13,28 +13,31 @@ struct CardView: View {
     let backgroundColor: Color
     let tags: [String]
     var body: some View {
-        HStack(spacing: 10) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 6) {
-                    Circle()
-                        .fill(Color.gray)
-                        .frame(width: 50, height: 30)
-                    VStack(alignment: .leading, spacing: 2) {
-                        HStack() {
-                            Text("장금이")
-                                .font(.system(size: 10))
-                            Spacer()
-                            HStack(spacing: 5) {
-                                ForEach(viewModel.card.tags, id: \.self) { tag in
-                                    TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+        HStack() {
+            VStack(alignment: .leading) {
+                            HStack(spacing: 0) {
+                                Circle()
+                                    .fill(Color.gray)
+                                    .frame(width: 50, height: 30)
+
+                                Text("장금이")
+                                    .font(.system(size: 10))
+                                    .padding(.leading, 5)
+                                    
+
+                                Spacer()
+                                
+                                HStack(spacing: 5) {
+                                    ForEach(viewModel.card.tags, id: \.self) { tag in
+                                        TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+                                    }
+                                  
                                 }
-                               
-                            }
-                        }
+                            
                         .foregroundColor(.white)
-                        .padding(.horizontal, 6)
+                        .padding(.leading, 6)
                         .cornerRadius(4)
-                    }
+ 
                 }
                 Text(viewModel.card.title)
                     .font(.title2)
@@ -51,15 +54,39 @@ struct CardView: View {
                     Image("map-pin")
                     Text(card.location)
                         .font(.system(size: 10))
+                    Spacer()
+                    Text("모집 중")
+                           .background(Color.clear)
+                           .foregroundColor(.white)
+                           .cornerRadius(10)
+                           .modifier(CustomViewModifier(color: .white))
+                           .padding([.bottom, .trailing], 10)
+                               
                 }
                 .padding(.leading,40)
             }
-            Spacer()
+            
         }
-        .padding()
+        .padding(.top,10)
+        .padding(.leading,10)
+        .padding(.trailing,10)
         .background(backgroundColor)
         .cornerRadius(10)
         .foregroundColor(.white)
+        
+    }
+}
+struct CustomViewModifier: ViewModifier {
+    var color: Color
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 10))
+            .padding(6)
+            .overlay(
+                RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+                                    .stroke(lineWidth: 1)
+            )
+            .foregroundColor(color)
     }
 }
 struct TextWithBackground: View {

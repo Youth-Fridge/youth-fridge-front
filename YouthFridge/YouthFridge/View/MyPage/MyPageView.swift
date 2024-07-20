@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MyPageView: View {
     @StateObject var viewModel: MyPageViewModel
+    @State private var showDeleteUserAlert = false
+    @State private var navigateToMyActivity = false
     
     var body: some View {
         NavigationStack {
@@ -30,6 +32,13 @@ struct MyPageView: View {
                 .resizable()
                 .frame(width: 40, height: 40)
             )
+            .background(
+                NavigationLink(
+                    destination: MyActivityView(),
+                    isActive: $navigateToMyActivity,
+                    label: { EmptyView() }
+                )
+            )
         }
     }
     
@@ -40,6 +49,7 @@ struct MyPageView: View {
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
+                    .padding(.leading, 12)
                 VStack(alignment: .leading, spacing: 7) {
                     HStack {
                         Text("\(user.name) 님")
@@ -57,7 +67,7 @@ struct MyPageView: View {
                         .font(.caption)
                         .foregroundColor(.gray6Color)
                 }
-                .padding(.leading,20)
+                .padding(.leading, 15)
             } else {
                 Text("Loading...")
             }
@@ -74,12 +84,12 @@ struct MyPageView: View {
                     .font(.system(size: 24))
                     .fontWeight(.bold)
                     .padding(.top, 25)
-                    .padding(.leading, 25)
+                    .padding(.leading, 30)
                 
                 Text("오늘도 건강한 식사하세요!")
                     .font(.system(size: 18))
                     .multilineTextAlignment(.leading)
-                    .padding(.leading, 25)
+                    .padding(.leading, 30)
             } else {
                 Text("Loading...")
                     .font(.title3)
@@ -98,12 +108,22 @@ struct MyPageView: View {
             ForEach(activityItems, id: \.self) { item in
                 if item == "내 활동" {
                     ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역", "스크랩"])
+                        .onTapGesture {
+                            navigateToMyActivity = true
+                        }
+                } else if item == "회원탈퇴" {
+                    Button(action: {
+                        showDeleteUserAlert = true
+                    }) {
+                        ActivityCell(title: item, subTitles: nil)
+                    }
                 } else {
                     ActivityCell(title: item, subTitles: nil)
                 }
             }
         }
         .listStyle(PlainListStyle())
+        .padding(.leading, 12)
     }
     
     let activityItems = ["내 활동", "문의", "회원탈퇴"]
@@ -117,30 +137,32 @@ struct ActivityCell: View {
     var subTitles: [String]?
     
     var body: some View {
-        HStack {
-            Text(title)
-                .font(.system(size: 18, weight: .bold))
-                .foregroundColor(.black)
-                .listSectionSeparator(.hidden)
+        VStack {
+            HStack {
+                Text(title)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
+                    .listSectionSeparator(.hidden)
+                
+                Spacer()
+                
+                Image("right-arrow")
+            }
+            .padding(.vertical, 10)
             
-            Spacer()
-            
-            Image("right-arrow")
-                .foregroundColor(.gray)
-        }
-        .padding(.vertical, 10)
-        
-        if let subTitles = subTitles {
-            VStack(spacing: 0) {
-                ForEach(subTitles, id: \.self) { subTitle in
-                    HStack {
-                        Text(subTitle)
-                            .font(.system(size: 16))
-                        
-                        Spacer()
+            if let subTitles = subTitles {
+                VStack(spacing: 0) {
+                    ForEach(subTitles, id: \.self) { subTitle in
+                        HStack {
+                            Text(subTitle)
+                                .font(.system(size: 16))
+                                .allowsHitTesting(false)
+                            
+                            Spacer()
+                        }
+                        .padding(.vertical, 5)
+                        .buttonStyle(PlainButtonStyle())
                     }
-                    .padding(.vertical, 5)
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
         }

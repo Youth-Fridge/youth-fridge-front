@@ -19,19 +19,17 @@ struct CardView: View {
                                 Circle()
                                     .fill(Color.gray)
                                     .frame(width: 50, height: 30)
-
-                                Text("장금이")
+                                    .padding(.top,25)
+                                Text(viewModel.card.name)
                                     .font(.system(size: 10))
                                     .padding(.leading, 5)
-                                    
-
+                                    .padding(.top,25)
                                 Spacer()
-                                
                                 HStack(spacing: 5) {
                                     ForEach(viewModel.card.tags, id: \.self) { tag in
                                         TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
-                                    }
-                                  
+                                    }       
+                                    .padding(.top,25)
                                 }
                             
                         .foregroundColor(.white)
@@ -40,36 +38,38 @@ struct CardView: View {
  
                 }
                 Text(viewModel.card.title)
-                    .font(.title2)
+                    .font(.system(size: 26))
                     .bold()
                     .padding(.leading,40)
+                
                 HStack {
                     Image("clock")
                     Text(card.date)
+                        .font(.system(size: 10))
+                }
+                .padding(.leading,40)
+                HStack {
+                    Image("map-pin")
+                    Text(viewModel.card.location)
                         .font(.system(size: 10))
                         
                 }
                 .padding(.leading,40)
                 HStack {
-                    Image("map-pin")
-                    Text(card.location)
-                        .font(.system(size: 10))
                     Spacer()
-                    Text("모집 중")
-                           .background(Color.clear)
-                           .foregroundColor(.white)
-                           .cornerRadius(10)
-                           .modifier(CustomViewModifier(color: .white))
-                           .padding([.bottom, .trailing], 10)
-                               
+                    Text(viewModel.card.ing)
+                               .background(Color.clear)
+                               .foregroundColor(.white)
+                               .cornerRadius(10)
+                               .modifier(CustomViewModifier(color: .white))
+                               .padding([.trailing], 10)
                 }
                 .padding(.leading,40)
             }
             
         }
-        .padding(.top,10)
-        .padding(.leading,10)
         .padding(.trailing,10)
+        .frame(width: 350,height: 140)
         .background(backgroundColor)
         .cornerRadius(10)
         .foregroundColor(.white)
@@ -83,7 +83,7 @@ struct CustomViewModifier: ViewModifier {
             .font(.system(size: 10))
             .padding(6)
             .overlay(
-                RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
                                     .stroke(lineWidth: 1)
             )
             .foregroundColor(color)

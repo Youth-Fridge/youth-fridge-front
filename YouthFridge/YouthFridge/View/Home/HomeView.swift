@@ -260,13 +260,7 @@ private func smallestCardView() -> some View {
     .frame(width: 190,height: 120)
     .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 0)
 }
-struct TabContent {
-    let imageName: String
-    let title: String
-    let content: String
-    let date: String
-    let ing: String
-}
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(viewModel: .init())

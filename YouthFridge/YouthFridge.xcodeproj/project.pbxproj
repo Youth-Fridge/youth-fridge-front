@@ -36,6 +36,9 @@
 		5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62C2C479C890081323E /* ProfileResearchView.swift */; };
 		5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */; };
 		5817D6352C4A79250081323E /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6342C4A79250081323E /* CardViewModel.swift */; };
+		5817D6392C4BFD580081323E /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6382C4BFD580081323E /* CellModel.swift */; };
+		5817D63B2C4BFD700081323E /* SmallClassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63A2C4BFD700081323E /* SmallClassViewModel.swift */; };
+		5817D63D2C4BFD980081323E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63C2C4BFD980081323E /* CellView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -93,6 +96,9 @@
 		5817D62C2C479C890081323E /* ProfileResearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchView.swift; sourceTree = "<group>"; };
 		5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
 		5817D6342C4A79250081323E /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		5817D6382C4BFD580081323E /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		5817D63A2C4BFD700081323E /* SmallClassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallClassViewModel.swift; sourceTree = "<group>"; };
+		5817D63C2C4BFD980081323E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -155,7 +161,10 @@
 		5817D5F32C4504760081323E /* SmallClass */ = {
 			isa = PBXGroup;
 			children = (
+				5817D6372C4BFD420081323E /* ViewModel */,
+				5817D6362C4BFD370081323E /* View */,
 				5817D5F82C4504A30081323E /* SmallClassView.swift */,
+				5817D6382C4BFD580081323E /* CellModel.swift */,
 			);
 			path = SmallClass;
 			sourceTree = "<group>";
@@ -267,6 +276,22 @@
 				58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		5817D6362C4BFD370081323E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5817D63C2C4BFD980081323E /* CellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5817D6372C4BFD420081323E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5817D63A2C4BFD700081323E /* SmallClassViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		58EEF6E12C43D22500C12C1E = {
@@ -518,6 +543,7 @@
 			files = (
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
+				5817D63B2C4BFD700081323E /* SmallClassViewModel.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
@@ -539,10 +565,12 @@
 				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
+				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
 				5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */,
 				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
+				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,

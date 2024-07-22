@@ -25,6 +25,10 @@ struct MyActivityView: View {
                 VStack(spacing: 0) {
                     tabButtons
                     contentView
+                    if selectedTab == 0 {
+                        plusButton
+                    }
+                    
                 }
                 .padding(.top, 45)
                 .padding(.horizontal, 10)
@@ -56,6 +60,20 @@ struct MyActivityView: View {
                     ApplicationHistoryView()
                 }
             }
+        }
+    }
+    
+    private var plusButton: some View {
+        HStack {
+            Spacer()
+            Button(action: {
+                print("초대장 추가 버튼")
+            }) {
+                Image("plus")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+            }
+            .padding(.trailing, 20)
         }
     }
     

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MyActivityView: View {
     @State private var selectedTab = 0
+    @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel: MyPageViewModel
     
@@ -35,10 +36,22 @@ struct MyActivityView: View {
             }
             .navigationTitle("내 활동")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Image(viewModel.myUser!.profilePicture)
-                .resizable()
-                .frame(width: 40, height: 40)
-            )
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image("left-arrow")
+                            .resizable()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Image(viewModel.myUser!.profilePicture)
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                }
+            }
         }
     }
     

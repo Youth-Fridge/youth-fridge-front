@@ -12,8 +12,19 @@ struct MyInvitationsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            ForEach(viewModel.activities) { activity in
-                ActivityCardView(viewModel: activity)
+            if !viewModel.activities.isEmpty {
+                ForEach(viewModel.activities) { activity in
+                    ActivityCardView(viewModel: activity)
+                }
+            } else {
+                VStack {
+                    Spacer()
+                        .frame(height: UIScreen.main.bounds.height * 0.3)
+                    Text("소모임을 운영하는 호스트가 되어봐요 :)")
+                        .foregroundColor(.gray3)
+                        .font(.system(size: 18, weight: .regular))
+                        .multilineTextAlignment(.center)
+                }
             }
         }
         .padding()

@@ -7,37 +7,65 @@
 
 import SwiftUI
 
+// TODO: - 네비게이션 ㅠㅠ 팝업 메시지 띄울 때 뒤로 보내야됨
 struct MyPageView: View {
     @StateObject var viewModel: MyPageViewModel
-    @State private var showDeleteUserAlert = false
+    @State private var showDeletePopup = false
     @State private var navigateToMyActivity = false
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
-                    VStack(spacing: 0) {
-                        welcomeMessage
-                        profileView
-                        activityList
-                    }
+                    welcomeMessage
+                    profileView
+                    activityList
                 }
                 .padding(.top, 15)
                 
                 ShadowNavigationBar()
+                
+                if showDeletePopup {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                showDeletePopup = false
+                            }
+                        }
+                    
+                    PopUpView(
+                        message: "청년냉장고를 탈퇴하시겠습니까?",
+                        onClose: {
+                            withAnimation {
+                                showDeletePopup = false
+                            }
+                        },
+                        onConfirm: {
+                            withAnimation {
+                                showDeletePopup = false
+                                // TODO: - 회원 탈퇴 처리
+                            }
+                        },
+                        onCancel: {
+                            withAnimation {
+                                showDeletePopup = false
+                            }
+                    })
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .zIndex(1)
+                }
+                NavigationLink(
+                    destination: MyActivityView(),
+                    isActive: $navigateToMyActivity,
+                    label: { EmptyView() }
+                )
             }
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(trailing: Image(viewModel.myUser!.profilePicture)
                 .resizable()
                 .frame(width: 40, height: 40)
-            )
-            .background(
-                NavigationLink(
-                    destination: MyActivityView(),
-                    isActive: $navigateToMyActivity,
-                    label: { EmptyView() }
-                )
             )
         }
     }
@@ -113,7 +141,7 @@ struct MyPageView: View {
                         }
                 } else if item == "회원탈퇴" {
                     Button(action: {
-                        showDeleteUserAlert = true
+                        showDeletePopup = true
                     }) {
                         ActivityCell(title: item, subTitles: nil)
                     }

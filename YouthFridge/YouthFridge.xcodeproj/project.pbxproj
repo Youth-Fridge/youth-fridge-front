@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */,
+				0A7129D12C4E5CC800D4C08A /* PopUpView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -415,6 +418,8 @@
 			dependencies = (
 			);
 			name = YouthFridge;
+			packageProductDependencies = (
+			);
 			productName = YouthFridge;
 			productReference = 58EEF6EA2C43D22500C12C1E /* YouthFridge.app */;
 			productType = "com.apple.product-type.application";
@@ -487,6 +492,8 @@
 				Base,
 			);
 			mainGroup = 58EEF6E12C43D22500C12C1E;
+			packageReferences = (
+			);
 			productRefGroup = 58EEF6EB2C43D22500C12C1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -531,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
+				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,

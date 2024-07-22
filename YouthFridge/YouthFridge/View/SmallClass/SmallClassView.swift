@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SmallClassView: View {
-    @StateObject private var viewModel = SmallClassViewModel()
+    @StateObject private var viewModel = CellViewModel()
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
 
     var body: some View {
@@ -25,9 +25,12 @@ struct SmallClassView: View {
                 TagsView(tags: tags)
                         .padding(.leading,20)
                         .padding(.top, 15)
+                Spacer()
                 List(viewModel.cells) { cell in
                     CellView(cell: cell)
                         .listRowInsets(EdgeInsets())
+                        .padding(.vertical,15)
+                        .listRowSeparator(.hidden)
                 }
                 .listStyle(PlainListStyle())
                 Spacer()
@@ -54,15 +57,17 @@ struct InvitationView: View {
                 .frame(width: 28,height: 28)
                 .padding(.leading,15)
             Text("초대장 만들기")
-                .font(.headline)
+                .font(.system(size: 20,weight: .bold))
             Spacer()
             Image("plus_letter")
                 .resizable()
-                .frame(width: 150, height: 80)
+                .scaledToFit()
+                .frame(width: 150, height: 100)
+                .padding(.top,19)
         }
         .background(Color.sub2Color)
         .frame(maxWidth: .infinity, maxHeight: 100)
-        .cornerRadius(10)
+        .cornerRadius(0)
     }
 }
 

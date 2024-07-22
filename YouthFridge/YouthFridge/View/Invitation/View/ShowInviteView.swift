@@ -1,13 +1,13 @@
 //
-//  InvitationView.swift
+//  ShowInviteView.swift
 //  YouthFridge
 //
-//  Created by 김민솔 on 7/22/24.
+//  Created by 김민솔 on 7/23/24.
 //
 
 import SwiftUI
 
-struct InvitationView: View {
+struct ShowInviteView: View {
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false
@@ -137,7 +137,6 @@ struct InvitationView: View {
     }
 }
 
-
 #Preview {
-    InvitationView()
+    ShowInviteView()
 }

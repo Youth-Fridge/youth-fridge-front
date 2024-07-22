@@ -1,14 +1,14 @@
 //
-//  MyInvitationsView.swift
+//  ApplicationHistoryView.swift
 //  YouthFridge
 //
-//  Created by 김민솔 on 7/16/24.
+//  Created by 임수진 on 7/23/24.
 //
 
 import SwiftUI
 
-struct MyInvitationsView: View {
-    @ObservedObject var viewModel = MyInvitationsViewModel()
+struct ApplicationHistoryView: View {
+    @ObservedObject var viewModel = MyApplicationViewModel()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -20,7 +20,7 @@ struct MyInvitationsView: View {
                 VStack {
                     Spacer()
                         .frame(height: UIScreen.main.bounds.height * 0.3)
-                    Text("소모임을 운영하는 호스트가 되어봐요 :)")
+                    Text("참여 중인 소모임이 없어요")
                         .foregroundColor(.gray3)
                         .font(.system(size: 18, weight: .regular))
                         .multilineTextAlignment(.center)
@@ -31,10 +31,6 @@ struct MyInvitationsView: View {
     }
 }
 
-struct MyInvitationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyInvitationsView()
-    }
+#Preview {
+    ApplicationHistoryView()
 }
-
-

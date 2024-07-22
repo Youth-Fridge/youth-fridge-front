@@ -105,13 +105,6 @@ struct MyActivityView: View {
     }
 }
 
-struct ApplicationHistoryView: View {
-    var body: some View {
-        Text("신청 내역 내용")
-            .padding()
-    }
-}
-
 struct MyActivityView_Previews: PreviewProvider {
     static var previews: some View {
         let services = Services()

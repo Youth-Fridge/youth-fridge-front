@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */; };
+		0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */; };
 		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
@@ -70,6 +72,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApplicationViewModel.swift; sourceTree = "<group>"; };
+		0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistoryView.swift; sourceTree = "<group>"; };
 		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 			children = (
 				5817D6172C463A020081323E /* MyInvitationsViewModel.swift */,
 				5817D6152C4639000081323E /* ActivityCardViewModel.swift */,
+				0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				5817D6112C462FD20081323E /* MyInvitationsView.swift */,
+				0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */,
 				5817D60D2C457CC50081323E /* MyActivityView.swift */,
 				5817D6132C462FE70081323E /* ActivityCardView.swift */,
 			);
@@ -603,7 +609,6 @@
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
-				5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */,
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
@@ -611,6 +616,7 @@
 				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,
 				5817D6352C4A79250081323E /* CardViewModel.swift in Sources */,
+				0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */,
 				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
@@ -624,6 +630,7 @@
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,
 				5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */,
+				0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

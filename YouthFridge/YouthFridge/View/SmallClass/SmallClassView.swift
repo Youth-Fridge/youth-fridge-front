@@ -14,7 +14,7 @@ struct SmallClassView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                InvitationView()
+                AddInviteView()
                 HStack {
                     Text("참여 내역")
                         .font(.system(size: 18, weight: .semibold))
@@ -49,7 +49,7 @@ struct SmallClassView: View {
         }
     }
 }
-struct InvitationView: View {
+struct AddInviteView: View {
     var body: some View {
         HStack {
             Image("plus-circle")

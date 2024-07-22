@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
+		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
 		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
@@ -68,6 +70,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
@@ -139,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A971D052C4C413D009F3B13 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */,
+				0A7129D12C4E5CC800D4C08A /* PopUpView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5817D5ED2C4502270081323E /* MainTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +197,7 @@
 		5817D5F52C4504850081323E /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				0A971D052C4C413D009F3B13 /* Components */,
 				5817D61B2C4650480081323E /* MyActivityDetail */,
 				5817D60C2C457CA60081323E /* MyActivity */,
 				5817D5FC2C4504B50081323E /* MyPageView.swift */,
@@ -453,6 +467,8 @@
 			dependencies = (
 			);
 			name = YouthFridge;
+			packageProductDependencies = (
+			);
 			productName = YouthFridge;
 			productReference = 58EEF6EA2C43D22500C12C1E /* YouthFridge.app */;
 			productType = "com.apple.product-type.application";
@@ -525,6 +541,8 @@
 				Base,
 			);
 			mainGroup = 58EEF6E12C43D22500C12C1E;
+			packageReferences = (
+			);
 			productRefGroup = 58EEF6EB2C43D22500C12C1E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -569,6 +587,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
+				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
 				5817D63B2C4BFD700081323E /* SmallClassViewModel.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
@@ -584,6 +603,8 @@
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
+				5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */,
+				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
@@ -691,7 +712,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -748,7 +769,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

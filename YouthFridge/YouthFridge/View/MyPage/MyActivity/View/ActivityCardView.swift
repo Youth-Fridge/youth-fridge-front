@@ -12,7 +12,7 @@ struct ActivityCardView: View {
     
     var body: some View {
         NavigationLink(destination: ActivityDetail(viewModel: viewModel)) {
-                    HStack {
+            HStack {
                 Image(viewModel.imageName)
                     .resizable()
                     .scaledToFit()
@@ -21,27 +21,40 @@ struct ActivityCardView: View {
                 VStack(alignment: .leading) {
                     Text(viewModel.title)
                         .font(.system(size: 16,weight: .semibold))
-                        .padding(.leading,20)
-                        .padding(.bottom,5)
+                        .padding(.leading, 10)
+                        .padding(.bottom, 5)
                     Text(viewModel.date)
                         .font(.system(size: 12))
-                        .padding(.leading,20)
+                        .padding(.leading, 10)
+                        .padding(.bottom, 1)
                     Text(viewModel.location)
                         .font(.system(size: 12))
-                        .padding(.leading,20)
+                        .padding(.leading, 10)
                 }
                 
                 Spacer()
-                Divider().frame(width: 1, height: 60).background(Color.gray.opacity(0.5))
-                    .padding(.trailing, 10)
+                
+                Image("division")
+                    .padding(.trailing, 20)
                 
                 Text("D-\(viewModel.daysLeft)")
                     .font(.headline)
-                    .foregroundColor(viewModel.isPast ? .gray2 : .black)
+                    .foregroundColor(viewModel.isPast ? Color.gray3.opacity(0) : .black)
+                    .fixedSize()
+                    .padding(.trailing, 10)
             }
             .padding()
-            .background(viewModel.isPast ? Color.gray.opacity(0.2) : Color.white)
-            .cornerRadius(8)
+            .background(viewModel.isPast ? Color.gray3.opacity(0.6) : Color.white)
+            .overlay(
+                ZStack {
+                    if viewModel.isPast {
+                        Color.gray2.opacity(0.3)
+                            .edgesIgnoringSafeArea(.all)
+                            .padding(.horizontal, -20)
+                    }
+                }
+            )
+            .cornerRadius(4)
             .shadow(radius: 1)
         }
         .buttonStyle(PlainButtonStyle())

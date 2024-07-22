@@ -56,7 +56,7 @@ struct MyPageView: View {
                     .zIndex(1)
                 }
                 NavigationLink(
-                    destination: MyActivityView(),
+                    destination: MyActivityView(viewModel: viewModel),
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )

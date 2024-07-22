@@ -11,6 +11,7 @@ struct CellModel: Identifiable {
     let id = UUID()
     let image: String
     let title: String
-    let content: String
     let tag: String
+    let ing: String
+    let numberOfPeople: String
 }

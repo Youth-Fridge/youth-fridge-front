@@ -42,7 +42,7 @@
 		5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63A2C4BFD700081323E /* CellViewModel.swift */; };
 		5817D63D2C4BFD980081323E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63C2C4BFD980081323E /* CellView.swift */; };
 		5817D63F2C4D48930081323E /* TabContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63E2C4D48930081323E /* TabContent.swift */; };
-		5817D6482C4E9E610081323E /* InvitationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6472C4E9E610081323E /* InvitationView.swift */; };
+		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -106,7 +106,7 @@
 		5817D63A2C4BFD700081323E /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		5817D63C2C4BFD980081323E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		5817D63E2C4D48930081323E /* TabContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContent.swift; sourceTree = "<group>"; };
-		5817D6472C4E9E610081323E /* InvitationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationView.swift; sourceTree = "<group>"; };
+		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,7 +179,6 @@
 		5817D5F32C4504760081323E /* SmallClass */ = {
 			isa = PBXGroup;
 			children = (
-				5817D6402C4D4B180081323E /* Invitation */,
 				5817D6372C4BFD420081323E /* ViewModel */,
 				5817D6362C4BFD370081323E /* View */,
 				5817D5F82C4504A30081323E /* SmallClassView.swift */,
@@ -314,28 +313,20 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		5817D6402C4D4B180081323E /* Invitation */ = {
+		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
-				5817D6422C4D4B260081323E /* ViewModel */,
-				5817D6412C4D4B210081323E /* View */,
+				58BEC2BE2C4EB19800C6E524 /* View */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
 		};
-		5817D6412C4D4B210081323E /* View */ = {
+		58BEC2BE2C4EB19800C6E524 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5817D6472C4E9E610081323E /* InvitationView.swift */,
+				58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		5817D6422C4D4B260081323E /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		58EEF6E12C43D22500C12C1E = {
@@ -400,6 +391,7 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58BEC2BD2C4EB18E00C6E524 /* Invitation */,
 				5817D6202C46547C0081323E /* Onboarding */,
 				5817D5F52C4504850081323E /* MyPage */,
 				5817D5F42C4504800081323E /* News */,
@@ -606,7 +598,6 @@
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
-				5817D6332C4A6B830081323E /* VerticalBlurView.swift in Sources */,
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
@@ -615,8 +606,8 @@
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,
 				5817D6352C4A79250081323E /* CardViewModel.swift in Sources */,
 				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
-				5817D6482C4E9E610081323E /* InvitationView.swift in Sources */,
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
+				58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
@@ -800,6 +791,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -830,6 +822,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

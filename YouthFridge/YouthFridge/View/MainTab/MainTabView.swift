@@ -14,17 +14,17 @@ struct MainTabView: View {
         TabView(selection: $selectedTab) {
             ForEach(MainTabType.allCases, id: \.self) { tab in
                 Group {
-                                    switch tab {
-                                    case .home:
-                                        AnyView(HomeView(viewModel: .init()))
-                                    case .smallClass:
-                                        AnyView(SmallClassView())
-                                    case .news:
-                                        AnyView(NewsView())
-                                    case .mypage:
-                                        AnyView(MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services()))))
-                                    }
-                                }
+                    switch tab {
+                    case .home:
+                        AnyView(HomeView(viewModel: .init()))
+                    case .smallClass:
+                        AnyView(SmallClassView())
+                    case .news:
+                        AnyView(NewsView())
+                    case .mypage:
+                        AnyView(MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services()))))
+                    }
+                }
                 .tabItem {
                     Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
                 }
@@ -34,7 +34,22 @@ struct MainTabView: View {
         .tint(.black)
     }
     init() {
-        UITabBar.appearance().unselectedItemTintColor = UIColor.black
+        let image = UIImage.gradientImageWithBounds(
+            bounds: CGRect( x: 0, y: 0, width: UIScreen.main.scale, height: 8),
+            colors: [
+                UIColor.clear.cgColor,
+                UIColor.black.withAlphaComponent(0.1).cgColor
+            ]
+        )
+        
+        let appearance = UITabBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIColor.systemGray6
+        
+        appearance.backgroundImage = UIImage()
+        appearance.shadowImage = image
+        
+        UITabBar.appearance().standardAppearance = appearance
     }
     
 }
@@ -42,5 +57,18 @@ struct MainTabView: View {
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
         MainTabView()
+    }
+}
+extension UIImage {
+    static func gradientImageWithBounds(bounds: CGRect, colors: [CGColor]) -> UIImage {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = bounds
+        gradientLayer.colors = colors
+        
+        UIGraphicsBeginImageContext(gradientLayer.bounds.size)
+        gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
     }
 }

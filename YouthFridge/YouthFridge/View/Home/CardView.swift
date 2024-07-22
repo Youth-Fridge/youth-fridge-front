@@ -13,47 +13,80 @@ struct CardView: View {
     let backgroundColor: Color
     let tags: [String]
     var body: some View {
-        HStack(spacing: 15) {
-            VStack(alignment: .leading, spacing: 10) {
-                HStack(spacing: 6) {
-                    Circle()
-                        .fill(Color.gray)
-                        .frame(width: 50, height: 30)
-                    VStack(alignment: .leading, spacing: 2) {
-                        HStack(spacing: 5) {
-                            Text("장금이")
-                                .font(.system(size: 10))
-                            Spacer()
-                            HStack(spacing: 5) {
-                                ForEach(viewModel.card.tags, id: \.self) { tag in
-                                    TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+        HStack() {
+            VStack(alignment: .leading) {
+                            HStack(spacing: 0) {
+                                Circle()
+                                    .fill(Color.gray)
+                                    .frame(width: 50, height: 30)
+                                    .padding(.top,25)
+                                Text(viewModel.card.name)
+                                    .font(.system(size: 10))
+                                    .padding(.leading, 5)
+                                    .padding(.top,25)
+                                Spacer()
+                                HStack(spacing: 5) {
+                                    ForEach(viewModel.card.tags, id: \.self) { tag in
+                                        TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+                                    }       
+                                    .padding(.top,25)
                                 }
-                            }
-                        }
-                        .font(.subheadline)
+                            
                         .foregroundColor(.white)
-                        .padding(.horizontal, 6)
+                        .padding(.leading, 6)
                         .cornerRadius(4)
-                    }
+ 
                 }
                 Text(viewModel.card.title)
-                    .font(.title2)
+                    .font(.system(size: 26))
                     .bold()
+                    .padding(.leading,40)
+                
                 HStack {
                     Image("clock")
                     Text(card.date)
+                        .font(.system(size: 10))
                 }
+                .padding(.leading,40)
                 HStack {
                     Image("map-pin")
-                    Text(card.location)
+                    Text(viewModel.card.location)
+                        .font(.system(size: 10))
+                        
                 }
+                .padding(.leading,40)
+                HStack {
+                    Spacer()
+                    Text(viewModel.card.ing)
+                               .background(Color.clear)
+                               .foregroundColor(.white)
+                               .cornerRadius(10)
+                               .modifier(CustomViewModifier(color: .white))
+                               .padding([.trailing], 10)
+                }
+                .padding(.leading,40)
             }
-            Spacer()
+            
         }
-        .padding()
+        .padding(.trailing,10)
+        .frame(width: 350,height: 140)
         .background(backgroundColor)
         .cornerRadius(10)
         .foregroundColor(.white)
+        
+    }
+}
+struct CustomViewModifier: ViewModifier {
+    var color: Color
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 10))
+            .padding(6)
+            .overlay(
+                RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                                    .stroke(lineWidth: 1)
+            )
+            .foregroundColor(color)
     }
 }
 struct TextWithBackground: View {
@@ -62,10 +95,12 @@ struct TextWithBackground: View {
 
     var body: some View {
         Text(text)
+            .font(.system(size: 10))
             .padding(5)
             .background(Color.white)
             .foregroundColor(Color.gray4Color)
-            .cornerRadius(10)
+            .cornerRadius(20)
+        
     }
 }
 

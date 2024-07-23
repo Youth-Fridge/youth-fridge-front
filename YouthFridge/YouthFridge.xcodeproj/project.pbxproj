@@ -43,6 +43,7 @@
 		5817D63D2C4BFD980081323E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63C2C4BFD980081323E /* CellView.swift */; };
 		5817D63F2C4D48930081323E /* TabContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63E2C4D48930081323E /* TabContent.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
+		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		5817D63C2C4BFD980081323E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		5817D63E2C4D48930081323E /* TabContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContent.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
+		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -329,6 +331,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		58BEC2C32C4EBB5D00C6E524 /* CreateInvite */ = {
+			isa = PBXGroup;
+			children = (
+				58BEC2C42C4EBB6500C6E524 /* View */,
+			);
+			path = CreateInvite;
+			sourceTree = "<group>";
+		};
+		58BEC2C42C4EBB6500C6E524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		58EEF6E12C43D22500C12C1E = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +409,7 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58BEC2C32C4EBB5D00C6E524 /* CreateInvite */,
 				58BEC2BD2C4EB18E00C6E524 /* Invitation */,
 				5817D6202C46547C0081323E /* Onboarding */,
 				5817D5F52C4504850081323E /* MyPage */,
@@ -587,6 +606,7 @@
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
+				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
 				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,

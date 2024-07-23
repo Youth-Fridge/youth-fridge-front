@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ShowInviteView: View {
+    var cell: CellModel
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false
@@ -120,7 +121,7 @@ struct ShowInviteView: View {
                         isFlipped.toggle()
                     }
                 }
-                
+                .toolbar(.hidden, for: .tabBar)
                 Spacer()
                 NavigationLink(destination: ResearchView()) {
                     Text("참여하기")
@@ -138,5 +139,11 @@ struct ShowInviteView: View {
 }
 
 #Preview {
-    ShowInviteView()
+    ShowInviteView(cell: CellModel(
+        image: "invitationImage3",
+        title: "댄스파티",
+        tag: "문화",
+        ing: "모집 중",
+        numberOfPeople: "4/7"
+    ))
 }

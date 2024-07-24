@@ -12,7 +12,7 @@ struct CreateInviteView: View {
 
     var body: some View {
         NavigationView {
-            VStack() {
+            VStack(alignment: .leading) {
                 HStack(spacing: 16) {
                     Button(action: {
                         selectedTab = 0
@@ -39,7 +39,9 @@ struct CreateInviteView: View {
                 }
                 Spacer()
             }
+            .frame(alignment: .leading)
             .navigationTitle("초대장 작성")
+            .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

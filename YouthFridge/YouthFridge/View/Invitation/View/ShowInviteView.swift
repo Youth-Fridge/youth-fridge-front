@@ -123,7 +123,7 @@ struct ShowInviteView: View {
                 }
                 .toolbar(.hidden, for: .tabBar)
                 Spacer()
-                NavigationLink(destination: ResearchView()) {
+                NavigationLink(destination: InviteFinalView()) {
                     Text("참여하기")
                         .font(.headline)
                         .foregroundColor(.yellow)

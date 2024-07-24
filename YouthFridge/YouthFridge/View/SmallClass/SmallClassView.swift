@@ -10,11 +10,14 @@ import SwiftUI
 struct SmallClassView: View {
     @StateObject private var viewModel = CellViewModel()
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
-
+    @State private var selectedTags: [String] = []
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                AddInviteView()
+                NavigationLink(destination: CreateInviteView()) {
+                    AddInviteView()
+                }
+                .buttonStyle(PlainButtonStyle())
                 HStack {
                     Text("참여 내역")
                         .font(.system(size: 18, weight: .semibold))
@@ -22,21 +25,33 @@ struct SmallClassView: View {
                 }
                     .padding(.top,30)
                     .padding(.leading,30)
-                TagsView(tags: tags)
+                TagsView(tags: tags, selectedTags: $selectedTags)
                         .padding(.leading,20)
                         .padding(.top, 15)
                 Spacer()
                 List(viewModel.cells) { cell in
-                    CellView(cell: cell)
-                        .listRowInsets(EdgeInsets())
-                        .padding(.vertical,15)
-                        .listRowSeparator(.hidden)
-                }
-                .listStyle(PlainListStyle())
-                Spacer()
-                
-            }
-            
+                                   ZStack {
+                                       NavigationLink(
+                                           destination: ShowInviteView(cell: cell),
+                                           label: {
+                                               EmptyView()
+                                           }
+                                       )
+                                       .opacity(0)
+                                       
+                                       CellView(cell: cell)
+                                           .padding(.vertical, 15)
+                                           .background(Color.white)
+                                           .cornerRadius(10)
+                                           .contentShape(Rectangle())
+                                   }
+                                   .listRowInsets(EdgeInsets())
+                                   .listRowSeparator(.hidden)
+                               }
+                               .listStyle(PlainListStyle())
+                               
+                               Spacer()
+                           }
             .navigationBarTitle("생활밥서", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -46,6 +61,7 @@ struct SmallClassView: View {
                         .clipShape(Circle())
                 }
             }
+            
         }
     }
 }
@@ -73,7 +89,7 @@ struct AddInviteView: View {
 
 struct TagsView: View {
     let tags: [String]
-    
+    @Binding var selectedTags: [String]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack() {
@@ -84,14 +100,22 @@ struct TagsView: View {
                         .padding(.trailing,20)
                         .padding(.top,10)
                         .padding(.bottom,10)
-                        .background(Color.gray1Color)
+                        .background(selectedTags.contains(tag) ? Color.sub2Color : Color.gray1Color)
                         .cornerRadius(25)
+                        .onTapGesture {
+                            if let index = selectedTags.firstIndex(of: tag) {
+                                selectedTags.remove(at: index)
+                            } else {
+                                selectedTags.append(tag)
+                            }
+                        }
                         .padding(.leading,5)
                 }
             }
         }
     }
 }
+
 #Preview {
     SmallClassView()
 }

@@ -55,7 +55,7 @@ struct ResearchView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: ProfileResearchView(), isActive: $navigateToNextView) {
+                NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
                     Button(action: {
                         navigateToNextView = true // 버튼 클릭 시 다음 뷰로 이동하도록 설정
                     }) {
@@ -74,6 +74,7 @@ struct ResearchView: View {
             .onAppear {
                 viewModel.loadCategories()
             }
+            .navigationBarHidden(true)
         }
     }
 }

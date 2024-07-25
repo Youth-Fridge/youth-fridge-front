@@ -112,5 +112,3 @@ struct MyActivityView_Previews: PreviewProvider {
         MyActivityView(viewModel: MyPageViewModel(container: container))
     }
 }
-
-

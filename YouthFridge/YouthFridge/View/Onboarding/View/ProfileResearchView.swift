@@ -134,47 +134,29 @@ struct ProfileResearchView: View {
                     
                 }
                 Spacer()
-                    NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
-                        Text("다음")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: 320)
-                            .background(Color.yellow)
-                            .cornerRadius(8)
-                    }
-                    .padding()
-                    
-                    .onAppear {
-                        //updateCurrentLocation()
-                    }
+                NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
+                    Text("다음")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: 320)
+                        .background(Color.yellow)
+                        .cornerRadius(8)
                 }
-                .navigationBarBackButtonHidden(true)
-                .navigationBarHidden(true)
+                .padding()
                 
+                .onAppear {
+                    //updateCurrentLocation()
+                }
             }
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
             
         }
         
-        //    private func updateCurrentLocation() {
-        //        let locationManager = CLLocationManager()
-        //        locationManager.requestWhenInUseAuthorization()
-        //
-        //        if CLLocationManager.locationServicesEnabled() {
-        //            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        //            locationManager.startUpdatingLocation()
-        //
-        //            if let location = locationManager.location?.coordinate {
-        //                self.userLocation = location
-        //                self.region = MKCoordinateRegion(
-        //                    center: location,
-        //                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-        //                )
-        //            }
-        //        }
-        //    }
     }
-    
+}
+
 
 struct MapDetailView: View {
     @ObservedObject var locationManager = LocationManager()
@@ -227,8 +209,8 @@ struct MapDetailView: View {
     }
 }
 
-    
-    #Preview {
-        ProfileResearchView()
-    }
+
+#Preview {
+    ProfileResearchView()
+}
 

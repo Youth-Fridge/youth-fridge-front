@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: - 기본적인 배치만 해둔 상태, 상세 수정 필요
 struct ApplicationDetailView: View {
     @Environment(\.dismiss) var dismiss
     
@@ -24,16 +23,26 @@ struct ApplicationDetailView: View {
         NavigationStack {
             ZStack(alignment: .top) {
                 ShadowNavigationBar()
-
                 
                 VStack(spacing: 0) {
                     content
-                    participantView
+                        .padding(.horizontal, 10)
+                        .padding(.leading, 5)
+                    
+                    ZStack {
+                        shadowView
+                            .padding(.top, 20)
+                        
+                        VStack(alignment: .leading, spacing: 16) {
+                            participantView
+                            rulesSection
+                        }
+                        .padding(.horizontal, 10)
+                    }
                 }
-                .padding(.top, 45)
-                .padding(.horizontal, 10)
+                .padding(.top, 10)
             }
-            .navigationTitle("나의 초대장")
+            .navigationTitle("신청 내역")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
 //            .toolbar {
@@ -86,10 +95,20 @@ struct ApplicationDetailView: View {
         }
     }
     
+    var shadowView: some View {
+        Rectangle()
+            .foregroundColor(.clear)
+            .background(Color.white)
+            .cornerRadius(20)
+            .shadow(
+                color: Color(red: 0, green: 0, blue: 0, opacity: 0.15),
+                radius: 25
+            )
+             .edgesIgnoringSafeArea(.all)
+    }
+    
     var participantView: some View {
         VStack(alignment: .leading) {
-            Divider()
-            
             HStack(spacing: 15) {
                 Text("참여자 명")
                     .font(.title3)
@@ -106,6 +125,7 @@ struct ApplicationDetailView: View {
                     )
             }
             .padding()
+            .padding(.top, 10)
             
             // 참여자 목록
             LazyVGrid(columns: columns, spacing: 16) {
@@ -122,11 +142,6 @@ struct ApplicationDetailView: View {
                             .padding(.top, 4)
                     }
                 }
-            }
-            .padding()
-            
-            VStack {
-                rulesSection
             }
         }
     }

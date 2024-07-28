@@ -87,6 +87,7 @@ struct MyActivityView: View {
                     .frame(width: 80, height: 80)
             }
             .padding(.trailing, 20)
+            .padding(.bottom, 20)
         }
     }
     

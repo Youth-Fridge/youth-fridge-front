@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct MainTabView: View {
     @State private var selectedTab: MainTabType = .home

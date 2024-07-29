@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct NewsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack(spacing: 0) {
+                BlogWebView(urlToLoad: "https://blog.naver.com/suzinlim")
+                    .edgesIgnoringSafeArea(.bottom)
+                    .navigationTitle("밥심레터")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
     }
 }
 

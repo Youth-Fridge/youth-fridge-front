@@ -25,7 +25,7 @@ struct ProfilePictureSelector: View {
                 .font(.system(size: 24, weight: .semibold))
                 .padding(.bottom, 30)
             
-            Image(tempSelectedImage)  // 현재 선택된 이미지
+            Image(tempSelectedImage)
                 .resizable()
                 .frame(width: 120, height: 120)
                 .clipShape(Circle())
@@ -67,7 +67,7 @@ struct ProfilePictureSelector: View {
                         .padding(.horizontal, 20)
                 }
                 Button(action: {
-                    selectedImage = tempSelectedImage  // 저장 버튼 클릭 시 실제 이미지 업데이트
+                    selectedImage = tempSelectedImage
                     isShowing = false
                 }) {
                     Text("저장")

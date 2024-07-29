@@ -51,6 +51,10 @@
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
+		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
+		58EA96F32C57742400166554 /* StepTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F22C57742400166554 /* StepTwoView.swift */; };
+		58EA96F52C57745A00166554 /* ImageGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F42C57745A00166554 /* ImageGridView.swift */; };
+		58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F62C57798A00166554 /* EmojiSelectionView.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -124,6 +128,10 @@
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
+		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
+		58EA96F22C57742400166554 /* StepTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoView.swift; sourceTree = "<group>"; };
+		58EA96F42C57745A00166554 /* ImageGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGridView.swift; sourceTree = "<group>"; };
+		58EA96F62C57798A00166554 /* EmojiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiSelectionView.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -348,17 +356,21 @@
 		58BEC2C32C4EBB5D00C6E524 /* CreateInvite */ = {
 			isa = PBXGroup;
 			children = (
-				58BEC2C42C4EBB6500C6E524 /* View */,
+				58EA96EF2C5380D100166554 /* ViewModel */,
+				58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */,
+				58EA96F22C57742400166554 /* StepTwoView.swift */,
+				58EA96F42C57745A00166554 /* ImageGridView.swift */,
+				58EA96F62C57798A00166554 /* EmojiSelectionView.swift */,
 			);
 			path = CreateInvite;
 			sourceTree = "<group>";
 		};
-		58BEC2C42C4EBB6500C6E524 /* View */ = {
+		58EA96EF2C5380D100166554 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */,
+				58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */,
 			);
-			path = View;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		58EEF6E12C43D22500C12C1E = {
@@ -629,6 +641,7 @@
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
 				5817D6142C462FE70081323E /* ActivityCardView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
+				58EA96F52C57745A00166554 /* ImageGridView.swift in Sources */,
 				5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */,
 				5817D6292C4657440081323E /* ResearchView.swift in Sources */,
 				5817D61F2C46508E0081323E /* ActivityDetailView.swift in Sources */,
@@ -640,6 +653,7 @@
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
+				58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
 				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,
@@ -650,6 +664,7 @@
 				58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */,
 				58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
+				58EA96F32C57742400166554 /* StepTwoView.swift in Sources */,
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
@@ -658,6 +673,7 @@
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
+				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,
 				5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */,
 				0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */,

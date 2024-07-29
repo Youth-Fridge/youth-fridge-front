@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ApplicationDetailView: View {
     @Environment(\.dismiss) var dismiss
-    
     @ObservedObject var viewModel: ActivityCardViewModel
     
     let columns: [GridItem] = [
@@ -44,7 +43,7 @@ struct ApplicationDetailView: View {
             }
             .navigationTitle("신청 내역")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
+//            .navigationBarBackButtonHidden(true)
 //            .toolbar {
 //                ToolbarItem(placement: .navigationBarLeading) {
 //                    Button(action: {
@@ -52,12 +51,14 @@ struct ApplicationDetailView: View {
 //                    }) {
 //                        Image("left-arrow")
 //                            .resizable()
+//                            .frame(width: 40, height: 40)
 //                    }
 //                }
 //                ToolbarItem(placement: .navigationBarTrailing) {
 //                    Image(viewModel.myUser!.profilePicture)
 //                        .resizable()
 //                        .frame(width: 40, height: 40)
+//                        .clipShape(Circle())
 //                }
 //            }
         }

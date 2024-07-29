@@ -14,7 +14,7 @@ struct MyInvitationsView: View {
         VStack(alignment: .leading, spacing: 16) {
             if !viewModel.activities.isEmpty {
                 ForEach(viewModel.activities) { activity in
-                    ActivityCardView(viewModel: activity)
+                    ActivityCardView(viewModel: activity, detail: "invitation")
                 }
             } else {
                 VStack {

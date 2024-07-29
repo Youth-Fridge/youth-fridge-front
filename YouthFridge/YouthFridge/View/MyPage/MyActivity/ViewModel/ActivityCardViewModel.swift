@@ -15,13 +15,24 @@ class ActivityCardViewModel: ObservableObject, Identifiable {
     @Published var daysLeft: Int
     @Published var imageName: String
     @Published var isPast: Bool
+    @Published var participants: [User]
     
-    init(title: String, date: String, location: String, daysLeft: Int, imageName: String, isPast: Bool = false) {
+    var participantsList: [User] = [
+        User(name: "임수진", profilePicture: "Ellipse"),
+        User(name: "김민솔", profilePicture: "Ellipse"),
+        User(name: "최강", profilePicture: "Ellipse"),
+        User(name: "임수진", profilePicture: "Ellipse"),
+        User(name: "김민솔", profilePicture: "Ellipse"),
+        User(name: "최강", profilePicture: "Ellipse")
+    ]
+    
+    init(title: String, date: String, location: String, daysLeft: Int, imageName: String, isPast: Bool = false, participants: [User] = []) {
         self.title = title
         self.date = date
         self.location = location
         self.daysLeft = daysLeft
         self.imageName = imageName
         self.isPast = isPast
+        self.participants = participantsList
     }
 }

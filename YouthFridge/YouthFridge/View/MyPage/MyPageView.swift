@@ -21,7 +21,7 @@ struct MyPageView: View {
                     profileView
                     activityList
                 }
-                .padding(.top, 15)
+                .padding(.top, 1)
                 
                 ShadowNavigationBar()
                 
@@ -63,10 +63,6 @@ struct MyPageView: View {
             }
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: Image(viewModel.myUser!.profilePicture)
-                .resizable()
-                .frame(width: 40, height: 40)
-            )
         }
     }
     
@@ -111,7 +107,7 @@ struct MyPageView: View {
                 Text("\(user.name) 님,")
                     .font(.system(size: 24))
                     .fontWeight(.bold)
-                    .padding(.top, 25)
+                    .padding(.top, 30)
                     .padding(.leading, 30)
                 
                 Text("오늘도 건강한 식사하세요!")
@@ -154,11 +150,8 @@ struct MyPageView: View {
         .padding(.leading, 12)
     }
     
-    let activityItems = ["내 활동", "문의", "회원탈퇴"]
+    let activityItems = ["내 활동", "문의", "회원탈퇴", "로그아웃"]
 }
-
-
-
 
 struct ActivityCell: View {
     var title: String

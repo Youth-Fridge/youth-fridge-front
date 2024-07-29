@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ActivityCardView: View {
     @ObservedObject var viewModel: ActivityCardViewModel
+    var detail: String
     
     var body: some View {
-        NavigationLink(destination: ActivityDetail(viewModel: viewModel)) {
+        NavigationLink(destination: destinationView()) {
             HStack {
                 Image(viewModel.imageName)
                     .resizable()
@@ -59,5 +60,24 @@ struct ActivityCardView: View {
         }
         .buttonStyle(PlainButtonStyle())
     }
+    
+    @ViewBuilder
+    private func destinationView() -> some View {
+        if detail == "invitation" {
+            ActivityDetailView(viewModel: viewModel)
+        } else if detail == "application" {
+            ApplicationDetailView(viewModel: viewModel)
+        } else {
+            Text("Unknown detail")
+                .foregroundColor(.red)
+        }
+    }
 }
 
+struct ActivityCardView_Previews: PreviewProvider {
+    static var previews: some View {
+        let services = Services()
+        let container = DIContainer(services: services)
+        MyActivityView(viewModel: MyPageViewModel(container: container))
+    }
+}

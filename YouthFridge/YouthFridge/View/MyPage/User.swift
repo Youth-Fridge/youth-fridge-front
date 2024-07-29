@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct User {
+struct User: Identifiable {
+    let id = UUID()
     var name: String
     var profilePicture: String
 }

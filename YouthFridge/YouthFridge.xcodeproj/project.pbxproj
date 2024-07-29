@@ -46,6 +46,10 @@
 		5817D63D2C4BFD980081323E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63C2C4BFD980081323E /* CellView.swift */; };
 		5817D63F2C4D48930081323E /* TabContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63E2C4D48930081323E /* TabContent.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
+		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
+		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
+		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
+		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */; };
 		58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F12C43D22800C12C1E /* Assets.xcassets */; };
 		58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58EEF6F42C43D22800C12C1E /* Preview Assets.xcassets */; };
@@ -113,6 +117,10 @@
 		5817D63C2C4BFD980081323E /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		5817D63E2C4D48930081323E /* TabContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContent.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
+		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
+		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
+		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EEF6EA2C43D22500C12C1E /* YouthFridge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YouthFridge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58EEF6ED2C43D22500C12C1E /* YouthFridgeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthFridgeApp.swift; sourceTree = "<group>"; };
 		58EEF6F12C43D22800C12C1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,6 +274,7 @@
 			children = (
 				5817D6222C46548D0081323E /* ViewModel */,
 				5817D6212C4654870081323E /* View */,
+				58EA96EB2C5281E700166554 /* LocationManager.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -278,6 +287,7 @@
 				5817D6282C4657440081323E /* ResearchView.swift */,
 				5817D62C2C479C890081323E /* ProfileResearchView.swift */,
 				5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */,
+				58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,7 +335,24 @@
 		58BEC2BE2C4EB19800C6E524 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */,
 				58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		58BEC2C32C4EBB5D00C6E524 /* CreateInvite */ = {
+			isa = PBXGroup;
+			children = (
+				58BEC2C42C4EBB6500C6E524 /* View */,
+			);
+			path = CreateInvite;
+			sourceTree = "<group>";
+		};
+		58BEC2C42C4EBB6500C6E524 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -392,6 +419,7 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58BEC2C32C4EBB5D00C6E524 /* CreateInvite */,
 				58BEC2BD2C4EB18E00C6E524 /* Invitation */,
 				5817D6202C46547C0081323E /* Onboarding */,
 				5817D5F52C4504850081323E /* MyPage */,
@@ -586,9 +614,11 @@
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
 				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
+				58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */,
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
+				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
 				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,
@@ -598,6 +628,7 @@
 				5817D6292C4657440081323E /* ResearchView.swift in Sources */,
 				5817D61F2C46508E0081323E /* ActivityDetailView.swift in Sources */,
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
+				58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
@@ -611,6 +642,7 @@
 				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
 				58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */,
+				58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,

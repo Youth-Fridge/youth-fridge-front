@@ -12,13 +12,15 @@ import CoreLocation
 struct ProfileResearchView: View {
     @State private var nickname = ""
     @State private var introduceMe = ""
+    @State private var isShowingProfileSelector = false
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     )
     @State private var userLocation: CLLocationCoordinate2D?
     @State private var trackingMode: MapUserTrackingMode = .follow
-
+    @State private var selectedProfileImage = "Ellipse20"
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,24 +31,37 @@ struct ProfileResearchView: View {
                     .font(.system(size: 24, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                HStack {
+                VStack {
+                    Image(selectedProfileImage)
+                        .resizable()
+                        .frame(width: 120, height: 120)
+                        .clipShape(Circle())
+                    Button(action: {
+                        isShowingProfileSelector.toggle()
+                    }) {
+                        Image("onboardingCamera")
+                            .resizable()
+                            .frame(width: 40,height: 40)
+                    }
+                    .padding(.top,-45)
+                    .padding(.leading,70)
+                    
+                }
+                Spacer()
+                HStack(spacing: 0) {
                     Text("닉네임")
                         .font(.system(size: 16, weight: .bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
-                    Spacer()
                     Text("사용 가능한 닉네임입니다.")
                         .font(.system(size: 12))
                         .foregroundColor(.main1Color)
-                        .padding()
                 }
+                .padding(.horizontal)
+                
                 HStack {
+                    
                     TextField("6글자 이내", text: $nickname)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding()
+                        .padding(.leading,10)
                     Button(action: {
                         // 중복 확인 액션
                     }) {
@@ -58,84 +73,115 @@ struct ProfileResearchView: View {
                             .foregroundColor(.white)
                             .cornerRadius(30)
                     }
-                    .padding()
+                    .padding(10)
+                    
                 }
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.main1Color, lineWidth: 1)
+                )
+                .padding(.horizontal)
+                
+                .sheet(isPresented: $isShowingProfileSelector) {
+                    ProfilePictureSelector(selectedImage: $selectedProfileImage, isShowing: $isShowingProfileSelector)
+                        .presentationDetents([.medium, .large])
+                }
+                .animation(.easeInOut, value: isShowingProfileSelector)
+                Spacer()
                 Text("한 줄 소개")
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                TextField("10글자 이내", text: $introduceMe)
+                    .padding(.horizontal)
+                
+                TextField("15글자 이내 *ex: 365일 식단 조절러", text: $introduceMe)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                    .padding(.horizontal)
+                Spacer()
                 Text("우리 동네 인증하기")
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-
-                if let userLocation = userLocation {
-                    Text("현재 위치: \(userLocation.latitude), \(userLocation.longitude)")
-                        .padding()
-                }
                 
-                NavigationLink(destination: MapDetailView(region: $region, trackingMode: $trackingMode)) {
-                    Text("우리 동네 인증")
-                        .font(.system(size: 16, weight: .bold))
+                Button(action: {
+                    // 버튼 클릭 시 동작 추가
+                }) {
+                    HStack {
+                        Image("locationImage")
+                            .resizable()
+                            .frame(width: 16, height: 22)
+                        
+                        VStack(alignment: .leading) {
+                            Text("천안시 동작구")
+                                .font(.system(size: 12,weight: .medium))
+                                .foregroundColor(.black)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 8)
+                    }
+                    .padding(7)
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.main1Color, lineWidth: 1)
+                    )
+                    NavigationLink(destination: MapDetailView(region: $region, trackingMode: $trackingMode)) {
+                        Text("우리 동네 인증")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.main1Color)
+                            .cornerRadius(10)
+                    }
+                    
+                }
+                Spacer()
+                NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
+                    Text("다음")
+                        .font(.headline)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.main1Color)
-                        .cornerRadius(10)
+                        .frame(maxWidth: 320)
+                        .background(Color.yellow)
+                        .cornerRadius(8)
                 }
                 .padding()
+                
                 .onAppear {
-                    updateCurrentLocation()
+                    //updateCurrentLocation()
                 }
             }
-            .navigationBarTitle("내 동네 설정", displayMode: .inline)
-        }
-    }
-    
-    private func updateCurrentLocation() {
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
             
-            if let location = locationManager.location?.coordinate {
-                self.userLocation = location
-                self.region = MKCoordinateRegion(
-                    center: location,
-                    span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-                )
-            }
         }
+        
     }
 }
 
+
 struct MapDetailView: View {
+    @ObservedObject var locationManager = LocationManager()
     @Binding var region: MKCoordinateRegion
     @Binding var trackingMode: MapUserTrackingMode
     
     @State private var certifiedRegions: [MKCoordinateRegion] = []
     @State private var userCity: String = ""
     @State private var userDistrict: String = ""
-
+    
     var body: some View {
         VStack {
-            Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $trackingMode)
-                .frame(height: 300)
-                .cornerRadius(10)
-                .padding()
-                .onAppear {
-                    updateCurrentLocation()
-                }
+            GeometryReader { geometry in
+                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $trackingMode)
+                    .frame(height: geometry.size.height * 0.9) // Adjust height as needed
+                    .cornerRadius(10)
+                    .padding()
+            }
+            .frame(maxHeight: .infinity)
             
-            Text("현재 위치: \(userCity) \(userDistrict)")
-                .font(.system(size: 16, weight: .bold))
+            Text("내 동네")
+                .font(.system(size: 25, weight: .bold))
                 .padding()
-
-            Text("인증 지역 : 총 \(certifiedRegions.count)개")
+            
+            Text("현재 위치: \(locationManager.userCity) \(locationManager.userDistrict)")
                 .font(.system(size: 16, weight: .bold))
                 .padding()
             
@@ -161,30 +207,10 @@ struct MapDetailView: View {
         }
         .navigationBarTitle("우리 동네 인증", displayMode: .inline)
     }
-    
-    private func updateCurrentLocation() {
-        let locationManager = CLLocationManager()
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-            
-            if let location = locationManager.location?.coordinate {
-                let geocoder = CLGeocoder()
-                let location = CLLocation(latitude: location.latitude, longitude: location.longitude)
-                geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                    if let placemark = placemarks?.first {
-                        self.userCity = placemark.locality ?? ""
-                        self.userDistrict = placemark.subLocality ?? ""
-                    }
-                }
-            }
-        }
-    }
 }
 
 
 #Preview {
     ProfileResearchView()
 }
+

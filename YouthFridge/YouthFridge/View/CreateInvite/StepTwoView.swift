@@ -9,23 +9,23 @@ import SwiftUI
 
 struct StepTwoView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
-    @State private var selectedImage: String = "invitationImage2" 
+    @State private var selectedImage: String = "invitationImage2"
     @State private var showModal: Bool = false
     var body: some View {
         VStack {
-            Image("invitationImage2")
+            Image(selectedImage)
                 .resizable()
                 .frame(width: 324,height: 384)
                 .padding(.top,20)
             HStack(spacing: 10) {
-                ForEach(["invitationImage2", "invitationImage3", "invitationImage4", "invitationImage5", "invitationImage6"], id: \.self) { imageName in
+                ForEach(["invitationImage", "invitationImage3", "invitationImage4", "invitationImage5", "invitationImage6"], id: \.self) { imageName in
                     if imageName == "invitationImage6" {
                         ZStack {
                             Image(imageName)
                                 .resizable()
                                 .frame(width: 60, height: 80)
                                 .background(Color.black)
-                                .opacity(0.5)
+                                .opacity(0.8)
                             Text("더보기")
                                 .foregroundColor(.white)
                                 .bold()

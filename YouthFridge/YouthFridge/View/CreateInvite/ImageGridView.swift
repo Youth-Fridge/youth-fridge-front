@@ -11,6 +11,8 @@ struct ImageGridView: View {
     @Binding var selectedImage: String
     let images = ["invitationImage", "invitationImage2", "invitationImage3", "invitationImage4", "invitationImage5", "invitationImage6"]
     
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         VStack {
             Text("초대장 전체보기")
@@ -18,9 +20,11 @@ struct ImageGridView: View {
                 .padding()
             
             GridView(images: images, selectedImage: $selectedImage)
-            NavigationLink(destination: MainTabView().navigationBarBackButtonHidden()) {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
                 Text("선택완료")
-                    .font(.system(size: 16,weight: .bold))
+                    .font(.system(size: 16, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: 320)

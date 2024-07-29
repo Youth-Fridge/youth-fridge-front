@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0600452C5783130036CD8F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600442C5783130036CD8F /* NewsView.swift */; };
+		0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600462C5784790036CD8F /* BlogWebView.swift */; };
 		0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */; };
 		0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */; };
 		0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */; };
@@ -19,7 +21,6 @@
 		5817D5F12C4503360081323E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F02C4503360081323E /* MainTabView.swift */; };
 		5817D5F72C4504970081323E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F62C4504970081323E /* HomeView.swift */; };
 		5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5F82C4504A30081323E /* SmallClassView.swift */; };
-		5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FA2C4504AB0081323E /* NewsView.swift */; };
 		5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FC2C4504B50081323E /* MyPageView.swift */; };
 		5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5FE2C4509CF0081323E /* HomeViewModel.swift */; };
 		5817D6012C450FA10081323E /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6002C450FA10081323E /* CardView.swift */; };
@@ -78,6 +79,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A0600412C57813E0036CD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0A0600442C5783130036CD8F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
+		0A0600462C5784790036CD8F /* BlogWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogWebView.swift; sourceTree = "<group>"; };
 		0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApplicationViewModel.swift; sourceTree = "<group>"; };
 		0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistoryView.swift; sourceTree = "<group>"; };
 		0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailView.swift; sourceTree = "<group>"; };
@@ -90,7 +94,6 @@
 		5817D5F02C4503360081323E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		5817D5F62C4504970081323E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5817D5F82C4504A30081323E /* SmallClassView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallClassView.swift; sourceTree = "<group>"; };
-		5817D5FA2C4504AB0081323E /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		5817D5FC2C4504B50081323E /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		5817D5FE2C4509CF0081323E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		5817D6002C450FA10081323E /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -204,7 +207,8 @@
 		5817D5F42C4504800081323E /* News */ = {
 			isa = PBXGroup;
 			children = (
-				5817D5FA2C4504AB0081323E /* NewsView.swift */,
+				0A0600442C5783130036CD8F /* NewsView.swift */,
+				0A0600462C5784790036CD8F /* BlogWebView.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -380,6 +384,7 @@
 		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
 			isa = PBXGroup;
 			children = (
+				0A0600412C57813E0036CD8F /* Info.plist */,
 				5817D6232C4655B60081323E /* App */,
 				58EEF71B2C43D26800C12C1E /* Resource */,
 				58EEF71A2C43D25D00C12C1E /* Extension */,
@@ -613,6 +618,7 @@
 				0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */,
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
 				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
+				0A0600452C5783130036CD8F /* NewsView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
 				58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */,
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
@@ -621,7 +627,6 @@
 				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
-				5817D5FB2C4504AB0081323E /* NewsView.swift in Sources */,
 				5817D6142C462FE70081323E /* ActivityCardView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
 				5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */,
@@ -633,6 +638,7 @@
 				5817D6092C454CBD0081323E /* Services.swift in Sources */,
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
+				0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
 				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
@@ -821,6 +827,7 @@
 				DEVELOPMENT_TEAM = G62DUX396A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YouthFridge/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -852,6 +859,7 @@
 				DEVELOPMENT_TEAM = G62DUX396A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YouthFridge/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

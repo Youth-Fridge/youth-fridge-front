@@ -54,21 +54,14 @@ struct ResearchView: View {
                 .padding(.horizontal,30)
                 
                 Spacer()
-                
-                NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
-                    Button(action: {
-                        navigateToNextView = true // 버튼 클릭 시 다음 뷰로 이동하도록 설정
-                    }) {
-                        Text("다음")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.sub2Color)
-                            .cornerRadius(8)
-                    }
-                    .padding(.bottom, 30)
-                    .padding(.horizontal)
+                NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden()) {
+                    Text("다음")
+                        .font(.system(size: 20,weight: .bold))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 320,height: 60)
+                        .background(Color.sub2Color)
+                        .cornerRadius(8)
                 }
             }
             .onAppear {

@@ -15,7 +15,7 @@ struct ShowInviteView: View {
     
     var body: some View {
         ZStack {
-            Color.yellow // Replace with Color.sub2Color
+            Color.yellow 
                 .edgesIgnoringSafeArea(.all)
             
             GeometryReader { geometry in

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct OnboardingStartView: View {
-    @State private var selectedIndex: Int = 2 // Start with the third card centered
+    @State private var selectedIndex: Int = 2
+    let images = ["start1", "start2", "start3", "start4", "start5"]
 
     var body: some View {
         NavigationView {
@@ -19,10 +20,10 @@ struct OnboardingStartView: View {
                 VStack {
                     Spacer()
                     
-                    Image("logo")
+                    Image("whiteLogo")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 60, height: 60)
                     
                     Text("오직 천안에서만\n청년냉장고를 만나보세요")
                         .foregroundColor(.black)
@@ -46,9 +47,10 @@ struct OnboardingStartView: View {
                             .offset(y: 30)
                         
                         TabView(selection: $selectedIndex) {
-                            
-                            ForEach(0..<5) { index in
-                                NumberCardView(index: index)
+                            ForEach(0..<images.count) { index in
+                                Image(images[index])
+                                    .resizable()
+                                    .scaledToFit()
                                     .tag(index)
                                     .padding()
                             }
@@ -59,7 +61,7 @@ struct OnboardingStartView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: ResearchView()) {
+                    NavigationLink(destination: ResearchView().navigationBarBackButtonHidden()) {
                         Text("다음")
                             .font(.headline)
                             .foregroundColor(.yellow)
@@ -78,33 +80,34 @@ struct OnboardingStartView: View {
     }
 }
 
-struct NumberCardView: View {
-    let index: Int
-    let titles = ["취업\n레터", "밥심레터", "생활백서", "이 주의\n장금이", "초대의\n만들기"]
-    let colors: [Color] = [.onboarding1, .main1Color, .sub3Color, .onboarding4, .onboarding5]
 
-    var body: some View {
-        VStack {
-            Text("\(index + 1)")
-                .foregroundColor(.white)
-                .font(.system(size: 52, weight: .bold))
-                .padding(.top, 30)
-            
-            Spacer()
-
-            Text(titles[index])
-                .foregroundColor(.white)
-                .font(.system(size: 16, weight: .bold))
-                .multilineTextAlignment(.center)
-                .padding(.bottom,30)
-        }
-        .frame(width: 80, height: 200)
-        .background(colors[index])
-        .cornerRadius(8)
-        .shadow(radius: 5)
-        .padding(5)
-    }
-}
+//struct NumberCardView: View {
+//    let index: Int
+//    let titles = ["취업\n레터", "밥심레터", "생활백서", "이 주의\n장금이", "초대의\n만들기"]
+//    let colors: [Color] = [.onboarding1, .main1Color, .sub3Color, .onboarding4, .onboarding5]
+//
+//    var body: some View {
+//        VStack {
+//            Text("\(index + 1)")
+//                .foregroundColor(.white)
+//                .font(.system(size: 52, weight: .bold))
+//                .padding(.top, 30)
+//            
+//            Spacer()
+//
+//            Text(titles[index])
+//                .foregroundColor(.white)
+//                .font(.system(size: 16, weight: .bold))
+//                .multilineTextAlignment(.center)
+//                .padding(.bottom,30)
+//        }
+//        .frame(width: 80, height: 200)
+//        .background(colors[index])
+//        .cornerRadius(8)
+//        .shadow(radius: 5)
+//        .padding(5)
+//    }
+//}
 
 
 struct OnboardingStartView_Previews: PreviewProvider {

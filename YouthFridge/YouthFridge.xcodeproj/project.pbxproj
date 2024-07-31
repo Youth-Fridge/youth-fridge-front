@@ -13,6 +13,13 @@
 		0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */; };
 		0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */; };
 		0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */; };
+		0A7026ED2C5A768A0083C7A0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A7026EC2C5A768A0083C7A0 /* Moya */; };
+		0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */; };
+		0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026F62C5A82A00083C7A0 /* InvitationService.swift */; };
+		0A7026F92C5A82CE0083C7A0 /* InvitationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */; };
+		0A7026FD2C5A9C850083C7A0 /* BaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026FC2C5A9C850083C7A0 /* BaseResponse.swift */; };
+		0A7026FF2C5A9CD30083C7A0 /* MyInvitationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */; };
+		0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */; };
 		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
@@ -90,6 +97,12 @@
 		0A12E21F2C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApplicationViewModel.swift; sourceTree = "<group>"; };
 		0A12E2232C4EB46200D2D7B9 /* ApplicationHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationHistoryView.swift; sourceTree = "<group>"; };
 		0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailView.swift; sourceTree = "<group>"; };
+		0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
+		0A7026F62C5A82A00083C7A0 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
+		0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAPI.swift; sourceTree = "<group>"; };
+		0A7026FC2C5A9C850083C7A0 /* BaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResponse.swift; sourceTree = "<group>"; };
+		0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationResponse.swift; sourceTree = "<group>"; };
+		0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationResponse.swift; sourceTree = "<group>"; };
 		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
@@ -150,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A7026ED2C5A768A0083C7A0 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +184,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A7026EE2C5A81380083C7A0 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026F02C5A81820083C7A0 /* APIManager */,
+				0A7026F12C5A81890083C7A0 /* Service */,
+			);
+			name = Network;
+			sourceTree = "<group>";
+		};
+		0A7026F02C5A81820083C7A0 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */,
+				0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */,
+			);
+			name = APIManager;
+			sourceTree = "<group>";
+		};
+		0A7026F12C5A81890083C7A0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		0A7026FA2C5A9C700083C7A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026FB2C5A9C770083C7A0 /* DTO */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A7026FB2C5A9C770083C7A0 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026FC2C5A9C850083C7A0 /* BaseResponse.swift */,
+				0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */,
+				0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
 		0A971D052C4C413D009F3B13 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +462,8 @@
 				58EEF7192C43D25400C12C1E /* General */,
 				58EEF7182C43D24A00C12C1E /* Service */,
 				58EEF7172C43D24000C12C1E /* View */,
+				0A7026EE2C5A81380083C7A0 /* Network */,
+				0A7026FA2C5A9C700083C7A0 /* Model */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 			);
 			path = YouthFridge;
@@ -509,6 +569,7 @@
 			);
 			name = YouthFridge;
 			packageProductDependencies = (
+				0A7026EC2C5A768A0083C7A0 /* Moya */,
 			);
 			productName = YouthFridge;
 			productReference = 58EEF6EA2C43D22500C12C1E /* YouthFridge.app */;
@@ -583,6 +644,7 @@
 			);
 			mainGroup = 58EEF6E12C43D22500C12C1E;
 			packageReferences = (
+				0A7026EB2C5A768A0083C7A0 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			productRefGroup = 58EEF6EB2C43D22500C12C1E /* Products */;
 			projectDirPath = "";
@@ -629,6 +691,7 @@
 			files = (
 				0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */,
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
+				0A7026F92C5A82CE0083C7A0 /* InvitationAPI.swift in Sources */,
 				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
 				0A0600452C5783130036CD8F /* NewsView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
@@ -667,11 +730,16 @@
 				58EA96F32C57742400166554 /* StepTwoView.swift in Sources */,
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
+				0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */,
+				0A7026FF2C5A9CD30083C7A0 /* MyInvitationResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
 				5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */,
 				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
+				0A7026FD2C5A9C850083C7A0 /* BaseResponse.swift in Sources */,
+				0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */,
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
+				0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,
@@ -1012,6 +1080,25 @@
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A7026EB2C5A768A0083C7A0 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A7026EC2C5A768A0083C7A0 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A7026EB2C5A768A0083C7A0 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58EEF6E22C43D22500C12C1E /* Project object */;
 }

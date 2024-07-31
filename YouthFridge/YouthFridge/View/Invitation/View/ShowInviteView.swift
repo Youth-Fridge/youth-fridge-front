@@ -31,7 +31,6 @@ struct ShowInviteView: View {
                     .font(.system(size: 30, weight: .bold))
                 
                 ZStack {
-                    // Background invitation image
                     Image("invitation")
                         .resizable()
                         .scaledToFill()
@@ -39,7 +38,6 @@ struct ShowInviteView: View {
                         .padding(.leading, 30)
                         .padding(.top, 30)
                     
-                    // Front content
                     if isImageVisible {
                         VStack {
                             Image("invitationImage3")

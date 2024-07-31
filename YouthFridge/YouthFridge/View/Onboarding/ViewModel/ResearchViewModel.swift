@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// ViewModel 정의
 class ResearchViewModel: ObservableObject {
     @Published var categories: [String] = []
     

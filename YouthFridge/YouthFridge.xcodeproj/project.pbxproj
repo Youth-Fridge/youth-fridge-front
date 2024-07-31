@@ -15,7 +15,6 @@
 		0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */; };
 		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
-		5817D5E82C44F13D0081323E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E72C44F13D0081323E /* LoginView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
 		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
 		5817D5EF2C4502360081323E /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EE2C4502360081323E /* MainTabType.swift */; };
@@ -93,7 +92,6 @@
 		0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailView.swift; sourceTree = "<group>"; };
 		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
-		5817D5E72C44F13D0081323E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		5817D5EE2C4502360081323E /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
@@ -488,7 +486,6 @@
 		58EEF71C2C43D7D400C12C1E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				5817D5E72C44F13D0081323E /* LoginView.swift */,
 				5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */,
 				5817D5EB2C44F1B10081323E /* LoginIntroView.swift */,
 			);
@@ -659,7 +656,6 @@
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
-				5817D5E82C44F13D0081323E /* LoginView.swift in Sources */,
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,
 				5817D6352C4A79250081323E /* CardViewModel.swift in Sources */,
 				0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */,

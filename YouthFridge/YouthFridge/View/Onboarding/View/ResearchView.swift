@@ -10,6 +10,7 @@ import SwiftUI
 struct ResearchView: View {
     @StateObject private var viewModel = ResearchViewModel()
     @State private var selectedCategory: Int? = nil
+    @State private var showAlert = false
     @State private var navigateToNextView = false
 
     var body: some View {
@@ -39,9 +40,9 @@ struct ResearchView: View {
                         }) {
                             Text(viewModel.categories[index])
                                 .font(.system(size: 16))
-                                .foregroundColor(selectedCategory == index ? .black : .black)
+                                .foregroundColor(.black)
                                 .padding()
-                                .frame(maxWidth: .infinity,alignment: .leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(selectedCategory == index ? .research : Color.white)
                                 .cornerRadius(10)
                                 .overlay(
@@ -51,24 +52,33 @@ struct ResearchView: View {
                         }
                     }
                 }
-                .padding(.horizontal,30)
+                .padding(.horizontal, 30)
                 
                 Spacer()
                 
-                NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
-                    Button(action: {
-                        navigateToNextView = true // 버튼 클릭 시 다음 뷰로 이동하도록 설정
-                    }) {
-                        Text("다음")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.sub2Color)
-                            .cornerRadius(8)
+                // "다음" 버튼
+                Button(action: {
+                    if selectedCategory != nil {
+                        navigateToNextView = true
+                    } else {
+                        showAlert = true
                     }
-                    .padding(.bottom, 30)
-                    .padding(.horizontal)
+                }) {
+                    Text("다음")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 320, height: 60)
+                        .background(selectedCategory != nil ? Color.sub2Color : Color.gray2) 
+                        .cornerRadius(8)
+                }
+                .disabled(selectedCategory == nil)
+                .alert(isPresented: $showAlert) {
+                    Alert(
+                        title: Text("경고"),
+                        message: Text("카테고리를 선택해주세요."),
+                        dismissButton: .default(Text("확인"))
+                    )
                 }
             }
             .onAppear {

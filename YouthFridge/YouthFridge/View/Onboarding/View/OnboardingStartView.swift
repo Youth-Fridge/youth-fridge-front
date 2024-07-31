@@ -81,35 +81,6 @@ struct OnboardingStartView: View {
 }
 
 
-//struct NumberCardView: View {
-//    let index: Int
-//    let titles = ["취업\n레터", "밥심레터", "생활백서", "이 주의\n장금이", "초대의\n만들기"]
-//    let colors: [Color] = [.onboarding1, .main1Color, .sub3Color, .onboarding4, .onboarding5]
-//
-//    var body: some View {
-//        VStack {
-//            Text("\(index + 1)")
-//                .foregroundColor(.white)
-//                .font(.system(size: 52, weight: .bold))
-//                .padding(.top, 30)
-//            
-//            Spacer()
-//
-//            Text(titles[index])
-//                .foregroundColor(.white)
-//                .font(.system(size: 16, weight: .bold))
-//                .multilineTextAlignment(.center)
-//                .padding(.bottom,30)
-//        }
-//        .frame(width: 80, height: 200)
-//        .background(colors[index])
-//        .cornerRadius(8)
-//        .shadow(radius: 5)
-//        .padding(5)
-//    }
-//}
-
-
 struct OnboardingStartView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingStartView()

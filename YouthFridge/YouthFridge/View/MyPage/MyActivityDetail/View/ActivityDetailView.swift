@@ -10,6 +10,7 @@ import SwiftUI
 struct ActivityDetailView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: ActivityCardViewModel
+    @State private var showCancelPopup = false
     
     var body: some View {
         NavigationStack {
@@ -30,6 +31,7 @@ struct ActivityDetailView: View {
                             VStack(alignment: .leading, spacing: 16) {
                                 participantView
                                 toDoSection
+                                openChatSection
                                 responseSection
                                 rulesSection
                             }
@@ -39,6 +41,35 @@ struct ActivityDetailView: View {
                     }
                 }
                 .padding(.top, 10)
+                
+                GeometryReader { geometry in
+                    if showCancelPopup {
+                        Color.black
+                            .opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                        VStack {
+                            CancelPopUpView(
+                                message: "미참석 버튼 클릭 시 소모임 참여가 어려워요!",
+                                subMessage: "반복적으로 미 응답 누적 시 앞으로의 모임 활동이 힘들어집니다",
+                                onClose: {
+                                    withAnimation {
+                                        showCancelPopup = false
+                                    }
+                                },
+                                onConfirm: {
+                                    withAnimation {
+                                        showCancelPopup = false
+                                        print("미참석 할게요")
+                                        // TODO: - 초대장 신청 취소 처리
+                                    }
+                                }
+                            )
+                            .frame(width: geometry.size.width, height: 700) // 팝업 크기 설정
+                            .transition(.move(edge: .bottom))
+                            .animation(.easeInOut, value: showCancelPopup) // 애니메이션 추가
+                        }
+                    }
+                }
             }
             .navigationTitle("신청 내역")
             .navigationBarTitleDisplayMode(.inline)
@@ -172,7 +203,7 @@ struct ActivityDetailView: View {
                         .padding(20)
                         .foregroundColor(Color.gray6)
                     }
-                    .padding(.bottom, -25)
+                    .padding(.bottom, -10)
                 }
                 .padding(.leading, 5)
             }
@@ -180,20 +211,55 @@ struct ActivityDetailView: View {
         }
     }
     
-    var responseSection: some View {
+    var openChatSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Divider()
                 .background(Color.gray.opacity(0.5))
             
             HStack {
-                Text("참석 응답")
+                Text("오픈채팅")
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding(.bottom, 2)
                 
-                Text("응답 필수사항")
+                Text("원활한 소통을 위해 모임 전 꼭 참여해주세요 !")
+                    .font(.caption)
+                    .fontWeight(.regular)
+            }
+                    
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .frame(width: 324, height: 32)
+                    .background(Color.gray1)
+                    .cornerRadius(6)
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("https://open.kakao.com/o/ss8EvhLe")
+                        .font(Font.custom("Pretendard", size: 12))
+                }
+                .padding(20)
+                .foregroundColor(Color.gray6)
+            }
+            .padding(.bottom, -10)
+        }
+        .padding(.leading, 20)
+    }
+    
+    var responseSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Divider()
+                .background(Color.gray.opacity(0.5))
+            
+            VStack(alignment: .leading) {
+                Text("신청 취소")
+                    .font(.title3)
+                    .fontWeight(.bold)
+                
+                Text("모임 2일 전까지만 취소 가능")
                     .font(.subheadline)
                     .fontWeight(.regular)
+                    .foregroundColor(Color.gray6)
             }
             
             VStack(spacing: 10) {
@@ -203,30 +269,19 @@ struct ActivityDetailView: View {
                     .frame(width: 70, height: 70)
                     .clipShape(Circle())
                 
-                    HStack(spacing: 10) {
-                        Button(action: {
-                            print("참석 버튼")
-                        }) {
-                            Text("참석")
-                                .font(Font.custom("Pretendard", size: 14).weight(.medium))
-                                .foregroundColor(Color.gray6)
-                                .frame(width: 65, height: 29)
-                                .background(Color.sub2)
-                                .cornerRadius(8)
-                        }
-                        
-                        Button(action: {
-                            print("미참석 버튼")
-                        }) {
-                            Text("미참석")
-                                .font(Font.custom("Pretendard", size: 14).weight(.medium))
-                                .foregroundColor(Color.gray6)
-                                .frame(width: 77, height: 29)
-                                .background(Color.gray2)
-                                .cornerRadius(8)
-                        }
+                    Button(action: {
+                        showCancelPopup = true
+                    }) {
+                        Text("미참석")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.gray6)
+                            .frame(width: 77, height: 29)
+                            .background((viewModel.daysLeft == 2 ? Color.gray2 : Color.sub2))
+                            .cornerRadius(8)
                     }
-                    .padding(.leading, 10)
+                    .disabled(viewModel.daysLeft == 2)  // daysLeft가 2일 경우 버튼 비활성화
+                    .padding(.leading, 15)
                 }
                 .padding(.bottom, -20)
             }

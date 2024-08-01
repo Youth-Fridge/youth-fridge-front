@@ -9,16 +9,33 @@ import SwiftUI
 import WebKit
 
 struct NewsView: View {
+    @State private var isLoading = true
+    
     var body: some View {
         NavigationView {
-            VStack(spacing: 0) {
-                BlogWebView(urlToLoad: "https://blog.naver.com/suzinlim")
-                    .edgesIgnoringSafeArea(.bottom)
-                    .navigationTitle("밥심레터")
-                    .navigationBarTitleDisplayMode(.inline)
+            ZStack {
+                VStack(spacing: 0) {
+                    BlogWebView(urlToLoad: "https://blog.naver.com/alsrud9311", scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
+                        .edgesIgnoringSafeArea(.bottom)
+                        .navigationTitle("밥심레터")
+                        .navigationBarTitleDisplayMode(.inline)
+                }
+
+                if isLoading {
+                    GeometryReader { geometry in
+                        VStack {
+                            Text("로딩 중...")
+                                .font(.headline)
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                        }
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .background(Color.white.opacity(1))
+                    }
+                }
             }
-            .navigationViewStyle(StackNavigationViewStyle())
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

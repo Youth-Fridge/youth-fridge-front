@@ -10,19 +10,50 @@ import WebKit
 
 struct BlogWebView: UIViewRepresentable {
     var urlToLoad: String
+    var scrollTo: CGPoint
     
+    @Binding var isLoading: Bool
+
     func makeUIView(context: Context) -> WKWebView {
         let webView = WKWebView()
         if let url = URL(string: urlToLoad) {
             webView.load(URLRequest(url: url))
         }
+        webView.navigationDelegate = context.coordinator
         return webView
     }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-    }
-}
 
-#Preview {
-    BlogWebView(urlToLoad: "https://blog.naver.com/suzinlim")
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        // do nothing here
+    }
+
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+
+    class Coordinator: NSObject, WKNavigationDelegate {
+        var parent: BlogWebView
+
+        init(_ parent: BlogWebView) {
+            self.parent = parent
+        }
+
+        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+            DispatchQueue.main.async {
+                self.parent.isLoading = true
+            }
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            let x = parent.scrollTo.x
+            let y = parent.scrollTo.y
+            let scrollScript = "window.scrollTo(\(x), \(y));"
+
+            webView.evaluateJavaScript(scrollScript) { _, _ in
+                 DispatchQueue.main.async {
+                     self.parent.isLoading = false
+                 }
+             }
+        }
+    }
 }

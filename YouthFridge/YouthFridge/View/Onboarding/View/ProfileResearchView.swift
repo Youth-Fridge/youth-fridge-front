@@ -10,17 +10,7 @@ import MapKit
 import CoreLocation
 
 struct ProfileResearchView: View {
-    @State private var nickname = ""
-    @State private var introduceMe = ""
-    @State private var isShowingProfileSelector = false
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
-    @State private var userLocation: CLLocationCoordinate2D?
-    @State private var trackingMode: MapUserTrackingMode = .follow
-    @State private var selectedProfileImage = "Ellipse20"
-    
+    @StateObject private var viewModel = ProfileResearchViewModel()
     var body: some View {
         NavigationView {
             VStack {
@@ -32,12 +22,12 @@ struct ProfileResearchView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 VStack {
-                    Image(selectedProfileImage)
+                    Image(viewModel.selectedProfileImage)
                         .resizable()
                         .frame(width: 120, height: 120)
                         .clipShape(Circle())
                     Button(action: {
-                        isShowingProfileSelector.toggle()
+                        viewModel.isShowingProfileSelector.toggle()
                     }) {
                         Image("onboardingCamera")
                             .resizable()
@@ -48,11 +38,12 @@ struct ProfileResearchView: View {
                     
                 }
                 Spacer()
+                    .frame(height: 25)
                 HStack(spacing: 0) {
                     Text("닉네임")
                         .font(.system(size: 16, weight: .bold))
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("사용 가능한 닉네임입니다.")
+                    Text(viewModel.nicknameMessage)
                         .font(.system(size: 12))
                         .foregroundColor(.main1Color)
                 }
@@ -60,10 +51,18 @@ struct ProfileResearchView: View {
                 
                 HStack {
                     
-                    TextField("6글자 이내", text: $nickname)
+                    TextField("6글자 이내", text: $viewModel.nickname)
                         .padding(.leading,10)
+                        .font(.system(size: 12))
+                        .onChange(of: viewModel.nickname) { newValue in
+                            if newValue.count > 6 {
+                                viewModel.nickname = String(newValue.prefix(6))
+                                viewModel.alertMessage = "닉네임은 6글자 이내로 입력하세요."
+                                viewModel.showAlert = true
+                            }
+                        }
                     Button(action: {
-                        // 중복 확인 액션
+                        viewModel.checkNickname()
                     }) {
                         Text("중복 확인")
                             .font(.system(size: 12))
@@ -82,26 +81,45 @@ struct ProfileResearchView: View {
                 )
                 .padding(.horizontal)
                 
-                .sheet(isPresented: $isShowingProfileSelector) {
-                    ProfilePictureSelector(selectedImage: $selectedProfileImage, isShowing: $isShowingProfileSelector)
+                .sheet(isPresented: $viewModel.isShowingProfileSelector) {
+                    ProfilePictureSelector(selectedImage: $viewModel.selectedProfileImage, isShowing: $viewModel.isShowingProfileSelector)
                         .presentationDetents([.medium, .large])
                 }
-                .animation(.easeInOut, value: isShowingProfileSelector)
+                .animation(.easeInOut, value: viewModel.isShowingProfileSelector)
                 Spacer()
+                    .frame(height: 30)
                 Text("한 줄 소개")
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 
-                TextField("15글자 이내 *ex: 365일 식단 조절러", text: $introduceMe)
+                TextField("15글자 이내 *ex: 365일 식단 조절러", text: $viewModel.introduceMe)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .font(.system(size: 12))
                     .padding(.horizontal)
+                    .onChange(of: viewModel.introduceMe) { newValue in
+                        if newValue.count > 15 {
+                            viewModel.introduceMe = String(newValue.prefix(15))
+                            viewModel.alertMessage = "한 줄 소개는 15글자 이내로 입력해주세요."
+                            viewModel.showAlert = true
+                            
+                            
+                        }
+                    }
                 Spacer()
-                Text("우리 동네 인증하기")
-                    .font(.system(size: 16, weight: .bold))
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                
+                    .frame(height: 30)
+                HStack {
+                    Text("우리 동네 인증하기")
+                        .font(.system(size: 16, weight: .bold))
+                        .frame(alignment: .leading)
+                    NavigationLink(destination: MapDetailView(region: $viewModel.region, trackingMode: $viewModel.trackingMode)) {
+                        Image("locationImage")
+                            .resizable()
+                            .frame(width: 16, height: 22)
+                    }
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
                 Button(action: {
                     // 버튼 클릭 시 동작 추가
                 }) {
@@ -115,24 +133,17 @@ struct ProfileResearchView: View {
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.leading, 8)
+                        .frame(alignment: .leading)
                     }
                     .padding(7)
                     .background(
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.main1Color, lineWidth: 1)
                     )
-                    NavigationLink(destination: MapDetailView(region: $region, trackingMode: $trackingMode)) {
-                        Text("우리 동네 인증")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.main1Color)
-                            .cornerRadius(10)
-                    }
                     
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
                 Spacer()
                 NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
                     Text("다음")
@@ -146,11 +157,18 @@ struct ProfileResearchView: View {
                 .padding()
                 
                 .onAppear {
-                    //updateCurrentLocation()
+                    UIApplication.shared.hideKeyboard()
                 }
             }
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
+            .alert(isPresented: $viewModel.showAlert) {
+                Alert (title: Text("입력제한"),
+                       message: Text(viewModel.alertMessage),
+                       dismissButton: .default(Text("확인"))
+                )
+            }
+            
             
         }
         
@@ -209,6 +227,23 @@ struct MapDetailView: View {
     }
 }
 
+#if canImport(UIKit)
+extension UIApplication {
+    func hideKeyboard() {
+        guard let window = windows.first else { return }
+        let tapRecognizer = UITapGestureRecognizer(target: window, action: #selector(UIView.endEditing))
+        tapRecognizer.cancelsTouchesInView = false
+        tapRecognizer.delegate = self
+        window.addGestureRecognizer(tapRecognizer)
+    }
+ }
+ 
+extension UIApplication: UIGestureRecognizerDelegate {
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
+    }
+}
+#endif
 
 #Preview {
     ProfileResearchView()

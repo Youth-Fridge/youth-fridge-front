@@ -9,7 +9,7 @@ import SwiftUI
 
 class ResearchViewModel: ObservableObject {
     @Published var categories: [String] = []
-    
+    private let selectedCategoryKey = "selectedCategories"
     init() {
         loadCategories()
     }
@@ -23,4 +23,21 @@ class ResearchViewModel: ObservableObject {
             "💗 여러 사람과 함께 모여 음식 먹는 게 좋아"
         ]
     }
+    func saveSelectedCategories(_ selectedIndices: [Int]) {
+        let incrementedIndices = selectedIndices.map {$0 + 1}
+        UserDefaults.standard.set(incrementedIndices, forKey: selectedCategoryKey)
+        if let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] {
+            print("Saved categories: \(savedCategories)")
+        } else {
+            print("Failed to save categories.")
+        }
+    }
+    
+    func loadSelectedCategories() -> [Int] {
+            guard let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] else {
+                return []
+            }
+            return savedCategories.map { $0 - 1 }
+        }
+    
 }

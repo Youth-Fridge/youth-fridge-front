@@ -32,11 +32,30 @@ class ProfileResearchViewModel: ObservableObject {
                 case .success(let isAvailable):
                     self.nicknameMessage = isAvailable ? "사용 가능한 닉네임 입니다." : "이미 사용 중인 닉네임 입니다."
                     self.nicknameMessageColor = isAvailable ? Color.green : Color.red
-                case .failure(let error):
+                case .failure(_):
                     self.nicknameMessage = "사용 불가능한 닉네임 입니다."
                     self.nicknameMessageColor = Color.red
                 }
             }
         }
+    }
+    
+    
+    func signUp() {
+//        let signupRequest = OnboardingRequest (type: <#T##String#>, email: <#T##String#>, nickname: nickname, introduce: introduceMe, role: <#T##String#>, profileImageNumber: <#T##Int#>, town: <#T##String#>, inquiryNumList: <#T##[Int]#>)
+//        
+//        OnboardingAPI.shared.signUp(signupRequest) { result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success:
+//                    self.alertMessage = "회원가입 성공!"
+//                    self.showAlert = true
+//                case .failure(let error):
+//                    self.alertMessage = "회원가입 실패: \(error.localizedDescription)"
+//                    self.showAlert = true
+//                }
+//            }
+//            
+//        }
     }
 }

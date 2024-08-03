@@ -15,4 +15,5 @@ struct OnboardingRequest: Codable {
     let role: String
     let profileImageNumber: Int
     let town: String
+    let inquiryNumList: [Int]
 }

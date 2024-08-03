@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ResearchView: View {
     @StateObject private var viewModel = ResearchViewModel()
-    @State private var selectedCategory: Int? = nil
+    @State private var selectedCategories: Set<Int> = []
     @State private var showAlert = false
     @State private var navigateToNextView = false
 
@@ -36,18 +36,22 @@ struct ResearchView: View {
                 VStack(spacing: 25) {
                     ForEach(viewModel.categories.indices, id: \.self) { index in
                         Button(action: {
-                            selectedCategory = index
+                            if selectedCategories.contains(index) {
+                                selectedCategories.remove(index)
+                            } else {
+                                selectedCategories.insert(index)
+                            }
                         }) {
                             Text(viewModel.categories[index])
                                 .font(.system(size: 16))
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(selectedCategory == index ? .research : Color.white)
+                                .background(selectedCategories.contains(index) ? .research : Color.white)
                                 .cornerRadius(10)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 30)
-                                        .stroke(selectedCategory == index ? .main1Color : Color.gray2Color, lineWidth: 2)
+                                        .stroke(selectedCategories.contains(index) ? .main1Color : Color.gray2Color, lineWidth: 2)
                                 )
                         }
                     }
@@ -58,7 +62,8 @@ struct ResearchView: View {
                 
                 // "다음" 버튼
                 Button(action: {
-                    if selectedCategory != nil {
+                    if !selectedCategories.isEmpty {
+                        viewModel.saveSelectedCategories(Array(selectedCategories))
                         navigateToNextView = true
                     } else {
                         showAlert = true
@@ -69,10 +74,10 @@ struct ResearchView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(width: 320, height: 60)
-                        .background(selectedCategory != nil ? Color.sub2Color : Color.gray2) 
+                        .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)
                         .cornerRadius(8)
                 }
-                .disabled(selectedCategory == nil)
+                .disabled(selectedCategories.isEmpty)
                 .alert(isPresented: $showAlert) {
                     Alert(
                         title: Text("경고"),
@@ -83,6 +88,7 @@ struct ResearchView: View {
             }
             .onAppear {
                 viewModel.loadCategories()
+                selectedCategories = Set(viewModel.loadSelectedCategories())
             }
             .navigationBarHidden(true)
         }
@@ -94,3 +100,4 @@ struct ResearchView_Previews: PreviewProvider {
         ResearchView()
     }
 }
+

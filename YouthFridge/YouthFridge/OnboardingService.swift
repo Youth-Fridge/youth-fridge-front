@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 import Moya
 
 enum OnboardingService {
@@ -29,9 +28,8 @@ extension OnboardingService: TargetType {
     }
     
     var headers: [String : String]? {
-        var headers: [String: String] = ["Content-Type": "application/json"]
 
-        return headers
+        return ["Content-Type": "application/json"]
     }
     
     var baseURL: URL {

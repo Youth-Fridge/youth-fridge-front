@@ -24,15 +24,16 @@ struct ProfilePictureSelector: View {
             Spacer()
             Text("프로필 이미지를 꾸며보세요")
                 .font(.system(size: 24, weight: .semibold))
+                .padding(.top,10)
                 .padding(.bottom, 30)
-            
+            Spacer()
             Image(tempSelectedImage)
                 .resizable()
                 .frame(width: 120, height: 120)
                 .clipShape(Circle())
             TabView {
                 ForEach(0..<2) { pageIndex in
-                    HStack {
+                    HStack(spacing: 18) {
                         ForEach(0..<3) { imageIndex in
                             let index = pageIndex * 3 + imageIndex
                             if index < profileImages.count {
@@ -41,9 +42,10 @@ struct ProfilePictureSelector: View {
                                     .scaledToFit()
                                     .frame(maxWidth: 40, maxHeight: 40)
                                     .clipShape(Circle())
-                                    .overlay(Circle().stroke(selectedImage == profileImages[index] ? Color.blue : Color.clear, lineWidth: 2))
+                                    .overlay(Circle().stroke(tempSelectedImage == bigProfileImages[index] ? Color.black : Color.clear, lineWidth: 2))
                                     .onTapGesture {
                                         tempSelectedImage = bigProfileImages[index]
+                                        saveSelectedImageIndex(index + 1)
                                     }
                             }
                         }
@@ -56,37 +58,48 @@ struct ProfilePictureSelector: View {
                 setupPageControlAppearance()
             }
             Spacer()
-            HStack(spacing: 0) {
+            HStack(spacing: 18) {
                 Button(action: {
                     tempSelectedImage = "bigBrocoli"
+                    saveSelectedImageIndex(profileImages.firstIndex(of: "broccoli") ?? 0)
                 }) {
                     Text("지우기")
                         .frame(maxWidth: .infinity, maxHeight: 50)
+                        .font(.system(size: 16,weight: .medium))
                         .background(Color.gray2Color)
                         .foregroundColor(.black)
                         .cornerRadius(10)
-                        .padding(.horizontal, 20)
+                        .padding(.leading, 30)
                 }
                 Button(action: {
                     selectedImage = tempSelectedImage
+                    if let index = bigProfileImages.firstIndex(of: tempSelectedImage) {
+                        saveSelectedImageIndex(index + 1)
+                    }
                     isShowing = false
                 }) {
                     Text("저장")
                         .frame(maxWidth: .infinity, maxHeight: 50)
+                        .font(.system(size: 16,weight: .medium))
                         .background(Color.sub2Color)
                         .foregroundColor(.black)
                         .cornerRadius(10)
-                        .padding(.horizontal, 20)
+                        .padding(.trailing, 30)
                 }
             }
             
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal,30)
     }
     
     private func setupPageControlAppearance() {
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.gray
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.lightGray
+    }
+    
+    private func saveSelectedImageIndex(_ index: Int) {
+        UserDefaults.standard.setValue(index, forKey: "profileImageNumber")
+        print("Saved image index: \(index)")
+        
     }
 }

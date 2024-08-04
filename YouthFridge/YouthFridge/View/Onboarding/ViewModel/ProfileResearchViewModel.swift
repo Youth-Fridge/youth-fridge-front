@@ -22,7 +22,7 @@ class ProfileResearchViewModel: ObservableObject {
     @Published var nicknameMessageColor: Color = Color.main1Color
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var trackingMode: MapUserTrackingMode = .follow
-    @Published var selectedProfileImage: String = "original"
+    @Published var selectedProfileImage: String = "bigBrocoli"
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     private var cancellables = Set<AnyCancellable>()
@@ -54,7 +54,9 @@ class ProfileResearchViewModel: ObservableObject {
                    .store(in: &cancellables)
     }
     func checkNickname() {
+        
         OnboardingAPI.shared.checkNickname(nickname) { result in
+            print(self.nickname)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let isAvailable):
@@ -70,20 +72,26 @@ class ProfileResearchViewModel: ObservableObject {
     
     
     func signUp() {
-//        let signupRequest = OnboardingRequest (type: <#T##String#>, email: <#T##String#>, nickname: nickname, introduce: introduceMe, role: <#T##String#>, profileImageNumber: <#T##Int#>, town: <#T##String#>, inquiryNumList: <#T##[Int]#>)
-//
-//        OnboardingAPI.shared.signUp(signupRequest) { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success:
-//                    self.alertMessage = "회원가입 성공!"
-//                    self.showAlert = true
-//                case .failure(let error):
-//                    self.alertMessage = "회원가입 실패: \(error.localizedDescription)"
-//                    self.showAlert = true
-//                }
-//            }
-//
-//        }
+        let selectedCategoryKey = "selectedCategories"
+        let email = UserDefaults.standard.string(forKey: "userEmail") ?? "default@example.com"
+        let type = UserDefaults.standard.string(forKey: "loginType") ?? "unknown"
+
+        let inquiryNumList = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] ?? []
+        let profileImageNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+        let signupRequest = OnboardingRequest (type: type, email: email, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "천안시 동남구", inquiryNumList: inquiryNumList)
+
+        OnboardingAPI.shared.signUp(signupRequest) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.alertMessage = "회원가입 성공!"
+                    self.showAlert = true
+                case .failure(let error):
+                    self.alertMessage = "회원가입 실패: \(error.localizedDescription)"
+                    self.showAlert = true
+                }
+            }
+
+        }
     }
 }

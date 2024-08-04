@@ -11,6 +11,8 @@ import CoreLocation
 
 struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
+    @State private var cityName = ""
+    @State private var downtownName = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -113,7 +115,7 @@ struct ProfileResearchView: View {
                             .frame(width: 16, height: 22)
                         
                         VStack(alignment: .leading) {
-                            Text("천안시 동작구")
+                            Text("\(cityName)\(downtownName)")
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }
@@ -196,7 +198,6 @@ struct MapDetailView: View {
                 if certifiedRegions.count < 2 {
                     certifiedRegions.append(region)
                 } else {
-                    // Handle case where more than 2 regions are selected
                 }
             }) {
                 Text("인증 지역 추가")

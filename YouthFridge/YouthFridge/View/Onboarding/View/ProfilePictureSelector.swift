@@ -10,7 +10,8 @@ import SwiftUI
 struct ProfilePictureSelector: View {
     @Binding var selectedImage: String
     @Binding var isShowing: Bool
-    let profileImages = ["broccoli", "branch", "corn", "pea", "pumpkin", "tomato"]
+    let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
+    let bigProfileImages = ["bigBrocoli","bigPea","bigCorn","bigTomato","bigBranch","bigPumpkin"]
     @State private var tempSelectedImage: String
     
     init(selectedImage: Binding<String>, isShowing: Binding<Bool>) {
@@ -42,7 +43,7 @@ struct ProfilePictureSelector: View {
                                     .clipShape(Circle())
                                     .overlay(Circle().stroke(selectedImage == profileImages[index] ? Color.blue : Color.clear, lineWidth: 2))
                                     .onTapGesture {
-                                        tempSelectedImage = profileImages[index]
+                                        tempSelectedImage = bigProfileImages[index]
                                     }
                             }
                         }
@@ -57,7 +58,7 @@ struct ProfilePictureSelector: View {
             Spacer()
             HStack(spacing: 0) {
                 Button(action: {
-                    tempSelectedImage = "profileImage1"
+                    tempSelectedImage = "bigBrocoli"
                 }) {
                     Text("지우기")
                         .frame(maxWidth: .infinity, maxHeight: 50)

@@ -8,6 +8,7 @@
 import SwiftUI
 import MapKit
 import CoreLocation
+import Combine
 
 class ProfileResearchViewModel: ObservableObject {
     @Published var nickname: String = ""
@@ -24,7 +25,34 @@ class ProfileResearchViewModel: ObservableObject {
     @Published var selectedProfileImage: String = "original"
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    private var cancellables = Set<AnyCancellable>()
+
+    init() {
+        setupBindings()
+    }
     
+    private func setupBindings() {
+        $nickname
+            .sink { [weak self] newValue in
+                guard let self = self else { return }
+                if newValue.count > 6 {
+                    self.nickname = String(newValue.prefix(6))
+                    self.alertMessage = "닉네임은 6글자 이내로 입력하세요."
+                    self.showAlert = true
+                }
+            }
+            .store(in: &cancellables)
+        $introduceMe
+                   .sink { [weak self] newValue in
+                       guard let self = self else { return }
+                       if newValue.count > 15 {
+                           self.introduceMe = String(newValue.prefix(15))
+                           self.alertMessage = "한 줄 소개는 15글자 이내로 입력해주세요."
+                           self.showAlert = true
+                       }
+                   }
+                   .store(in: &cancellables)
+    }
     func checkNickname() {
         OnboardingAPI.shared.checkNickname(nickname) { result in
             DispatchQueue.main.async {
@@ -43,7 +71,7 @@ class ProfileResearchViewModel: ObservableObject {
     
     func signUp() {
 //        let signupRequest = OnboardingRequest (type: <#T##String#>, email: <#T##String#>, nickname: nickname, introduce: introduceMe, role: <#T##String#>, profileImageNumber: <#T##Int#>, town: <#T##String#>, inquiryNumList: <#T##[Int]#>)
-//        
+//
 //        OnboardingAPI.shared.signUp(signupRequest) { result in
 //            DispatchQueue.main.async {
 //                switch result {
@@ -55,7 +83,7 @@ class ProfileResearchViewModel: ObservableObject {
 //                    self.showAlert = true
 //                }
 //            }
-//            
+//
 //        }
     }
 }

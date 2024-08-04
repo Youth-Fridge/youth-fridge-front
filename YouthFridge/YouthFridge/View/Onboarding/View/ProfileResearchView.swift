@@ -54,13 +54,6 @@ struct ProfileResearchView: View {
                     TextField("6글자 이내", text: $viewModel.nickname)
                         .padding(.leading,10)
                         .font(.system(size: 12))
-                        .onChange(of: viewModel.nickname) { newValue in
-                            if newValue.count > 6 {
-                                viewModel.nickname = String(newValue.prefix(6))
-                                viewModel.alertMessage = "닉네임은 6글자 이내로 입력하세요."
-                                viewModel.showAlert = true
-                            }
-                        }
                     Button(action: {
                         viewModel.checkNickname()
                     }) {
@@ -97,15 +90,6 @@ struct ProfileResearchView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.system(size: 12))
                     .padding(.horizontal)
-                    .onChange(of: viewModel.introduceMe) { newValue in
-                        if newValue.count > 15 {
-                            viewModel.introduceMe = String(newValue.prefix(15))
-                            viewModel.alertMessage = "한 줄 소개는 15글자 이내로 입력해주세요."
-                            viewModel.showAlert = true
-                            
-                            
-                        }
-                    }
                 Spacer()
                     .frame(height: 30)
                 HStack {
@@ -248,4 +232,3 @@ extension UIApplication: UIGestureRecognizerDelegate {
 #Preview {
     ProfileResearchView()
 }
-

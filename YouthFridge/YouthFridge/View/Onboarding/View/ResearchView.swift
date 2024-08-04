@@ -69,13 +69,16 @@ struct ResearchView: View {
                         showAlert = true
                     }
                 }) {
-                    Text("다음")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(width: 320, height: 60)
-                        .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)
-                        .cornerRadius(8)
+                    NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden()) {
+                        
+                        Text("다음")
+                            .font(.system(size: 20, weight: .bold))
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(width: 320, height: 60)
+                            .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)
+                            .cornerRadius(8)
+                    }
                 }
                 .disabled(selectedCategories.isEmpty)
                 .alert(isPresented: $showAlert) {

@@ -34,7 +34,6 @@
 		5817D6032C450FB60081323E /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6022C450FB60081323E /* Card.swift */; };
 		5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6042C454C640081323E /* MyPageViewModel.swift */; };
 		5817D6072C454CAA0081323E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6062C454CAA0081323E /* DIContainer.swift */; };
-		5817D6092C454CBD0081323E /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6082C454CBD0081323E /* Services.swift */; };
 		5817D60B2C4552360081323E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D60A2C4552360081323E /* User.swift */; };
 		5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D60D2C457CC50081323E /* MyActivityView.swift */; };
 		5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D6112C462FD20081323E /* MyInvitationsView.swift */; };
@@ -121,7 +120,6 @@
 		5817D6022C450FB60081323E /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		5817D6042C454C640081323E /* MyPageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewModel.swift; sourceTree = "<group>"; };
 		5817D6062C454CAA0081323E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
-		5817D6082C454CBD0081323E /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		5817D60A2C4552360081323E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5817D60D2C457CC50081323E /* MyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityView.swift; sourceTree = "<group>"; };
 		5817D6112C462FD20081323E /* MyInvitationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationsView.swift; sourceTree = "<group>"; };
@@ -193,27 +191,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A7026F02C5A81820083C7A0 /* APIManager */ = {
-			isa = PBXGroup;
-			children = (
-				0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */,
-				0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */,
-				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
-			);
-			name = APIManager;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		0A7026F12C5A81890083C7A0 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
-				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
-			);
-			name = Service;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		0A7026FA2C5A9C700083C7A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,13 +378,16 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		5847F1392C608FFD001AC04E /* Network */ = {
+		5847F15A2C60BA78001AC04E /* Networks */ = {
 			isa = PBXGroup;
 			children = (
-				0A7026F12C5A81890083C7A0 /* Service */,
-				0A7026F02C5A81820083C7A0 /* APIManager */,
+				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
+				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
+				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
+				0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */,
+				0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */,
 			);
-			path = Network;
+			path = Networks;
 			sourceTree = "<group>";
 		};
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
@@ -470,14 +450,13 @@
 		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
 			isa = PBXGroup;
 			children = (
-				5847F1392C608FFD001AC04E /* Network */,
+				5847F15A2C60BA78001AC04E /* Networks */,
 				5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */,
 				0A0600412C57813E0036CD8F /* Info.plist */,
 				5817D6232C4655B60081323E /* App */,
 				58EEF71B2C43D26800C12C1E /* Resource */,
 				58EEF71A2C43D25D00C12C1E /* Extension */,
 				58EEF7192C43D25400C12C1E /* General */,
-				58EEF7182C43D24A00C12C1E /* Service */,
 				58EEF7172C43D24000C12C1E /* View */,
 				0A7026FA2C5A9C700083C7A0 /* Model */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
@@ -524,14 +503,6 @@
 				58EEF71C2C43D7D400C12C1E /* Login */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		58EEF7182C43D24A00C12C1E /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				5817D6082C454CBD0081323E /* Services.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		58EEF7192C43D25400C12C1E /* General */ = {
@@ -728,7 +699,6 @@
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
 				58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */,
 				5817D5F92C4504A30081323E /* SmallClassView.swift in Sources */,
-				5817D6092C454CBD0081323E /* Services.swift in Sources */,
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */,

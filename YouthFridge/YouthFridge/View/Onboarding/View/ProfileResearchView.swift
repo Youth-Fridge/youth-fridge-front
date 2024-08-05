@@ -161,11 +161,11 @@ struct ProfileResearchView: View {
     }
 }
 
-
 struct MapDetailView: View {
     @ObservedObject var locationManager = LocationManager()
     @Binding var region: MKCoordinateRegion
     @Binding var trackingMode: MapUserTrackingMode
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var certifiedRegions: [MKCoordinateRegion] = []
     @State private var userCity: String = ""
@@ -198,7 +198,9 @@ struct MapDetailView: View {
                 if certifiedRegions.count < 2 {
                     certifiedRegions.append(region)
                 } else {
+                    // If necessary, handle the case where more than two regions are not allowed
                 }
+                presentationMode.wrappedValue.dismiss() // Navigate back to the previous view
             }) {
                 Text("인증 지역 추가")
                     .font(.system(size: 16, weight: .bold))

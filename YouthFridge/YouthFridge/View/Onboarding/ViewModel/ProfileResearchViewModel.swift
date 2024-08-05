@@ -14,10 +14,7 @@ class ProfileResearchViewModel: ObservableObject {
     @Published var nickname: String = ""
     @Published var introduceMe: String = ""
     @Published var isShowingProfileSelector: Bool = false
-    @Published var region: MKCoordinateRegion = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+    @Published var region: MKCoordinateRegion = MKCoordinateRegion()
     @Published var nicknameMessage: String = "닉네임을 입력하세요."
     @Published var nicknameMessageColor: Color = Color.main1Color
     @Published var userLocation: CLLocationCoordinate2D?

@@ -11,8 +11,6 @@ import CoreLocation
 
 struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
-    @State private var cityName = ""
-    @State private var downtownName = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -98,7 +96,10 @@ struct ProfileResearchView: View {
                     Text("우리 동네 인증하기")
                         .font(.system(size: 16, weight: .bold))
                         .frame(alignment: .leading)
-                    NavigationLink(destination: MapDetailView(region: $viewModel.region, trackingMode: $viewModel.trackingMode)) {
+                    NavigationLink(destination: MapDetailView(onCertification: { city, district in
+                        viewModel.userCity = city
+                        viewModel.userDistrict = district
+                    })) {
                         Image("locationImage")
                             .resizable()
                             .frame(width: 16, height: 22)
@@ -115,7 +116,7 @@ struct ProfileResearchView: View {
                             .frame(width: 16, height: 22)
                         
                         VStack(alignment: .leading) {
-                            Text("\(cityName)\(downtownName)")
+                            Text("\(viewModel.userCity)\(viewModel.userDistrict)")
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }
@@ -137,11 +138,14 @@ struct ProfileResearchView: View {
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: 320)
-                        .background(Color.yellow)
+                        .background(viewModel.isNextButtonEnabled ? Color.sub2Color : Color.gray2)
                         .cornerRadius(8)
                 }
                 .padding()
-                
+                .disabled(!viewModel.isNextButtonEnabled)
+                .onTapGesture {
+                    viewModel.signUp()
+                }
                 .onAppear {
                     UIApplication.shared.hideKeyboard()
                 }
@@ -161,58 +165,7 @@ struct ProfileResearchView: View {
     }
 }
 
-struct MapDetailView: View {
-    @ObservedObject var locationManager = LocationManager()
-    @Binding var region: MKCoordinateRegion
-    @Binding var trackingMode: MapUserTrackingMode
-    @Environment(\.presentationMode) var presentationMode
-    
-    @State private var certifiedRegions: [MKCoordinateRegion] = []
-    @State private var userCity: String = ""
-    @State private var userDistrict: String = ""
-    
-    var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $trackingMode)
-                    .frame(height: geometry.size.height * 0.9) // Adjust height as needed
-                    .cornerRadius(10)
-                    .padding()
-            }
-            .frame(maxHeight: .infinity)
-            
-            Text("내 동네")
-                .font(.system(size: 25, weight: .bold))
-                .padding()
-            
-            Text("현재 위치: \(locationManager.userCity) \(locationManager.userDistrict)")
-                .font(.system(size: 16, weight: .bold))
-                .padding()
-            
-            Text("최초 1회 인증 시 전국에서 사용 가능합니다.")
-                .font(.system(size: 14))
-                .foregroundColor(.gray)
-                .padding()
-            
-            Button(action: {
-                if certifiedRegions.count < 2 {
-                    certifiedRegions.append(region)
-                } else {
-                    // If necessary, handle the case where more than two regions are not allowed
-                }
-                presentationMode.wrappedValue.dismiss() // Navigate back to the previous view
-            }) {
-                Text("인증 지역 추가")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.main1Color)
-                    .cornerRadius(10)
-            }
-        }
-        .navigationBarTitle("우리 동네 인증", displayMode: .inline)
-    }
-}
+
 
 #if canImport(UIKit)
 extension UIApplication {
@@ -223,8 +176,8 @@ extension UIApplication {
         tapRecognizer.delegate = self
         window.addGestureRecognizer(tapRecognizer)
     }
- }
- 
+}
+
 extension UIApplication: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false

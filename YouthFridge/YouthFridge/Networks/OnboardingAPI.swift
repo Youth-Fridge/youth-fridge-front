@@ -21,7 +21,6 @@ class OnboardingAPI {
         OnboardingAPI.provider.request(.nicknameCheck(nickname)) { result in
             switch result {
             case .success(let response):
-                // Print the raw response data for debugging
                 if let responseString = String(data: response.data, encoding: .utf8) {
                     print("Response Data: \(responseString)")
                 } else {

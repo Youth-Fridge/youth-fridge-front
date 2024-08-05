@@ -57,6 +57,7 @@
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
 		5847F1362C5E589B001AC04E /* ProfileResearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */; };
 		5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F15C2C60DCE6001AC04E /* Servics.swift */; };
+		5847F15F2C60E5BB001AC04E /* MapDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F15E2C60E5BB001AC04E /* MapDetailView.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
@@ -145,6 +146,7 @@
 		5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthFridge.entitlements; sourceTree = "<group>"; };
 		5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchViewModel.swift; sourceTree = "<group>"; };
 		5847F15C2C60DCE6001AC04E /* Servics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servics.swift; sourceTree = "<group>"; };
+		5847F15E2C60E5BB001AC04E /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 				5817D62C2C479C890081323E /* ProfileResearchView.swift */,
 				5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */,
 				58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */,
+				5847F15E2C60E5BB001AC04E /* MapDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
+				5847F15F2C60E5BB001AC04E /* MapDetailView.swift in Sources */,
 				58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,

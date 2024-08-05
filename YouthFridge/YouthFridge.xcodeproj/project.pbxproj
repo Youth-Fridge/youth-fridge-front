@@ -191,27 +191,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A7026F02C5A81820083C7A0 /* APIManager */ = {
-			isa = PBXGroup;
-			children = (
-				0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */,
-				0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */,
-				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
-			);
-			name = APIManager;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		0A7026F12C5A81890083C7A0 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
-				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
-			);
-			name = Service;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		0A7026FA2C5A9C700083C7A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -402,8 +381,11 @@
 		5847F15A2C60BA78001AC04E /* Networks */ = {
 			isa = PBXGroup;
 			children = (
-				0A7026F02C5A81820083C7A0 /* APIManager */,
-				0A7026F12C5A81890083C7A0 /* Service */,
+				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
+				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
+				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
+				0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */,
+				0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */,
 			);
 			path = Networks;
 			sourceTree = "<group>";

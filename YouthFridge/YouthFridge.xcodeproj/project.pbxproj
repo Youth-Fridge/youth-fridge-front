@@ -193,15 +193,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A7026EE2C5A81380083C7A0 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				0A7026F02C5A81820083C7A0 /* APIManager */,
-				0A7026F12C5A81890083C7A0 /* Service */,
-			);
-			name = Network;
-			sourceTree = "<group>";
-		};
 		0A7026F02C5A81820083C7A0 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +201,7 @@
 				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
 			);
 			name = APIManager;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0A7026F12C5A81890083C7A0 /* Service */ = {
@@ -219,6 +211,7 @@
 				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
 			);
 			name = Service;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		0A7026FA2C5A9C700083C7A0 /* Model */ = {
@@ -408,6 +401,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		5847F1392C608FFD001AC04E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0A7026F12C5A81890083C7A0 /* Service */,
+				0A7026F02C5A81820083C7A0 /* APIManager */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
@@ -468,6 +470,7 @@
 		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
 			isa = PBXGroup;
 			children = (
+				5847F1392C608FFD001AC04E /* Network */,
 				5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */,
 				0A0600412C57813E0036CD8F /* Info.plist */,
 				5817D6232C4655B60081323E /* App */,
@@ -476,7 +479,6 @@
 				58EEF7192C43D25400C12C1E /* General */,
 				58EEF7182C43D24A00C12C1E /* Service */,
 				58EEF7172C43D24000C12C1E /* View */,
-				0A7026EE2C5A81380083C7A0 /* Network */,
 				0A7026FA2C5A9C700083C7A0 /* Model */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 			);
@@ -924,10 +926,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = YouthFridge/YouthFridge.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YouthFridge/Preview Content\"";
-				DEVELOPMENT_TEAM = G62DUX396A;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J585QL2L97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YouthFridge/Info.plist;
@@ -937,14 +941,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = youthFridge;
+				PRODUCT_BUNDLE_IDENTIFIER = min.youthFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = minYouthFridge;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -957,10 +963,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = YouthFridge/YouthFridge.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"YouthFridge/Preview Content\"";
-				DEVELOPMENT_TEAM = G62DUX396A;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J585QL2L97;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YouthFridge/Info.plist;
@@ -970,14 +978,16 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = youthFridge;
+				PRODUCT_BUNDLE_IDENTIFIER = min.youthFridge;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = minYouthFridge;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -15,6 +15,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var userCity: String = "알 수 없음"
     @Published var userDistrict: String = "알 수 없음"
     
+    private var hasRequestedGeocode = false // Geocode 요청 플래그
+    
     override init() {
         super.init()
         locationManager.delegate = self
@@ -46,12 +48,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last?.coordinate {
             self.userLocation = location
-            let geocoder = CLGeocoder()
-            let location = CLLocation(latitude: location.latitude, longitude: location.longitude)
-            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
-                if let placemark = placemarks?.first {
-                    self.userCity = placemark.locality ?? "알 수 없음"
-                    self.userDistrict = placemark.subLocality ?? "알 수 없음"
+            
+            if !hasRequestedGeocode {
+                hasRequestedGeocode = true
+                let geocoder = CLGeocoder()
+                let location = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                    if let placemark = placemarks?.first {
+                        self.userCity = placemark.locality ?? "알 수 없음"
+                        self.userDistrict = placemark.subLocality ?? "알 수 없음"
+                    }
                 }
             }
         }

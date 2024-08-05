@@ -11,7 +11,7 @@ import AuthenticationServices
 struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
     @State private var appleSignInCoordinator: AppleSignInCoordinator?
-    
+    @State private var type: String = ""
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -63,7 +63,7 @@ struct LoginIntroView: View {
                     .foregroundColor(Color.gray4)
             }
             .navigationDestination(isPresented: $isPresentedLoginView) {
-                // 로그인 뷰 로직 추가
+                OnboardingStartView().navigationBarBackButtonHidden()
             }
         }
     }
@@ -79,6 +79,9 @@ struct LoginIntroView: View {
     private func performAppleSignIn() {
         let coordinator = AppleSignInCoordinator()
         coordinator.startSignInWithAppleFlow(onSuccess: {
+            self.type = "apple"
+            UserDefaults.standard.setValue(self.type, forKey: "loginType")
+            self.isPresentedLoginView = true
         }, onFailure: { error in
             print("Sign in with Apple failed: \(error.localizedDescription)")
         })
@@ -127,6 +130,10 @@ class AppleSignInCoordinator: NSObject, ASAuthorizationControllerDelegate, ASAut
                 print("Identity Token: \(tokenString)")
             }
             
+            if let email = email {
+                UserDefaults.standard.set(email, forKey: "userEmail")
+                print("Stored User Email: \(email)")
+            }
             onSuccess?()
             
         case let passwordCredential as ASPasswordCredential:

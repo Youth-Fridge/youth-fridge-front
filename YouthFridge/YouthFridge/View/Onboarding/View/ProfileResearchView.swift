@@ -11,6 +11,8 @@ import CoreLocation
 
 struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
+    @State private var cityName = ""
+    @State private var downtownName = ""
     var body: some View {
         NavigationView {
             VStack {
@@ -54,13 +56,6 @@ struct ProfileResearchView: View {
                     TextField("6글자 이내", text: $viewModel.nickname)
                         .padding(.leading,10)
                         .font(.system(size: 12))
-                        .onChange(of: viewModel.nickname) { newValue in
-                            if newValue.count > 6 {
-                                viewModel.nickname = String(newValue.prefix(6))
-                                viewModel.alertMessage = "닉네임은 6글자 이내로 입력하세요."
-                                viewModel.showAlert = true
-                            }
-                        }
                     Button(action: {
                         viewModel.checkNickname()
                     }) {
@@ -97,15 +92,6 @@ struct ProfileResearchView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.system(size: 12))
                     .padding(.horizontal)
-                    .onChange(of: viewModel.introduceMe) { newValue in
-                        if newValue.count > 15 {
-                            viewModel.introduceMe = String(newValue.prefix(15))
-                            viewModel.alertMessage = "한 줄 소개는 15글자 이내로 입력해주세요."
-                            viewModel.showAlert = true
-                            
-                            
-                        }
-                    }
                 Spacer()
                     .frame(height: 30)
                 HStack {
@@ -129,7 +115,7 @@ struct ProfileResearchView: View {
                             .frame(width: 16, height: 22)
                         
                         VStack(alignment: .leading) {
-                            Text("천안시 동작구")
+                            Text("\(cityName)\(downtownName)")
                                 .font(.system(size: 12,weight: .medium))
                                 .foregroundColor(.black)
                         }
@@ -175,11 +161,11 @@ struct ProfileResearchView: View {
     }
 }
 
-
 struct MapDetailView: View {
     @ObservedObject var locationManager = LocationManager()
     @Binding var region: MKCoordinateRegion
     @Binding var trackingMode: MapUserTrackingMode
+    @Environment(\.presentationMode) var presentationMode
     
     @State private var certifiedRegions: [MKCoordinateRegion] = []
     @State private var userCity: String = ""
@@ -212,8 +198,9 @@ struct MapDetailView: View {
                 if certifiedRegions.count < 2 {
                     certifiedRegions.append(region)
                 } else {
-                    // Handle case where more than 2 regions are selected
+                    // If necessary, handle the case where more than two regions are not allowed
                 }
+                presentationMode.wrappedValue.dismiss() // Navigate back to the previous view
             }) {
                 Text("인증 지역 추가")
                     .font(.system(size: 16, weight: .bold))
@@ -248,4 +235,3 @@ extension UIApplication: UIGestureRecognizerDelegate {
 #Preview {
     ProfileResearchView()
 }
-

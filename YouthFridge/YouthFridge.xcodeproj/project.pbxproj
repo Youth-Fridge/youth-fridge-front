@@ -56,6 +56,7 @@
 		5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */; };
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
 		5847F1362C5E589B001AC04E /* ProfileResearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */; };
+		5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F15C2C60DCE6001AC04E /* Servics.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
@@ -143,6 +144,7 @@
 		5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
 		5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YouthFridge.entitlements; sourceTree = "<group>"; };
 		5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchViewModel.swift; sourceTree = "<group>"; };
+		5847F15C2C60DCE6001AC04E /* Servics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servics.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
@@ -390,6 +392,14 @@
 			path = Networks;
 			sourceTree = "<group>";
 		};
+		5847F15B2C60DCD5001AC04E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5847F15C2C60DCE6001AC04E /* Servics.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +460,7 @@
 		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
 			isa = PBXGroup;
 			children = (
+				5847F15B2C60DCD5001AC04E /* Services */,
 				5847F15A2C60BA78001AC04E /* Networks */,
 				5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */,
 				0A0600412C57813E0036CD8F /* Info.plist */,
@@ -723,6 +734,7 @@
 				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
 				0A7026FD2C5A9C850083C7A0 /* BaseResponse.swift in Sources */,
 				0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */,
+				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */,

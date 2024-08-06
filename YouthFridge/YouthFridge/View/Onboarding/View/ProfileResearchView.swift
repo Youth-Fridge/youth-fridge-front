@@ -11,6 +11,7 @@ import CoreLocation
 
 struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
+    @State private var navigateToNextView = false 
     var body: some View {
         NavigationView {
             VStack {
@@ -31,11 +32,10 @@ struct ProfileResearchView: View {
                     }) {
                         Image("onboardingCamera")
                             .resizable()
-                            .frame(width: 40,height: 40)
+                            .frame(width: 40, height: 40)
                     }
-                    .padding(.top,-45)
-                    .padding(.leading,70)
-                    
+                    .padding(.top, -45)
+                    .padding(.leading, 70)
                 }
                 Spacer()
                     .frame(height: 25)
@@ -48,11 +48,10 @@ struct ProfileResearchView: View {
                         .foregroundColor(.main1Color)
                 }
                 .padding(.horizontal)
-                
+
                 HStack {
-                    
                     TextField("6글자 이내", text: $viewModel.nickname)
-                        .padding(.leading,10)
+                        .padding(.leading, 10)
                         .font(.system(size: 12))
                     Button(action: {
                         viewModel.checkNickname()
@@ -66,14 +65,13 @@ struct ProfileResearchView: View {
                             .cornerRadius(30)
                     }
                     .padding(10)
-                    
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.main1Color, lineWidth: 1)
                 )
                 .padding(.horizontal)
-                
+
                 .sheet(isPresented: $viewModel.isShowingProfileSelector) {
                     ProfilePictureSelector(selectedImage: $viewModel.selectedProfileImage, isShowing: $viewModel.isShowingProfileSelector)
                         .presentationDetents([.medium, .large])
@@ -85,7 +83,7 @@ struct ProfileResearchView: View {
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
-                
+
                 TextField("15글자 이내 *ex: 365일 식단 조절러", text: $viewModel.introduceMe)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.system(size: 12))
@@ -114,10 +112,9 @@ struct ProfileResearchView: View {
                         Image("locationImage")
                             .resizable()
                             .frame(width: 16, height: 22)
-                        
                         VStack(alignment: .leading) {
                             Text("\(viewModel.userCity)\(viewModel.userDistrict)")
-                                .font(.system(size: 12,weight: .medium))
+                                .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.black)
                         }
                         .frame(alignment: .leading)
@@ -127,12 +124,19 @@ struct ProfileResearchView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.main1Color, lineWidth: 1)
                     )
-                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 Spacer()
-                NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
+
+                // Using Button instead of NavigationLink
+                Button(action: {
+                    print("다음 버튼 클릭됨")
+                    viewModel.signUp()
+                    if viewModel.isNextButtonEnabled {
+                        navigateToNextView = true
+                    }
+                }) {
                     Text("다음")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -143,8 +147,9 @@ struct ProfileResearchView: View {
                 }
                 .padding()
                 .disabled(!viewModel.isNextButtonEnabled)
-                .onTapGesture {
-                    viewModel.signUp()
+
+                NavigationLink(destination: StartView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
+                    EmptyView()
                 }
                 .onAppear {
                     UIApplication.shared.hideKeyboard()
@@ -153,15 +158,11 @@ struct ProfileResearchView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
             .alert(isPresented: $viewModel.showAlert) {
-                Alert (title: Text("입력제한"),
-                       message: Text(viewModel.alertMessage),
-                       dismissButton: .default(Text("확인"))
-                )
+                Alert(title: Text("입력제한"),
+                      message: Text(viewModel.alertMessage),
+                      dismissButton: .default(Text("확인")))
             }
-            
-            
         }
-        
     }
 }
 

@@ -79,12 +79,12 @@ class ProfileResearchViewModel: ObservableObject {
     
     func signUp() {
         let selectedCategoryKey = "selectedCategories"
-        let email = UserDefaults.standard.string(forKey: "userEmail") ?? "default@example.com"
+        let email = UserDefaults.standard.string(forKey: "userEmail") ?? "default@default.com"
         let type = UserDefaults.standard.string(forKey: "loginType") ?? "unknown"
-
+        let username = UserDefaults.standard.string(forKey: "userID") ?? "unknown"
         let inquiryNumList = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] ?? []
         let profileImageNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
-        let signupRequest = OnboardingRequest (type: type, email: email, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
+        let signupRequest = OnboardingRequest (type: type, email: email, username: username, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
 
         OnboardingAPI.shared.signUp(signupRequest) { result in
             DispatchQueue.main.async {

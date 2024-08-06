@@ -63,6 +63,9 @@
 		5847F1662C61E758001AC04E /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 5847F1652C61E758001AC04E /* KakaoSDKCert */; };
 		5847F1682C61E758001AC04E /* KakaoSDKCertCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5847F1672C61E758001AC04E /* KakaoSDKCertCore */; };
 		5847F16A2C61E758001AC04E /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 5847F1692C61E758001AC04E /* KakaoSDKCommon */; };
+		5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F16B2C6245C8001AC04E /* LoginRequest.swift */; };
+		5847F16F2C624869001AC04E /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5847F16E2C624869001AC04E /* SwiftKeychainWrapper */; };
+		5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F1712C624922001AC04E /* KeychainHandler.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
@@ -152,6 +155,8 @@
 		5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileResearchViewModel.swift; sourceTree = "<group>"; };
 		5847F15C2C60DCE6001AC04E /* Servics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servics.swift; sourceTree = "<group>"; };
 		5847F15E2C60E5BB001AC04E /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
+		5847F16B2C6245C8001AC04E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		5847F1712C624922001AC04E /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
@@ -185,6 +190,7 @@
 				5847F1642C61E758001AC04E /* KakaoSDKAuth in Frameworks */,
 				5847F16A2C61E758001AC04E /* KakaoSDKCommon in Frameworks */,
 				5847F1662C61E758001AC04E /* KakaoSDKCert in Frameworks */,
+				5847F16F2C624869001AC04E /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +226,7 @@
 				5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */,
 				0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */,
 				0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */,
+				5847F16B2C6245C8001AC04E /* LoginRequest.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -396,6 +403,7 @@
 		5847F15A2C60BA78001AC04E /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				5847F1702C624905001AC04E /* GlobalAPI */,
 				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
 				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
 				5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */,
@@ -411,6 +419,14 @@
 				5847F15C2C60DCE6001AC04E /* Servics.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5847F1702C624905001AC04E /* GlobalAPI */ = {
+			isa = PBXGroup;
+			children = (
+				5847F1712C624922001AC04E /* KeychainHandler.swift */,
+			);
+			path = GlobalAPI;
 			sourceTree = "<group>";
 		};
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
@@ -586,6 +602,7 @@
 				5847F1652C61E758001AC04E /* KakaoSDKCert */,
 				5847F1672C61E758001AC04E /* KakaoSDKCertCore */,
 				5847F1692C61E758001AC04E /* KakaoSDKCommon */,
+				5847F16E2C624869001AC04E /* SwiftKeychainWrapper */,
 			);
 			productName = YouthFridge;
 			productReference = 58EEF6EA2C43D22500C12C1E /* YouthFridge.app */;
@@ -662,6 +679,7 @@
 			packageReferences = (
 				0A7026EB2C5A768A0083C7A0 /* XCRemoteSwiftPackageReference "Moya" */,
 				5847F1602C61E758001AC04E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
+				5847F16D2C624869001AC04E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 58EEF6EB2C43D22500C12C1E /* Products */;
 			projectDirPath = "";
@@ -759,6 +777,7 @@
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */,
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
+				5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */,
 				0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
@@ -767,6 +786,7 @@
 				5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */,
 				0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */,
 				5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */,
+				5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1130,6 +1150,14 @@
 				minimumVersion = 2.22.5;
 			};
 		};
+		5847F16D2C624869001AC04E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1162,6 +1190,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5847F1602C61E758001AC04E /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
 			productName = KakaoSDKCommon;
+		};
+		5847F16E2C624869001AC04E /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5847F16D2C624869001AC04E /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

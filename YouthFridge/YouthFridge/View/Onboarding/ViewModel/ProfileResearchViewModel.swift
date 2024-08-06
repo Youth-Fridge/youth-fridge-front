@@ -22,6 +22,13 @@ class ProfileResearchViewModel: ObservableObject {
     @Published var selectedProfileImage: String = "bigBrocoli"
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var userCity: String = ""
+    @Published var userDistrict: String = ""
+    @Published var isNicknameChecked: Bool = false
+
+    var isNextButtonEnabled: Bool {
+        !nickname.isEmpty && !introduceMe.isEmpty && !userCity.isEmpty && !userDistrict.isEmpty && isNicknameChecked
+    }
     private var cancellables = Set<AnyCancellable>()
 
     init() {
@@ -50,16 +57,18 @@ class ProfileResearchViewModel: ObservableObject {
                    }
                    .store(in: &cancellables)
     }
+    
     func checkNickname() {
-        
         OnboardingAPI.shared.checkNickname(nickname) { result in
             print(self.nickname)
             DispatchQueue.main.async {
                 switch result {
                 case .success(let isAvailable):
+                    self.isNicknameChecked = isAvailable
                     self.nicknameMessage = isAvailable ? "사용 가능한 닉네임 입니다." : "이미 사용 중인 닉네임 입니다."
-                    self.nicknameMessageColor = isAvailable ? Color.green : Color.red
+                    self.nicknameMessageColor = isAvailable ? Color.main1Color : Color.red
                 case .failure(_):
+                    self.isNicknameChecked = false
                     self.nicknameMessage = "사용 불가능한 닉네임 입니다."
                     self.nicknameMessageColor = Color.red
                 }
@@ -70,12 +79,12 @@ class ProfileResearchViewModel: ObservableObject {
     
     func signUp() {
         let selectedCategoryKey = "selectedCategories"
-        let email = UserDefaults.standard.string(forKey: "userEmail") ?? "default@example.com"
+        let email = UserDefaults.standard.string(forKey: "userEmail") ?? "default@default.com"
         let type = UserDefaults.standard.string(forKey: "loginType") ?? "unknown"
-
+        let username = UserDefaults.standard.string(forKey: "userID") ?? "unknown"
         let inquiryNumList = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] ?? []
         let profileImageNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
-        let signupRequest = OnboardingRequest (type: type, email: email, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "천안시 동남구", inquiryNumList: inquiryNumList)
+        let signupRequest = OnboardingRequest (type: type, email: email, username: username, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
 
         OnboardingAPI.shared.signUp(signupRequest) { result in
             DispatchQueue.main.async {

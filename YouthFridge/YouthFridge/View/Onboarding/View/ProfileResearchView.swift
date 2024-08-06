@@ -11,8 +11,7 @@ import CoreLocation
 
 struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
-    @State private var cityName = ""
-    @State private var downtownName = ""
+    @State private var navigateToNextView = false 
     var body: some View {
         NavigationView {
             VStack {
@@ -33,11 +32,10 @@ struct ProfileResearchView: View {
                     }) {
                         Image("onboardingCamera")
                             .resizable()
-                            .frame(width: 40,height: 40)
+                            .frame(width: 40, height: 40)
                     }
-                    .padding(.top,-45)
-                    .padding(.leading,70)
-                    
+                    .padding(.top, -45)
+                    .padding(.leading, 70)
                 }
                 Spacer()
                     .frame(height: 25)
@@ -50,11 +48,10 @@ struct ProfileResearchView: View {
                         .foregroundColor(.main1Color)
                 }
                 .padding(.horizontal)
-                
+
                 HStack {
-                    
                     TextField("6글자 이내", text: $viewModel.nickname)
-                        .padding(.leading,10)
+                        .padding(.leading, 10)
                         .font(.system(size: 12))
                     Button(action: {
                         viewModel.checkNickname()
@@ -68,14 +65,13 @@ struct ProfileResearchView: View {
                             .cornerRadius(30)
                     }
                     .padding(10)
-                    
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.main1Color, lineWidth: 1)
                 )
                 .padding(.horizontal)
-                
+
                 .sheet(isPresented: $viewModel.isShowingProfileSelector) {
                     ProfilePictureSelector(selectedImage: $viewModel.selectedProfileImage, isShowing: $viewModel.isShowingProfileSelector)
                         .presentationDetents([.medium, .large])
@@ -87,7 +83,7 @@ struct ProfileResearchView: View {
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
-                
+
                 TextField("15글자 이내 *ex: 365일 식단 조절러", text: $viewModel.introduceMe)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .font(.system(size: 12))
@@ -98,7 +94,10 @@ struct ProfileResearchView: View {
                     Text("우리 동네 인증하기")
                         .font(.system(size: 16, weight: .bold))
                         .frame(alignment: .leading)
-                    NavigationLink(destination: MapDetailView(region: $viewModel.region, trackingMode: $viewModel.trackingMode)) {
+                    NavigationLink(destination: MapDetailView(onCertification: { city, district in
+                        viewModel.userCity = city
+                        viewModel.userDistrict = district
+                    })) {
                         Image("locationImage")
                             .resizable()
                             .frame(width: 16, height: 22)
@@ -113,10 +112,9 @@ struct ProfileResearchView: View {
                         Image("locationImage")
                             .resizable()
                             .frame(width: 16, height: 22)
-                        
                         VStack(alignment: .leading) {
-                            Text("\(cityName)\(downtownName)")
-                                .font(.system(size: 12,weight: .medium))
+                            Text("\(viewModel.userCity)\(viewModel.userDistrict)")
+                                .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(.black)
                         }
                         .frame(alignment: .leading)
@@ -126,22 +124,33 @@ struct ProfileResearchView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.main1Color, lineWidth: 1)
                     )
-                    
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 Spacer()
-                NavigationLink(destination: StartView().navigationBarBackButtonHidden()) {
+
+                // Using Button instead of NavigationLink
+                Button(action: {
+                    print("다음 버튼 클릭됨")
+                    viewModel.signUp()
+                    if viewModel.isNextButtonEnabled {
+                        navigateToNextView = true
+                    }
+                }) {
                     Text("다음")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: 320)
-                        .background(Color.yellow)
+                        .background(viewModel.isNextButtonEnabled ? Color.sub2Color : Color.gray2)
                         .cornerRadius(8)
                 }
                 .padding()
-                
+                .disabled(!viewModel.isNextButtonEnabled)
+
+                NavigationLink(destination: StartView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
+                    EmptyView()
+                }
                 .onAppear {
                     UIApplication.shared.hideKeyboard()
                 }
@@ -149,70 +158,15 @@ struct ProfileResearchView: View {
             .navigationBarBackButtonHidden(true)
             .navigationBarHidden(true)
             .alert(isPresented: $viewModel.showAlert) {
-                Alert (title: Text("입력제한"),
-                       message: Text(viewModel.alertMessage),
-                       dismissButton: .default(Text("확인"))
-                )
+                Alert(title: Text("입력제한"),
+                      message: Text(viewModel.alertMessage),
+                      dismissButton: .default(Text("확인")))
             }
-            
-            
         }
-        
     }
 }
 
-struct MapDetailView: View {
-    @ObservedObject var locationManager = LocationManager()
-    @Binding var region: MKCoordinateRegion
-    @Binding var trackingMode: MapUserTrackingMode
-    @Environment(\.presentationMode) var presentationMode
-    
-    @State private var certifiedRegions: [MKCoordinateRegion] = []
-    @State private var userCity: String = ""
-    @State private var userDistrict: String = ""
-    
-    var body: some View {
-        VStack {
-            GeometryReader { geometry in
-                Map(coordinateRegion: $region, showsUserLocation: true, userTrackingMode: $trackingMode)
-                    .frame(height: geometry.size.height * 0.9) // Adjust height as needed
-                    .cornerRadius(10)
-                    .padding()
-            }
-            .frame(maxHeight: .infinity)
-            
-            Text("내 동네")
-                .font(.system(size: 25, weight: .bold))
-                .padding()
-            
-            Text("현재 위치: \(locationManager.userCity) \(locationManager.userDistrict)")
-                .font(.system(size: 16, weight: .bold))
-                .padding()
-            
-            Text("최초 1회 인증 시 전국에서 사용 가능합니다.")
-                .font(.system(size: 14))
-                .foregroundColor(.gray)
-                .padding()
-            
-            Button(action: {
-                if certifiedRegions.count < 2 {
-                    certifiedRegions.append(region)
-                } else {
-                    // If necessary, handle the case where more than two regions are not allowed
-                }
-                presentationMode.wrappedValue.dismiss() // Navigate back to the previous view
-            }) {
-                Text("인증 지역 추가")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.main1Color)
-                    .cornerRadius(10)
-            }
-        }
-        .navigationBarTitle("우리 동네 인증", displayMode: .inline)
-    }
-}
+
 
 #if canImport(UIKit)
 extension UIApplication {
@@ -223,8 +177,8 @@ extension UIApplication {
         tapRecognizer.delegate = self
         window.addGestureRecognizer(tapRecognizer)
     }
- }
- 
+}
+
 extension UIApplication: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false

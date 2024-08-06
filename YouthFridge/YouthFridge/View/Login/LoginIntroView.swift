@@ -7,11 +7,14 @@
 
 import SwiftUI
 import AuthenticationServices
+import KakaoSDKAuth
+import KakaoSDKUser
 
 struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
     @State private var appleSignInCoordinator: AppleSignInCoordinator?
     @State private var type: String = ""
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -37,7 +40,7 @@ struct LoginIntroView: View {
                     .font(.system(size: 14))
                 
                 Button {
-                    // 카카오톡 로그인 로직 추가
+                    performKakaoSignIn()
                 } label: {
                     HStack {
                         Image(systemName: "message.fill")
@@ -75,7 +78,54 @@ struct LoginIntroView: View {
         }
         return text
     }
+
+    private func performKakaoSignIn() {
+        if UserApi.isKakaoTalkLoginAvailable() {
+            UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오톡으로 로그인 성공")
+                    self.type = "kakao"
+                    UserDefaults.standard.setValue(self.type, forKey: "loginType")
+                    self.fetchKakaoUserID()
+                }
+            }
+        } else {
+            UserApi.shared.loginWithKakaoAccount { (oauthToken, error) in
+                if let error = error {
+                    print(error)
+                } else {
+                    print("카카오 계정으로 로그인 성공")
+                    self.type = "kakao"
+                    UserDefaults.standard.setValue(self.type, forKey: "loginType")
+                    self.fetchKakaoUserID()
+                }
+            }
+        }
+    }
     
+    private func fetchKakaoUserID() {
+        UserApi.shared.me { (user, error) in
+            if let error = error {
+                print("카카오 사용자 정보 가져오기 실패: \(error)")
+            } else {
+                if let user = user {
+                    if let id = user.id {
+                        let userIDString = String(id)
+                        UserDefaults.standard.setValue(userIDString, forKey: "userID")
+                        print("카카오 사용자 아이디: \(userIDString)")
+                    }
+                }
+                if let email = user?.kakaoAccount?.email {
+                    UserDefaults.standard.setValue(email, forKey: "userEmail")
+                    print("카카오 사용자 이메일 : \(email)")
+                }
+                self.isPresentedLoginView = true
+            }
+        }
+    }
+
     private func performAppleSignIn() {
         let coordinator = AppleSignInCoordinator()
         coordinator.startSignInWithAppleFlow(onSuccess: {

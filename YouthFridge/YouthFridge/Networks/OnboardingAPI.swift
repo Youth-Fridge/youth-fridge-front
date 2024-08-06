@@ -21,7 +21,6 @@ class OnboardingAPI {
         OnboardingAPI.provider.request(.nicknameCheck(nickname)) { result in
             switch result {
             case .success(let response):
-                // Print the raw response data for debugging
                 if let responseString = String(data: response.data, encoding: .utf8) {
                     print("Response Data: \(responseString)")
                 } else {
@@ -55,25 +54,32 @@ class OnboardingAPI {
 
     
     func signUp(_ request: OnboardingRequest, completion: @escaping (Result<Void, Error>) -> Void) {
-        do {
-            let data = try JSONEncoder().encode(request)
-            OnboardingAPI.provider.request(.signUp(data)) { result in
-                switch result {
-                case .success(let response):
-                    if response.statusCode == 200 {
-                        completion(.success(()))
-                    } else {
-                        let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "SignUp failed with status code: \(response.statusCode)"])
+            do {
+                let data = try JSONEncoder().encode(request)
+                OnboardingAPI.provider.request(.signUp(data)) { result in
+                    switch result {
+                    case .success(let response):
+                        if let responseString = String(data: response.data, encoding: .utf8) {
+                            print("Response Data: \(responseString)")
+                        } else {
+                            print("Unable to convert response data to string")
+                        }
+                        
+                        if response.statusCode == 200 {
+                            print("SignUp successful")
+                            completion(.success(()))
+                        } else {
+                            let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "SignUp failed with status code: \(response.statusCode)"])
+                            completion(.failure(error))
+                        }
+                    case .failure(let error):
                         completion(.failure(error))
                     }
-                case .failure(let error):
-                    completion(.failure(error))
                 }
+            } catch {
+                completion(.failure(error))
             }
-        } catch {
-            completion(.failure(error))
         }
-    }
 }
 
 struct NicknameCheckResponse: Codable {

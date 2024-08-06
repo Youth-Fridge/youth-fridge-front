@@ -10,6 +10,7 @@ import Foundation
 struct OnboardingRequest: Codable {
     let type: String
     let email: String
+    let username: String
     let nickname: String
     let introduce: String
     let role: String

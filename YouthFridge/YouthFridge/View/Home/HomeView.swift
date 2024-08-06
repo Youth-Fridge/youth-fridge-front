@@ -14,9 +14,9 @@ struct HomeView: View {
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
     private let cards = [
-        Card(name:"장금이",title: "초계 국수 만들어요", date: "7월 30일 화요일 오후 7시", location: "안서초등학교", tags: ["메뉴 추천","건강식","요리"],ing: "모집중"),
-        Card(name:"장금이",title: "김치 담그기", date: "8월 15일 토요일 오전 10시", location: "시청 앞 광장",tags: ["메뉴 추천","건강식","요리"],ing: "모집중"),
-        Card(name:"장금이",title: "떡 만들기", date: "9월 5일 일요일 오후 2시", location: "문화센터",tags: ["메뉴 추천","건강식","요리"],ing: "모집중")
+        Card(name:"장금이",title: "초계 국수 만들어요", date: "7월 30일 화요일 오후 7시", location: "안서초등학교", tags: ["메뉴 추천","건강식"],ing: "모집중"),
+        Card(name:"장금이",title: "김치 담그기", date: "8월 15일 토요일 오전 10시", location: "시청 앞 광장",tags: ["메뉴 추천","건강식"],ing: "모집중"),
+        Card(name:"장금이",title: "떡 만들기", date: "9월 5일 일요일 오후 2시", location: "문화센터",tags: ["메뉴 추천","건강식"],ing: "모집중")
     ]
     private let tabContents = [
         TabContent(imageName: "banner1", title: "우리 같이 미니 김장할래?", content: "김: 김치 만들고\n치: 치~ 인구 할래? 끝나고 웃놀이 한 판!", date: "10월 5일", ing: "모집중"),
@@ -149,7 +149,7 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 10) {
                 Text("Today\n뉴스레터")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .padding(.top,10)
                     .padding(.leading,15)
 
@@ -157,7 +157,7 @@ struct HomeView: View {
                     Text(content)
                         .font(.system(size: 14, weight: .medium))
                         .bold()
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .padding()
                 }
                 Spacer()
@@ -168,11 +168,7 @@ struct HomeView: View {
                 
             }
             .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color.black.opacity(0.6), Color.black.opacity(0.1)]),
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+                Color.sub2Color
                 .cornerRadius(10)
             )
         }
@@ -232,6 +228,7 @@ private func smallestCardView() -> some View {
             .font(.system(size: 20, weight: .semibold))
             .padding(.top,15)
             .frame(width: 52)
+            .foregroundColor(Color.white)
         
         HStack(spacing: 10) {
             Text("만들기")
@@ -255,7 +252,7 @@ private func smallestCardView() -> some View {
         }
     }
     .padding(.leading, 15)
-    .background(Color.sub2Color)
+    .background(Color.sub3Color)
     .cornerRadius(10)
     .frame(width: 190,height: 120)
     .shadow(color: Color.black.opacity(0.2), radius: 8, x: 0, y: 0)

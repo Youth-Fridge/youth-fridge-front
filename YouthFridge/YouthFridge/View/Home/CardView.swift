@@ -19,17 +19,22 @@ struct CardView: View {
                                 Circle()
                                     .fill(Color.gray)
                                     .frame(width: 50, height: 30)
-                                    .padding(.top,25)
                                 Text(viewModel.card.name)
                                     .font(.system(size: 10))
                                     .padding(.leading, 5)
-                                    .padding(.top,25)
                                 Spacer()
                                 HStack(spacing: 5) {
                                     ForEach(viewModel.card.tags, id: \.self) { tag in
                                         TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
                                     }       
-                                    .padding(.top,25)
+                                    HStack {
+                                        Text(viewModel.card.ing)
+                                                   .background(Color.clear)
+                                                   .foregroundColor(.white)
+                                                   .cornerRadius(10)
+                                                   .modifier(CustomViewModifier(color: .white))
+                                                   .padding([.trailing], 10)
+                                    }
                                 }
                             
                         .foregroundColor(.white)
@@ -40,31 +45,23 @@ struct CardView: View {
                 Text(viewModel.card.title)
                     .font(.system(size: 26))
                     .bold()
-                    .padding(.leading,40)
+                    .padding(.leading)
                 
                 HStack {
                     Image("clock")
                     Text(card.date)
                         .font(.system(size: 10))
                 }
-                .padding(.leading,40)
+                .padding(.leading)
                 HStack {
                     Image("map-pin")
                     Text(viewModel.card.location)
                         .font(.system(size: 10))
                         
                 }
-                .padding(.leading,40)
-                HStack {
-                    Spacer()
-                    Text(viewModel.card.ing)
-                               .background(Color.clear)
-                               .foregroundColor(.white)
-                               .cornerRadius(10)
-                               .modifier(CustomViewModifier(color: .white))
-                               .padding([.trailing], 10)
-                }
-                .padding(.leading,40)
+                .padding(.leading)
+                
+               
             }
             
         }

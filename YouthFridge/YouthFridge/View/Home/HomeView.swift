@@ -9,7 +9,9 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
     @State private var currentIndex = 0
+    @State private var selectedImageIndex: Int = 0
     @State private var daysRemaining = 21 // 남은 일수
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
@@ -131,13 +133,22 @@ struct HomeView: View {
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image("Ellipse")
-                        .resizable()
-                        .frame(width: 36, height: 36)
-                        .clipShape(Circle())
+                    if selectedImageIndex > 0 && selectedImageIndex <= profileImages.count {
+                        Image(profileImages[selectedImageIndex - 1])
+                            .resizable()
+                            .frame(width: 36,height: 36)
+                            .clipShape(Circle())
+                    } else {
+                        Image("Ellipse")
+                            .resizable()
+                            .frame(width: 36, height: 36)
+                            .clipShape(Circle())
+                    }
+                    
                 }
             }
             .onAppear {
+                self.selectedImageIndex = getSelectedImageIndex()
                 startTimer()
             }
         }
@@ -182,6 +193,9 @@ struct HomeView: View {
                 currentIndex = (currentIndex + 1) % cards.count
             }
         }
+    }
+    private func getSelectedImageIndex() -> Int {
+        return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }
 }
 

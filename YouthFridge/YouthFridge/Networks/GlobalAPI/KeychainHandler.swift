@@ -13,7 +13,6 @@ struct KeychainHandler {
     
     private let keychain = KeychainWrapper(serviceName: "YouthFridge", accessGroup: "YouthFridge.iOS")
     private let accessTokenKey = "accessToken"
-    private let refreshTokenKey = "refreshToken"
     private let kakaoUserIDKey = "kakaoUserID"
     private let providerTokenKey = "providerToken"
     private let authorizationCodeKey = "authorizationCode"
@@ -37,16 +36,6 @@ struct KeychainHandler {
             KeychainWrapper.standard.set(newValue, forKey: accessTokenKey)
         }
     }
-    
-    var refreshToken: String {
-        get {
-            return KeychainWrapper.standard.string(forKey: refreshTokenKey) ?? ""
-        }
-        set {
-            KeychainWrapper.standard.set(newValue, forKey: refreshTokenKey)
-        }
-    }
-    
     var kakaoUserID: Int {
         get {
             return KeychainWrapper.standard.integer(forKey: kakaoUserIDKey) ?? 0

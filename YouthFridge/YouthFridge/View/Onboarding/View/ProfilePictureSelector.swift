@@ -42,7 +42,7 @@ struct ProfilePictureSelector: View {
                                     .scaledToFit()
                                     .frame(maxWidth: 40, maxHeight: 40)
                                     .clipShape(Circle())
-                                    .overlay(Circle().stroke(tempSelectedImage == bigProfileImages[index] ? Color.black : Color.clear, lineWidth: 2))
+                                    .overlay(Circle().stroke(tempSelectedImage == bigProfileImages[index] ? Color.main1Color : Color.clear, lineWidth: 2))
                                     .onTapGesture {
                                         tempSelectedImage = bigProfileImages[index]
                                         saveSelectedImageIndex(index + 1)

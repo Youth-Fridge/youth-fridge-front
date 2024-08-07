@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "image5.png",
+      "filename" : "free-icon-donut-1153132 3.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "image5@2x.png",
+      "filename" : "free-icon-donut-1153132 3@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "image5@3x.png",
+      "filename" : "free-icon-donut-1153132 3@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

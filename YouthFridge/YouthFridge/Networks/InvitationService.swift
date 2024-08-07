@@ -84,13 +84,14 @@ extension InvitationService: TargetType {
         var headers: [String: String] = ["Content-Type": "application/json"]
         
         if let accessToken = getAccessToken() {
-            headers["Authorization"] = "Bearer \(accessToken)"
+            headers["Authorization"] = accessToken
         }
         
         return headers
     }
     
     private func getAccessToken() -> String? {
-        return UserDefaults.standard.string(forKey: "accessToken")
+        
+            return KeychainHandler.shared.accessToken
     }
 }

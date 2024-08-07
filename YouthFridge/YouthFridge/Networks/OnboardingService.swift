@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import SwiftKeychainWrapper
 
 enum OnboardingService {
     case signUp(Data)
@@ -28,8 +29,17 @@ extension OnboardingService: TargetType {
     }
     
     var headers: [String : String]? {
-
-        return ["Content-Type": "application/json"]
+        var headers = ["Content-Type": "application/json"]
+        
+        switch self {
+        case .login:
+            if let accessToken = getAccessToken() {
+                headers["Authorization"] = "Bearer \(accessToken)"
+            }
+        default:
+            break
+        }
+        return headers
     }
     
     var baseURL: URL {
@@ -54,5 +64,9 @@ extension OnboardingService: TargetType {
         case .nicknameCheck:
             return .get
         }
+    }
+    
+    private func getAccessToken() -> String? {
+        return KeychainWrapper.standard.string(forKey: "accessToken")
     }
 }

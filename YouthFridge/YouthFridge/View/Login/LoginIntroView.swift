@@ -14,7 +14,7 @@ struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
     @State private var appleSignInCoordinator: AppleSignInCoordinator?
     @State private var type: String = ""
-
+    @State private var isPresentedMainTabView: Bool = false
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -125,7 +125,17 @@ struct LoginIntroView: View {
             }
         }
     }
-
+    private func performBackendLogin(userID: String,email:String,type: String) {
+        let loginRequest = LoginRequest(email: email, type: type, username: userID, token: <#T##String#>)
+        OnboardingAPI.shared.login(loginRequest) { result in
+            switch result {
+            case .success:
+                self.isPresentedMainTabView = true
+            case .failure(let error):
+                print("로그인 실패: \(error.localizedDescription)")
+            }
+        }
+    }
     private func performAppleSignIn() {
         let coordinator = AppleSignInCoordinator()
         coordinator.startSignInWithAppleFlow(onSuccess: {
@@ -169,6 +179,7 @@ class AppleSignInCoordinator: NSObject, ASAuthorizationControllerDelegate, ASAut
             let email = appleIDCredential.email
             
             print("User ID: \(userIdentifier)")
+            UserDefaults.standard.setValue(userIdentifier, forKey: "userID")
             print("Full Name: \(String(describing: fullName))")
             print("Email: \(String(describing: email))")
             

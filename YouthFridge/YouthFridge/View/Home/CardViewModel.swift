@@ -10,8 +10,10 @@ import Combine
 
 class CardViewModel: ObservableObject {
     @Published var card: Card
+    @Published var image: Image
     
     init(card: Card) {
         self.card = card
+        self.image = Image(card.imageName)
     }
 }

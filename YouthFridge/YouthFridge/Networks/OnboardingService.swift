@@ -28,19 +28,6 @@ extension OnboardingService: TargetType {
     
     }
     
-    var headers: [String : String]? {
-        var headers = ["Content-Type": "application/json"]
-        
-        switch self {
-        case .login:
-            if let accessToken = getAccessToken() {
-                headers["Authorization"] = "Bearer \(accessToken)"
-            }
-        default:
-            break
-        }
-        return headers
-    }
     
     var baseURL: URL {
         return URL(string: GeneralAPI.baseURL)!
@@ -66,7 +53,8 @@ extension OnboardingService: TargetType {
         }
     }
     
-    private func getAccessToken() -> String? {
-        return KeychainWrapper.standard.string(forKey: "accessToken")
+    var headers: [String : String]? {
+        var headers = ["Content-Type": "application/json"]
+        return headers
     }
 }

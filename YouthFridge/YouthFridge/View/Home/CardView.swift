@@ -9,70 +9,70 @@ import SwiftUI
 
 struct CardView: View {
     @ObservedObject var viewModel: CardViewModel
-    let card: Card
     let backgroundColor: Color
-    let tags: [String]
+    
     var body: some View {
-        HStack() {
-            VStack(alignment: .leading) {
-                            HStack(spacing: 0) {
-                                Circle()
-                                    .fill(Color.gray)
-                                    .frame(width: 50, height: 30)
-                                Text(viewModel.card.name)
-                                    .font(.system(size: 10))
-                                    .padding(.leading, 5)
-                                Spacer()
-                                HStack(spacing: 5) {
-                                    ForEach(viewModel.card.tags, id: \.self) { tag in
-                                        TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
-                                    }       
-                                    HStack {
-                                        Text(viewModel.card.ing)
-                                                   .background(Color.clear)
-                                                   .foregroundColor(.white)
-                                                   .cornerRadius(10)
-                                                   .modifier(CustomViewModifier(color: .white))
-                                                   .padding([.trailing], 10)
-                                    }
-                                }
-                            
+        ZStack(alignment: .bottomTrailing) {
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack(spacing: 0) {
+                        Circle()
+                            .fill(Color.gray)
+                            .frame(width: 50, height: 30)
+                        Text(viewModel.card.name)
+                            .font(.system(size: 10))
+                            .padding(.leading, 5)
+                        Spacer()
+                        HStack(spacing: 5) {
+                            ForEach(viewModel.card.tags, id: \.self) { tag in
+                                TextWithBackground(text: tag, backgroundColor: Color.gray.opacity(0.2))
+                            }
+                            HStack {
+                                Text(viewModel.card.ing)
+                                    .background(Color.clear)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .modifier(CustomViewModifier(color: .white))
+                                    .padding([.trailing], 10)
+                            }
+                        }
                         .foregroundColor(.white)
                         .padding(.leading, 6)
                         .cornerRadius(4)
- 
-                }
-                Text(viewModel.card.title)
-                    .font(.system(size: 26))
-                    .bold()
+                    }
+                    Text(viewModel.card.title)
+                        .font(.system(size: 26))
+                        .bold()
+                        .padding(.leading)
+                    
+                    HStack {
+                        Image("clock")
+                        Text(viewModel.card.date)
+                            .font(.system(size: 10))
+                    }
                     .padding(.leading)
-                
-                HStack {
-                    Image("clock")
-                    Text(card.date)
-                        .font(.system(size: 10))
+                    HStack {
+                        Image("map-pin")
+                        Text(viewModel.card.location)
+                            .font(.system(size: 10))
+                    }
+                    .padding(.leading)
                 }
-                .padding(.leading)
-                HStack {
-                    Image("map-pin")
-                    Text(viewModel.card.location)
-                        .font(.system(size: 10))
-                        
-                }
-                .padding(.leading)
-                
-               
             }
+            .padding(.trailing, 10)
+            .frame(width: 350, height: 140)
+            .background(backgroundColor)
+            .cornerRadius(10)
+            .foregroundColor(.white)
             
+            viewModel.image
+                .resizable()
+                .frame(width: 70, height: 70)
+                .padding(10)
         }
-        .padding(.trailing,10)
-        .frame(width: 350,height: 140)
-        .background(backgroundColor)
-        .cornerRadius(10)
-        .foregroundColor(.white)
-        
     }
 }
+
 struct CustomViewModifier: ViewModifier {
     var color: Color
     func body(content: Content) -> some View {

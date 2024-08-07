@@ -9,7 +9,5 @@ import Foundation
 
 struct LoginRequest: Codable {
     let email : String
-    let type : String
     let username: String
-    let token: String
 }

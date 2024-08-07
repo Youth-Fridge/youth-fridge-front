@@ -9,12 +9,16 @@ import SwiftUI
 import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
+import SwiftKeychainWrapper
 
 struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
     @State private var appleSignInCoordinator: AppleSignInCoordinator?
     @State private var type: String = ""
     @State private var isPresentedMainTabView: Bool = false
+    @State private var kakaoToken: String? = nil
+    @State private var isNewUser: Bool = false
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
@@ -66,8 +70,13 @@ struct LoginIntroView: View {
                     .foregroundColor(Color.gray4)
             }
             .navigationDestination(isPresented: $isPresentedLoginView) {
-                OnboardingStartView().navigationBarBackButtonHidden()
+                if isNewUser {
+                    OnboardingStartView().navigationBarBackButtonHidden()
+                } else {
+                    MainTabView().navigationBarBackButtonHidden()
+                }
             }
+            
         }
     }
     
@@ -88,7 +97,9 @@ struct LoginIntroView: View {
                     print("카카오톡으로 로그인 성공")
                     self.type = "kakao"
                     UserDefaults.standard.setValue(self.type, forKey: "loginType")
+                    self.kakaoToken = oauthToken?.accessToken
                     self.fetchKakaoUserID()
+
                 }
             }
         } else {
@@ -99,6 +110,7 @@ struct LoginIntroView: View {
                     print("카카오 계정으로 로그인 성공")
                     self.type = "kakao"
                     UserDefaults.standard.setValue(self.type, forKey: "loginType")
+                    self.kakaoToken = oauthToken?.accessToken
                     self.fetchKakaoUserID()
                 }
             }
@@ -121,21 +133,40 @@ struct LoginIntroView: View {
                     UserDefaults.standard.setValue(email, forKey: "userEmail")
                     print("카카오 사용자 이메일 : \(email)")
                 }
-                self.isPresentedLoginView = true
+                if let token = self.kakaoToken {
+                    print("token값:\(token)")
+                    self.performBackendLogin(userID: UserDefaults.standard.string(forKey: "userID") ?? "", email: UserDefaults.standard.string(forKey: "userEmail") ?? "")
+                }
             }
         }
     }
-    private func performBackendLogin(userID: String,email:String,type: String) {
-        let loginRequest = LoginRequest(email: email, type: type, username: userID, token: <#T##String#>)
+    private func performBackendLogin(userID: String, email: String) {
+        let loginRequest = LoginRequest(email: email, username: userID)
+        print(loginRequest)
+        
         OnboardingAPI.shared.login(loginRequest) { result in
             switch result {
-            case .success:
-                self.isPresentedMainTabView = true
+            case .success(()):
+                self.isPresentedLoginView = true
+                print("로그인 성공")
+                
             case .failure(let error):
-                print("로그인 실패: \(error.localizedDescription)")
+                let nsError = error as NSError
+                switch nsError.code {
+                case 400:
+                    self.isNewUser = true
+                    self.isPresentedLoginView = true
+                    print("회원가입 필요")
+                    
+                default:
+                    // Handle other error codes or unknown cases
+                    print("로그인 실패: \(nsError.localizedDescription)")
+                }
             }
         }
     }
+
+
     private func performAppleSignIn() {
         let coordinator = AppleSignInCoordinator()
         coordinator.startSignInWithAppleFlow(onSuccess: {

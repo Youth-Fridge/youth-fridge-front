@@ -15,5 +15,5 @@ struct Card: Identifiable {
     let location: String
     let tags: [String]
     let ing: String
-//    let imojiNumber: Int
+    let imageName: String
 }

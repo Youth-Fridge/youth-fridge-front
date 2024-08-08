@@ -11,7 +11,11 @@ import CoreLocation
 import Combine
 
 class ProfileResearchViewModel: ObservableObject {
-    @Published var nickname: String = ""
+    @Published var nickname: String = "" {
+            didSet {
+                UserDefaults.standard.set(nickname, forKey: "nickname")
+        }
+    }
     @Published var introduceMe: String = ""
     @Published var isShowingProfileSelector: Bool = false
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
@@ -32,8 +36,11 @@ class ProfileResearchViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
 
     init() {
-        setupBindings()
-    }
+       if let savedNickname = UserDefaults.standard.string(forKey: "nickname") {
+           self.nickname = savedNickname
+       }
+       setupBindings()
+   }
     
     private func setupBindings() {
         $nickname

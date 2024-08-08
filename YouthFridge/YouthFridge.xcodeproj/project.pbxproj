@@ -71,6 +71,7 @@
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
+		58C3162C2C650462001374EC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162B2C650462001374EC /* SplashView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -87,7 +88,6 @@
 		58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */; };
 		58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */; };
 		58F645502C62682300DB1C37 /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F6454F2C62682300DB1C37 /* HomeAPI.swift */; };
-		58F645522C63750200DB1C37 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F645512C63750200DB1C37 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +167,7 @@
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
+		58C3162B2C650462001374EC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -186,7 +187,6 @@
 		58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationTopFiveResponse.swift; sourceTree = "<group>"; };
 		58F6454F2C62682300DB1C37 /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
-		58F645512C63750200DB1C37 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -472,6 +472,14 @@
 			path = CreateInvite;
 			sourceTree = "<group>";
 		};
+		58C3162A2C650451001374EC /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				58C3162B2C650462001374EC /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
 		58EA96EF2C5380D100166554 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -546,6 +554,7 @@
 		58EEF7172C43D24000C12C1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				58C3162A2C650451001374EC /* Splash */,
 				58BEC2C32C4EBB5D00C6E524 /* CreateInvite */,
 				58BEC2BD2C4EB18E00C6E524 /* Invitation */,
 				5817D6202C46547C0081323E /* Onboarding */,
@@ -555,7 +564,6 @@
 				5817D5F22C45046A0081323E /* Home */,
 				5817D5ED2C4502270081323E /* MainTab */,
 				58EEF71C2C43D7D400C12C1E /* Login */,
-				58F645512C63750200DB1C37 /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -714,7 +722,6 @@
 			files = (
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
-				58F645522C63750200DB1C37 /* Launch Screen.storyboard in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -793,6 +800,7 @@
 				0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */,
 				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
+				58C3162C2C650462001374EC /* SplashView.swift in Sources */,
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */,
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
@@ -980,7 +988,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1018,7 +1026,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -80,7 +80,7 @@ struct CustomViewModifier: ViewModifier {
             .font(.system(size: 10))
             .padding(6)
             .overlay(
-                RoundedRectangle(cornerSize: CGSize(width: 20, height: 10))
+                RoundedRectangle(cornerSize: CGSize(width: 25, height: 10))
                                     .stroke(lineWidth: 1)
             )
             .foregroundColor(color)

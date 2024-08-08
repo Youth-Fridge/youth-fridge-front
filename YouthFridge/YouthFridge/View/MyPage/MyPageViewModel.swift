@@ -6,16 +6,28 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MyPageViewModel: ObservableObject {
     @Published var myUser: User?
     private var container: DIContainer
+    let bigProfileImages = ["bigBrocoli", "bigPea", "bigCorn", "bigTomato", "bigBranch", "bigPumpkin"]
     init(container: DIContainer) {
         self.container = container
         fetchUserData()
     }
     
     private func fetchUserData() {
-        myUser = User(name: "장금이", profilePicture: "Ellipse20")
+        let selectedImageIndex = getSelectedImageIndex()
+        let profileImage = (selectedImageIndex > 0 && selectedImageIndex <= bigProfileImages.count)
+            ? bigProfileImages[selectedImageIndex - 1]
+            : "Ellipse" 
+        
+        myUser = User(name: "장금이", profilePicture: profileImage)
+    }
+    
+    private func getSelectedImageIndex() -> Int {
+        return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }
 }
+

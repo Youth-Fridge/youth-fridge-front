@@ -51,7 +51,43 @@ class OnboardingAPI {
             }
         }
     }
+    // MARK: - 회원탈퇴 (Member Quit)
+    func quitMember(completion: @escaping (Result<Bool, Error>) -> Void) {
+        let target = OnboardingService.quitMember
+        
+        OnboardingAPI.provider.request(target) { result in
+            switch result {
+            case .success(let response):
+                if let responseString = String(data: response.data, encoding: .utf8) {
+                    print("Response Data: \(responseString)")
+                } else {
+                    print("Unable to convert response data to string")
+                }
 
+                switch response.statusCode {
+                case 200:
+                    do {
+                        let data = try JSONDecoder().decode(BaseResponse<String>.self, from: response.data)
+                        let isSuccess = data.isSuccess && data.result == "회원 탈퇴가 완료되었습니다."
+                        completion(.success(isSuccess))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case 400:
+                    let error = NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "Bad Request"])
+                    completion(.failure(error))
+                case 403:
+                    let error = NSError(domain: "", code: 403, userInfo: [NSLocalizedDescriptionKey: "Forbidden"])
+                    completion(.failure(error))
+                default:
+                    let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "Unhandled status code: \(response.statusCode)"])
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
     // MARK: - 회원가입
     func signUp(_ request: OnboardingRequest, completion: @escaping (Result<Void, Error>) -> Void) {
         do {
@@ -110,6 +146,8 @@ class OnboardingAPI {
                         do {
                             let data = try JSONDecoder().decode(BaseResponse<String>.self, from: response.data)
                             if let accessToken = data.result {
+                                KeychainHandler.shared.accessToken = accessToken
+                                print("로그인 토큰: \(accessToken)")
                                 print("Login successful")
                                 completion(.success(()))
                             } else {

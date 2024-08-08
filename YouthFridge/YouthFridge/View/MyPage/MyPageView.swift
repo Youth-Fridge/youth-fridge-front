@@ -12,7 +12,8 @@ struct MyPageView: View {
     @StateObject var viewModel: MyPageViewModel
     @State private var showDeletePopup = false
     @State private var navigateToMyActivity = false
-    
+    @State private var showLogOutDeletePopup = false
+    @State private var navigateToLoginIntro = false
     var body: some View {
         NavigationStack {
             ZStack {
@@ -44,7 +45,20 @@ struct MyPageView: View {
                         onConfirm: {
                             withAnimation {
                                 showDeletePopup = false
-                                // TODO: - 회원 탈퇴 처리
+                                OnboardingAPI.shared.quitMember { result in
+                                    switch result {
+                                    case .success(let isSuccess):
+                                        if isSuccess {
+                                            KeychainHandler.shared.accessToken = ""
+                                            navigateToLoginIntro = true
+                                        } else {
+                                            print("Failed to quit member.")
+                                        }
+                                    case .failure(let error):
+                                        
+                                        print("Error quitting member: \(error.localizedDescription)")
+                                    }
+                                }
                             }
                         },
                         onCancel: {
@@ -55,11 +69,46 @@ struct MyPageView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .zIndex(1)
                 }
+                if showLogOutDeletePopup {
+                    Color.black.opacity(0.4)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            withAnimation {
+                                showDeletePopup = false
+                            }
+                        }
+                    
+                    PopUpView(
+                        message: "로그아웃 하시겠습니까?",
+                        onClose: {
+                            withAnimation {
+                                showLogOutDeletePopup = false
+                            }
+                        },
+                        onConfirm: {
+                            withAnimation {
+                                KeychainHandler.shared.accessToken = ""
+                                showLogOutDeletePopup = false
+                                navigateToLoginIntro = true
+                                // TODO: - 회원 로그아웃 처리
+                            }
+                        },
+                        onCancel: {
+                            withAnimation {
+                                showLogOutDeletePopup = false
+                            }
+                    })
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .zIndex(1)
+                }
                 NavigationLink(
                     destination: MyActivityView(viewModel: viewModel),
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )
+                .navigationDestination(isPresented: $navigateToLoginIntro) {
+                    LoginIntroView().navigationBarBackButtonHidden()
+                }
             }
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
@@ -138,6 +187,12 @@ struct MyPageView: View {
                 } else if item == "회원탈퇴" {
                     Button(action: {
                         showDeletePopup = true
+                    }) {
+                        ActivityCell(title: item, subTitles: nil)
+                    }
+                } else if item == "로그아웃" {
+                    Button(action: {
+                        showLogOutDeletePopup = true
                     }) {
                         ActivityCell(title: item, subTitles: nil)
                     }

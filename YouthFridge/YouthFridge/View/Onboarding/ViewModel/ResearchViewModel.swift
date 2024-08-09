@@ -28,6 +28,8 @@ class ResearchViewModel: ObservableObject {
     func saveSelectedCategories(_ selectedIndices: [Int]) {
         let incrementedIndices = selectedIndices.map { $0 + 1 }
         UserDefaults.standard.set(incrementedIndices, forKey: selectedCategoryKey)
+        print(selectedCategoryKey)
+        UserDefaults.standard.synchronize()
         if let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] {
             print("Saved categories: \(savedCategories)")
         } else {

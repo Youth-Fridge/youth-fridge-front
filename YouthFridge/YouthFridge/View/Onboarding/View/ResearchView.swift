@@ -91,7 +91,6 @@ struct ResearchView: View {
             }
             .onAppear {
                 viewModel.loadCategories()
-                selectedCategories = Set(viewModel.loadSelectedCategories())
             }
             .navigationBarHidden(true)
         }

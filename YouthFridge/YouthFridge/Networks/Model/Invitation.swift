@@ -19,20 +19,6 @@ struct Invitation: Codable {
     let imageNumber: Int
     let activityPlans: [String]
     let interests: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case launchDate = "launch_date"
-        case startTime = "start_time"
-        case endTime = "end_time"
-        case kakaoLink = "kakao_link"
-        case launchPlace = "launch_place"
-        case emojiNumber = "emoji_number"
-        case totalMember = "total_member"
-        case imageNumber = "image_number"
-        case activityPlans = "activity_plans"
-        case interests
-    }
 
     init(name: String, launchDate: String, startTime: String, endTime: String, kakaoLink: String, launchPlace: String, emojiNumber: Int, totalMember: Int, imageNumber: Int, activityPlans: [String], interests: [String]) {
         self.name = name

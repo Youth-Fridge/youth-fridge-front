@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StepTwoView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
-    @State private var selectedImage: String = "invitationImage2"
+    @State private var selectedImage: String = "invitationImage3"
     @State private var showModal: Bool = false
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct StepTwoView: View {
                 .frame(width: 324,height: 384)
                 .padding(.top,20)
             HStack(spacing: 10) {
-                ForEach(["invitationImage", "invitationImage3", "invitationImage4", "invitationImage5", "invitationImage6"], id: \.self) { imageName in
+                ForEach(["invitationImage", "invitationImage2", "invitationImage4", "invitationImage5", "invitationImage6"], id: \.self) { imageName in
                     if imageName == "invitationImage6" {
                         ZStack {
                             Image(imageName)
@@ -58,7 +58,7 @@ struct StepTwoView: View {
             .padding(.horizontal, 20)
         }
         .sheet(isPresented: $showModal) {
-            ImageGridView(selectedImage: $selectedImage)
+            ImageGridView(selectedImage: $selectedImage, selectedImageNumber: $viewModel.imageNumber)
 
         }
     }

@@ -83,7 +83,7 @@ extension InvitationAPI: TargetType {
         var headers: [String: String] = ["Content-Type": "application/json"]
         
         if let accessToken = getAccessToken() {
-            headers["Authorization"] = "Bearer \(accessToken)"
+            headers["Authorization"] = accessToken
         }
         
         return headers

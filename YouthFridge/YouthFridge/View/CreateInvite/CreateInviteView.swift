@@ -66,7 +66,6 @@ struct CreateInviteView: View {
 struct StepOneView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var showEmojiModal = false
-    @State private var date = Date()
     @State private var isShowingProfileSelector = false
     @State private var selectedProfileImage: UIImage? = nil
     @State private var selectedProfileImageName: String? = nil
@@ -75,16 +74,14 @@ struct StepOneView: View {
         "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
         "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
     ]
+
     private var filteredEndTimes: [String] {
-        if let startIndex = times.firstIndex(of: viewModel.selectedStartTime) {
-            return Array(times[startIndex...])
-        } else {
-            return times
-        }
+        times.filter { $0 > selectedStartTime }
     }
     
     @State private var isDatePickerVisible: Bool = false
-    @State private var selectedDate: Date = Date()
+    @State private var selectedStartTime: String = ""
+    @State private var selectedEndTime: String = ""
     
     private var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
@@ -101,7 +98,6 @@ struct StepOneView: View {
                 Button(action: {
                     showEmojiModal = true
                     isShowingProfileSelector = true
-                    
                 }) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 8)
@@ -118,7 +114,7 @@ struct StepOneView: View {
                             .frame(width: 16, height: 16)
                         
                         if let selectedProfileImageName = selectedProfileImageName {
-                            Image(selectedProfileImageName) // 선택된 이모지 이미지 표시
+                            Image(selectedProfileImageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
@@ -127,7 +123,7 @@ struct StepOneView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
                 .sheet(isPresented: $isShowingProfileSelector) {
-                    EmojiSelectionView(selectedImage: $selectedProfileImageName, isShowing: $isShowingProfileSelector)
+                    EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
                         .presentationDetents([.medium, .large])
                 }
                 .animation(.easeInOut, value: isShowingProfileSelector)
@@ -135,7 +131,7 @@ struct StepOneView: View {
                 Text("모임 명")
                     .font(.system(size: 16, weight: .semibold))
                 
-                TextField("10글자 이내", text: $viewModel.meetingName)
+                TextField("10글자 이내", text: $viewModel.name)
                     .font(.system(size: 16))
                     .padding()
                     .overlay {
@@ -207,7 +203,7 @@ struct StepOneView: View {
                 .padding(.bottom,20)
                 Text("모임 장소")
                     .font(.system(size: 16,weight: .semibold))
-                TextField("8글자 이내", text: $viewModel.meetingRoom)
+                TextField("8글자 이내", text: $viewModel.launchPlace)
                     .padding()
                     .font(.system(size: 12))
                     .overlay {
@@ -222,14 +218,14 @@ struct StepOneView: View {
                 Menu {
                     ForEach(1..<9) { number in
                         Button(action: {
-                            viewModel.meetingParticipants = number
+                            viewModel.totalMember = number
                         }) {
                             Text("\(number)")
                         }
                     }
                 } label: {
                     HStack {
-                        Text("\(viewModel.meetingParticipants)")
+                        Text("\(viewModel.totalMember)")
                             .foregroundColor(.black)
                         Spacer()
                         Image(systemName: "chevron.down")
@@ -247,21 +243,32 @@ struct StepOneView: View {
                     Image("calendar")
                         .resizable()
                         .frame(width: 16, height: 16)
+                }
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(width: 223, height: 40)
+                        .cornerRadius(6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 6)
+                                .inset(by: 0.50)
+                                .stroke(Color(red: 0.89, green: 0.89, blue: 0.89), lineWidth: 0.50)
+                        )
+                    Text(dateFormatter.string(from: viewModel.launchDate))
+                        .font(.system(size: 16))
+                        .padding(.leading, 8)
                         .onTapGesture {
                             withAnimation {
                                 isDatePickerVisible.toggle()
                             }
                         }
-                    
-                    Text(dateFormatter.string(from: selectedDate))
-                        .font(.system(size: 16))
-                        .padding(.leading, 8)
                 }
                 
                 if isDatePickerVisible {
                     DatePicker(
                         "",
-                        selection: $selectedDate,
+                        selection: $viewModel.launchDate,
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(GraphicalDatePickerStyle())
@@ -281,10 +288,10 @@ struct StepOneView: View {
                     Menu {
                         ForEach(times, id: \.self) { time in
                             Button(action: {
+                                selectedStartTime = time
                                 viewModel.selectedStartTime = time
-                                // 종료 시간이 선택된 시작 시간보다 이전인 경우 종료 시간 초기화
-                                if let endIndex = times.firstIndex(of: viewModel.selectedEndTime), endIndex < times.firstIndex(of: time)! {
-                                    viewModel.selectedEndTime = ""
+                                if selectedEndTime < time {
+                                    selectedEndTime = time
                                 }
                             }) {
                                 Text(time)
@@ -293,8 +300,8 @@ struct StepOneView: View {
                         }
                     } label: {
                         HStack {
-                            Text(viewModel.selectedStartTime.isEmpty ? "시작 시간" : viewModel.selectedStartTime)
-                                .foregroundColor(.black)
+                            Text(selectedStartTime.isEmpty ? "시작 시간" : selectedStartTime)
+                                .foregroundColor(selectedStartTime.isEmpty ? .gray : .black)
                             Spacer()
                             Image(systemName: "arrowtriangle.down.fill")
                                 .foregroundColor(.gray)
@@ -307,18 +314,20 @@ struct StepOneView: View {
                     }
                     
                     Menu {
-                        ForEach(filteredEndTimes, id: \.self) { time in
+                        ForEach(times, id: \.self) { time in
                             Button(action: {
                                 viewModel.selectedEndTime = time
+                                selectedEndTime = time
                             }) {
                                 Text(time)
-                                    .foregroundColor(.black)
+                                    .foregroundColor(filteredEndTimes.contains(time) ? .black : .gray)
                             }
+                            .disabled(!filteredEndTimes.contains(time))
                         }
                     } label: {
                         HStack {
-                            Text(viewModel.selectedEndTime.isEmpty ? "종료 시간" : viewModel.selectedEndTime)
-                                .foregroundColor(.black)
+                            Text(selectedEndTime.isEmpty ? "종료 시간" : selectedEndTime)
+                                .foregroundColor(selectedEndTime.isEmpty ? .gray : .black)
                             Spacer()
                             Image(systemName: "arrowtriangle.down.fill")
                                 .foregroundColor(.gray)
@@ -330,11 +339,27 @@ struct StepOneView: View {
                         )
                     }
                 }
-                .padding(.horizontal)
+                .frame(maxWidth: .infinity)
+                
+                Text("오픈 채팅")
+                    .font(.system(size: 16, weight: .semibold))
+                    .padding(.horizontal)
+                
+                TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
+                    .font(.system(size: 16))
+                    .padding()
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(
+                                Color(uiColor: .gray2),
+                                lineWidth: 1
+                            )
+                    }
+                    .frame(height: 20)
             }
         }
         .sheet(isPresented: $isShowingProfileSelector) {
-            EmojiSelectionView(selectedImage: $selectedProfileImageName, isShowing: $isShowingProfileSelector)
+            EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
     }

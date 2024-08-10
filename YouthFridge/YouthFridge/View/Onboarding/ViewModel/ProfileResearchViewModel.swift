@@ -91,8 +91,7 @@ class ProfileResearchViewModel: ObservableObject {
         let username = UserDefaults.standard.string(forKey: "userID") ?? "unknown"
         let inquiryNumList = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] ?? []
         let profileImageNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
-//        let signupRequest = OnboardingRequest (type: type, email: email, username: username, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
-        let signupRequest = OnboardingRequest (type: type, email: "tnddkqkk@naver.com", username: "kakao-tnddkqkk@naver.com", nickname: "수진00", introduce: "하루에 밥 세끼는 필수", role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: [1,2,3])
+        let signupRequest = OnboardingRequest (type: type, email: email, username: username, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
 
         OnboardingAPI.shared.signUp(signupRequest) { result in
             DispatchQueue.main.async {

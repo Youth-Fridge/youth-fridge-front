@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ImageGridView: View {
     @Binding var selectedImage: String
-    let images = ["invitationImage", "invitationImage2", "invitationImage3", "invitationImage4", "invitationImage5", "invitationImage6"]
-    
+    @Binding var selectedImageNumber: Int
     @Environment(\.presentationMode) var presentationMode
+    
+    let images = InvitationImage.allCases
 
     var body: some View {
         VStack {
@@ -19,7 +20,7 @@ struct ImageGridView: View {
                 .font(.system(size: 24, weight: .semibold))
                 .padding()
             
-            GridView(images: images, selectedImage: $selectedImage)
+            GridView(images: images, selectedImage: $selectedImage, selectedImageNumber: $selectedImageNumber)
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }) {
@@ -36,23 +37,27 @@ struct ImageGridView: View {
 }
 
 struct GridView: View {
-    let images: [String]
+    let images: [InvitationImage]
     @Binding var selectedImage: String
+    @Binding var selectedImageNumber: Int
+    
     let columns = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 10) {
-                ForEach(images, id: \.self) { imageName in
-                    Image(imageName)
+                ForEach(images, id: \.self) { image in
+                    Image(image.imageName)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 140, height: 186)
                         .clipped()
                         .onTapGesture {
-                            selectedImage = imageName
+                            selectedImage = image.imageName
+                            selectedImageNumber = image.rawValue
+                            print("초대장 이미지 뭐 선택함 ?!! \(image.rawValue)")
                         }
-                        .border(Color.main1Color, width: selectedImage == imageName ? 4 : 0)
+                        .border(Color.main1Color, width: selectedImage == image.imageName ? 4 : 0)
                 }
             }
             .padding()

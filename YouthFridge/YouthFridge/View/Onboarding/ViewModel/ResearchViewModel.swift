@@ -15,6 +15,7 @@ class ResearchViewModel: ObservableObject {
         loadCategories()
     }
     
+    // Initialize the categories
     func loadCategories() {
         self.categories = [
             "⏰ 바쁘다 바빠 간편식이 최고야!",
@@ -28,19 +29,19 @@ class ResearchViewModel: ObservableObject {
     func saveSelectedCategories(_ selectedIndices: [Int]) {
         let incrementedIndices = selectedIndices.map { $0 + 1 }
         UserDefaults.standard.set(incrementedIndices, forKey: selectedCategoryKey)
+        UserDefaults.standard.synchronize()
+        
         if let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] {
             print("Saved categories: \(savedCategories)")
         } else {
             print("Failed to save categories.")
         }
     }
-    
     func loadSelectedCategories() -> [Int] {
         guard let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] else {
-            return []
+            return [1]
         }
         return savedCategories.map { $0 - 1 }
     }
 }
-
 

@@ -75,6 +75,7 @@
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
 		58C3162C2C650462001374EC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162B2C650462001374EC /* SplashView.swift */; };
+		58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162E2C651310001374EC /* LogOutPopUpView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -174,6 +175,7 @@
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
 		58C3162B2C650462001374EC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		58C3162E2C651310001374EC /* LogOutPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			children = (
 				0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */,
 				0A7129D12C4E5CC800D4C08A /* PopUpView.swift */,
+				58C3162E2C651310001374EC /* LogOutPopUpView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
+				58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */,
 				5847F1362C5E589B001AC04E /* ProfileResearchViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,
 				5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */,

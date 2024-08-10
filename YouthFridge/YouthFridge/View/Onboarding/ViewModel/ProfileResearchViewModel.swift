@@ -97,8 +97,7 @@ class ProfileResearchViewModel: ObservableObject {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.alertMessage = "회원가입 성공!"
-                    self.showAlert = true
+                   print("회원가입 성공")
                 case .failure(let error):
                     self.alertMessage = "회원가입 실패: \(error.localizedDescription)"
                     self.showAlert = true

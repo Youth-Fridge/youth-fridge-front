@@ -12,7 +12,7 @@ struct ResearchView: View {
     @State private var selectedCategories: Set<Int> = []
     @State private var showAlert = false
     @State private var navigateToNextView = false
-
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,13 +26,13 @@ struct ResearchView: View {
                     .padding(.bottom, 10)
                     .padding([.leading, .top], 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 Text("관심있는 카테고리를 선택해주세요")
                     .font(.system(size: 14))
                     .multilineTextAlignment(.leading)
                     .padding([.leading, .bottom], 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 VStack(spacing: 25) {
                     ForEach(viewModel.categories.indices, id: \.self) { index in
                         Button(action: {
@@ -60,7 +60,6 @@ struct ResearchView: View {
                 
                 Spacer()
                 
-                // "다음" 버튼
                 Button(action: {
                     if !selectedCategories.isEmpty {
                         viewModel.saveSelectedCategories(Array(selectedCategories))
@@ -69,16 +68,13 @@ struct ResearchView: View {
                         showAlert = true
                     }
                 }) {
-                    NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden()) {
-                        
-                        Text("다음")
-                            .font(.system(size: 20, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                            .frame(width: 320, height: 60)
-                            .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)
-                            .cornerRadius(8)
-                    }
+                    Text("다음")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(width: 320, height: 60)
+                        .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)
+                        .cornerRadius(8)
                 }
                 .disabled(selectedCategories.isEmpty)
                 .alert(isPresented: $showAlert) {
@@ -87,6 +83,9 @@ struct ResearchView: View {
                         message: Text("카테고리를 선택해주세요."),
                         dismissButton: .default(Text("확인"))
                     )
+                }
+                NavigationLink(destination: ProfileResearchView().navigationBarBackButtonHidden(), isActive: $navigateToNextView) {
+                    EmptyView()
                 }
             }
             .onAppear {

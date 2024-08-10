@@ -21,7 +21,11 @@
 		0A7026FF2C5A9CD30083C7A0 /* MyInvitationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */; };
 		0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */; };
 		0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7129D12C4E5CC800D4C08A /* PopUpView.swift */; };
+		0A89CFD52C67C67000A3A437 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CFD42C67C67000A3A437 /* Emoji.swift */; };
+		0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
+		0ABCD6062C6525BC00A726CA /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6052C6525BC00A726CA /* Invitation.swift */; };
+		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
 		58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
@@ -123,7 +127,11 @@
 		0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationResponse.swift; sourceTree = "<group>"; };
 		0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationResponse.swift; sourceTree = "<group>"; };
 		0A7129D12C4E5CC800D4C08A /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		0A89CFD42C67C67000A3A437 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationImage.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
+		0ABCD6052C6525BC00A726CA /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
 		58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallestCardView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
@@ -227,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				0A7026FB2C5A9C770083C7A0 /* DTO */,
+				0ABCD6052C6525BC00A726CA /* Invitation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -244,6 +253,15 @@
 			path = DTO;
 			sourceTree = "<group>";
 		};
+		0A89CFD32C67C63B00A3A437 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A89CFD42C67C67000A3A437 /* Emoji.swift */,
+				0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0A971D052C4C413D009F3B13 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +270,13 @@
 				58C3162E2C651310001374EC /* LogOutPopUpView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0ABCD5F62C65197500A726CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5817D5ED2C4502270081323E /* MainTab */ = {
@@ -419,6 +444,7 @@
 		5847F15A2C60BA78001AC04E /* Networks */ = {
 			isa = PBXGroup;
 			children = (
+				0A7026FA2C5A9C700083C7A0 /* Model */,
 				5847F1702C624905001AC04E /* GlobalAPI */,
 				5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */,
 				0A7026F62C5A82A00083C7A0 /* InvitationService.swift */,
@@ -449,6 +475,7 @@
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
+				0ABCD5F62C65197500A726CA /* ViewModel */,
 				58BEC2BE2C4EB19800C6E524 /* View */,
 			);
 			path = Invitation;
@@ -466,6 +493,7 @@
 		58BEC2C32C4EBB5D00C6E524 /* CreateInvite */ = {
 			isa = PBXGroup;
 			children = (
+				0A89CFD32C67C63B00A3A437 /* Model */,
 				58EA96EF2C5380D100166554 /* ViewModel */,
 				58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */,
 				58EA96F22C57742400166554 /* StepTwoView.swift */,
@@ -523,7 +551,6 @@
 				58EEF71A2C43D25D00C12C1E /* Extension */,
 				58EEF7192C43D25400C12C1E /* General */,
 				58EEF7172C43D24000C12C1E /* View */,
-				0A7026FA2C5A9C700083C7A0 /* Model */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 			);
 			path = YouthFridge;
@@ -583,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */,
+				0ABCD6072C652A1900A726CA /* JSONUtilities.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -764,6 +792,7 @@
 				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
+				0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */,
 				5817D6142C462FE70081323E /* ActivityCardView.swift in Sources */,
 				58EEF7202C43ECF600C12C1E /* Color+Extension.swift in Sources */,
 				58EA96F52C57745A00166554 /* ImageGridView.swift in Sources */,
@@ -809,14 +838,17 @@
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
 				5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */,
 				0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */,
+				0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
 				58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */,
 				5847F1362C5E589B001AC04E /* ProfileResearchViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,
 				5817D62B2C465B5B0081323E /* ResearchViewModel.swift in Sources */,
+				0A89CFD52C67C67000A3A437 /* Emoji.swift in Sources */,
 				0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */,
 				58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */,
+				0ABCD6062C6525BC00A726CA /* Invitation.swift in Sources */,
 				5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */,
 				5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */,
 			);
@@ -980,6 +1012,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = YouthFridge/YouthFridge.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -996,7 +1029,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1018,6 +1051,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = YouthFridge/YouthFridge.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1034,7 +1068,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

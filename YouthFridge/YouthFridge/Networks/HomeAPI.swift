@@ -10,11 +10,11 @@ import Moya
 
 class HomeAPI {
     static let shared = HomeAPI()
-    static let provider = MoyaProvider<InvitationService>()
+    static let provider = MoyaProvider<InvitationAPI>()
 
     // MARK: - Top Five Invitations
     func fetchTopFiveInvitations(completion: @escaping (Result<[InvitationTopFiveResponse], Error>) -> Void) {
-        InvitationAPI.provider.request(.getInvitationsTop5) { result in
+        InvitationService.provider.request(.getInvitationsTop5) { result in
             switch result {
             case .success(let response):
                 if let responseString = String(data: response.data, encoding: .utf8) {

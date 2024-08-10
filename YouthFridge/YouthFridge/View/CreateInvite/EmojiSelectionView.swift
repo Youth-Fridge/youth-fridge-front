@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct EmojiSelectionView: View {
-    let emojiImages = ["basket", "cooking", "delivery", "desert", "diet", "friends", "healthFood", "hobby", "reading", "recipe","homework","exercise"]
+    let emojiImages = Emoji.allCases.map { $0.imageName }
+    
     @Binding var selectedImage: String?
+    @Binding var selectedEmojiNumber: Int
     @Binding var isShowing: Bool
     @State private var currentPage = 0
+    
     var body: some View {
         VStack {
-            Text("000님")
-            Text("이모지를 선택해 주세요.")
-                .font(.system(size: 18,weight: .semibold))
-                .padding()
+            VStack(alignment: .center) {
+                Text("000님")
+                    .font(.system(size: 18, weight: .semibold))
+                Text("이모지를 선택해 주세요.")
+                    .font(.system(size: 18, weight: .semibold))
+                    .padding()
+            }
+            
             TabView(selection: $currentPage) {
                 ForEach(0..<emojiImages.count/6) { pageIndex in
                     let startIndex = pageIndex * 6
@@ -29,6 +36,13 @@ struct EmojiSelectionView: View {
                             CircleView(imageName: imageName, isSelected: selectedImage == imageName)
                                 .onTapGesture {
                                     selectedImage = imageName
+
+                                    if let unwrappedSelectedImage = selectedImage,
+                                       let selectedEmoji = Emoji.from(imageName: unwrappedSelectedImage) {
+                                        let emojiNumber = selectedEmoji.rawValue
+                                        selectedEmojiNumber = emojiNumber
+                                        print("이모지 몇번 선택했냐능 ????? \(emojiNumber)")
+                                    }
                                 }
                         }
                     }
@@ -43,15 +57,17 @@ struct EmojiSelectionView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.gray.opacity(0.2))
+                .foregroundColor(.gray6)
                 .cornerRadius(8)
                 .padding()
                 
                 Button("저장") {
-                    // Handle the saving action
+                    isShowing = false
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.yellow)
+                .foregroundColor(.gray6)
                 .cornerRadius(8)
                 .padding()
             }

@@ -12,12 +12,14 @@ struct EmojiSelectionView: View {
     @Binding var selectedImage: String?
     @Binding var isShowing: Bool
     @State private var currentPage = 0
+    
     var body: some View {
         VStack {
             Text("000님")
             Text("이모지를 선택해 주세요.")
                 .font(.system(size: 18,weight: .semibold))
                 .padding()
+            
             TabView(selection: $currentPage) {
                 ForEach(0..<emojiImages.count/6) { pageIndex in
                     let startIndex = pageIndex * 6
@@ -47,7 +49,7 @@ struct EmojiSelectionView: View {
                 .padding()
                 
                 Button("저장") {
-                    // Handle the saving action
+                    isShowing = false
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)

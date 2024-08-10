@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct InvitationResponse: Codable {
+struct InvitationDTO: Codable {
     let name: String
     let launchDate: String
     let launchPlace: String
-    let imojiNumber: Int
+    let emojiNumber: Int
     let totalMember: Int
     let imageNumber: Int
     let ownerEmail: String
@@ -22,7 +22,7 @@ struct InvitationResponse: Codable {
         case name
         case launchDate = "launch_date"
         case launchPlace = "launch_place"
-        case imojiNumber = "imoji_number"
+        case emojiNumber = "emoji_number"
         case totalMember = "total_member"
         case imageNumber = "image_number"
         case ownerEmail = "owner_email"

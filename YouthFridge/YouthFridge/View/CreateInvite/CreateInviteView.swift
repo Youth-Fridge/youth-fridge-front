@@ -42,6 +42,10 @@ struct CreateInviteView: View {
                     StepOneView(viewModel: viewModel)
                 } else {
                     StepTwoView(viewModel: viewModel)
+                        .onDisappear {
+                             // Trigger the API call when STEP2 disappears
+                             viewModel.createInvitation()
+                         }
                 }
                 
                 Spacer()
@@ -62,19 +66,38 @@ struct CreateInviteView: View {
 struct StepOneView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var showEmojiModal = false
-    @State private var selectedStartTime: String = "12:00"
-    @State private var selectedEndTime: String = "12:00"
     @State private var date = Date()
     @State private var isShowingProfileSelector = false
     @State private var selectedProfileImage: UIImage? = nil
     @State private var selectedProfileImageName: String? = nil
-    let times = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00"]
+    
+    let times: [String] = [
+        "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+        "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"
+    ]
+    private var filteredEndTimes: [String] {
+        if let startIndex = times.firstIndex(of: viewModel.selectedStartTime) {
+            return Array(times[startIndex...])
+        } else {
+            return times
+        }
+    }
+    
+    @State private var isDatePickerVisible: Bool = false
+    @State private var selectedDate: Date = Date()
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter
+    }
+    
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 Text("이모지 내역")
-                    .font(.system(size: 18,weight: .semibold))
-                    .padding()
+                    .font(.system(size: 18, weight: .semibold))
                 Button(action: {
                     showEmojiModal = true
                     isShowingProfileSelector = true
@@ -89,11 +112,17 @@ struct StepOneView: View {
                                     .stroke(Color.gray2Color, lineWidth: 1)
                             )
                         
-                        // Image inside the button
                         Image("cameraIcon")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 16, height: 16)
+                        
+                        if let selectedProfileImageName = selectedProfileImageName {
+                            Image(selectedProfileImageName) // 선택된 이모지 이미지 표시
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)
+                        }
                     }
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -104,11 +133,11 @@ struct StepOneView: View {
                 .animation(.easeInOut, value: isShowingProfileSelector)
                 
                 Text("모임 명")
-                    .font(.system(size: 16,weight: .semibold))
-                    .padding()
+                    .font(.system(size: 16, weight: .semibold))
+                
                 TextField("10글자 이내", text: $viewModel.meetingName)
+                    .font(.system(size: 16))
                     .padding()
-                    .font(.system(size: 12))
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(
@@ -116,14 +145,15 @@ struct StepOneView: View {
                                 lineWidth: 1
                             )
                     }
+                    .frame(height: 20)
+                
                 Text("세부 활동 계획")
-                    .font(.system(size: 16,weight: .semibold))
-                    .padding()
+                    .font(.system(size: 16, weight: .semibold))
                 
                 ForEach(viewModel.activityPlans.indices, id: \.self) { index in
                     TextField("15글자 이내", text: $viewModel.activityPlans[index])
                         .padding()
-                        .font(.system(size: 12))
+                        .font(.system(size: 16))
                         .cornerRadius(8)
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
@@ -152,6 +182,7 @@ struct StepOneView: View {
                     }
                 }
                 .padding(.bottom,30)
+                
                 HStack {
                     Text("관심사 키워드 선택")
                         .font(.system(size: 16, weight: .semibold))
@@ -191,7 +222,7 @@ struct StepOneView: View {
                 Menu {
                     ForEach(1..<9) { number in
                         Button(action: {
-                            viewModel.meetingParticipants
+                            viewModel.meetingParticipants = number
                         }) {
                             Text("\(number)")
                         }
@@ -212,50 +243,98 @@ struct StepOneView: View {
                 }
                 HStack {
                     Text("모임 일자")
-                        .font(.system(size: 16,weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                     Image("calendar")
                         .resizable()
-                        .frame(width: 16,height: 16)
+                        .frame(width: 16, height: 16)
+                        .onTapGesture {
+                            withAnimation {
+                                isDatePickerVisible.toggle()
+                            }
+                        }
+                    
+                    Text(dateFormatter.string(from: selectedDate))
+                        .font(.system(size: 16))
+                        .padding(.leading, 8)
                 }
-                DatePicker(
-                    "Start Date",
-                    selection: $date,
-                    displayedComponents: [.date]
-                )
-                .datePickerStyle(.graphical)
+                
+                if isDatePickerVisible {
+                    DatePicker(
+                        "",
+                        selection: $selectedDate,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .shadow(radius: 5)
+                    .transition(.opacity)
+                }
                 
                 Text("모임 시간")
                     .font(.system(size: 16,weight: .semibold))
                     .padding(.horizontal)
                 
                 HStack(spacing: 16) {
-                    Picker("시작 시간", selection: $selectedStartTime) {
+                    Menu {
                         ForEach(times, id: \.self) { time in
-                            Text(time).tag(time)
+                            Button(action: {
+                                viewModel.selectedStartTime = time
+                                // 종료 시간이 선택된 시작 시간보다 이전인 경우 종료 시간 초기화
+                                if let endIndex = times.firstIndex(of: viewModel.selectedEndTime), endIndex < times.firstIndex(of: time)! {
+                                    viewModel.selectedEndTime = ""
+                                }
+                            }) {
+                                Text(time)
+                                    .foregroundColor(.black)
+                            }
                         }
+                    } label: {
+                        HStack {
+                            Text(viewModel.selectedStartTime.isEmpty ? "시작 시간" : viewModel.selectedStartTime)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "arrowtriangle.down.fill")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .frame(width: 150, height: 44)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
                     
-                    // End Time Picker
-                    Picker("종료 시간", selection: $selectedEndTime) {
-                        ForEach(times, id: \.self) { time in
-                            Text(time).tag(time)
+                    Menu {
+                        ForEach(filteredEndTimes, id: \.self) { time in
+                            Button(action: {
+                                viewModel.selectedEndTime = time
+                            }) {
+                                Text(time)
+                                    .foregroundColor(.black)
+                            }
                         }
+                    } label: {
+                        HStack {
+                            Text(viewModel.selectedEndTime.isEmpty ? "종료 시간" : viewModel.selectedEndTime)
+                                .foregroundColor(.black)
+                            Spacer()
+                            Image(systemName: "arrowtriangle.down.fill")
+                                .foregroundColor(.gray)
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.gray, lineWidth: 1)
+                        )
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .frame(width: 150, height: 44)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
                 }
                 .padding(.horizontal)
             }
+        }
+        .sheet(isPresented: $isShowingProfileSelector) {
+            EmojiSelectionView(selectedImage: $selectedProfileImageName, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
     }

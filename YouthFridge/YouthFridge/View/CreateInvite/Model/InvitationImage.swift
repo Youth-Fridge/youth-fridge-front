@@ -8,17 +8,19 @@
 import Foundation
 
 enum InvitationImage: Int, CaseIterable {
-    case image1 = 1
+    case image0
+    case image1
     case image2
     case image3
     case image4
     case image5
-    case image6
 
     var imageName: String {
         switch self {
-        case .image1:
+        case .image0:
             return "invitationImage"
+        case .image1:
+            return "invitationImage1"
         case .image2:
             return "invitationImage2"
         case .image3:
@@ -27,8 +29,6 @@ enum InvitationImage: Int, CaseIterable {
             return "invitationImage4"
         case .image5:
             return "invitationImage5"
-        case .image6:
-            return "invitationImage6"
         }
     }
 

@@ -12,9 +12,10 @@ struct ApplicationHistoryView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if !viewModel.activities.isEmpty {
-                ForEach(viewModel.activities) { activity in
+            if !viewModel.applicatedActivities.isEmpty {
+                ForEach(viewModel.applicatedActivities) { activity in
                     ActivityCardView(viewModel: activity, detail: "application")
+                        .disabled(activity.isPast)
                 }
             } else {
                 VStack {

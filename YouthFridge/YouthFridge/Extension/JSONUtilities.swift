@@ -22,3 +22,11 @@ extension JSONDecoder {
         return decoder
     }
 }
+
+extension Date {
+    func toFormattedString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM월 dd일"
+        return dateFormatter.string(from: self)
+    }
+}

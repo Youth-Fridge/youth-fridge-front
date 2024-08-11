@@ -51,6 +51,7 @@ struct GridView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 140, height: 186)
+                        .cornerRadius(6)
                         .clipped()
                         .onTapGesture {
                             selectedImage = image.imageName
@@ -58,6 +59,7 @@ struct GridView: View {
                             print("초대장 이미지 뭐 선택함 ?!! \(image.rawValue)")
                         }
                         .border(Color.main1Color, width: selectedImage == image.imageName ? 4 : 0)
+                        .cornerRadius(6)
                 }
             }
             .padding()

@@ -129,21 +129,21 @@ struct ApplicationDetailView: View {
             .padding(.top, 10)
             
             // 참여자 목록
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(viewModel.participants) { participant in
-                    VStack {
-                        Image(participant.profilePicture)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 60, height: 60)
-                            .clipShape(Circle())
-                        
-                        Text(participant.name)
-                            .font(.caption)
-                            .padding(.top, 4)
-                    }
-                }
-            }
+//            LazyVGrid(columns: columns, spacing: 16) {
+//                ForEach(viewModel.participants) { participant in
+//                    VStack {
+//                        Image(participant.profilePicture)
+//                            .resizable()
+//                            .scaledToFill()
+//                            .frame(width: 60, height: 60)
+//                            .clipShape(Circle())
+//                        
+//                        Text(participant.name)
+//                            .font(.caption)
+//                            .padding(.top, 4)
+//                    }
+//                }
+//            }
         }
     }
     
@@ -183,6 +183,6 @@ struct ApplicationDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let services = Services()
         let container = DIContainer(services: services)
-        ApplicationDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
+//        ApplicationDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
     }
 }

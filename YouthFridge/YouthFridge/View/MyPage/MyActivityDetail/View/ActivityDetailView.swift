@@ -332,6 +332,6 @@ struct ActivityDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let services = Services()
         let container = DIContainer(services: services)
-        ActivityDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
+//        ActivityDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
     }
 }

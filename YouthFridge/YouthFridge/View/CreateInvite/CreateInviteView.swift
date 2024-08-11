@@ -43,15 +43,15 @@ struct CreateInviteView: View {
                 } else {
                     StepTwoView(viewModel: viewModel)
                         .onDisappear {
-                             // Trigger the API call when STEP2 disappears
                              viewModel.createInvitation()
                          }
                 }
                 
                 Spacer()
             }
-            .navigationTitle("초대장 작성")
             .padding(.horizontal)
+            .navigationBarHidden(true)
+            .navigationTitle("초대장 작성")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

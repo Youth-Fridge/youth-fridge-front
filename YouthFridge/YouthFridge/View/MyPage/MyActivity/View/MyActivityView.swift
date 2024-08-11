@@ -23,13 +23,20 @@ struct MyActivityView: View {
             ZStack(alignment: .top) {
                 ShadowNavigationBar()
                 
-                VStack(spacing: 0) {
-                    tabButtons
-                    contentView
-                    if selectedTab == 0 {
-                        plusButton
+                NavigationView {
+                    VStack(spacing: 0) {
+                        tabButtons
+                        ZStack {
+                            contentView
+                            VStack {
+                                Spacer()
+                                if selectedTab == 0 {
+                                    plusButton
+                                        .padding(.bottom, 20)
+                                }
+                            }
+                        }
                     }
-                    
                 }
                 .padding(.top, 45)
                 .padding(.horizontal, 10)
@@ -77,19 +84,32 @@ struct MyActivityView: View {
     }
     
     private var plusButton: some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                print("초대장 추가 버튼")
-            }) {
+        NavigationLink(destination: CreateInviteView()) {
+            HStack {
+                Spacer()
                 Image("plus")
                     .resizable()
                     .frame(width: 80, height: 80)
             }
             .padding(.trailing, 20)
-            .padding(.bottom, 20)
         }
     }
+
+//    
+//    private var plusButton: some View {
+//        NavigationLink(destination: CreateInviteView()) {
+//            HStack {
+//                Spacer()
+//                Button(action: {
+//                }) {
+//                    Image("plus")
+//                        .resizable()
+//                        .frame(width: 80, height: 80)
+//                }
+//                .padding(.trailing, 20)
+//            }
+//        }
+//    }
     
     private func tabButton(title: String, tabIndex: Int) -> some View {
         Button(action: {

@@ -8,33 +8,33 @@
 import Foundation
 
 enum Emoji: Int, CaseIterable {
-    case basket = 1
+    case friends
+    case hobby
+    case healthFood
     case cooking
     case delivery
     case desert
-    case diet
-    case friends
-    case healthFood
-    case hobby
-    case reading
+    case basket
     case recipe
-    case homework
+    case diet
     case exercise
+    case homework
+    case reading
 
     var imageName: String {
         switch self {
-        case .basket: return "basket"
+        case .friends: return "friends"
+        case .hobby: return "hobby"
+        case .healthFood: return "healthFood"
         case .cooking: return "cooking"
         case .delivery: return "delivery"
         case .desert: return "desert"
-        case .diet: return "diet"
-        case .friends: return "friends"
-        case .healthFood: return "healthFood"
-        case .hobby: return "hobby"
-        case .reading: return "reading"
+        case .basket: return "basket"
         case .recipe: return "recipe"
-        case .homework: return "homework"
+        case .diet: return "diet"
         case .exercise: return "exercise"
+        case .homework: return "homework"
+        case .reading: return "reading"
         }
     }
 

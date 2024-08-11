@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class MyInvitationsViewModel: ObservableObject {
-    @Published var activities: [ActivityCardViewModel] = []
+    @Published var invitationActivities: [ActivityCardViewModel] = []
     
     init() {
         fetchActivities()
@@ -20,7 +20,7 @@ class MyInvitationsViewModel: ObservableObject {
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
-                    self?.activities = response.map { ActivityCardViewModel(from: $0) }
+                    self?.invitationActivities = response.map { ActivityCardViewModel(from: $0) }
                 }
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")

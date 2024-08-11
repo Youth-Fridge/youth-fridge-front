@@ -28,8 +28,8 @@ struct ActivityCardView: View {
                         .padding(.leading, 10)
                         .padding(.bottom, 5)
                     
-                    
-                    Text("\(viewModel.date) \(viewModel.startTime)")
+                    // TODO: - 요일 변환 필요
+                    Text("\(viewModel.date) 수요일 \(viewModel.startTime)")
                         .font(.system(size: 12))
                         .padding(.leading, 10)
                         .padding(.bottom, 1)

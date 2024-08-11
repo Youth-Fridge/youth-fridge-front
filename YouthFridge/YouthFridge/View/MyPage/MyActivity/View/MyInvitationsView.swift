@@ -12,9 +12,10 @@ struct MyInvitationsView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if !viewModel.activities.isEmpty {
-                ForEach(viewModel.activities) { activity in
+            if !viewModel.invitationActivities.isEmpty {
+                ForEach(viewModel.invitationActivities) { activity in
                     ActivityCardView(viewModel: activity, detail: "invitation")
+                        .disabled(activity.isPast)
                 }
             } else {
                 VStack {

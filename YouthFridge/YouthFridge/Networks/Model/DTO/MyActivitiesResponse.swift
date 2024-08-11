@@ -1,13 +1,13 @@
 //
-//  MyInvitationResponse.swift
+//  MyActivitiesResponse.swift
 //  YouthFridge
 //
-//  Created by 임수진 on 8/1/24.
+//  Created by 임수진 on 8/11/24.
 //
 
 import Foundation
 
-struct MyInvitationResponse: Codable {
+struct MyActivitiesResponse: Codable {
     let invitationId: Int
     let emojiNumber: Int
     let clubName: String

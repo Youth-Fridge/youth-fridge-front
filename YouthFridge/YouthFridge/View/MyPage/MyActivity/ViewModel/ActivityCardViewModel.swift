@@ -41,7 +41,7 @@ class ActivityCardViewModel: ObservableObject, Identifiable {
 //        self.participants = participantsList
     }
     
-    convenience init(from data: MyInvitationResponse) {
+    convenience init(from data: MyActivitiesResponse) {
         let daysLeft = ActivityCardViewModel.calculateDaysLeft(from: data.launchDate)
         let launchDate = ActivityCardViewModel.convertDate(from: data.launchDate)
         let startTime = ActivityCardViewModel.convertTime(from: data.startTime)

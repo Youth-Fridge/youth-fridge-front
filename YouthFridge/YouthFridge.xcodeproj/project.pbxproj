@@ -73,6 +73,7 @@
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
 		58C3162C2C650462001374EC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162B2C650462001374EC /* SplashView.swift */; };
 		58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162E2C651310001374EC /* LogOutPopUpView.swift */; };
+		58C316312C67737B001374EC /* PublicMeetingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316302C67737B001374EC /* PublicMeetingResponse.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -170,6 +171,7 @@
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
 		58C3162B2C650462001374EC /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		58C3162E2C651310001374EC /* LogOutPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpView.swift; sourceTree = "<group>"; };
+		58C316302C67737B001374EC /* PublicMeetingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeetingResponse.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */,
 				5847F16B2C6245C8001AC04E /* LoginRequest.swift */,
 				58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */,
+				58C316302C67737B001374EC /* PublicMeetingResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				0A12E2202C4EB2AB00D2D7B9 /* MyApplicationViewModel.swift in Sources */,
 				5817D5F12C4503360081323E /* MainTabView.swift in Sources */,
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
+				58C316312C67737B001374EC /* PublicMeetingResponse.swift in Sources */,
 				58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */,
 				58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,

@@ -28,6 +28,7 @@
 		0AB468E82C68C480003061CE /* MyActivitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E72C68C480003061CE /* MyActivitiesResponse.swift */; };
 		0AB468EB2C68D93F003061CE /* ActivityDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */; };
 		0AB468ED2C68FE5D003061CE /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EC2C68FE5D003061CE /* ProfileImage.swift */; };
+		0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */; };
 		0ABCD6062C6525BC00A726CA /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6052C6525BC00A726CA /* Invitation.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
@@ -138,6 +139,7 @@
 		0AB468E72C68C480003061CE /* MyActivitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesResponse.swift; sourceTree = "<group>"; };
 		0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailModel.swift; sourceTree = "<group>"; };
 		0AB468EC2C68FE5D003061CE /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
+		0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppliedInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0ABCD6052C6525BC00A726CA /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */,
 				0AB468E72C68C480003061CE /* MyActivitiesResponse.swift */,
 				0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */,
+				0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */,
 				0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */,
 				5847F16B2C6245C8001AC04E /* LoginRequest.swift */,
 				58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */,
@@ -862,6 +865,7 @@
 				5817D6162C4639000081323E /* ActivityCardViewModel.swift in Sources */,
 				5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */,
 				0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */,
+				0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */,
 				0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,

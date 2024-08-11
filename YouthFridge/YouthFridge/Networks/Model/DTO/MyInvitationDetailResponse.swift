@@ -11,7 +11,6 @@ struct MyInvitationDetailResponse: Codable {
     let totalMember: Int
     let currentMember: Int
     let memberInfoList: [MemberInfoList]
-
 }
 
 struct MemberInfoList: Codable, Identifiable {

@@ -14,17 +14,22 @@ struct ActivityCardView: View {
     var body: some View {
         NavigationLink(destination: destinationView()) {
             HStack {
-                Image(viewModel.imageName)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80, height: 60)
+                if let emoji = Emoji.from(rawValue: viewModel.emojiNumber) {
+                    let emojiName = emoji.imageName
+                    Image(emojiName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80, height: 60)
+                }
                 
                 VStack(alignment: .leading) {
                     Text(viewModel.title)
                         .font(.system(size: 16,weight: .semibold))
                         .padding(.leading, 10)
                         .padding(.bottom, 5)
-                    Text(viewModel.date)
+                    
+                    
+                    Text("\(viewModel.date) \(viewModel.startTime)")
                         .font(.system(size: 12))
                         .padding(.leading, 10)
                         .padding(.bottom, 1)
@@ -64,9 +69,9 @@ struct ActivityCardView: View {
     @ViewBuilder
     private func destinationView() -> some View {
         if detail == "invitation" {
-            ActivityDetailView(viewModel: viewModel)
+            viewModel.isPast ? AnyView(EmptyView()) : AnyView(ActivityDetailView(viewModel: viewModel))
         } else if detail == "application" {
-            ApplicationDetailView(viewModel: viewModel)
+            viewModel.isPast ? AnyView(EmptyView()) : AnyView(ApplicationDetailView(viewModel: viewModel))
         } else {
             Text("Unknown detail")
                 .foregroundColor(.red)

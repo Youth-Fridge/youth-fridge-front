@@ -15,6 +15,7 @@ struct ApplicationHistoryView: View {
             if !viewModel.activities.isEmpty {
                 ForEach(viewModel.activities) { activity in
                     ActivityCardView(viewModel: activity, detail: "application")
+                        .disabled(activity.isPast)
                 }
             } else {
                 VStack {

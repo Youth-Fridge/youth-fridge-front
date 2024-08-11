@@ -25,6 +25,7 @@
 		0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
 		0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */; };
+		0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */; };
 		0ABCD6062C6525BC00A726CA /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6052C6525BC00A726CA /* Invitation.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
@@ -132,6 +133,7 @@
 		0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationImage.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
 		0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeetingResponse.swift; sourceTree = "<group>"; };
+		0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0ABCD6052C6525BC00A726CA /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				0A7026FC2C5A9C850083C7A0 /* BaseResponse.swift */,
 				5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */,
 				0A7026FE2C5A9CD30083C7A0 /* MyInvitationResponse.swift */,
+				0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */,
 				0A7027002C5A9E6F0083C7A0 /* InvitationResponse.swift */,
 				5847F16B2C6245C8001AC04E /* LoginRequest.swift */,
 				58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */,
@@ -827,6 +830,7 @@
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */,
 				0A7026FF2C5A9CD30083C7A0 /* MyInvitationResponse.swift in Sources */,
+				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
 				5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */,

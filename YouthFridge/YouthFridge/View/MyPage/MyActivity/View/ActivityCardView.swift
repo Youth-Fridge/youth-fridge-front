@@ -78,7 +78,7 @@ struct ActivityCardView: View {
             if viewModel.isPast {
                 AnyView(EmptyView())
             } else {
-                AnyView(ApplicationDetailView(viewModel: viewModel))
+                AnyView(ApplicationDetailView(invitationId: viewModel.invitationId, viewModel: viewModel))
             }
         } else {
             Text("Unknown detail")

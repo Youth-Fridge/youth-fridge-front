@@ -11,6 +11,12 @@ struct ApplicationDetailView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: ActivityCardViewModel
     @State private var showCancelPopup = false
+    @StateObject var detailViewModel: ApplicationDetailModel
+    
+    init(invitationId: Int, viewModel: ActivityCardViewModel) {
+        self.viewModel = viewModel
+        _detailViewModel = StateObject(wrappedValue: ApplicationDetailModel(invitationId: invitationId))
+    }
     
     var body: some View {
         NavigationStack {
@@ -143,7 +149,7 @@ struct ApplicationDetailView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text("4/7명")
+                Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.horizontal, 8)
@@ -166,22 +172,22 @@ struct ApplicationDetailView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                     .padding(.bottom, 2)
-                
-                Text("운영사항")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
             }
             .padding()
             
             HStack(alignment: .top, spacing: 10) {
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .offset(y: -30)
+                if let profileImage = ProfileImage.from(rawValue: detailViewModel.ownerProfileImageNumber) {
+                    let imageName = profileImage.imageName
+                    
+                    Image(imageName)
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                        .offset(y: -30)
+                }
                 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("365일 식단 조절러")
+                    Text(detailViewModel.ownerIntroduce)
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .padding(.bottom, 10)
@@ -194,11 +200,10 @@ struct ApplicationDetailView: View {
                             .cornerRadius(6)
                         
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("안서마트에서 장보기")
-                                .font(Font.custom("Pretendard", size: 12))
-                            
-                            Text("감탄 스시 같이 먹기")
-                                .font(Font.custom("Pretendard", size: 12))
+                            ForEach(detailViewModel.activities, id: \.self) { activity in
+                                 Text(activity)
+                                     .font(Font.custom("Pretendard", size: 12))
+                             }
                         }
                         .padding(20)
                         .foregroundColor(Color.gray6)
@@ -235,7 +240,7 @@ struct ApplicationDetailView: View {
                     .cornerRadius(6)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("https://open.kakao.com/o/ss8EvhLe")
+                    Text(detailViewModel.kakaoLink)
                         .font(Font.custom("Pretendard", size: 12))
                 }
                 .padding(20)

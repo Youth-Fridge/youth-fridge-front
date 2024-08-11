@@ -142,7 +142,6 @@ struct ActivityDetailView: View {
                 ForEach(detailViewModel.memberInfoList.indices, id: \.self) { index in
                     let participant = detailViewModel.memberInfoList[index]
                     VStack {
-                        
                         if let profileImage = ProfileImage.from(rawValue: participant.profileNumber) {
                             let imageName = profileImage.imageName
                             

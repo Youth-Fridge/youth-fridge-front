@@ -29,6 +29,7 @@
 		0AB468EB2C68D93F003061CE /* ActivityDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */; };
 		0AB468ED2C68FE5D003061CE /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EC2C68FE5D003061CE /* ProfileImage.swift */; };
 		0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */; };
+		0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */; };
 		0ABCD6062C6525BC00A726CA /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6052C6525BC00A726CA /* Invitation.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
@@ -140,6 +141,7 @@
 		0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetailModel.swift; sourceTree = "<group>"; };
 		0AB468EC2C68FE5D003061CE /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppliedInvitationDetailResponse.swift; sourceTree = "<group>"; };
+		0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailModel.swift; sourceTree = "<group>"; };
 		0ABCD6052C6525BC00A726CA /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */,
+				0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */,
+				0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */,
 				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,

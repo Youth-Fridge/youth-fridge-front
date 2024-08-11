@@ -110,8 +110,8 @@ class InvitationService {
         }
     }
     
-    func getMyDetailAppliedInvitation(invitationId: Int, completion: @escaping (Result<MyAppliedInvitationDetailResponse, NetworkError>) -> Void) {
-        InvitationService.provider.request(.getMyDetailInvitation(invitationId: invitationId)) { result in
+    func getMyApplicationDetail(invitationId: Int, completion: @escaping (Result<MyAppliedInvitationDetailResponse, NetworkError>) -> Void) {
+        InvitationService.provider.request(.getAppliedDetailInvitation(invitationId: invitationId)) { result in
             switch result {
             case .success(let response):
                 self.handleResponse(response: response, completion: completion)

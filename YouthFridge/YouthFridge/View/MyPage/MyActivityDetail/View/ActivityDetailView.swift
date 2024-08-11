@@ -10,85 +10,66 @@ import SwiftUI
 struct ActivityDetailView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: ActivityCardViewModel
-    @State private var showCancelPopup = false
+    @StateObject var detailViewModel: ActivityDetailModel
+    
+    init(invitationId: Int, viewModel: ActivityCardViewModel) {
+        self.viewModel = viewModel
+        _detailViewModel = StateObject(wrappedValue: ActivityDetailModel(invitationId: invitationId))
+    }
+    
+    let columns: [GridItem] = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
                 ShadowNavigationBar()
                 
-                ScrollView {
-                    VStack(spacing: 0) {
-                        content
-                            .padding(.horizontal, 10)
-                            .padding(.leading, 5)
+                VStack(spacing: 0) {
+                    content
+                        .padding(.horizontal, 10)
+                        .padding(.leading, 5)
+                    
+                    ZStack {
+                        shadowView
+                            .padding(.top, 20)
                         
-                        ZStack {
-                            shadowView
-                                .padding(.top, 20)
-                                .padding(.bottom, -30)
-                            
-                            VStack(alignment: .leading, spacing: 16) {
-                                participantView
-                                toDoSection
-                                openChatSection
-                                responseSection
-                                rulesSection
-                            }
-                            .padding(.horizontal, 15)
-                            .padding(.top, 25)
+                        VStack(alignment: .leading, spacing: 16) {
+                            participantView
+                            rulesSection
                         }
+                        .padding(.horizontal, 10)
                     }
                 }
                 .padding(.top, 10)
-                
-                GeometryReader { geometry in
-                    if showCancelPopup {
-                        Color.black
-                            .opacity(0.4)
-                            .edgesIgnoringSafeArea(.all)
-                        VStack {
-                            CancelPopUpView(
-                                message: "미참석 버튼 클릭 시 소모임 참여가 어려워요!",
-                                subMessage: "반복적으로 미 응답 누적 시 앞으로의 모임 활동이 힘들어집니다",
-                                onClose: {
-                                    withAnimation {
-                                        showCancelPopup = false
-                                    }
-                                },
-                                onConfirm: {
-                                    withAnimation {
-                                        showCancelPopup = false
-                                        print("미참석 할게요")
-                                        // TODO: - 초대장 신청 취소 처리
-                                    }
-                                }
-                            )
-                            .frame(width: geometry.size.width, height: 700) // 팝업 크기 설정
-                            .transition(.move(edge: .bottom))
-                            .animation(.easeInOut, value: showCancelPopup) // 애니메이션 추가
-                        }
-                    }
-                }
             }
             .navigationTitle("신청 내역")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                detailViewModel.fetchDetailActivities()
+            }
 //            .navigationBarBackButtonHidden(true)
-            //            .toolbar {
-            //                ToolbarItem(placement: .navigationBarLeading) {
-            //                    Button(action: {
-            //                        dismiss()
-            //                    }) {
-            //                        Image("left-arrow")
-            //                            .resizable()
-            //                    }
-            //                }
-            //                ToolbarItem(placement: .navigationBarTrailing) {
-            //                    Image(viewModel.myUser!.profilePicture)
-            //                        .resizable()
-            //                        .frame(width: 40, height: 40)
-            //                }
-            //            }
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button(action: {
+//                        dismiss()
+//                    }) {
+//                        Image("left-arrow")
+//                            .resizable()
+//                            .frame(width: 40, height: 40)
+//                    }
+//                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Image(viewModel.myUser!.profilePicture)
+//                        .resizable()
+//                        .frame(width: 40, height: 40)
+//                        .clipShape(Circle())
+//                }
+//            }
         }
     }
     
@@ -133,7 +114,7 @@ struct ActivityDetailView: View {
                 color: Color(red: 0, green: 0, blue: 0, opacity: 0.15),
                 radius: 25
             )
-            .edgesIgnoringSafeArea(.all)
+             .edgesIgnoringSafeArea(.all)
     }
     
     var participantView: some View {
@@ -143,7 +124,7 @@ struct ActivityDetailView: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text("4/7명")
+                Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .padding(.horizontal, 8)
@@ -155,183 +136,67 @@ struct ActivityDetailView: View {
             }
             .padding()
             .padding(.top, 10)
-        }
-    }
-    
-    var toDoSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
             
-            HStack {
-                Text("TO DO")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 2)
-                
-                Text("운영사항")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-            }
-            .padding()
-            
-            HStack(alignment: .top, spacing: 10) {
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .offset(y: -30)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("365일 식단 조절러")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                        .padding(.bottom, 10)
-                    
-                    ZStack(alignment: .leading) {
-                        Rectangle()
-                            .foregroundColor(.clear)
-                            .frame(width: 204, height: 60)
-                            .background(Color.gray1)
-                            .cornerRadius(6)
-                        
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("안서마트에서 장보기")
-                                .font(Font.custom("Pretendard", size: 12))
+            // 참여자 목록
+            LazyVGrid(columns: columns, spacing: 16) {
+                ForEach(detailViewModel.memberInfoList.indices, id: \.self) { index in
+                    let participant = detailViewModel.memberInfoList[index]
+                    VStack {
+                        if let profileImage = ProfileImage.from(rawValue: participant.profileNumber) {
+                            let imageName = profileImage.imageName
                             
-                            Text("감탄 스시 같이 먹기")
-                                .font(Font.custom("Pretendard", size: 12))
+                            Image(imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .clipShape(Circle())
                         }
-                        .padding(20)
-                        .foregroundColor(Color.gray6)
+
+                        Text(participant.nickName)
+                            .font(.caption)
+                            .padding(.top, 4)
                     }
-                    .padding(.bottom, -10)
                 }
-                .padding(.leading, 5)
             }
-            .padding()
         }
-    }
-    
-    var openChatSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Divider()
-                .background(Color.gray.opacity(0.5))
-            
-            HStack {
-                Text("오픈채팅")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 2)
-                
-                Text("원활한 소통을 위해 모임 전 꼭 참여해주세요 !")
-                    .font(.caption)
-                    .fontWeight(.regular)
-            }
-                    
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .foregroundColor(.clear)
-                    .frame(width: 324, height: 32)
-                    .background(Color.gray1)
-                    .cornerRadius(6)
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("https://open.kakao.com/o/ss8EvhLe")
-                        .font(Font.custom("Pretendard", size: 12))
-                }
-                .padding(20)
-                .foregroundColor(Color.gray6)
-            }
-            .padding(.bottom, -10)
-        }
-        .padding(.leading, 20)
-    }
-    
-    var responseSection: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Divider()
-                .background(Color.gray.opacity(0.5))
-            
-            VStack(alignment: .leading) {
-                Text("신청 취소")
-                    .font(.title3)
-                    .fontWeight(.bold)
-                
-                Text("모임 2일 전까지만 취소 가능")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray6)
-            }
-            
-            VStack(spacing: 10) {
-                HStack {
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                
-                    Button(action: {
-                        showCancelPopup = true
-                    }) {
-                        Text("미참석")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
-                            .foregroundColor(Color.gray6)
-                            .frame(width: 77, height: 29)
-                            .background((viewModel.daysLeft == 2 ? Color.gray2 : Color.sub2))
-                            .cornerRadius(8)
-                    }
-                    .disabled(viewModel.daysLeft == 2)  // daysLeft가 2일 경우 버튼 비활성화
-                    .padding(.leading, 15)
-                }
-                .padding(.bottom, -20)
-            }
-            .padding(.top, 10)
-        }
-        .padding()
     }
     
     var rulesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
             Divider()
                 .background(Color.gray.opacity(0.5))
-            
+                .padding(.vertical, 10)
             HStack {
-                Text("참여자 규칙")
-                    .font(.title3)
+                Text("호스트 규칙")
+                    .font(.title2)
                     .fontWeight(.bold)
                     .padding(.bottom, 2)
                 
                 Text("운영사항")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.gray)
+                    .padding(.bottom, 2)
             }
             
             VStack(alignment: .leading, spacing: 12) {
-                Text("* 모임 참여가 어려울 시, 모임 일자 ")
-                + Text("기준 2일 전까지")
-                    .fontWeight(.bold)
-                    .underline()
-                + Text(" 미참석 버튼을 눌러 호스트에게 전달해 주세요.")
-                Text("* 참여 응답 후 모임 미참석 시, 다음 참여에 불이익이 있을 수 있습니다.")
-                Text("* 호스트의 주도로 소모임 내에서 진행되는 활동을 잘 따라주세요.")
+                Text("* 소모임 내에서 진행되는 모든 사항들은 호스트에게 달려있습니다.")
                 Text("* 불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
-                Text("* 문의사항 또는 문제 발생 시 ")
-                + Text("문의처")
-                    .fontWeight(.bold)
-                    .underline()
-                + Text("로 문의 부탁드립니다.")
+                Text("* 우수 소모임 호스트로 지정 시 리워드가 주어질 수 있습니다.")
+                Text("* 문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
             }
             .font(.footnote)
-            .foregroundColor(Color.gray4)
+            
+            .foregroundColor(.black)
         }
         .padding()
     }
 }
 
-struct ActivityDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let services = Services()
-        let container = DIContainer(services: services)
-//        ActivityDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
-    }
-}
+//struct ActivityDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let services = Services()
+//        let container = DIContainer(services: services)
+//        ActivityDetailView(viewModel: ActivityCardViewModel(invitationId: 1, title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", startTime: "15시", daysLeft: 21, emojiNumber: 2), detailViewModel: ActivityDetailModel(totalMember: 5, currentMember: 3, memberInfoList: [MemberInfoList(nickName: "sujin", profileNumber: 2)]))
+//    }
+//}

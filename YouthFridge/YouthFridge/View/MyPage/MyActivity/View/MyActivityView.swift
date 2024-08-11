@@ -94,22 +94,6 @@ struct MyActivityView: View {
             .padding(.trailing, 20)
         }
     }
-
-//    
-//    private var plusButton: some View {
-//        NavigationLink(destination: CreateInviteView()) {
-//            HStack {
-//                Spacer()
-//                Button(action: {
-//                }) {
-//                    Image("plus")
-//                        .resizable()
-//                        .frame(width: 80, height: 80)
-//                }
-//                .padding(.trailing, 20)
-//            }
-//        }
-//    }
     
     private func tabButton(title: String, tabIndex: Int) -> some View {
         Button(action: {

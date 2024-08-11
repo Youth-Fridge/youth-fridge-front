@@ -19,11 +19,12 @@ class MyPageViewModel: ObservableObject {
     
     private func fetchUserData() {
         let selectedImageIndex = getSelectedImageIndex()
+        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
         let profileImage = (selectedImageIndex > 0 && selectedImageIndex <= bigProfileImages.count)
             ? bigProfileImages[selectedImageIndex - 1]
             : "Ellipse" 
         
-        myUser = User(name: "장금이", profilePicture: profileImage)
+        myUser = User(name: nickname, profilePicture: profileImage)
     }
     
     private func getSelectedImageIndex() -> Int {

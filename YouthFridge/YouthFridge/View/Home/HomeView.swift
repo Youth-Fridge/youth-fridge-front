@@ -30,7 +30,7 @@ struct HomeView: View {
                     newsCardView(content: "청년들이\n 더위를 이겨내는 법")
                         .frame(width: 152)
                         .padding(.leading, 20)
-
+                    
                     VStack(spacing: 10) {
                         DynamicTextCardView(daysRemaining: $daysRemaining)
                         SmallestCardView()
@@ -38,7 +38,7 @@ struct HomeView: View {
                     .frame(height: 252)
                     .padding(.trailing, 10)
                 }
-
+                
                 HStack {
                     Button(action: {
                     }) {
@@ -52,50 +52,49 @@ struct HomeView: View {
                     Spacer()
                 }
                 .padding(.top, 35)
-
+                
                 TabView(selection: $currentIndex) {
                     ForEach(tabContents.indices, id: \.self) { index in
-//                        NavigationLink(destination: ShowInviteView(tabContent: viewModel.tabContents[index])) {
-                            ZStack(alignment: .leading) {
-                                Image(tabContents[index].imageName)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 350, height: 120)
-                                    .clipped()
-                                    .overlay(
-                                        Rectangle()
-                                            .fill(Color.black.opacity(0.4))
-                                            .blur(radius: 1)
-                                    )
-                                VStack(alignment: .leading, spacing: 5) {
+                        
+                        ZStack(alignment: .leading) {
+                            Image(tabContents[index].imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 350, height: 120)
+                                .clipped()
+                                .overlay(
+                                    Rectangle()
+                                        .fill(Color.black.opacity(0.4))
+                                        .blur(radius: 1)
+                                )
+                            VStack(alignment: .leading, spacing: 5) {
+                                HStack {
+                                    Text(tabContents[index].title)
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+                                    Spacer()
                                     HStack {
-                                        Text(tabContents[index].title)
-                                            .font(.system(size: 16, weight: .bold))
+                                        Text(tabContents[index].ing)
+                                            .background(Color.clear)
                                             .foregroundColor(.white)
-                                        Spacer()
-                                        HStack {
-                                            Text(tabContents[index].ing)
-                                                .background(Color.clear)
-                                                .foregroundColor(.white)
-                                                .cornerRadius(10)
-                                                .modifier(CustomViewModifier(color: .white))
-                                                .padding([.trailing], 10)
-                                        }
+                                            .cornerRadius(10)
+                                            .modifier(CustomViewModifier(color: .white))
+                                            .padding([.trailing], 10)
                                     }
-                                    
-                                    Text(tabContents[index].content)
-                                        .font(.system(size: 12))
-                                        .foregroundColor(.white)
-                                    Text(tabContents[index].date)
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.white)
                                 }
-                                .padding(10)
+                                
+                                Text(tabContents[index].content)
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.white)
+                                Text(tabContents[index].date)
+                                    .font(.system(size: 10))
+                                    .foregroundColor(.white)
                             }
-                            .tag(index)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
-                        //}
+                            .padding(10)
+                        }
+                        .tag(index)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -106,16 +105,16 @@ struct HomeView: View {
             
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarItems(leading:
-                HStack {
-                    Image("logo")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                    Image("typeLogo")
-                        .resizable()
-                        .frame(width: 80, height: 15)
-                        
-
-                }
+                                    HStack {
+                Image("logo")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                Image("typeLogo")
+                    .resizable()
+                    .frame(width: 80, height: 15)
+                
+                
+            }
             )
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -149,7 +148,7 @@ struct HomeView: View {
                     .foregroundColor(.black)
                     .padding(.top,10)
                     .padding(.leading,15)
-
+                
                 if !content.isEmpty {
                     Text(content)
                         .font(.system(size: 14, weight: .medium))
@@ -166,12 +165,12 @@ struct HomeView: View {
             }
             .background(
                 Color.sub2Color
-                .cornerRadius(10)
+                    .cornerRadius(10)
             )
         }
         .frame(height: 252)
     }
-
+    
     private func startTimer() {
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             withAnimation {
@@ -183,6 +182,7 @@ struct HomeView: View {
         return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }
 }
+
 struct CardScrollView: View {
     let cards: [Card]
     

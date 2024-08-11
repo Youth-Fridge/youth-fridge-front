@@ -69,9 +69,17 @@ struct ActivityCardView: View {
     @ViewBuilder
     private func destinationView() -> some View {
         if detail == "invitation" {
-            viewModel.isPast ? AnyView(EmptyView()) : AnyView(ActivityDetailView(viewModel: viewModel))
+            if viewModel.isPast {
+                AnyView(EmptyView())
+            } else {
+                AnyView(ActivityDetailView(invitationId: viewModel.invitationId, viewModel: viewModel))
+            }
         } else if detail == "application" {
-            viewModel.isPast ? AnyView(EmptyView()) : AnyView(ApplicationDetailView(viewModel: viewModel))
+            if viewModel.isPast {
+                AnyView(EmptyView())
+            } else {
+                AnyView(ApplicationDetailView(viewModel: viewModel))
+            }
         } else {
             Text("Unknown detail")
                 .foregroundColor(.red)

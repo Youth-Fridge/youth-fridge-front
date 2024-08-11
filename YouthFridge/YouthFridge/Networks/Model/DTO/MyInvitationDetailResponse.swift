@@ -10,8 +10,12 @@ import Foundation
 struct MyInvitationDetailResponse: Codable {
     let totalMember: Int
     let currentMember: Int
-    let ownerProfileImageNumber: Int
-    let ownerIntroduce: String
-    let activities: [String]
-    let kakaoLink: String
+    let memberInfoList: [MemberInfoList]
+
+}
+
+struct MemberInfoList: Codable, Identifiable {
+    let id = UUID()
+    let nickName: String
+    let profileNumber: Int
 }

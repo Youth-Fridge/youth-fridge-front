@@ -17,7 +17,7 @@ enum InvitationAPI {
     case getMyDetailInvitation(invitationId: Int)                         // 내가 생성한 초대장 상세 조회
     case getAppliedInvitations(page: Int, size: Int)                      // 내가 신청한 소모임 조회
     case getAppliedDetailInvitation(invitationId: Int)                    // 내가 신청한 소모임 상세 조회
-    case getImminentInvitations                                           // 가장 마감 임박한 소모임 D-Day 조회
+    case getImminentInvitation                                            // 가장 마감 임박한 소모임 D-Day 조회
     case applyInvitation(invitationId: Int)                               // 소모임 참가 신청하기
     case cancelInvitation(invitationId: Int)                              // 소모임 참가 취소하기
     case reportInvitation(invitationId: Int)                              // 소모임 신고하기
@@ -48,7 +48,7 @@ extension InvitationAPI: TargetType {
             return "/api/invitations/applied/\(invitationId)"
         case .getInvitationsbyKeyword:
             return "/api/invitations/search"
-        case .getImminentInvitations:
+        case .getImminentInvitation:
             return "/api/invitations/imminent"
         case .applyInvitation(invitationId: let invitationId):
             return "/api/invitations/\(invitationId)/apply"
@@ -65,7 +65,7 @@ extension InvitationAPI: TargetType {
         switch self {
         case .createInvitation, .applyInvitation, .reportInvitation:
             return .post
-        case .getInvitation, .getInvitationsTop5, .getMyInvitations, .getMyDetailInvitation, .getAppliedInvitations, .getAppliedDetailInvitation, .getInvitationsbyKeyword, .getImminentInvitations, .publicMeeting:
+        case .getInvitation, .getInvitationsTop5, .getMyInvitations, .getMyDetailInvitation, .getAppliedInvitations, .getAppliedDetailInvitation, .getInvitationsbyKeyword, .getImminentInvitation, .publicMeeting:
             return .get
         case .cancelInvitation:
             return .delete
@@ -74,7 +74,7 @@ extension InvitationAPI: TargetType {
 
     var task: Moya.Task {
         switch self {
-        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitations, .publicMeeting:
+        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitation, .publicMeeting:
             return .requestPlain
         case .getInvitationsbyKeyword(let kewords, let page, let size):
             return .requestParameters(

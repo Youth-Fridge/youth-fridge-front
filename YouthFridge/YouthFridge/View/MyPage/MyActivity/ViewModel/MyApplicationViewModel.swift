@@ -10,14 +10,6 @@ import SwiftUI
 
 class MyApplicationViewModel: ObservableObject {
     @Published var applicatedActivities: [ActivityCardViewModel] = []
-//    var participantsList: [User] = [
-//        User(name: "임수진", profilePicture: "Ellipse"),
-//        User(name: "김민솔", profilePicture: "Ellipse"),
-//        User(name: "최강", profilePicture: "Ellipse"),
-//        User(name: "임수진", profilePicture: "Ellipse"),
-//        User(name: "김민솔", profilePicture: "Ellipse"),
-//        User(name: "최강", profilePicture: "Ellipse")
-//    ]
     
     init() {
         fetchActivities()

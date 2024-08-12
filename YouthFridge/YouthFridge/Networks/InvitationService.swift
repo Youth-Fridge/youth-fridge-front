@@ -46,6 +46,7 @@ class InvitationService {
                 let baseResponse = try JSONDecoder().decode(BaseResponse<T>.self, from: response.data)
                 if baseResponse.isSuccess {
                     if let result = baseResponse.result {
+                        print(result)
                         completion(.success(result))
                     } else {
                         completion(.failure(.customError(baseResponse.message)))
@@ -112,6 +113,17 @@ class InvitationService {
     
     func getMyApplicationDetail(invitationId: Int, completion: @escaping (Result<MyAppliedInvitationDetailResponse, NetworkError>) -> Void) {
         InvitationService.provider.request(.getAppliedDetailInvitation(invitationId: invitationId)) { result in
+            switch result {
+            case .success(let response):
+                self.handleResponse(response: response, completion: completion)
+            case .failure(let error):
+                completion(.failure(.customError(error.localizedDescription)))
+            }
+        }
+    }
+    
+    func getImminentInvitation(completion: @escaping (Result<ImminentInvitationResponse?, NetworkError>) -> Void) {
+        InvitationService.provider.request(.getImminentInvitation) { result in
             switch result {
             case .success(let response):
                 self.handleResponse(response: response, completion: completion)

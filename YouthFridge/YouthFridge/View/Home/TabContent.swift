@@ -8,9 +8,9 @@
 import Foundation
 
 struct TabContent {
-    let imageName: String
+    let invitationId: Int
     let title: String
-    let content: String
     let date: String
     let ing: String
+    let imageName: String
 }

@@ -21,6 +21,7 @@ enum InvitationAPI {
     case applyInvitation(invitationId: Int)                               // 소모임 참가 신청하기
     case cancelInvitation(invitationId: Int)                              // 소모임 참가 취소하기
     case reportInvitation(invitationId: Int)                              // 소모임 신고하기
+    case publicMeeting
 }
 
 extension InvitationAPI: TargetType {
@@ -55,6 +56,8 @@ extension InvitationAPI: TargetType {
             return "/api/invitations/\(invitationId)/apply"
         case .reportInvitation(invitationId: let invitationId):
             return "/api/report/invitation/\(invitationId)"
+        case .publicMeeting:
+            return "/api/invitations/official"
         }
     }
 
@@ -62,7 +65,7 @@ extension InvitationAPI: TargetType {
         switch self {
         case .createInvitation, .applyInvitation, .reportInvitation:
             return .post
-        case .getInvitation, .getInvitationsTop5, .getMyInvitations, .getMyDetailInvitation, .getAppliedInvitations, .getAppliedDetailInvitation, .getInvitationsbyKeyword, .getImminentInvitations:
+        case .getInvitation, .getInvitationsTop5, .getMyInvitations, .getMyDetailInvitation, .getAppliedInvitations, .getAppliedDetailInvitation, .getInvitationsbyKeyword, .getImminentInvitations, .publicMeeting:
             return .get
         case .cancelInvitation:
             return .delete
@@ -71,7 +74,7 @@ extension InvitationAPI: TargetType {
 
     var task: Moya.Task {
         switch self {
-        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitations:
+        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitations, .publicMeeting:
             return .requestPlain
         case .getInvitationsbyKeyword(let kewords, let page, let size):
             return .requestParameters(

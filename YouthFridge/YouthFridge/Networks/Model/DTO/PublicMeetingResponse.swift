@@ -11,5 +11,5 @@ struct PublicMeetingResponse: Codable {
     let invitationId : Int
     let title: String
     let launchDate: String
-    let isRecruting: Bool
+    let isRecruiting: Bool
 }

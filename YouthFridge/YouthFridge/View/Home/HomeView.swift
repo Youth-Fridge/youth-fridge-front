@@ -47,8 +47,6 @@ struct HomeView: View {
                             .foregroundColor(.black)
                             .padding(.leading, 30)
                     }
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.black)
                     Spacer()
                 }
                 .padding(.top, 35)
@@ -60,7 +58,7 @@ struct HomeView: View {
                             Image(tabContents[index].imageName)
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 350, height: 120)
+                                .frame(width: 350, height: 105)
                                 .clipped()
                                 .overlay(
                                     Rectangle()
@@ -82,10 +80,7 @@ struct HomeView: View {
                                             .padding([.trailing], 10)
                                     }
                                 }
-                                
-                                Text(tabContents[index].content)
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.white)
+                                .padding(.bottom,35)
                                 Text(tabContents[index].date)
                                     .font(.system(size: 10))
                                     .foregroundColor(.white)
@@ -109,6 +104,7 @@ struct HomeView: View {
                 Image("logo")
                     .resizable()
                     .frame(width: 30, height: 30)
+                    .padding(.leading,5)
                 Image("typeLogo")
                     .resizable()
                     .frame(width: 80, height: 15)

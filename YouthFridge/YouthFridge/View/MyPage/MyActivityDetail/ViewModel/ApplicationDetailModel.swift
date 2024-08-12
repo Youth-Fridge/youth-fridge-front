@@ -33,7 +33,6 @@ class ApplicationDetailModel: ObservableObject, Identifiable {
         InvitationService.shared.getMyApplicationDetail(invitationId: invitationId) { [weak self] result in
             switch result {
             case .success(let response):
-                print("Received JSON Response: \(response)") // 디버깅용
                 DispatchQueue.main.async {
                     self?.totalMember = response.totalMember
                     self?.currentMember = response.currentMember

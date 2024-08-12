@@ -25,7 +25,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CardScrollView(cards: cards)
+                CardScrollView(cards: viewModel.cards)
                 HStack {
                     newsCardView(content: "청년들이\n 더위를 이겨내는 법")
                         .frame(width: 152)
@@ -189,8 +189,8 @@ struct CardScrollView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(cards.indices, id: \.self) { index in
-                    CardItemView(card: cards[index], backgroundColor: index % 2 == 0 ? .green1Color : .sub3Color)
+                ForEach(cards) { card in
+                    CardItemView(card: card, backgroundColor: card.backgroundColor)
                 }
             }
             .padding(.top, 30)

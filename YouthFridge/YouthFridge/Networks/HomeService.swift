@@ -1,20 +1,20 @@
 //
-//  HomeAPI.swift
+//  HomeService.swift
 //  YouthFridge
 //
-//  Created by 김민솔 on 8/6/24.
+//  Created by 김민솔 on 8/11/24.
 //
 
 import Foundation
 import Moya
 
-class HomeAPI {
-    static let shared = HomeAPI()
+class HomeService {
+    static let shared = HomeService()
     static let provider = MoyaProvider<InvitationAPI>()
 
     // MARK: - Top Five Invitations
     func fetchTopFiveInvitations(completion: @escaping (Result<[InvitationTopFiveResponse], Error>) -> Void) {
-        InvitationService.provider.request(.getInvitationsTop5) { result in
+        HomeService.provider.request(.getInvitationsTop5) { result in
             switch result {
             case .success(let response):
                 if let responseString = String(data: response.data, encoding: .utf8) {
@@ -46,3 +46,4 @@ class HomeAPI {
         }
     }
 }
+

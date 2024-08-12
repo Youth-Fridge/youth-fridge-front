@@ -10,7 +10,7 @@ import Foundation
 struct InvitationTopFiveResponse: Codable {
     let id: Int
     let name: String
-    let imojiNumber: Int
+    let emojiNumber: Int
     let ownerInfo: OwnerInfo
     let interests: [String]
     let launchPlace: String

@@ -29,6 +29,13 @@ extension DateFormatter {
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter
     }()
+    // 월과 일만 표시하는 포맷터
+    static let displayPublicDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M월 d일"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter
+    }()
     
     static let displayTimeFormatter: DateFormatter = {
         let formatter = DateFormatter()

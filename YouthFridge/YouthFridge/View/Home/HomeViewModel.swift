@@ -11,16 +11,37 @@ import Combine
 class HomeViewModel: ObservableObject {
     @Published var cards: [Card] = []
 
-    @Published var tabContents = [
-        TabContent(imageName: "banner1", title: "우리 같이 미니 김장할래?", content: "김: 김치 만들고\n치: 치~ 인구 할래? 끝나고 웃놀이 한 판!", date: "10월 5일", ing: "모집중"),
-        TabContent(imageName: "banner2", title: "포트락 파티에 널 초대할게", content: "각자 먹고 싶은거 가져와 다 함께\n 나눠먹는 ,,,,그런거 있잖아요~", date: "9월 12일", ing: "모집중"),
-        TabContent(imageName: "banner3", title: "특별한 뱅쇼와 함께 하는 연말 파티", content: "제철과일로 만드는\n 뱅쇼와 함께 도란도란 이야기 나눠요 ", date: "11월 2일", ing: "모집중")
-    ]
-
+    @Published var tabContents: [TabContent] = []
+    let publicMeetingBackground = ["banner1", "banner2", "banner3"]
     init() {
         fetchCards()
+        fetchPublicMeeting()
     }
-
+    
+    func fetchPublicMeeting() {
+        HomeService.shared.fetchPublicMeetingThree { [weak self] result in
+            switch result {
+            case .success(let publicMeetings):
+                DispatchQueue.main.async {
+                    self?.tabContents = publicMeetings.enumerated().map { index, publicMeeting in
+                        let formattedDate = DateFormatter.date(from: publicMeeting.launchDate, formatter: .launchDateFormatter)
+                            .map { DateFormatter.displayPublicDateFormatter.string(from: $0) } ?? publicMeeting.launchDate
+                        
+                        return TabContent(
+                            invitationId: publicMeeting.invitationId,
+                            title: publicMeeting.title,
+                            date: formattedDate,
+                            ing: publicMeeting.isRecruiting ? "모집중" : "모집완료",
+                            imageName: self?.publicMeetingBackground[index % self!.publicMeetingBackground.count] ?? "defaultImage"
+                        )
+                    }
+                }
+            case .failure(let error):
+                print("Error fetching public meetings: \(error)")
+            }
+        }
+    }
+    
     func fetchCards() {
         HomeService.shared.fetchTopFiveInvitations { [weak self] result in
             switch result {

@@ -66,7 +66,7 @@ struct ApplicationDetailView: View {
                                     withAnimation {
                                         showCancelPopup = false
                                         print("미참석 할게요")
-                                        // TODO: - 초대장 신청 취소 처리
+                                        detailViewModel.cancelInvitation()
                                     }
                                 }
                             )

@@ -148,6 +148,7 @@ struct LoginIntroView: View {
             switch result {
             case .success(()):
                 self.isPresentedLoginView = true
+                
                 print("로그인 성공")
                 
             case .failure(let error):
@@ -159,7 +160,6 @@ struct LoginIntroView: View {
                     print("회원가입 필요")
                     
                 default:
-                    // Handle other error codes or unknown cases
                     print("로그인 실패: \(nsError.localizedDescription)")
                 }
             }

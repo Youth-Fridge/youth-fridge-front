@@ -54,7 +54,7 @@ struct Card: Identifiable {
         case 4: return Color.imojiPurple
         case 5: return Color.imojiGreen2
         case 6: return Color.imojiGreen3
-        case 7: return Color.imojiOrange
+        case 7: return Color.imojiBook
         case 8: return Color.imojiOrange
         case 9: return Color.imojiGreen
         case 10: return Color.imojiBrown3

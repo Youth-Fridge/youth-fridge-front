@@ -51,28 +51,24 @@ struct SplashView: View {
     
     private func branchProcessing() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-//            let accessToken = KeychainHandler.shared.accessToken
-//            print("accesstoken: \(accessToken)")
-//            
-//            if accessToken.isEmpty {
-//                navigateToSignUp = true
-//            } else {
-//                navigateToMain = true
-//            }
-//        }
-//    }
-            // 로그아웃 처리
-            logout()
+            let accessToken = KeychainHandler.shared.accessToken
+            print("accesstoken: \(accessToken)")
+            if accessToken.isEmpty {
+                navigateToSignUp = true
+            } else {
+                navigateToMain = true
+            }
         }
     }
     
-    private func logout() {
-        // 액세스 토큰을 삭제하는 예제
-        KeychainHandler.shared.accessToken = ""
-        
-        // 로그아웃 후 로그인 페이지로 이동
-        navigateToSignUp = true
-    }
+    
+//    private func logout() {
+//        // 액세스 토큰을 삭제하는 예제
+//        KeychainHandler.shared.accessToken = ""
+//        
+//        // 로그아웃 후 로그인 페이지로 이동
+//        navigateToSignUp = true
+//    }
 }
 
 struct SplashView_Previews: PreviewProvider {

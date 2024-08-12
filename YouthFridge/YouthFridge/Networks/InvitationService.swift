@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Moya
+import Combine
 
 class InvitationService {
     static let shared = InvitationService()
@@ -46,7 +47,6 @@ class InvitationService {
                 let baseResponse = try JSONDecoder().decode(BaseResponse<T>.self, from: response.data)
                 if baseResponse.isSuccess {
                     if let result = baseResponse.result {
-                        print(result)
                         completion(.success(result))
                     } else {
                         completion(.failure(.customError(baseResponse.message)))
@@ -131,5 +131,30 @@ class InvitationService {
                 completion(.failure(.customError(error.localizedDescription)))
             }
         }
+    }
+    
+    func cancelInvitation(invitationId: Int) -> AnyPublisher<String, NetworkError> {
+        let target = InvitationAPI.cancelInvitation(invitationId: invitationId)
+        
+        return Future<String, NetworkError> { promise in
+            InvitationService.provider.request(target) { result in
+                switch result {
+                case .success(let response):
+                    do {
+                        let baseResponse = try JSONDecoder().decode(BaseResponse<String>.self, from: response.data)
+                        if baseResponse.isSuccess, let message = baseResponse.result {
+                            promise(.success(message))
+                        } else {
+                            promise(.failure(.customError(baseResponse.message)))
+                        }
+                    } catch {
+                        promise(.failure(.decodingError(error)))
+                    }
+                case .failure(let error):
+                    promise(.failure(.customError(error.localizedDescription)))
+                }
+            }
+        }
+        .eraseToAnyPublisher() // AnyPublisher 반환
     }
 }

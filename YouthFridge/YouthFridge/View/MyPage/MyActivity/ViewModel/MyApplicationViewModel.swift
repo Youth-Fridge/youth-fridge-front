@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class MyApplicationViewModel: ObservableObject {
     @Published var applicatedActivities: [ActivityCardViewModel] = []

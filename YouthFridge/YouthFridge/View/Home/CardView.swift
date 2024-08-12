@@ -16,9 +16,10 @@ struct CardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     HStack(spacing: 0) {
-                        Circle()
-                            .fill(Color.gray)
-                            .frame(width: 50, height: 30)
+                        viewModel.profileImage
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .padding(.leading)
                         Text(viewModel.card.name)
                             .font(.system(size: 10))
                             .padding(.leading, 5)
@@ -47,7 +48,7 @@ struct CardView: View {
                     
                     HStack {
                         Image("clock")
-                        Text(viewModel.card.date)
+                        Text(viewModel.card.formattedDateAndTime)
                             .font(.system(size: 10))
                     }
                     .padding(.leading)
@@ -61,7 +62,7 @@ struct CardView: View {
             }
             .padding(.trailing, 10)
             .frame(width: 350, height: 140)
-            .background(backgroundColor)
+            .background(viewModel.card.backgroundColor)
             .cornerRadius(10)
             .foregroundColor(.white)
             
@@ -77,11 +78,14 @@ struct CustomViewModifier: ViewModifier {
     var color: Color
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 10))
-            .padding(6)
+            .font(.system(size: 12,weight: .semibold))
+            .padding(.top,5)
+            .padding(.bottom,5)
+            .padding(.leading,11)
+            .padding(.trailing,11)
             .overlay(
-                RoundedRectangle(cornerSize: CGSize(width: 25, height: 10))
-                                    .stroke(lineWidth: 1)
+                RoundedRectangle(cornerSize: CGSize(width: 30, height: 10))
+                    .stroke(lineWidth: 1.5)
             )
             .foregroundColor(color)
     }
@@ -92,8 +96,11 @@ struct TextWithBackground: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 10))
-            .padding(5)
+            .font(.system(size: 10,weight: .medium))
+            .padding(.top,5)
+            .padding(.bottom,5)
+            .padding(.leading,11)
+            .padding(.trailing,11)
             .background(Color.white)
             .foregroundColor(Color.gray4Color)
             .cornerRadius(20)

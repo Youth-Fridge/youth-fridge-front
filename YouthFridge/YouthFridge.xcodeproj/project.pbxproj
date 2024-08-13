@@ -83,9 +83,12 @@
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
 		58C3162C2C650462001374EC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162B2C650462001374EC /* SplashView.swift */; };
 		58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C3162E2C651310001374EC /* LogOutPopUpView.swift */; };
-
 		58C316352C68AF02001374EC /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316342C68AF02001374EC /* HomeService.swift */; };
 		58C316372C68B964001374EC /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316362C68B964001374EC /* DateFormatter.swift */; };
+		58C316512C69FA60001374EC /* InvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316502C69FA60001374EC /* InvitationDetailResponse.swift */; };
+		58C316532C69FD87001374EC /* ShowInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316522C69FD87001374EC /* ShowInviteViewModel.swift */; };
+		58C316562C69FE07001374EC /* ShowDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316552C69FE07001374EC /* ShowDetailModel.swift */; };
+		58C316582C6B2872001374EC /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316572C6B2872001374EC /* HapticManager.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -194,6 +197,10 @@
 		58C3162E2C651310001374EC /* LogOutPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutPopUpView.swift; sourceTree = "<group>"; };
 		58C316342C68AF02001374EC /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		58C316362C68B964001374EC /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		58C316502C69FA60001374EC /* InvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDetailResponse.swift; sourceTree = "<group>"; };
+		58C316522C69FD87001374EC /* ShowInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowInviteViewModel.swift; path = YouthFridge/View/Invitation/ShowInviteViewModel.swift; sourceTree = SOURCE_ROOT; };
+		58C316552C69FE07001374EC /* ShowDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailModel.swift; sourceTree = "<group>"; };
+		58C316572C6B2872001374EC /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -267,6 +274,7 @@
 				5847F16B2C6245C8001AC04E /* LoginRequest.swift */,
 				58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */,
 				0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */,
+				58C316502C69FA60001374EC /* InvitationDetailResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -296,13 +304,6 @@
 			children = (
 				0AB468EA2C68D93F003061CE /* ActivityDetailModel.swift */,
 				0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		0ABCD5F62C65197500A726CA /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -504,8 +505,10 @@
 		58BEC2BD2C4EB18E00C6E524 /* Invitation */ = {
 			isa = PBXGroup;
 			children = (
-				0ABCD5F62C65197500A726CA /* ViewModel */,
+				58C316522C69FD87001374EC /* ShowInviteViewModel.swift */,
+				58C316542C69FDE1001374EC /* Model */,
 				58BEC2BE2C4EB19800C6E524 /* View */,
+				58C316572C6B2872001374EC /* HapticManager.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -538,6 +541,14 @@
 				58C3162B2C650462001374EC /* SplashView.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		58C316542C69FDE1001374EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				58C316552C69FE07001374EC /* ShowDetailModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		58EA96EF2C5380D100166554 /* ViewModel */ = {
@@ -830,6 +841,7 @@
 				58EA96F52C57745A00166554 /* ImageGridView.swift in Sources */,
 				58C316352C68AF02001374EC /* HomeService.swift in Sources */,
 				5817D60E2C457CC50081323E /* MyActivityView.swift in Sources */,
+				58C316562C69FE07001374EC /* ShowDetailModel.swift in Sources */,
 				5817D6292C4657440081323E /* ResearchView.swift in Sources */,
 				5817D61F2C46508E0081323E /* ActivityDetailView.swift in Sources */,
 				5817D6072C454CAA0081323E /* DIContainer.swift in Sources */,
@@ -838,9 +850,11 @@
 				0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */,
 				5817D6272C4657030081323E /* OnboardingStartView.swift in Sources */,
 				0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */,
+				58C316532C69FD87001374EC /* ShowInviteViewModel.swift in Sources */,
 				58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */,
 				0AB468ED2C68FE5D003061CE /* ProfileImage.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
+				58C316512C69FA60001374EC /* InvitationDetailResponse.swift in Sources */,
 				5847F15F2C60E5BB001AC04E /* MapDetailView.swift in Sources */,
 				58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
@@ -863,6 +877,7 @@
 				0AB468EB2C68D93F003061CE /* ActivityDetailModel.swift in Sources */,
 				5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */,
 				5817D5EF2C4502360081323E /* MainTabType.swift in Sources */,
+				58C316582C6B2872001374EC /* HapticManager.swift in Sources */,
 				0A7026FD2C5A9C850083C7A0 /* BaseResponse.swift in Sources */,
 				0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */,
 				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,

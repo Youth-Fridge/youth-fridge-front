@@ -185,7 +185,12 @@ struct CardScrollView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(cards) { card in
-                    CardItemView(card: card, backgroundColor: card.backgroundColor)
+                    NavigationLink(destination: ShowInviteView(
+                        viewModel: ShowInviteViewModel(),
+                        invitationId: card.id
+                    )) {
+                        CardItemView(card: card, backgroundColor: card.backgroundColor)
+                    }
                 }
             }
             .padding(.top, 30)
@@ -194,6 +199,7 @@ struct CardScrollView: View {
         }
     }
 }
+
 
 struct CardItemView: View {
     let card: Card

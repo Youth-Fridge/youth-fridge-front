@@ -120,4 +120,15 @@ class InvitationService {
             }
         }
     }
+    
+    func getInvitationDetail(invitationId: Int, completion: @escaping (Result<InvitationDetailResponse, NetworkError>) -> Void) {
+        InvitationService.provider.request(.getInvitation(invitationId: invitationId)) { result in
+            switch result {
+            case .success(let response):
+                self.handleResponse(response: response, completion: completion)
+            case .failure(let error):
+                completion(.failure(.customError(error.localizedDescription)))
+            }
+        }
+    }
 }

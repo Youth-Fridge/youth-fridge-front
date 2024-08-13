@@ -269,10 +269,15 @@ struct ApplicationDetailView: View {
             
             VStack(spacing: 10) {
                 HStack {
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                    }
                 
                     Button(action: {
                         showCancelPopup = true

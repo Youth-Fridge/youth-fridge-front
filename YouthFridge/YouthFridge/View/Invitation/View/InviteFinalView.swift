@@ -39,8 +39,11 @@ struct InviteFinalView: View {
             .font(.system(size: 11,weight: .medium))
         Text("*불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 \n모니터링 중입니다.")
             .font(.system(size: 11,weight: .medium))
+            .navigationBarBackButtonHidden(true)
     }
+    
 }
+
 
 #Preview {
     InviteFinalView()

@@ -18,7 +18,7 @@ struct ShowInviteView: View {
     private let hapticManager = HapticManager.instance //진동
     var body: some View {
         ZStack {
-            Color.yellow
+            Color.sub2
                 .edgesIgnoringSafeArea(.all)
             GeometryReader { geometry in
                 Image("invitationLogo")
@@ -66,17 +66,20 @@ struct ShowInviteView: View {
                                     if let profileImageName = ProfileImage.from(rawValue: showDetail.ownerProfile)?.imageName {
                                         Image(profileImageName)
                                             .resizable()
-                                            .frame(width: 40, height: 40)
+                                            .frame(width: 54, height: 54)
                                         
                                         Text(showDetail.clubName)
-                                            .font(.system(size: 20, weight: .bold))
+                                            .font(.system(size: 16, weight: .semibold))
                                     }
+                                    
                                     Spacer()
                                 }
                                 
                                 VStack(alignment: .leading, spacing: 10) {
+                                    Divider()
                                     Text("기간")
                                         .font(.system(size: 16, weight: .bold))
+                                        .padding(.top,10)
                                     
                                     HStack {
                                         Text("우리 약속까지 ")
@@ -94,7 +97,7 @@ struct ShowInviteView: View {
                                     Text("인원")
                                         .font(.system(size: 16, weight: .bold))
                                     
-                                    Text(showDetail.number)
+                                    Text("\(showDetail.number)명")
                                         .font(.system(size: 14, weight: .medium))
                                     
                                     Text("시간 및 장소")
@@ -145,7 +148,6 @@ struct ShowInviteView: View {
                         isFlipped.toggle()
                     }
                 }
-                .toolbar(.hidden, for: .tabBar)
                 
                 Spacer()
                 

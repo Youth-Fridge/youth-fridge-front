@@ -31,13 +31,13 @@ struct SmallClassView: View {
                 Spacer()
                 List(viewModel.cells) { cell in
                                    ZStack {
-                                       NavigationLink(
-                                           destination: ShowInviteView(cell: cell),
-                                           label: {
-                                               EmptyView()
-                                           }
-                                       )
-                                       .opacity(0)
+//                                       NavigationLink(
+//                                           destination: ShowInviteView(cell: cell),
+//                                           label: {
+//                                               EmptyView()
+//                                           }
+//                                       )
+//                                       .opacity(0)
                                        
                                        CellView(cell: cell)
                                            .padding(.vertical, 15)

@@ -16,7 +16,7 @@ struct YouthFridgeApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            LoginIntroView()
                 .onOpenURL { url in
                     if (AuthApi.isKakaoTalkLoginUrl(url)) {
                         _ = AuthController.handleOpenUrl(url: url)

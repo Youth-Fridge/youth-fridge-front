@@ -55,10 +55,15 @@ struct SmallClassView: View {
             .navigationBarTitle("생활밥서", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image("Ellipse")
-                        .resizable()
-                        .frame(width: 36, height: 36)
-                        .clipShape(Circle())
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                            .frame(width: 36, height: 36)
+                            .clipShape(Circle())
+                    }
                 }
             }
             

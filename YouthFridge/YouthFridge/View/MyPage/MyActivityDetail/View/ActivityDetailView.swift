@@ -52,24 +52,26 @@ struct ActivityDetailView: View {
             .onAppear {
                 detailViewModel.fetchDetailActivities()
             }
-//            .navigationBarBackButtonHidden(true)
-//            .toolbar {
-//                ToolbarItem(placement: .navigationBarLeading) {
-//                    Button(action: {
-//                        dismiss()
-//                    }) {
-//                        Image("left-arrow")
-//                            .resizable()
-//                            .frame(width: 40, height: 40)
-//                    }
-//                }
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    Image(viewModel.myUser!.profilePicture)
-//                        .resizable()
-//                        .frame(width: 40, height: 40)
-//                        .clipShape(Circle())
-//                }
-//            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image("left-arrow")
+                            .resizable()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                    }
+                }
+            }
         }
     }
     

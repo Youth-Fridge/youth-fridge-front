@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: - 네비게이션 ㅠㅠ 팝업 메시지 띄울 때 뒤로 보내야됨
 struct MyPageView: View {
     @StateObject var viewModel: MyPageViewModel
     @State private var showDeletePopup = false
@@ -15,16 +14,17 @@ struct MyPageView: View {
     @State private var showLogOutDeletePopup = false
     @State private var navigateToLoginIntro = false
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 VStack(spacing: 0) {
                     welcomeMessage
                     profileView
                     activityList
                 }
-                .padding(.top, 1)
+                .padding(.top, 5)
                 
                 ShadowNavigationBar()
+                    .padding(.top, 5)
                 
                 if showDeletePopup {
                     Color.black.opacity(0.4)
@@ -69,6 +69,7 @@ struct MyPageView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .zIndex(1)
                 }
+                
                 if showLogOutDeletePopup {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)

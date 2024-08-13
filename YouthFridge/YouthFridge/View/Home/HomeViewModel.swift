@@ -12,6 +12,7 @@ class HomeViewModel: ObservableObject {
     @Published var cards: [Card] = []
     @Published var daysRemaining = 0
     @Published var tabContents: [TabContent] = []
+    @Published var showPlaceholder: Bool = false
     let publicMeetingBackground = ["banner1", "banner2", "banner3"]
     init() {
         fetchCards()
@@ -48,19 +49,23 @@ class HomeViewModel: ObservableObject {
             switch result {
             case .success(let invitations):
                 DispatchQueue.main.async {
-                    self?.cards = invitations.map { invitation in
-                        Card(
-                            id: invitation.id,
-                            name: invitation.ownerInfo.ownerName,
-                            title: invitation.name,
-                            location: invitation.launchPlace,
-                            tags: invitation.interests,
-                            emojiNumber: invitation.emojiNumber,
-                            profileImageNumber: invitation.ownerInfo.profileImageNumber,
-                            startTime: invitation.startTime,
-                            endTime: invitation.endTime,
-                            launchDate: invitation.launchDate
-                        )
+                    if invitations.isEmpty {
+                        self?.showPlaceholder = true
+                    } else {
+                        self?.cards = invitations.map { invitation in
+                            Card(
+                                id: invitation.id,
+                                name: invitation.ownerInfo.ownerName,
+                                title: invitation.name,
+                                location: invitation.launchPlace,
+                                tags: invitation.interests,
+                                emojiNumber: invitation.emojiNumber,
+                                profileImageNumber: invitation.ownerInfo.profileImageNumber,
+                                startTime: invitation.startTime,
+                                endTime: invitation.endTime,
+                                launchDate: invitation.launchDate
+                            )
+                        }
                     }
                 }
             case .failure(let error):

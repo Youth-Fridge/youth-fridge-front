@@ -23,6 +23,7 @@
 		0A89CFD52C67C67000A3A437 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CFD42C67C67000A3A437 /* Emoji.swift */; };
 		0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */; };
 		0A971D072C4C4153009F3B13 /* ShadowNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */; };
+		0A9EF70C2C6A1BB600880952 /* ImminentInvitationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EF70B2C6A1BB600880952 /* ImminentInvitationResponse.swift */; };
 		0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */; };
 		0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */; };
 		0AB468E82C68C480003061CE /* MyActivitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468E72C68C480003061CE /* MyActivitiesResponse.swift */; };
@@ -140,6 +141,7 @@
 		0A89CFD42C67C67000A3A437 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		0A89CFD62C67CC0C00A3A437 /* InvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationImage.swift; sourceTree = "<group>"; };
 		0A971D062C4C4153009F3B13 /* ShadowNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowNavigationBar.swift; sourceTree = "<group>"; };
+		0A9EF70B2C6A1BB600880952 /* ImminentInvitationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImminentInvitationResponse.swift; sourceTree = "<group>"; };
 		0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMeetingResponse.swift; sourceTree = "<group>"; };
 		0AB468E32C68A80D003061CE /* MyInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0AB468E72C68C480003061CE /* MyActivitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesResponse.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				58F6454D2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift */,
 				0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */,
 				58C316502C69FA60001374EC /* InvitationDetailResponse.swift */,
+				0A9EF70B2C6A1BB600880952 /* ImminentInvitationResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
 				58C316372C68B964001374EC /* DateFormatter.swift in Sources */,
+				0A9EF70C2C6A1BB600880952 /* ImminentInvitationResponse.swift in Sources */,
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
 				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Moya
+import Combine
 
 class InvitationService {
     static let shared = InvitationService()
@@ -121,8 +122,13 @@ class InvitationService {
         }
     }
     
+
     func getInvitationDetail(invitationId: Int, completion: @escaping (Result<InvitationDetailResponse, NetworkError>) -> Void) {
         InvitationService.provider.request(.getInvitation(invitationId: invitationId)) { result in
+
+    func getImminentInvitation(completion: @escaping (Result<ImminentInvitationResponse?, NetworkError>) -> Void) {
+        InvitationService.provider.request(.getImminentInvitation) { result in
+
             switch result {
             case .success(let response):
                 self.handleResponse(response: response, completion: completion)
@@ -131,4 +137,30 @@ class InvitationService {
             }
         }
     }
+    
+    func cancelInvitation(invitationId: Int) -> AnyPublisher<String, NetworkError> {
+        let target = InvitationAPI.cancelInvitation(invitationId: invitationId)
+        
+        return Future<String, NetworkError> { promise in
+            InvitationService.provider.request(target) { result in
+                switch result {
+                case .success(let response):
+                    do {
+                        let baseResponse = try JSONDecoder().decode(BaseResponse<String>.self, from: response.data)
+                        if baseResponse.isSuccess, let message = baseResponse.result {
+                            promise(.success(message))
+                        } else {
+                            promise(.failure(.customError(baseResponse.message)))
+                        }
+                    } catch {
+                        promise(.failure(.decodingError(error)))
+                    }
+                case .failure(let error):
+                    promise(.failure(.customError(error.localizedDescription)))
+                }
+            }
+        }
+        .eraseToAnyPublisher() // AnyPublisher 반환
+    }
+
 }

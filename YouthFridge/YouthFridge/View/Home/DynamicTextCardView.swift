@@ -9,8 +9,8 @@ import Foundation
 import SwiftUI
 
 struct DynamicTextCardView: View {
-    @Binding var daysRemaining: Int
-
+    @ObservedObject var viewModel: HomeViewModel
+    
     var body: some View {
         ZStack {
                     Color.white.opacity(0.92)
@@ -19,7 +19,7 @@ struct DynamicTextCardView: View {
                 Text("우리 약속까지")
                     .font(.system(size: 16,weight: .semibold))
                 HStack {
-                    ForEach(Array(String(daysRemaining)), id: \.self) { char in
+                    ForEach(Array(String(viewModel.daysRemaining)), id: \.self) { char in
                         Text(String(char))
                             .font(.system(size: 40,weight: .bold))
                             .bold()

@@ -12,7 +12,6 @@ struct HomeView: View {
     let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
     @State private var currentIndex = 0
     @State private var selectedImageIndex: Int = 0
-    @State private var daysRemaining = 21 // 남은 일수
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
     var cards: [Card] {
@@ -32,7 +31,7 @@ struct HomeView: View {
                         .padding(.leading, 20)
                     
                     VStack(spacing: 10) {
-                        DynamicTextCardView(daysRemaining: $daysRemaining)
+                        DynamicTextCardView(viewModel: viewModel)
                         SmallestCardView()
                     }
                     .frame(height: 252)

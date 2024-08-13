@@ -14,6 +14,10 @@ struct ShowInviteView: View {
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false
+    @State private var isInvitationApplied: Bool = false
+    @State private var showAlert: Bool = false
+    @State private var alertTitle: String = ""
+    @State private var alertMessage: String = ""
     @Environment(\.presentationMode) var presentationMode
     private let hapticManager = HapticManager.instance //진동
     var body: some View {
@@ -151,7 +155,9 @@ struct ShowInviteView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: InviteFinalView()) {
+                Button(action: {
+                    applyInvitation()
+                }) {
                     Text("참여하기")
                         .font(.headline)
                         .foregroundColor(.yellow)
@@ -162,6 +168,13 @@ struct ShowInviteView: View {
                         .shadow(radius: 3)
                         .padding(.bottom, 20)
                 }
+                .disabled(isInvitationApplied) // Disable button after application
+                
+                NavigationLink(
+                    destination: InviteFinalView(),
+                    isActive: $isInvitationApplied,
+                    label: { EmptyView() }
+                )
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -173,6 +186,24 @@ struct ShowInviteView: View {
         })
         .onAppear {
             viewModel.fetchInviteData(invitationId: invitationId)
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("알림"), message: Text(alertMessage), dismissButton: .default(Text("확인")))
+        }
+    }
+    
+    private func applyInvitation() {
+        InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
+            switch result {
+            case .success(let message):
+                isInvitationApplied = true
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    alertTitle = "오류"
+                    alertMessage = error.localizedDescription
+                    showAlert = true
+                }
+            }
         }
     }
 }

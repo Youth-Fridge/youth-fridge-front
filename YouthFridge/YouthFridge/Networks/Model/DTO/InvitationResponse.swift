@@ -7,26 +7,30 @@
 
 import Foundation
 
-struct InvitationDTO: Codable {
+struct InvitationResponse: Codable {
     let name: String
     let launchDate: String
+    let startTime: String
+    let endTime: String
+    let kakaoLink: String
     let launchPlace: String
     let emojiNumber: Int
     let totalMember: Int
     let imageNumber: Int
-    let ownerEmail: String
     let activityPlans: [String]
     let interests: [String]
-    
-    enum CodingKeys: String, CodingKey {
-        case name
-        case launchDate = "launch_date"
-        case launchPlace = "launch_place"
-        case emojiNumber = "emoji_number"
-        case totalMember = "total_member"
-        case imageNumber = "image_number"
-        case ownerEmail = "owner_email"
-        case activityPlans = "activity_plans"
-        case interests
+
+    init(name: String, launchDate: String, startTime: String, endTime: String, kakaoLink: String, launchPlace: String, emojiNumber: Int, totalMember: Int, imageNumber: Int, activityPlans: [String], interests: [String]) {
+        self.name = name
+        self.launchDate = launchDate
+        self.startTime = startTime
+        self.endTime = endTime
+        self.kakaoLink = kakaoLink
+        self.launchPlace = launchPlace
+        self.emojiNumber = emojiNumber
+        self.totalMember = totalMember
+        self.imageNumber = imageNumber
+        self.activityPlans = activityPlans
+        self.interests = interests
     }
 }

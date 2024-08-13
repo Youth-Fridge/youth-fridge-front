@@ -49,7 +49,7 @@ class CreateInviteViewModel: ObservableObject {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let formattedLaunchDate = dateFormatter.string(from: launchDate)
         
-        let invitationDTO = Invitation(
+        let invitationDTO = InvitationResponse(
             name: name,
             launchDate: formattedLaunchDate,
             startTime: selectedStartTime,

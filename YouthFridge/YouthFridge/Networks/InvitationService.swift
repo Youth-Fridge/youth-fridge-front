@@ -22,6 +22,7 @@ class InvitationService {
         case unhandledStatusCode(Int)
         case decodingError(Error)
         case customError(String)
+        case unknownError(String)
         
         var localizedDescription: String {
             switch self {
@@ -34,6 +35,8 @@ class InvitationService {
             case .decodingError(let error):
                 return "Decoding error: \(error.localizedDescription)"
             case .customError(let message):
+                return message
+            case .unknownError(let message):
                 return message
             }
         }
@@ -157,6 +160,54 @@ class InvitationService {
             }
         }
     }
+    
+    func applyInvitation(invitationId: Int, completion: @escaping (Result<String, NetworkError>) -> Void) {
+        InvitationService.provider.request(.applyInvitation(invitationId: invitationId)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    // 응답 데이터 파싱
+                    let responseData = try response.mapJSON() as? [String: Any]
+                    
+                    let isSuccess = responseData?["isSuccess"] as? Bool ?? false
+                    let code = responseData?["code"] as? String
+                    let message = responseData?["message"] as? String ?? "Unknown error occurred."
+                    
+                    if isSuccess {
+                        completion(.success("소모임 신청이 완료되었습니다."))
+                    } else {
+                        let localizedMessage: String
+                        switch code {
+                        case "INVITATION4002":
+                            localizedMessage = "이미 소모임을 신청한 회원입니다."
+                        default:
+                            localizedMessage = message
+                        }
+                        completion(.failure(.customError("이미 신청한 소모임입니다.")))
+                    }
+                } catch {
+                    completion(.failure(.decodingError(error)))
+                }
+                
+            case .failure(let error):
+                let networkError: NetworkError
+                if let moyaError = error as? MoyaError {
+                    switch moyaError.response?.statusCode {
+                    case 400:
+                        networkError = .badRequest
+                    case 403:
+                        networkError = .forbidden
+                    default:
+                        networkError = .unhandledStatusCode(moyaError.response?.statusCode ?? -1)
+                    }
+                } else {
+                    networkError = .unknownError(error.localizedDescription)
+                }
+                completion(.failure(networkError))
+            }
+        }
+    }
+    
     func cancelInvitation(invitationId: Int) -> AnyPublisher<String, NetworkError> {
         let target = InvitationAPI.cancelInvitation(invitationId: invitationId)
         

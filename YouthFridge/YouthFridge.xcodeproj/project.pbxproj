@@ -341,10 +341,10 @@
 		5817D5F32C4504760081323E /* SmallClass */ = {
 			isa = PBXGroup;
 			children = (
+				58C3165D2C6B44FA001374EC /* Model */,
 				5817D6372C4BFD420081323E /* ViewModel */,
 				5817D6362C4BFD370081323E /* View */,
 				5817D5F82C4504A30081323E /* SmallClassView.swift */,
-				5817D6382C4BFD580081323E /* CellModel.swift */,
 			);
 			path = SmallClass;
 			sourceTree = "<group>";
@@ -553,6 +553,14 @@
 			isa = PBXGroup;
 			children = (
 				58C316552C69FE07001374EC /* ShowDetailModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58C3165D2C6B44FA001374EC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5817D6382C4BFD580081323E /* CellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

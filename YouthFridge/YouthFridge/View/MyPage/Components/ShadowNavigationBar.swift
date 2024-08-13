@@ -17,6 +17,7 @@ struct ShadowNavigationBar: View {
             )
             .frame(height: 17)
             .edgesIgnoringSafeArea(.bottom)
+            .frame(height: 20)
             Spacer()
         }
     }

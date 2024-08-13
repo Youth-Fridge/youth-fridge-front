@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 class ApplicationDetailModel: ObservableObject, Identifiable {
     @Published var totalMember: Int
@@ -16,10 +15,7 @@ class ApplicationDetailModel: ObservableObject, Identifiable {
     @Published var activities: [String]
     @Published var kakaoLink: String
     @Published var invitationActivities: [ActivityCardViewModel] = []
-    @Published var isCancelled: Bool
-    @Published var errorMessage: String?
     
-    private var cancellables = Set<AnyCancellable>()
     private let invitationId: Int
 
     init(invitationId: Int) {
@@ -30,7 +26,6 @@ class ApplicationDetailModel: ObservableObject, Identifiable {
         self.ownerIntroduce = ""
         self.activities = []
         self.kakaoLink = ""
-        self.isCancelled = false
         fetchDetailActivities()
     }
     
@@ -38,6 +33,7 @@ class ApplicationDetailModel: ObservableObject, Identifiable {
         InvitationService.shared.getMyApplicationDetail(invitationId: invitationId) { [weak self] result in
             switch result {
             case .success(let response):
+                print("Received JSON Response: \(response)") // 디버깅용
                 DispatchQueue.main.async {
                     self?.totalMember = response.totalMember
                     self?.currentMember = response.currentMember
@@ -50,20 +46,5 @@ class ApplicationDetailModel: ObservableObject, Identifiable {
                 print("Error: \(error.localizedDescription)")
             }
         }
-    }
-
-    func cancelInvitation() {
-        InvitationService.shared.cancelInvitation(invitationId: invitationId)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self.errorMessage = error.localizedDescription
-                }
-            }, receiveValue: { message in
-                self.isCancelled = (message == "ExpectedSuccessMessage")
-            })
-            .store(in: &cancellables)
     }
 }

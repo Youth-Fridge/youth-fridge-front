@@ -65,7 +65,7 @@ struct MyPageView: View {
                             withAnimation {
                                 showDeletePopup = false
                             }
-                        })
+                    })
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .zIndex(1)
                 }
@@ -97,7 +97,7 @@ struct MyPageView: View {
                             withAnimation {
                                 showLogOutDeletePopup = false
                             }
-                        })
+                    })
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .zIndex(1)
                 }
@@ -136,9 +136,7 @@ struct MyPageView: View {
                     Text("초대 모임 예정일")
                         .font(.subheadline)
                         .foregroundColor(.main1Color)
-                    Text(viewModel.launchDate != nil && viewModel.startTime != nil
-                        ? "\(viewModel.launchDate!) 화요일 \(viewModel.startTime!)"
-                        : "예정된 초대 모임이 없습니다")
+                    Text("07월 30일 화요일 오후 7시")
                         .font(.caption)
                         .foregroundColor(.gray6Color)
                 }

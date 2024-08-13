@@ -10,13 +10,12 @@ import Combine
 
 class HomeViewModel: ObservableObject {
     @Published var cards: [Card] = []
-    @Published var daysRemaining = 0
+
     @Published var tabContents: [TabContent] = []
     let publicMeetingBackground = ["banner1", "banner2", "banner3"]
     init() {
         fetchCards()
         fetchPublicMeeting()
-        fetchInvitationData()
     }
     
     func fetchPublicMeeting() {
@@ -65,39 +64,6 @@ class HomeViewModel: ObservableObject {
                 }
             case .failure(let error):
                 print("Error fetching invitations: \(error)")
-            }
-        }
-    }
-    
-    private func fetchInvitationData() {
-        InvitationService.shared.getImminentInvitation { [weak self] result in
-            switch result {
-            case .success(let response):
-                // 신청한 소모임이 있는 경우
-                if let response = response {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                    
-                    guard let targetDate = dateFormatter.date(from: response.launchDate) else { return }
-                    
-                    let currentDate = Date()
-                    
-                    let calendar = Calendar.current
-                    let components = calendar.dateComponents([.day], from: currentDate, to: targetDate)
-                    
-                    let dayLeft = components.day ?? 0
-                    
-                    DispatchQueue.main.async {
-                        self?.daysRemaining = dayLeft
-                    }
-                } else {
-                    // 신청한 소모임이 1개도 없는 경우
-                    DispatchQueue.main.async {
-                        self?.daysRemaining = 0
-                    }
-                }
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
             }
         }
     }

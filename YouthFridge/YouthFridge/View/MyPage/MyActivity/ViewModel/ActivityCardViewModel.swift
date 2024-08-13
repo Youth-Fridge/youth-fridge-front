@@ -18,6 +18,16 @@ class ActivityCardViewModel: ObservableObject, Identifiable {
     @Published var daysLeft: Int
     @Published var emojiNumber: Int
     @Published var isPast: Bool
+//    @Published var participants: [User]
+    
+//    var participantsList: [User] = [
+//        User(name: "임수진", profilePicture: "Ellipse"),
+//        User(name: "김민솔", profilePicture: "Ellipse"),
+//        User(name: "최강", profilePicture: "Ellipse"),
+//        User(name: "임수진", profilePicture: "Ellipse"),
+//        User(name: "김민솔", profilePicture: "Ellipse"),
+//        User(name: "최강", profilePicture: "Ellipse")
+//    ]
     
     init(invitationId: Int, title: String, date: String, location: String, startTime: String, daysLeft: Int, emojiNumber: Int, isPast: Bool = false) {
         self.invitationId = invitationId
@@ -28,6 +38,7 @@ class ActivityCardViewModel: ObservableObject, Identifiable {
         self.daysLeft = daysLeft
         self.emojiNumber = emojiNumber
         self.isPast = isPast
+//        self.participants = participantsList
     }
     
     convenience init(from data: MyActivitiesResponse) {

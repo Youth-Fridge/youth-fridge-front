@@ -90,6 +90,7 @@
 		58C316532C69FD87001374EC /* ShowInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316522C69FD87001374EC /* ShowInviteViewModel.swift */; };
 		58C316562C69FE07001374EC /* ShowDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316552C69FE07001374EC /* ShowDetailModel.swift */; };
 		58C316582C6B2872001374EC /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316572C6B2872001374EC /* HapticManager.swift */; };
+		58C3165A2C6B41FF001374EC /* InvitationListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316592C6B41FF001374EC /* InvitationListResponse.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -203,6 +204,7 @@
 		58C316522C69FD87001374EC /* ShowInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowInviteViewModel.swift; path = YouthFridge/View/Invitation/ShowInviteViewModel.swift; sourceTree = SOURCE_ROOT; };
 		58C316552C69FE07001374EC /* ShowDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailModel.swift; sourceTree = "<group>"; };
 		58C316572C6B2872001374EC /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		58C316592C6B41FF001374EC /* InvitationListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationListResponse.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				0AB468E12C689CCE003061CE /* PublicMeetingResponse.swift */,
 				58C316502C69FA60001374EC /* InvitationDetailResponse.swift */,
 				0A9EF70B2C6A1BB600880952 /* ImminentInvitationResponse.swift */,
+				58C316592C6B41FF001374EC /* InvitationListResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				0A89CFD72C67CC0C00A3A437 /* InvitationImage.swift in Sources */,
 				5817D6052C454C640081323E /* MyPageViewModel.swift in Sources */,
 				58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */,
+				58C3165A2C6B41FF001374EC /* InvitationListResponse.swift in Sources */,
 				58C3162F2C651310001374EC /* LogOutPopUpView.swift in Sources */,
 				5847F1362C5E589B001AC04E /* ProfileResearchViewModel.swift in Sources */,
 				5817D60B2C4552360081323E /* User.swift in Sources */,

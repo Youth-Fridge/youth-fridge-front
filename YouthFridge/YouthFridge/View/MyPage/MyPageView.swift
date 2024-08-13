@@ -90,7 +90,6 @@ struct MyPageView: View {
                                 KeychainHandler.shared.accessToken = ""
                                 showLogOutDeletePopup = false
                                 navigateToLoginIntro = true
-                                // TODO: - 회원 로그아웃 처리
                             }
                         },
                         onCancel: {
@@ -137,7 +136,7 @@ struct MyPageView: View {
                         .font(.subheadline)
                         .foregroundColor(.main1Color)
                     Text(viewModel.launchDate != nil && viewModel.startTime != nil
-                        ? "\(viewModel.launchDate!) 화요일 \(viewModel.startTime!)"
+                        ? "\(viewModel.launchDate!) \(viewModel.startTime!)"
                         : "예정된 초대 모임이 없습니다")
                         .font(.caption)
                         .foregroundColor(.gray6Color)

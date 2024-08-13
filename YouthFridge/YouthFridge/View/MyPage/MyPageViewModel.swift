@@ -31,21 +31,16 @@ class MyPageViewModel: ObservableObject {
     }
     
     private func getSelectedImageIndex() -> Int {
-        print("몇번인뎅?")
-        print(UserDefaults.standard.integer(forKey: "profileImageNumber"))
         return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }
     
     private static func convertDate(from dateString: String) -> String {
         let inputDateFormatter = DateFormatter()
         inputDateFormatter.dateFormat = "yyyy-MM-dd"
-
+        
         guard let date = inputDateFormatter.date(from: dateString) else { return "Invalid date" }
-
-        let outputDateFormatter = DateFormatter()
-        outputDateFormatter.dateFormat = "M월 d일"
-
-        return outputDateFormatter.string(from: date)
+        
+        return DateFormatter.displayDateFormatter.string(from: date)
     }
     
     private static func convertTime(from timeString: String) -> String {
@@ -53,11 +48,8 @@ class MyPageViewModel: ObservableObject {
         inputDateFormatter.dateFormat = "HH:mm:ss"
 
         guard let date = inputDateFormatter.date(from: timeString) else { return "Invalid time" }
-
-        let outputDateFormatter = DateFormatter()
-        outputDateFormatter.dateFormat = "H시"
-
-        return outputDateFormatter.string(from: date)
+        
+        return DateFormatter.displayTimeFormatter.string(from: date)
     }
     
     private func fetchInvitationData() {

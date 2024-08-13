@@ -22,18 +22,6 @@ class ActivityDetailModel: ObservableObject, Identifiable {
         self.memberInfoList = []
         fetchDetailActivities()
     }
-
-    //    @Published var participants: [User]
-    
-    //    var participantsList: [User] = [
-    //        User(name: "임수진", profilePicture: "Ellipse"),
-    //        User(name: "김민솔", profilePicture: "Ellipse"),
-    //        User(name: "최강", profilePicture: "Ellipse"),
-    //        User(name: "임수진", profilePicture: "Ellipse"),
-    //        User(name: "김민솔", profilePicture: "Ellipse"),
-    //        User(name: "최강", profilePicture: "Ellipse")
-    //    ]
-    
     
     func fetchDetailActivities() {
         InvitationService.shared.getMyDetailInvitation(invitationId: invitationId) { [weak self] result in

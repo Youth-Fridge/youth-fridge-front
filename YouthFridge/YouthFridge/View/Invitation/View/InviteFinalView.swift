@@ -24,7 +24,8 @@ struct InviteFinalView: View {
             .padding()
         
         Spacer()
-        NavigationLink(destination: ResearchView()) {
+        // TODO: - 이동 조정 필요
+        NavigationLink(destination: MainTabView()) {
             Text("신청한 모임 확인하기")
                 .font(.headline)
                 .foregroundColor(.white)

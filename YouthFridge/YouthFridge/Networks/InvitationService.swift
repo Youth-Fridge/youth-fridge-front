@@ -125,6 +125,14 @@ class InvitationService {
 
     func getInvitationDetail(invitationId: Int, completion: @escaping (Result<InvitationDetailResponse, NetworkError>) -> Void) {
         InvitationService.provider.request(.getInvitation(invitationId: invitationId)) { result in
+            switch result {
+            case .success(let response):
+                self.handleResponse(response: response, completion: completion)
+            case .failure(let error):
+                completion(.failure(.customError(error.localizedDescription)))
+            }
+        }
+    }
 
     func getImminentInvitation(completion: @escaping (Result<ImminentInvitationResponse?, NetworkError>) -> Void) {
         InvitationService.provider.request(.getImminentInvitation) { result in
@@ -138,6 +146,17 @@ class InvitationService {
         }
     }
     
+    func getInvitationList(completion: @escaping (Result<ImminentInvitationResponse?, NetworkError>) -> Void) {
+        InvitationService.provider.request(.smallClassList) { result in
+            switch result {
+            case .success(let response):
+                self.handleResponse(response: response, completion: completion)
+            case .failure(let error):
+                completion(.failure(.customError(error.localizedDescription)))
+
+            }
+        }
+    }
     func cancelInvitation(invitationId: Int) -> AnyPublisher<String, NetworkError> {
         let target = InvitationAPI.cancelInvitation(invitationId: invitationId)
         

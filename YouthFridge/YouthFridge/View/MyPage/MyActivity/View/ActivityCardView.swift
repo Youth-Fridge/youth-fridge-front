@@ -28,8 +28,7 @@ struct ActivityCardView: View {
                         .padding(.leading, 10)
                         .padding(.bottom, 5)
                     
-                    // TODO: - 요일 변환 필요
-                    Text("\(viewModel.date) 수요일 \(viewModel.startTime)")
+                    Text("\(viewModel.date) \(viewModel.startTime)")
                         .font(.system(size: 12))
                         .padding(.leading, 10)
                         .padding(.bottom, 1)
@@ -41,7 +40,7 @@ struct ActivityCardView: View {
                 Spacer()
                 
                 Image("division")
-                    .padding(.trailing, 20)
+                    .padding(.trailing, 10)
                 
                 Text("D-\(viewModel.daysLeft)")
                     .font(.headline)

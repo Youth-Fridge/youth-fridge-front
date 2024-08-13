@@ -38,7 +38,7 @@ struct MyActivityView: View {
                         }
                     }
                 }
-                .padding(.top, 45)
+                .padding(.top, 30)
                 .padding(.horizontal, 10)
             }
             .navigationTitle("내 활동")
@@ -54,9 +54,13 @@ struct MyActivityView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(viewModel.myUser!.profilePicture)
-                        .resizable()
-                        .frame(width: 40, height: 40)
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                    }
                 }
             }
         }

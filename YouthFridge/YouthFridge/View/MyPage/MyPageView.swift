@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: - 네비게이션 ㅠㅠ 팝업 메시지 띄울 때 뒤로 보내야됨
 struct MyPageView: View {
     @StateObject var viewModel: MyPageViewModel
     @State private var showDeletePopup = false
@@ -15,16 +14,17 @@ struct MyPageView: View {
     @State private var showLogOutDeletePopup = false
     @State private var navigateToLoginIntro = false
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 VStack(spacing: 0) {
                     welcomeMessage
                     profileView
                     activityList
                 }
-                .padding(.top, 1)
+                .padding(.top, 5)
                 
                 ShadowNavigationBar()
+                    .padding(.top, 5)
                 
                 if showDeletePopup {
                     Color.black.opacity(0.4)
@@ -69,6 +69,7 @@ struct MyPageView: View {
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .zIndex(1)
                 }
+                
                 if showLogOutDeletePopup {
                     Color.black.opacity(0.4)
                         .edgesIgnoringSafeArea(.all)
@@ -90,7 +91,6 @@ struct MyPageView: View {
                                 KeychainHandler.shared.accessToken = ""
                                 showLogOutDeletePopup = false
                                 navigateToLoginIntro = true
-                                // TODO: - 회원 로그아웃 처리
                             }
                         },
                         onCancel: {
@@ -137,7 +137,7 @@ struct MyPageView: View {
                         .font(.subheadline)
                         .foregroundColor(.main1Color)
                     Text(viewModel.launchDate != nil && viewModel.startTime != nil
-                        ? "\(viewModel.launchDate!) 화요일 \(viewModel.startTime!)"
+                        ? "\(viewModel.launchDate!) \(viewModel.startTime!)"
                         : "예정된 초대 모임이 없습니다")
                         .font(.caption)
                         .foregroundColor(.gray6Color)

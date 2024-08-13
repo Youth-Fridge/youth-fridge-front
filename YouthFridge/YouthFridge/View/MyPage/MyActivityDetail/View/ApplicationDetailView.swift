@@ -79,22 +79,26 @@ struct ApplicationDetailView: View {
             }
             .navigationTitle("신청 내역")
             .navigationBarTitleDisplayMode(.inline)
-//            .navigationBarBackButtonHidden(true)
-            //            .toolbar {
-            //                ToolbarItem(placement: .navigationBarLeading) {
-            //                    Button(action: {
-            //                        dismiss()
-            //                    }) {
-            //                        Image("left-arrow")
-            //                            .resizable()
-            //                    }
-            //                }
-            //                ToolbarItem(placement: .navigationBarTrailing) {
-            //                    Image(viewModel.myUser!.profilePicture)
-            //                        .resizable()
-            //                        .frame(width: 40, height: 40)
-            //                }
-            //            }
+            .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image("left-arrow")
+                            .resizable()
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                    }
+                }
+            }
         }
     }
     
@@ -269,10 +273,15 @@ struct ApplicationDetailView: View {
             
             VStack(spacing: 10) {
                 HStack {
-                Image("Ellipse20")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                            .clipShape(Circle())
+                    }
                 
                     Button(action: {
                         showCancelPopup = true

@@ -10,10 +10,10 @@ import Moya
 
 class NewsLetterService {
     static let shared = NewsLetterService()
-    static let provider = MoyaProvider<NewsLetterAPI>()
+    static let provider = MoyaProvider<NewsLetterAPI>(plugins: [NetworkLoggerPlugin()])
     
-    func fetchTopFiveInvitations(completion: @escaping (Result<[InvitationTopFiveResponse], Error>) -> Void) {
-        HomeService.provider.request(.getInvitationsTop5) { result in
+    func getNewsLetter(completion: @escaping (Result<NewsLetterResponse, Error>) -> Void) {
+        NewsLetterService.provider.request(.getNewsLetter) { result in
             switch result {
             case .success(let response):
                 if let responseString = String(data: response.data, encoding: .utf8) {
@@ -25,7 +25,7 @@ class NewsLetterService {
                 switch response.statusCode {
                 case 200:
                     do {
-                        let data = try JSONDecoder().decode(BaseResponse<[InvitationTopFiveResponse]>.self, from: response.data)
+                        let data = try JSONDecoder().decode(BaseResponse<NewsLetterResponse>.self, from: response.data)
                         if let invitations = data.result {
                             completion(.success(invitations))
                         } else {

@@ -34,6 +34,7 @@
 		0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */; };
 		0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
+		0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
 		58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
@@ -154,6 +155,7 @@
 		0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppliedInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailModel.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
+		0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLetterResponse.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
 		58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallestCardView.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				58C316502C69FA60001374EC /* InvitationDetailResponse.swift */,
 				0A9EF70B2C6A1BB600880952 /* ImminentInvitationResponse.swift */,
 				58C316592C6B41FF001374EC /* InvitationListResponse.swift */,
+				0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				58C316532C69FD87001374EC /* ShowInviteViewModel.swift in Sources */,
 				58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */,
 				0AB468ED2C68FE5D003061CE /* ProfileImage.swift in Sources */,
+				0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */,
 				5817D5FD2C4504B50081323E /* MyPageView.swift in Sources */,
 				58C316512C69FA60001374EC /* InvitationDetailResponse.swift in Sources */,
 				5847F15F2C60E5BB001AC04E /* MapDetailView.swift in Sources */,

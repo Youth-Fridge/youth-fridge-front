@@ -10,32 +10,40 @@ import WebKit
 
 struct MainTabView: View {
     @State private var selectedTab: MainTabType = .home
+    @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
     
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 ForEach(MainTabType.allCases, id: \.self) { tab in
-                    Group {
-                        switch tab {
-                        case .home:
-                            AnyView(HomeView(viewModel: .init()))
-                        case .smallClass:
-                            AnyView(SmallClassView())
-                        case .news:
-                            AnyView(NewsView())
-                        case .mypage:
-                            AnyView(MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services()))))
+                    tabView(for: tab)
+                        .tabItem {
+                            Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
                         }
-                    }
-                    .tabItem {
-                        Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
-                    }
-                    .tag(tab)
+                        .tag(tab)
                 }
             }
             .tint(.black)
+            .navigationViewStyle(StackNavigationViewStyle())
         }
     }
+    
+    @ViewBuilder
+    private func tabView(for tab: MainTabType) -> some View {
+        switch tab {
+        case .home:
+            HomeView(viewModel: .init(), newsUrl: $newsUrl, onNewsButtonPress: {
+                self.selectedTab = .news
+            })
+        case .smallClass:
+            SmallClassView()
+        case .news:
+            NewsView(urlToLoad: $newsUrl)
+        case .mypage:
+            MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services())))
+        }
+    }
+    
     init() {
         let image = UIImage.gradientImageWithBounds(
             bounds: CGRect( x: 0, y: 0, width: UIScreen.main.scale, height: 8),

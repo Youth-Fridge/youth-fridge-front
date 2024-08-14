@@ -18,7 +18,7 @@ enum InvitationImage: Int, CaseIterable {
     var imageName: String {
         switch self {
         case .image0:
-            return "invitationImage"
+            return "invitationImage0"
         case .image1:
             return "invitationImage1"
         case .image2:

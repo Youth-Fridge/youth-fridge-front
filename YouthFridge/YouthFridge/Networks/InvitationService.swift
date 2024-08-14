@@ -114,6 +114,17 @@ class InvitationService {
         }
     }
     
+    func getInvitationList(page: Int, size: Int, completion: @escaping (Result<[InvitationListResponse], NetworkError>) -> Void) {
+        InvitationService.provider.request(.smallClassList(page: page, size: size)) { result in
+            switch result {
+            case .success(let response):
+                self.handleResponse(response: response, completion: completion)
+            case .failure(let error):
+                completion(.failure(.customError(error.localizedDescription)))
+            }
+        }
+    }
+    
     func getMyApplicationDetail(invitationId: Int, completion: @escaping (Result<MyAppliedInvitationDetailResponse, NetworkError>) -> Void) {
         InvitationService.provider.request(.getAppliedDetailInvitation(invitationId: invitationId)) { result in
             switch result {
@@ -148,18 +159,7 @@ class InvitationService {
             }
         }
     }
-    
-    func getInvitationList(completion: @escaping (Result<ImminentInvitationResponse?, NetworkError>) -> Void) {
-        InvitationService.provider.request(.smallClassList) { result in
-            switch result {
-            case .success(let response):
-                self.handleResponse(response: response, completion: completion)
-            case .failure(let error):
-                completion(.failure(.customError(error.localizedDescription)))
 
-            }
-        }
-    }
     
     func applyInvitation(invitationId: Int, completion: @escaping (Result<String, NetworkError>) -> Void) {
         InvitationService.provider.request(.applyInvitation(invitationId: invitationId)) { result in

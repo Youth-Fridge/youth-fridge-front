@@ -50,6 +50,8 @@ class ShowInviteViewModel: ObservableObject {
                             ownerProfile: invitationDetail.ownerInfo.profileImageNumber,
                             invitationImage: invitationDetail.invitationImageNumber
                         )
+                        print("Received invitationImageNumber: \(invitationDetail.invitationImageNumber)")
+                        print("Received 초대장아이디: \(invitationDetail.invitationId)")
                         self?.showDetail = formattedDetail
                     }
                 case .failure(let error):
@@ -58,6 +60,7 @@ class ShowInviteViewModel: ObservableObject {
             }
         }
     }
+    
 }
 
 

@@ -8,11 +8,42 @@
 import SwiftUI
 
 class CellViewModel: ObservableObject {
-    @Published var cells: [CellModel] = [
-        CellModel(image: "invitationImage", title: "천안 밥집투어", tag: "배달",ing: "모집 중",numberOfPeople: "3/7"),
-        CellModel(image: "invitationImage2", title: "Title 1", tag: "취미",ing: "모집 중",numberOfPeople: "3/7"),
-        CellModel(image: "invitationImage3", title: "Title 1", tag: "다이어트",ing: "모집 완료",numberOfPeople: "3/7"),
-        CellModel(image: "invitationImage4", title: "Title 1", tag: "가벼운",ing: "모집 중",numberOfPeople: "3/7"),
-        CellModel(image: "invitationImage", title: "Title 1", tag: "다이어트",ing: "모집 완료",numberOfPeople: "3/7")
-    ]
+    @Published var cells: [CellModel] = []
+    @Published var isLoading: Bool = false
+    private var currentPage: Int = 0
+    private var canLoadMore: Bool = true
+    
+    func fetchInviteCellData() {
+        guard !isLoading && canLoadMore else { return }
+        isLoading = true
+        
+        InvitationService.shared.getInvitationList(page: currentPage, size: 5) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                
+                switch result {
+                case .success(let invitations):
+                    if !invitations.isEmpty {
+                        let newCells = invitations.map { invitation in
+                            CellModel(image: "invitationImage\(invitation.emojiNumber)",
+                                      title: invitation.clubName,
+                                      tag: invitation.interests.joined(separator: ", "),
+                                      ing: invitation.currentMember < invitation.totalMember ? "모집 중" : "모집 완료",
+                                      numberOfPeople: "\(invitation.currentMember)/\(invitation.totalMember)")
+                        }
+                        
+                        self?.cells.append(contentsOf: newCells)
+                        self?.currentPage += 1
+                    } else {
+                        self?.canLoadMore = false
+                    }
+                case .failure(let error):
+                    print("Error loading invitations: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
+
+
+

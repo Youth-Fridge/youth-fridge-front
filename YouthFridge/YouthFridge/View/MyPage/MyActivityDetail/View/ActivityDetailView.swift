@@ -141,29 +141,45 @@ struct ActivityDetailView: View {
             .padding()
             .padding(.top, 10)
             
-            // 참여자 목록
-            LazyVGrid(columns: columns, spacing: 16) {
-                ForEach(detailViewModel.memberInfoList.indices, id: \.self) { index in
-                    let participant = detailViewModel.memberInfoList[index]
-                    VStack {
-                        if let profileImage = ProfileImage.from(rawValue: participant.profileNumber) {
-                            let imageName = profileImage.imageName
-                            
-                            Image(imageName)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 60, height: 60)
-                                .clipShape(Circle())
-                        }
+            if detailViewModel.memberInfoList.isEmpty {
+                // 빈 경우 메시지 표시
+                VStack {
+                    Spacer()
+                        .frame(height: 100)
+                    Text("함께할 참여자를 기다리고 있어요 :)")
+                        .font(.body)
+                        .fontWeight(.medium)
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    Spacer()
+                        .frame(height: 100)
+                }
+            } else {
+                // 참여자 목록이 있는 경우 표시
+                LazyVGrid(columns: columns, spacing: 16) {
+                    ForEach(detailViewModel.memberInfoList.indices, id: \.self) { index in
+                        let participant = detailViewModel.memberInfoList[index]
+                        VStack {
+                            if let profileImage = ProfileImage.from(rawValue: participant.profileNumber) {
+                                let imageName = profileImage.imageName
+                                
+                                Image(imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                            }
 
-                        Text(participant.nickName)
-                            .font(.caption)
-                            .padding(.top, 4)
+                            Text(participant.nickName)
+                                .font(.caption)
+                                .padding(.top, 4)
+                        }
                     }
                 }
             }
         }
     }
+
     
     var rulesSection: some View {
         VStack(alignment: .leading, spacing: 16) {

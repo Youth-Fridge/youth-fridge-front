@@ -293,10 +293,10 @@ struct ApplicationDetailView: View {
                             .fontWeight(.semibold)
                             .foregroundColor(Color.gray6)
                             .frame(width: 77, height: 29)
-                            .background((viewModel.daysLeft == 2 ? Color.gray2 : Color.sub2))
+                            .background((viewModel.daysLeft <= 1 ? Color.gray2 : Color.sub2))
                             .cornerRadius(8)
                     }
-                    .disabled(viewModel.daysLeft == 2)  // daysLeft가 2일 경우 버튼 비활성화
+                    .disabled(viewModel.daysLeft <= 1)  // daysLeft가 1보다 작거나 같은 경우 버튼 비활성화
                     .padding(.leading, 15)
                 }
                 .padding(.bottom, -20)

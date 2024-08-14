@@ -15,7 +15,7 @@ struct NewsView: View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    BlogWebView(urlToLoad: "https://blog.naver.com/alsrud9311", scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
+                    BlogWebView(urlToLoad: "https://m.blog.naver.com/hyangyuloum", scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
                         .edgesIgnoringSafeArea(.bottom)
                         .navigationTitle("밥심레터")
                         .navigationBarTitleDisplayMode(.inline)

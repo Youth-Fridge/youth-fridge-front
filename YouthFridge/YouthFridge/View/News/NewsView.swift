@@ -21,6 +21,19 @@ struct NewsView: View {
                         .navigationTitle("밥심레터")
                         .navigationBarTitleDisplayMode(.inline)
                 }
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                        if let profile = ProfileImage.from(rawValue: profileNumber) {
+                            let profileImage = profile.imageName
+                            
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
+                    }
+                }
 
                 if isLoading {
                     GeometryReader { geometry in

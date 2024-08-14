@@ -15,16 +15,15 @@ struct MyPageView: View {
     @State private var navigateToLoginIntro = false
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .top) {
                 VStack(spacing: 0) {
                     welcomeMessage
                     profileView
                     activityList
                 }
-                .padding(.top, 5)
+                .padding(.top, 1)
                 
                 ShadowNavigationBar()
-                    .padding(.top, 5)
                 
                 if showDeletePopup {
                     Color.black.opacity(0.4)

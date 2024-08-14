@@ -45,7 +45,7 @@ struct ProfilePictureSelector: View {
                                     .overlay(Circle().stroke(tempSelectedImage == bigProfileImages[index] ? Color.main1Color : Color.clear, lineWidth: 2))
                                     .onTapGesture {
                                         tempSelectedImage = bigProfileImages[index]
-                                        saveSelectedImageIndex(index + 1)
+                                        saveSelectedImageIndex(index)
                                     }
                             }
                         }
@@ -74,7 +74,7 @@ struct ProfilePictureSelector: View {
                 Button(action: {
                     selectedImage = tempSelectedImage
                     if let index = bigProfileImages.firstIndex(of: tempSelectedImage) {
-                        saveSelectedImageIndex(index + 1)
+                        saveSelectedImageIndex(index)
                     }
                     isShowing = false
                 }) {

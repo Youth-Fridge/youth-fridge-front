@@ -104,9 +104,10 @@ class OnboardingAPI {
                     if response.statusCode == 200 {
                         do {
                             let baseResponse = try JSONDecoder().decode(BaseResponse<String>.self, from: response.data)
-                            if let accessToken = baseResponse.result?.components(separatedBy: "Bearer ").last {
+                            if let accessToken = baseResponse.result {
                                 KeychainHandler.shared.accessToken = accessToken
                                 print("Access token stored successfully")
+                                print("jwt 토큰: \(accessToken)")
                                 completion(.success(()))
                             } else {
                                 let error = NSError(domain: "", code: response.statusCode, userInfo: [NSLocalizedDescriptionKey: "Failed to extract access token"])

@@ -67,6 +67,7 @@ struct ApplicationDetailView: View {
                                         showCancelPopup = false
                                         print("미참석 할게요")
                                         detailViewModel.cancelInvitation()
+                                        dismiss()
                                     }
                                 }
                             )

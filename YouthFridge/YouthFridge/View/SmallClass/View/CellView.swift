@@ -10,6 +10,9 @@ import SwiftUI
 struct CellView: View {
     let cell: CellModel
     
+    private var backgroundColor: Color {
+        cell.ing == "모집 완료" ? Color.gray7 : Color.main1
+    }
     var body: some View {
         HStack {
             Image(cell.image)
@@ -28,7 +31,7 @@ struct CellView: View {
                         .font(.system(size: 12,weight: .bold))
                         .padding(.horizontal,10)
                         .padding(.vertical, 4)
-                        .background(Color.main1Color)
+                        .background(backgroundColor)
                         .cornerRadius(5)
                         .foregroundColor(.white)
                 }

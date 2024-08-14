@@ -116,17 +116,14 @@ struct HomeView: View {
                     .frame(width: 80, height: 15)
                 
                 
-            }
-            )
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if selectedImageIndex > 0 && selectedImageIndex <= profileImages.count {
-                        Image(profileImages[selectedImageIndex - 1])
-                            .resizable()
-                            .frame(width: 36,height: 36)
-                            .clipShape(Circle())
-                    } else {
-                        Image("Ellipse")
+                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    if let profile = ProfileImage.from(rawValue: profileNumber) {
+                        let profileImage = profile.imageName
+                        
+                        Image(profileImage)
                             .resizable()
                             .frame(width: 36, height: 36)
                             .clipShape(Circle())

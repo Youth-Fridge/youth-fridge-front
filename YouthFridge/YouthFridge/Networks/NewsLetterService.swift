@@ -10,7 +10,7 @@ import Moya
 
 class NewsLetterService {
     static let shared = NewsLetterService()
-    static let provider = MoyaProvider<NewsLetterAPI>(plugins: [NetworkLoggerPlugin()])
+    static let provider = MoyaProvider<NewsLetterAPI>()
     
     func getNewsLetter(completion: @escaping (Result<NewsLetterResponse, Error>) -> Void) {
         NewsLetterService.provider.request(.getNewsLetter) { result in

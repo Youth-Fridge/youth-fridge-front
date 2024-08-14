@@ -15,16 +15,15 @@ struct MyPageView: View {
     @State private var navigateToLoginIntro = false
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .top) {
                 VStack(spacing: 0) {
                     welcomeMessage
                     profileView
                     activityList
                 }
-                .padding(.top, 5)
+                .padding(.top, 1)
                 
                 ShadowNavigationBar()
-                    .padding(.top, 5)
                 
                 if showDeletePopup {
                     Color.black.opacity(0.4)
@@ -132,6 +131,11 @@ struct MyPageView: View {
                         
                         Image("right-arrow")
                             .foregroundColor(.gray)
+                            .padding(.trailing, 12)
+                            .onTapGesture {
+                                // TODO: - 초대장 상세보기 API 연동
+                                print("초대장 상세 보기 필요해 !!")
+                            }
                     }
                     Text("초대 모임 예정일")
                         .font(.subheadline)
@@ -176,8 +180,6 @@ struct MyPageView: View {
         .background(Color.sub1)
     }
     
-    
-    
     var activityList: some View {
         List {
             ForEach(activityItems, id: \.self) { item in
@@ -204,7 +206,7 @@ struct MyPageView: View {
             }
         }
         .listStyle(PlainListStyle())
-        .padding(.leading, 12)
+        .padding(.horizontal, 12)
     }
     
     let activityItems = ["내 활동", "문의", "회원탈퇴", "로그아웃"]

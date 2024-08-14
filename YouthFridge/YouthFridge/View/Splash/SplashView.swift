@@ -53,14 +53,31 @@ struct SplashView: View {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
             let accessToken = KeychainHandler.shared.accessToken
             print("accesstoken: \(accessToken)")
-            if accessToken.isEmpty {
+            if accessToken.isEmpty || !isTokenValid(accessToken) {
                 navigateToSignUp = true
             } else {
                 navigateToMain = true
             }
         }
     }
-    
+    func isTokenValid(_ token: String) -> Bool {
+        let parts = token.split(separator: ".")
+        guard parts.count == 3 else { return false }
+
+        let payload = parts[1]
+        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payloadDict = json as? [String: Any] else { return false }
+
+        // 만료 시간(`exp`)을 확인
+        if let exp = payloadDict["exp"] as? TimeInterval {
+            let expirationDate = Date(timeIntervalSince1970: exp)
+            return expirationDate > Date() // 현재 시간과 비교
+        }
+        
+        return false
+    }
     
 //    private func logout() {
 //        // 액세스 토큰을 삭제하는 예제

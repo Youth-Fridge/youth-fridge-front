@@ -55,43 +55,47 @@ struct HomeView: View {
                 
                 TabView(selection: $currentIndex) {
                     ForEach(tabContents.indices, id: \.self) { index in
-                        
-                        ZStack(alignment: .leading) {
-                            Image(tabContents[index].imageName)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 350, height: 105)
-                                .clipped()
-                                .overlay(
-                                    Rectangle()
-                                        .fill(Color.black.opacity(0.4))
-                                        .blur(radius: 1)
-                                )
-                            VStack(alignment: .leading, spacing: 5) {
-                                HStack {
-                                    Text(tabContents[index].title)
-                                        .font(.system(size: 16, weight: .bold))
-                                        .foregroundColor(.white)
-                                    Spacer()
+                        NavigationLink(destination: ShowInviteView(
+                            viewModel: ShowInviteViewModel(),
+                            invitationId: tabContents[index].invitationId
+                        )) {
+                            ZStack(alignment: .leading) {
+                                Image(tabContents[index].imageName)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 350, height: 105)
+                                    .clipped()
+                                    .overlay(
+                                        Rectangle()
+                                            .fill(Color.black.opacity(0.4))
+                                            .blur(radius: 1)
+                                    )
+                                VStack(alignment: .leading, spacing: 5) {
                                     HStack {
-                                        Text(tabContents[index].ing)
-                                            .background(Color.clear)
+                                        Text(tabContents[index].title)
+                                            .font(.system(size: 16, weight: .bold))
                                             .foregroundColor(.white)
-                                            .cornerRadius(10)
-                                            .modifier(CustomViewModifier(color: .white))
-                                            .padding([.trailing], 10)
+                                        Spacer()
+                                        HStack {
+                                            Text(tabContents[index].ing)
+                                                .background(Color.clear)
+                                                .foregroundColor(.white)
+                                                .cornerRadius(10)
+                                                .modifier(CustomViewModifier(color: .white))
+                                                .padding([.trailing], 10)
+                                        }
                                     }
+                                    .padding(.bottom,35)
+                                    Text(tabContents[index].date)
+                                        .font(.system(size: 10))
+                                        .foregroundColor(.white)
                                 }
-                                .padding(.bottom,35)
-                                Text(tabContents[index].date)
-                                    .font(.system(size: 10))
-                                    .foregroundColor(.white)
+                                .padding(10)
                             }
-                            .padding(10)
+                            .tag(index)
+                            .cornerRadius(10)
+                            .shadow(radius: 5)
                         }
-                        .tag(index)
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
                     }
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))

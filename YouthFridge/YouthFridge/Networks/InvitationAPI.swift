@@ -88,15 +88,7 @@ extension InvitationAPI: TargetType {
                 ],
                 encoding: URLEncoding.queryString
             )
-        case .smallClassList(let page, let size):
-            return .requestParameters(
-                parameters: [
-                    "page": page,
-                    "size": size
-                ],
-                encoding: URLEncoding.queryString
-            )
-        case .getMyInvitations(let page, let size), .getAppliedInvitations(let page, let size):
+        case .getMyInvitations(let page, let size), .getAppliedInvitations(let page, let size), .smallClassList(let page, let size):
             return .requestParameters(
                 parameters: [
                     "page": page,

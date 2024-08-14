@@ -49,7 +49,7 @@ struct ShowInviteView: View {
                         VStack {
                             if let showDetail = viewModel.showDetail,
                                let invitationImage = InvitationImage.from(rawValue: showDetail.invitationImage) {
-                                
+                        
                                 Image(invitationImage.imageName)
                                     .resizable()
                                     .frame(width: 260, height: 280)

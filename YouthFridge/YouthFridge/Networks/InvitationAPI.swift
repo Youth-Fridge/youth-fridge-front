@@ -22,7 +22,7 @@ enum InvitationAPI {
     case cancelInvitation(invitationId: Int)                              // 소모임 참가 취소하기
     case reportInvitation(invitationId: Int)                              // 소모임 신고하기
     case publicMeeting
-    case smallClassList
+    case smallClassList(page: Int, size: Int)
 }
 
 extension InvitationAPI: TargetType {
@@ -77,12 +77,20 @@ extension InvitationAPI: TargetType {
 
     var task: Moya.Task {
         switch self {
-        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitation, .publicMeeting,.smallClassList:
+        case .getInvitation, .applyInvitation, .cancelInvitation, .reportInvitation, .getInvitationsTop5, .getMyDetailInvitation, .getAppliedDetailInvitation, .getImminentInvitation, .publicMeeting:
             return .requestPlain
         case .getInvitationsbyKeyword(let kewords, let page, let size):
             return .requestParameters(
                 parameters: [
                     "keywords": kewords,
+                    "page": page,
+                    "size": size
+                ],
+                encoding: URLEncoding.queryString
+            )
+        case .smallClassList(let page, let size):
+            return .requestParameters(
+                parameters: [
                     "page": page,
                     "size": size
                 ],

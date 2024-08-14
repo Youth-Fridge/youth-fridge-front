@@ -14,6 +14,9 @@ struct HomeView: View {
     @State private var selectedImageIndex: Int = 0
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
+    @Binding var newsUrl: String
+    var onNewsButtonPress: () -> Void
+    
     var cards: [Card] {
         viewModel.cards
     }
@@ -26,7 +29,7 @@ struct HomeView: View {
             VStack {
                 CardScrollView(cards: viewModel.cards)
                 HStack {
-                    newsCardView(content: "청년들이\n 더위를 이겨내는 법")
+                    newsCardView(content: "청년들이\n더위를 이겨내는 법")
                         .frame(width: 152)
                         .padding(.leading, 20)
                     
@@ -139,34 +142,37 @@ struct HomeView: View {
     
     // Small Card View
     private func newsCardView(content: String) -> some View {
-        VStack {
-            VStack(alignment: .leading, spacing: 10) {
-                Text("Today\n뉴스레터")
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(.black)
-                    .padding(.top,10)
-                    .padding(.leading,15)
-                
-                if !content.isEmpty {
-                    Text(content)
-                        .font(.system(size: 14, weight: .medium))
-                        .bold()
+        Button(action: {
+            fetchLatestNewsUrl()
+        }) {
+            VStack {
+                VStack(alignment: .leading, spacing: 10) {
+                    Text("Today\n뉴스레터")
+                        .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(.black)
-                        .padding()
+                        .padding(.top, 10)
+                        .padding(.leading, 15)
+                    
+                    if !content.isEmpty {
+                        Text(content)
+                            .font(.system(size: 14, weight: .medium))
+                            .bold()
+                            .foregroundColor(.black)
+                            .padding()
+                    }
+                    Spacer()
+                    Image("newsIcon")
+                        .resizable()
+                        .padding(.leading, 70)
                 }
-                Spacer()
-                Image("newsIcon")
-                    .resizable()
-                    .padding(.leading, 70)
-                
-                
+                .background(
+                    Color.sub2Color
+                        .cornerRadius(10)
+                )
             }
-            .background(
-                Color.sub2Color
-                    .cornerRadius(10)
-            )
+            .frame(height: 252)
         }
-        .frame(height: 252)
+        .buttonStyle(PlainButtonStyle())
     }
     
     private func startTimer() {
@@ -178,6 +184,20 @@ struct HomeView: View {
     }
     private func getSelectedImageIndex() -> Int {
         return UserDefaults.standard.integer(forKey: "profileImageNumber")
+    }
+    
+    private func fetchLatestNewsUrl() {
+        NewsLetterService.shared.getNewsLetter { result in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.newsUrl = response.link
+                    self.onNewsButtonPress()
+                }
+            case .failure(let error):
+                print("Failed to fetch URL: \(error.localizedDescription)")
+            }
+        }
     }
 }
 
@@ -216,8 +236,10 @@ struct CardItemView: View {
     }
 }
 
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(viewModel: .init())
-    }
-}
+//struct HomeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeView(viewModel: .init(), newsUrl: $newsUrl, onNewsButtonPress: {
+//            self.selectedTab = .news
+//        })
+//    }
+//}

@@ -10,12 +10,13 @@ import WebKit
 
 struct NewsView: View {
     @State private var isLoading = true
+    @Binding var urlToLoad: String
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    BlogWebView(urlToLoad: "https://blog.naver.com/alsrud9311", scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
+                    BlogWebView(urlToLoad: urlToLoad, scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
                         .edgesIgnoringSafeArea(.bottom)
                         .navigationTitle("밥심레터")
                         .navigationBarTitleDisplayMode(.inline)
@@ -37,8 +38,4 @@ struct NewsView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-}
-
-#Preview {
-    NewsView()
 }

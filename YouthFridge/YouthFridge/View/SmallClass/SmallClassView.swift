@@ -28,33 +28,36 @@ struct SmallClassView: View {
                 .padding(.top, 30)
                 .padding(.leading, 30)
                 
-                TagsView(tags: tags, selectedTags: $selectedTags)
+                TagsView(tags: tags, selectedTags: $selectedTags, viewModel: viewModel)
                     .padding(.leading, 20)
                     .padding(.top, 15)
-                
-                Spacer()
                 
                 List(viewModel.cells) { cell in
                     ZStack {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
                             invitationId: cell.id
-                            
                         )) {
+                            EmptyView() // This is needed so that the NavigationLink works correctly
                         }
+                        .opacity(0) // Make the link invisible
                         
                         CellView(cell: cell)
                             .padding(.vertical, 15)
                             .background(Color.white)
                             .cornerRadius(10)
                             .contentShape(Rectangle())
+                            .onAppear {
+                                // Check if the current cell is the last one in the list
+                                if cell == viewModel.cells.last {
+                                    viewModel.fetchInviteCellData()
+                                }
+                            }
                     }
                     .listRowInsets(EdgeInsets())
                     .listRowSeparator(.hidden)
                 }
                 .listStyle(PlainListStyle())
-                
-                Spacer()
             }
             .navigationBarTitle("생활밥서", displayMode: .inline)
             .toolbar {
@@ -72,10 +75,12 @@ struct SmallClassView: View {
             }
         }
         .onAppear {
+            // Fetch the initial data when the view appears
             viewModel.fetchInviteCellData()
         }
     }
 }
+
 
 struct AddInviteView: View {
     var body: some View {
@@ -96,35 +101,6 @@ struct AddInviteView: View {
         .background(Color.sub2Color)
         .frame(maxWidth: .infinity, maxHeight: 100)
         .cornerRadius(0)
-    }
-}
-
-struct TagsView: View {
-    let tags: [String]
-    @Binding var selectedTags: [String]
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack() {
-                ForEach(tags, id: \.self) { tag in
-                    Text(tag)
-                        .font(.system(size: 12,weight: .semibold))
-                        .padding(.leading,20)
-                        .padding(.trailing,20)
-                        .padding(.top,10)
-                        .padding(.bottom,10)
-                        .background(selectedTags.contains(tag) ? Color.sub2Color : Color.gray1Color)
-                        .cornerRadius(25)
-                        .onTapGesture {
-                            if let index = selectedTags.firstIndex(of: tag) {
-                                selectedTags.remove(at: index)
-                            } else {
-                                selectedTags.append(tag)
-                            }
-                        }
-                        .padding(.leading,5)
-                }
-            }
-        }
     }
 }
 

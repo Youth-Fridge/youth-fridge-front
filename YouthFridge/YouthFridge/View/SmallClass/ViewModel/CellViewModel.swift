@@ -26,7 +26,7 @@ class CellViewModel: ObservableObject {
                     if !invitations.isEmpty {
                         let newCells = invitations.map { invitation in
                             CellModel(id: invitation.invitationId,
-                                image: "invitationImage\(invitation.emojiNumber)",
+                                      image: "invitationImage\(invitation.emojiNumber)",
                                       title: invitation.clubName,
                                       tag: invitation.interests,
                                       ing: invitation.currentMember < invitation.totalMember ? "모집 중" : "모집 완료",
@@ -45,6 +45,7 @@ class CellViewModel: ObservableObject {
         }
     }
 }
+
 
 
 

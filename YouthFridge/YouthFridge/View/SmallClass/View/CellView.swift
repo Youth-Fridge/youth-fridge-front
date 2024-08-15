@@ -52,15 +52,16 @@ struct CellView: View {
                     Spacer()
                     Text(cell.numberOfPeople)
                         .font(.system(size: 14, weight: .medium))
+                        .padding(.trailing,-10)
                 }
                 .padding()
             }
             
             Spacer()
         }
+        .frame(height: 110)
         .background(Color.gray1Color)
         .padding(.horizontal)
-        .frame(height: 100)
     }
 }
 

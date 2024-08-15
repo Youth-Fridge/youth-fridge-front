@@ -7,62 +7,83 @@
 import SwiftUI
 
 struct CreateInviteView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = CreateInviteViewModel()
     
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading) {
-                HStack(spacing: 14) {
-                    Button(action: {
-                        viewModel.selectedTab = 0
-                    }) {
-                        Text("STEP1")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 60, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 0 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 0 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                    Button(action: {
-                        viewModel.selectedTab = 1
-                    }) {
-                        Text("STEP2")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 68, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 1 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 1 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                }
-                .padding(.top)
+        NavigationStack {
+            ZStack(alignment: .top) {
+                ShadowNavigationBar()
                 
-                if viewModel.selectedTab == 0 {
-                    StepOneView(viewModel: viewModel)
-                } else {
-                    StepTwoView(viewModel: viewModel)
-                        .onDisappear {
-                             viewModel.createInvitation()
-                         }
+                VStack(alignment: .leading) {
+                    HStack(spacing: 14) {
+                        Button(action: {
+                            viewModel.selectedTab = 0
+                        }) {
+                            Text("STEP1")
+                                .font(.system(size: 16, weight: .bold))
+                                .frame(width: 60, height: 5)
+                                .padding()
+                                .background(viewModel.selectedTab == 0 ? Color.main1Color : Color.gray1Color)
+                                .foregroundColor(viewModel.selectedTab == 0 ? .white : .black)
+                                .cornerRadius(8)
+                        }
+                        
+                        Button(action: {
+                            viewModel.selectedTab = 1
+                        }) {
+                            Text("STEP2")
+                                .font(.system(size: 16, weight: .bold))
+                                .frame(width: 68, height: 5)
+                                .padding()
+                                .background(viewModel.selectedTab == 1 ? Color.main1Color : Color.gray1Color)
+                                .foregroundColor(viewModel.selectedTab == 1 ? .white : .black)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .padding(.top, 30)
+                    
+                    if viewModel.selectedTab == 0 {
+                        StepOneView(viewModel: viewModel)
+                    } else {
+                        StepTwoView(viewModel: viewModel)
+                            .onDisappear {
+                                viewModel.createInvitation()
+                            }
+                    }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
-            }
-            .padding(.horizontal)
-            .navigationBarHidden(true)
-            .navigationTitle("초대장 작성")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .frame(width: 36, height: 36)
+                .padding(.horizontal, 30)
+                .navigationTitle("초대장 작성")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Image("left-arrow")
+                                .resizable()
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                        if let profile = ProfileImage.from(rawValue: profileNumber) {
+                            let profileImage = profile.imageName
+                            
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
+                    }
                 }
             }
         }
     }
 }
+
 struct StepOneView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var showEmojiModal = false
@@ -95,6 +116,8 @@ struct StepOneView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("이모지 내역")
                     .font(.system(size: 18, weight: .semibold))
+                    .padding(.top, 20)
+                
                 Button(action: {
                     showEmojiModal = true
                     isShowingProfileSelector = true
@@ -127,30 +150,16 @@ struct StepOneView: View {
                         .presentationDetents([.medium, .large])
                 }
                 .animation(.easeInOut, value: isShowingProfileSelector)
+                .padding(.top, -5)
                 
-                Text("모임 명")
-                    .font(.system(size: 16, weight: .semibold))
-                
-                TextField("10글자 이내", text: $viewModel.name)
-                    .font(.system(size: 16))
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(
-                                Color(uiColor: .gray2),
-                                lineWidth: 1
-                            )
-                    }
-                    .frame(height: 20)
-                
-                Text("세부 활동 계획")
-                    .font(.system(size: 16, weight: .semibold))
-                
-                ForEach(viewModel.activityPlans.indices, id: \.self) { index in
-                    TextField("15글자 이내", text: $viewModel.activityPlans[index])
-                        .padding()
+                VStack(alignment: .leading) {
+                    Text("모임 명")
+                        .font(.system(size: 18, weight: .semibold))
+                        .padding(.bottom, 20)
+                    
+                    TextField("10글자 이내", text: $viewModel.name)
                         .font(.system(size: 16))
-                        .cornerRadius(8)
+                        .padding()
                         .overlay {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(
@@ -158,54 +167,81 @@ struct StepOneView: View {
                                     lineWidth: 1
                                 )
                         }
+                        .frame(height: 20)
+                }
+                .padding(.bottom, 20)
+                
+                VStack(alignment: .leading) {
+                    Text("세부 활동 계획")
+                        .font(.system(size: 18, weight: .semibold))
+                    
+                    ForEach(viewModel.activityPlans.indices, id: \.self) { index in
+                        TextField("15글자 이내", text: $viewModel.activityPlans[index])
+                            .padding()
+                            .font(.system(size: 16))
+                            .cornerRadius(8)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(
+                                        Color(uiColor: .gray2),
+                                        lineWidth: 1
+                                    )
+                            }
+                    }
                 }
                 
                 Button(action: {
                     viewModel.addActivityPlan()
                 }) {
                     ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.gray1Color)
-                            .frame(maxWidth: .infinity)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray2Color, lineWidth: 1)
-                            )
+                        Rectangle()
+                            .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
+                            .cornerRadius(6)
+                            .frame(width: 322, height: 40)
                         
                         Text("추가해 보세요")
-                            .foregroundColor(.gray3)
-                            .cornerRadius(8)
+                            .font(Font.custom("Pretendard", size: 12))
+                            .foregroundColor(Color(red: 0.38, green: 0.38, blue: 0.38))
+                            .padding(.leading, 24) // Adjust the padding to center the text
                     }
                 }
-                .padding(.bottom,30)
+                .frame(width: 322, height: 40)
+                .padding(.bottom, 30)
                 
                 HStack {
                     Text("관심사 키워드 선택")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.system(size: 18, weight: .semibold))
                     Text("최대 2개")
                         .font(.system(size: 12))
+                        .foregroundColor(.gray3)
                 }
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80), spacing: 5)], spacing: 10) {
-                    ForEach(viewModel.keywords, id: \.self) { keyword in
-                        Button(action: {
-                            viewModel.toggleKeyword(keyword)
-                        }) {
-                            Text(keyword)
-                                .padding()
-                                .background(viewModel.selectedKeywords.contains(keyword) ? Color.sub2 : Color.gray1)
-                                .font(.system(size: 12,weight: .semibold))
-                                .foregroundColor(viewModel.selectedKeywords.contains(keyword) ? .white : .black)
-                                .cornerRadius(20)
+                HStack {
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 7), count: 4), spacing: 2) {
+                        ForEach(viewModel.keywords, id: \.self) { keyword in
+                            Button(action: {
+                                viewModel.toggleKeyword(keyword)
+                            }) {
+                                Text(keyword)
+                                    .lineLimit(1)
+                                    .fixedSize(horizontal: true, vertical: false)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 10)
+                                    .background(viewModel.selectedKeywords.contains(keyword) ? Color.sub2 : Color.gray1)
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(viewModel.selectedKeywords.contains(keyword) ? .white : .black)
+                                    .cornerRadius(18)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.bottom,20)
+                .padding(.bottom, 20)
                 Text("모임 장소")
                     .font(.system(size: 16,weight: .semibold))
                 TextField("8글자 이내", text: $viewModel.launchPlace)
                     .padding()
-                    .font(.system(size: 12))
+                    .font(.system(size: 16))
+                    .foregroundColor(.gray3)
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)
                             .stroke(
@@ -346,7 +382,8 @@ struct StepOneView: View {
                     .padding(.horizontal)
                 
                 TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
-                    .font(.system(size: 16))
+                    .font(.system(size: 13))
+                    .foregroundColor(.gray3)
                     .padding()
                     .overlay {
                         RoundedRectangle(cornerRadius: 10)

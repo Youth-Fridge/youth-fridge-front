@@ -131,7 +131,7 @@ struct MyPageView: View {
                         
                         Image("right-arrow")
                             .foregroundColor(.gray)
-                            .padding(.trailing, 12)
+                            .padding(.trailing, 14)
                             .onTapGesture {
                                 // TODO: - 초대장 상세보기 API 연동
                                 print("초대장 상세 보기 필요해 !!")

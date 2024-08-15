@@ -10,7 +10,7 @@ import Combine
 
 class CreateInviteViewModel: ObservableObject {
     @Published var name: String = ""
-    @Published var activityPlans: [String] = []
+    @Published var activityPlans: [String] = ["", ""]
     @Published var selectedKeywords: [String] = []
     @Published var launchPlace: String = ""
     @Published var totalMember: Int = 0
@@ -18,8 +18,8 @@ class CreateInviteViewModel: ObservableObject {
     @Published var selectedStartTime: String = ""
     @Published var selectedEndTime: String = ""
     @Published var kakaoLink: String = ""
-    @Published var emojiNumber: Int = 1
-    @Published var imageNumber: Int = 1
+    @Published var emojiNumber: Int = 0
+    @Published var imageNumber: Int = -1
     @Published var selectedTab: Int = 0
     
     private var cancellables = Set<AnyCancellable>()

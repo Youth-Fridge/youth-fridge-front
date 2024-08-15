@@ -44,7 +44,35 @@ class CellViewModel: ObservableObject {
             }
         }
     }
+    
+    func fetchKeyWordsList(selectedTags: [String]) {
+        guard !isLoading else { return }
+        isLoading = true
+        
+        InvitationService.shared.getInvitationKeyWords(keywords: selectedTags, page: 0, size: 10) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                
+                switch result {
+                case .success(let invitations):
+                    self?.cells = invitations.map { invitation in
+                        CellModel(id: invitation.invitationId,
+                                  image: "invitationImage\(invitation.emojiNumber)",
+                                  title: invitation.clubName,
+                                  tag: invitation.interests,
+                                  ing: invitation.currentMember < invitation.totalMember ? "모집 중" : "모집 완료",
+                                  numberOfPeople: "\(invitation.currentMember)/\(invitation.totalMember)")
+                    }
+                    self?.currentPage = 1
+                    self?.canLoadMore = invitations.count >= 5
+                case .failure(let error):
+                    print("Error loading invitations: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
 }
+
 
 
 

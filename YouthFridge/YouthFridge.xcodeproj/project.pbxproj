@@ -93,6 +93,7 @@
 		58C316562C69FE07001374EC /* ShowDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316552C69FE07001374EC /* ShowDetailModel.swift */; };
 		58C316582C6B2872001374EC /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316572C6B2872001374EC /* HapticManager.swift */; };
 		58C3165A2C6B41FF001374EC /* InvitationListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316592C6B41FF001374EC /* InvitationListResponse.swift */; };
+		58C316622C6E13BA001374EC /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316612C6E13BA001374EC /* TagsView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -209,6 +210,7 @@
 		58C316552C69FE07001374EC /* ShowDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDetailModel.swift; sourceTree = "<group>"; };
 		58C316572C6B2872001374EC /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		58C316592C6B41FF001374EC /* InvitationListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationListResponse.swift; sourceTree = "<group>"; };
+		58C316612C6E13BA001374EC /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			isa = PBXGroup;
 			children = (
 				5817D63C2C4BFD980081323E /* CellView.swift */,
+				58C316612C6E13BA001374EC /* TagsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -904,6 +907,7 @@
 				0A7026FD2C5A9C850083C7A0 /* BaseResponse.swift in Sources */,
 				0A7027012C5A9E6F0083C7A0 /* InvitationResponse.swift in Sources */,
 				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,
+				58C316622C6E13BA001374EC /* TagsView.swift in Sources */,
 				0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
 				58C3162C2C650462001374EC /* SplashView.swift in Sources */,

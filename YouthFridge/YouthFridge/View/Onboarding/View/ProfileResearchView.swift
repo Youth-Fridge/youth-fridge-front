@@ -105,31 +105,33 @@ struct ProfileResearchView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
-                Button(action: {
-                    // 버튼 클릭 시 동작 추가
-                }) {
-                    HStack {
-                        Image("locationImage")
-                            .resizable()
-                            .frame(width: 16, height: 22)
-                        VStack(alignment: .leading) {
-                            Text("\(viewModel.userCity)\(viewModel.userDistrict)")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.black)
+                if !viewModel.userCity.isEmpty && !viewModel.userDistrict.isEmpty {
+                    Button(action: {
+                        // 버튼 클릭 시 동작 추가
+                    }) {
+                        HStack {
+                            Image("locationImage")
+                                .resizable()
+                                .frame(width: 16, height: 22)
+                            VStack(alignment: .leading) {
+                                Text("\(viewModel.userCity)\(viewModel.userDistrict)")
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(alignment: .leading)
                         }
-                        .frame(alignment: .leading)
+                        .padding(7)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.main1Color, lineWidth: 1)
+                        )
                     }
-                    .padding(7)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.main1Color, lineWidth: 1)
-                    )
+                    
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
                 Spacer()
 
-                // Using Button instead of NavigationLink
                 Button(action: {
                     print("다음 버튼 클릭됨")
                     viewModel.signUp()

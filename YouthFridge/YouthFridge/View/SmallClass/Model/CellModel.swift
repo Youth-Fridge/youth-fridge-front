@@ -8,10 +8,10 @@
 import Foundation
 
 struct CellModel: Identifiable {
-    let id = UUID()
+    let id : Int
     let image: String
     let title: String
-    let tag: String
+    let tag: [String]
     let ing: String
     let numberOfPeople: String
 }

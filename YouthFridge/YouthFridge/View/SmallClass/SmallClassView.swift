@@ -74,9 +74,9 @@ struct SmallClassView: View {
                 }
             }
         }
-//        .onAppear {
-//            viewModel.fetchInviteCellData()
-//        }
+        .onAppear {
+            viewModel.fetchInviteCellData()
+        }
     }
 }
 

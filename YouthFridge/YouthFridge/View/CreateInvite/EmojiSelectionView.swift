@@ -15,15 +15,27 @@ struct EmojiSelectionView: View {
     @Binding var isShowing: Bool
     @State private var currentPage = 0
     
+    private var imageName: String?
+    
+    init(selectedImage: Binding<String?>, selectedEmojiNumber: Binding<Int>, isShowing: Binding<Bool>) {
+        self._selectedImage = selectedImage
+        self._selectedEmojiNumber = selectedEmojiNumber
+        self._isShowing = isShowing
+    
+        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.gray3
+        UIPageControl.appearance().pageIndicatorTintColor = UIColor.gray2
+    }
+    
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                Text("000님")
-                    .font(.system(size: 18, weight: .semibold))
-                Text("이모지를 선택해 주세요.")
-                    .font(.system(size: 18, weight: .semibold))
-                    .padding()
+                if let userName = UserDefaults.standard.string(forKey: "nickname") {
+                    Text("\(userName)님\n이모지를 선택해 주세요")
+                        .font(.system(size: 24, weight: .semibold))
+                        .multilineTextAlignment(.center)
+                }
             }
+            .padding(.top, 30)
             
             TabView(selection: $currentPage) {
                 ForEach(0..<emojiImages.count/6) { pageIndex in
@@ -36,41 +48,46 @@ struct EmojiSelectionView: View {
                             CircleView(imageName: imageName, isSelected: selectedImage == imageName)
                                 .onTapGesture {
                                     selectedImage = imageName
-
-                                    if let unwrappedSelectedImage = selectedImage,
-                                       let selectedEmoji = Emoji.from(imageName: unwrappedSelectedImage) {
-                                        let emojiNumber = selectedEmoji.rawValue
-                                        selectedEmojiNumber = emojiNumber
-                                        print("이모지 몇번 선택했냐능 ????? \(emojiNumber)")
-                                    }
                                 }
                         }
                     }
-                    .padding()
+                    .padding(.top, -35)
+                    .padding(.horizontal, 20)
+                    .onAppear {
+                        UIPageControl.appearance().currentPageIndicatorTintColor = UIColor.gray3
+                        UIPageControl.appearance().pageIndicatorTintColor = UIColor.gray2
+                    }
                 }
             }
-            .tabViewStyle(PageTabViewStyle())
-            HStack {
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+            
+            HStack(spacing: 20) {
                 Button("지우기") {
                     selectedImage = nil
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.gray.opacity(0.2))
-                .foregroundColor(.gray6)
-                .cornerRadius(8)
-                .padding()
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(Color.gray6)
+                .cornerRadius(4)
                 
                 Button("저장") {
                     isShowing = false
+                    if let unwrappedSelectedImage = selectedImage,
+                       let selectedEmoji = Emoji.from(imageName: unwrappedSelectedImage) {
+                        selectedEmojiNumber = selectedEmoji.rawValue
+                        print("이모지 몇번 선택했어 ????? \(selectedEmoji.rawValue)")
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
-                .background(Color.yellow)
-                .foregroundColor(.gray6)
-                .cornerRadius(8)
-                .padding()
+                .background(Color.sub2)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(Color.gray6)
+                .cornerRadius(4)
             }
+            .padding(.horizontal, 30)
         }
     }
 }
@@ -82,16 +99,16 @@ struct CircleView: View {
         ZStack {
             Circle()
                 .fill(Color.gray.opacity(0.1))
-                .frame(width: 60, height: 60)
+                .frame(width: 80, height: 80)
                 .overlay(
                     Circle()
-                        .stroke(isSelected ? Color.yellow : Color.clear, lineWidth: 2)
+                        .stroke(isSelected ? Color.yellow : Color.clear, lineWidth: 4)
                 )
             
             Image(imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 40, height: 40)
+                .frame(width: 35, height: 35)
         }
     }
 }

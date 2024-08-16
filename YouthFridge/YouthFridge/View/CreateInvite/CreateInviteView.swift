@@ -131,16 +131,16 @@ struct StepOneView: View {
                                     .stroke(Color.gray2Color, lineWidth: 1)
                             )
                         
-                        Image("cameraIcon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 16, height: 16)
-                        
                         if let selectedProfileImageName = selectedProfileImageName {
                             Image(selectedProfileImageName)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 40, height: 40)
+                        } else {
+                            Image("cameraIcon")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 16, height: 16)
                         }
                     }
                 }
@@ -148,6 +148,7 @@ struct StepOneView: View {
                 .sheet(isPresented: $isShowingProfileSelector) {
                     EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
                         .presentationDetents([.medium, .large])
+                        .presentationDragIndicator(.hidden)
                 }
                 .animation(.easeInOut, value: isShowingProfileSelector)
                 .padding(.top, -5)

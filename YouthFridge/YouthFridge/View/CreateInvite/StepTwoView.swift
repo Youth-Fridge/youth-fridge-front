@@ -10,17 +10,20 @@ import SwiftUI
 struct StepTwoView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var selectedImage: String = "invitationImage2"
+    @State private var navigateToMainTabView = false
     @State private var showModal: Bool = false
+    
     var body: some View {
         VStack {
             Image(selectedImage)
                 .resizable()
-                .frame(width: 324,height: 384)
+                .frame(width: 324, height: 384)
+                .clipShape(RoundedRectangle(cornerRadius: 6))
                 .padding(.top, 20)
-                .cornerRadius(6)
+                .padding(.bottom, 12)
             
-            HStack(spacing: 10) {
-                ForEach(["invitationImage", "invitationImage1", "invitationImage3", "invitationImage4", "invitationImage5"], id: \.self) { imageName in
+            HStack(spacing: 5) {
+                ForEach(["invitationImage0", "invitationImage1", "invitationImage3", "invitationImage4", "invitationImage5"], id: \.self) { imageName in
                     Group {
                         if imageName == "invitationImage5" {
                             ZStack {
@@ -60,17 +63,29 @@ struct StepTwoView: View {
                     }
                 }
             }
-            NavigationLink(destination: MainTabView().navigationBarBackButtonHidden()) {
+            .padding(.horizontal, 7)
+            
+            Button(action: {
+                viewModel.createInvitation()
+                navigateToMainTabView = true
+            }) {
                 Text("초대장 완성하기")
                     .font(.system(size: 16,weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(viewModel.isFormComplete ? Color.white : Color.gray6)
                     .padding()
-                    .frame(maxWidth: 320)
-                    .background(Color.yellow)
+                    .frame(maxWidth: 324)
+                    .background(viewModel.isFormComplete ? Color.sub2 : Color.gray2)
                     .cornerRadius(8)
             }
-            .padding(.top, 20)
-            .padding(.horizontal, 20)
+            .disabled(!viewModel.isFormComplete)
+            .padding(.top, 15)
+            
+            NavigationLink(
+                destination: MainTabView().navigationBarBackButtonHidden(true),
+                isActive: $navigateToMainTabView
+            ) {
+                EmptyView()
+            }
         }
         .sheet(isPresented: $showModal) {
             ImageGridView(selectedImage: $selectedImage, selectedImageNumber: $viewModel.imageNumber)

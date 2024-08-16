@@ -21,7 +21,7 @@ struct LoginIntroView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
                 Spacer()
                 
                 Image("logo")
@@ -32,11 +32,13 @@ struct LoginIntroView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 205, height: 38)
+                    .padding(.top,20)
                 
                 Text("천안에 사는 청년들을 위한\n 건강한 밥 한끼")
-                    .font(.system(size: 18))
+                    .font(.system(size: 18,weight: .medium))
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
+                    .padding(.top,5)
                 
                 Spacer()
                 

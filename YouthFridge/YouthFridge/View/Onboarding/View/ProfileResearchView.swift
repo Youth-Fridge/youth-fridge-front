@@ -162,7 +162,7 @@ struct ProfileResearchView: View {
                 }) {
                     Text("다음")
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(viewModel.isNextButtonEnabled ? Color.white : Color.black)
                         .padding()
                         .frame(maxWidth: 320)
                         .background(viewModel.isNextButtonEnabled ? Color.sub2Color : Color.gray2)

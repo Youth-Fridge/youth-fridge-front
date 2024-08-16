@@ -45,6 +45,7 @@ struct CreateInviteView: View {
                     
                     if viewModel.selectedTab == 0 {
                         StepOneView(viewModel: viewModel)
+                            .padding(.horizontal, 5)
                     } else {
                         StepTwoView(viewModel: viewModel)
                     }

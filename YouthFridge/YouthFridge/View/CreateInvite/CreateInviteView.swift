@@ -47,9 +47,6 @@ struct CreateInviteView: View {
                         StepOneView(viewModel: viewModel)
                     } else {
                         StepTwoView(viewModel: viewModel)
-                            .onDisappear {
-                                viewModel.createInvitation()
-                            }
                     }
                     
                     Spacer()
@@ -88,7 +85,6 @@ struct StepOneView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var showEmojiModal = false
     @State private var isShowingProfileSelector = false
-    @State private var selectedProfileImage: UIImage? = nil
     @State private var selectedProfileImageName: String? = nil
     
     let times: [String] = [
@@ -97,303 +93,349 @@ struct StepOneView: View {
     ]
 
     private var filteredEndTimes: [String] {
-        times.filter { $0 > selectedStartTime }
+        times.filter { $0 > viewModel.selectedStartTime }
     }
     
     @State private var isDatePickerVisible: Bool = false
-    @State private var selectedStartTime: String = ""
-    @State private var selectedEndTime: String = ""
-    
-    private var dateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.locale = Locale(identifier: "ko_KR")
-        return formatter
-    }
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("이모지 내역")
-                    .font(.system(size: 18, weight: .semibold))
-                    .padding(.top, 20)
-                
-                Button(action: {
-                    showEmojiModal = true
-                    isShowingProfileSelector = true
-                }) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.gray1Color)
-                            .frame(width: 60, height: 60)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .stroke(Color.gray2Color, lineWidth: 1)
-                            )
-                        
-                        if let selectedProfileImageName = selectedProfileImageName {
-                            Image(selectedProfileImageName)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 40)
-                        } else {
-                            Image("cameraIcon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 16, height: 16)
+            ZStack {
+                Color.clear
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        withAnimation {
+                            isDatePickerVisible = false
                         }
                     }
-                }
-                .buttonStyle(PlainButtonStyle())
-                .sheet(isPresented: $isShowingProfileSelector) {
-                    EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
-                        .presentationDetents([.medium, .large])
-                        .presentationDragIndicator(.hidden)
-                }
-                .animation(.easeInOut, value: isShowingProfileSelector)
-                .padding(.top, -5)
                 
-                VStack(alignment: .leading) {
-                    Text("모임 명")
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("이모지 내역")
                         .font(.system(size: 18, weight: .semibold))
-                        .padding(.bottom, 20)
+                        .padding(.top, 15)
+                        .padding(.bottom, 2)
                     
-                    TextField("10글자 이내", text: $viewModel.name)
-                        .font(.system(size: 16))
-                        .padding()
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(
-                                    Color(uiColor: .gray2),
-                                    lineWidth: 1
+                    Button(action: {
+                        showEmojiModal = true
+                        isShowingProfileSelector = true
+                    }) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(Color.gray1Color)
+                                .frame(width: 60, height: 60)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(Color.gray2Color, lineWidth: 1)
                                 )
+                            
+                            if let emojiName = Emoji.from(rawValue: viewModel.emojiNumber) {
+                                Image(emojiName.imageName)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                            } else {
+                                Image("cameraIcon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 16, height: 16)
+                            }
                         }
-                        .frame(height: 20)
-                }
-                .padding(.bottom, 20)
-                
-                VStack(alignment: .leading) {
-                    Text("세부 활동 계획")
-                        .font(.system(size: 18, weight: .semibold))
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .sheet(isPresented: $isShowingProfileSelector) {
+                        EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
+                            .presentationDetents([.medium, .large])
+                            .presentationDragIndicator(.hidden)
+                    }
+                    .animation(.easeInOut, value: isShowingProfileSelector)
+                    .padding(.bottom, 20)
                     
-                    ForEach(viewModel.activityPlans.indices, id: \.self) { index in
-                        TextField("15글자 이내", text: $viewModel.activityPlans[index])
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("모임 명")
+                            .font(.system(size: 18, weight: .semibold))
+                        
+                        TextField("10글자 이내", text: $viewModel.name)
+                            .font(.system(size: 14, weight: .regular))
                             .padding()
-                            .font(.system(size: 16))
-                            .cornerRadius(8)
                             .overlay {
-                                RoundedRectangle(cornerRadius: 10)
+                                RoundedRectangle(cornerRadius: 6)
                                     .stroke(
                                         Color(uiColor: .gray2),
                                         lineWidth: 1
                                     )
                             }
                     }
-                }
-                
-                Button(action: {
-                    viewModel.addActivityPlan()
-                }) {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(Color(red: 0.96, green: 0.96, blue: 0.96))
-                            .cornerRadius(6)
-                            .frame(width: 322, height: 40)
+                    .padding(.bottom, 35)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("세부 활동 계획")
+                            .font(.system(size: 18, weight: .semibold))
                         
-                        Text("추가해 보세요")
-                            .font(Font.custom("Pretendard", size: 12))
-                            .foregroundColor(Color(red: 0.38, green: 0.38, blue: 0.38))
-                            .padding(.leading, 24) // Adjust the padding to center the text
+                        ForEach(viewModel.activityPlans.indices, id: \.self) { index in
+                            TextField("15글자 이내", text: $viewModel.activityPlans[index])
+                                .font(.system(size: 14, weight: .regular))
+                                .padding()
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(
+                                            Color(uiColor: .gray2),
+                                            lineWidth: 1
+                                        )
+                                }
+                        }
+                        
+                        Button(action: {
+                            viewModel.addActivityPlan()
+                        }) {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(Color.gray1)
+                                    .cornerRadius(6)
+                                
+                                HStack(spacing: 5) {
+                                    Image("plus-button")
+                                    
+                                    Text("추가해 보세요")
+                                        .font(.system(size: 12))
+                                        .foregroundColor(Color.gray3)
+                                }
+                            }
+                        }
+                        .frame(width: 350, height: 45)
                     }
-                }
-                .frame(width: 322, height: 40)
-                .padding(.bottom, 30)
-                
-                HStack {
-                    Text("관심사 키워드 선택")
-                        .font(.system(size: 18, weight: .semibold))
-                    Text("최대 2개")
-                        .font(.system(size: 12))
-                        .foregroundColor(.gray3)
-                }
-                HStack {
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 7), count: 4), spacing: 2) {
-                        ForEach(viewModel.keywords, id: \.self) { keyword in
-                            Button(action: {
-                                viewModel.toggleKeyword(keyword)
-                            }) {
-                                Text(keyword)
-                                    .lineLimit(1)
-                                    .fixedSize(horizontal: true, vertical: false)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 10)
-                                    .background(viewModel.selectedKeywords.contains(keyword) ? Color.sub2 : Color.gray1)
-                                    .font(.system(size: 12, weight: .semibold))
-                                    .foregroundColor(viewModel.selectedKeywords.contains(keyword) ? .white : .black)
-                                    .cornerRadius(18)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 25)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        HStack {
+                            Text("관심사 키워드 선택")
+                                .font(.system(size: 18, weight: .semibold))
+                            Text("최대 2개")
+                                .font(.system(size: 12))
+                                .foregroundColor(.gray3)
+                        }
+                        
+                        LazyVStack(alignment: .leading, spacing: 12) {
+                            let columns = 4
+                            let rows = viewModel.keywords.count / columns + (viewModel.keywords.count % columns > 0 ? 1 : 0)
+                            ForEach(0..<rows, id: \.self) { rowIndex in
+                                HStack(spacing: 7) {
+                                    ForEach(0..<columns, id: \.self) { columnIndex in
+                                        let index = rowIndex * columns + columnIndex
+                                        if index < viewModel.keywords.count {
+                                            let keyword = viewModel.keywords[index]
+                                            Button(action: {
+                                                viewModel.toggleKeyword(keyword)
+                                            }) {
+                                                Text(keyword)
+                                                    .lineLimit(1)
+                                                    .fixedSize(horizontal: true, vertical: false)
+                                                    .padding(.horizontal, 22)
+                                                    .padding(.vertical, 10)
+                                                    .background(viewModel.selectedKeywords.contains(keyword) ? Color.main1 : Color.gray1)
+                                                    .font(.system(size: 12, weight: .bold))
+                                                    .foregroundColor(viewModel.selectedKeywords.contains(keyword) ? .white : .gray6)
+                                                    .cornerRadius(20)
+                                            }
+                                        } else {
+                                            Spacer()
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
-                }
-                .padding(.bottom, 20)
-                Text("모임 장소")
-                    .font(.system(size: 16,weight: .semibold))
-                TextField("8글자 이내", text: $viewModel.launchPlace)
-                    .padding()
-                    .font(.system(size: 16))
-                    .foregroundColor(.gray3)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(
-                                Color(uiColor: .gray2),
-                                lineWidth: 1
-                            )
+                    .padding(.bottom, 25)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("모임 장소")
+                            .font(.system(size: 18, weight: .semibold))
+                        
+                        TextField("8글자 이내", text: $viewModel.launchPlace)
+                            .padding()
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.gray3)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(
+                                        Color(uiColor: .gray2),
+                                        lineWidth: 1
+                                    )
+                            }
                     }
-                Text("모임 인원")
-                    .font(.system(size: 16,weight: .semibold))
-                Menu {
-                    ForEach(1..<9) { number in
-                        Button(action: {
-                            viewModel.totalMember = number
-                        }) {
-                            Text("\(number)")
+                    .padding(.bottom, 25)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("모임 인원")
+                            .font(.system(size: 18, weight: .semibold))
+                        Menu {
+                            ForEach(1..<9) { number in
+                                Button(action: {
+                                    viewModel.totalMember = number
+                                }) {
+                                    Text("\(number)")
+                                }
+                            }
+                        } label: {
+                            HStack {
+                                Text("\(viewModel.totalMember)")
+                                    .font(.system(size: 14, weight: .regular))
+                                    .foregroundColor(Color.gray3)
+                                Spacer()
+                                Image(systemName: "arrowtriangle.down.fill")
+                                    .resizable()
+                                    .frame(width: 16, height: 12)
+                                    .foregroundColor(Color.gray6)
+                            }
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.gray2Color, lineWidth: 1)
+                            )
                         }
                     }
-                } label: {
-                    HStack {
-                        Text("\(viewModel.totalMember)")
-                            .foregroundColor(.black)
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .foregroundColor(.gray)
-                    }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.gray2Color, lineWidth: 1)
-                    )
-                }
-                HStack {
-                    Text("모임 일자")
-                        .font(.system(size: 16, weight: .semibold))
-                    Image("calendar")
-                        .resizable()
-                        .frame(width: 16, height: 16)
-                }
-                
-                ZStack {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 223, height: 40)
+                    .padding(.bottom, 25)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        HStack {
+                            Text("모임 일자")
+                                .font(.system(size: 18, weight: .semibold))
+                            Image("calendar")
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                                .onTapGesture {
+                                    withAnimation {
+                                        isDatePickerVisible.toggle()
+                                    }
+                                }
+                        }
+                        
+                        if isDatePickerVisible {
+                            DatePicker(
+                                "",
+                                selection: $viewModel.launchDate,
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .labelsHidden()
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .shadow(radius: 5)
+                            .accentColor(Color.accentColor)
+                            .frame(maxWidth: .infinity)
+                            .transition(.opacity)
+                        }
+                        
+                        HStack {
+                            Text(DateFormatter.generalDateFormatter.string(from: viewModel.launchDate))
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(Color.gray3)
+                                .padding(.leading, 17)
+                                .onTapGesture {
+                                    withAnimation {
+                                        isDatePickerVisible.toggle()
+                                    }
+                                }
+                            
+                            Spacer()
+                        }
+                        .frame(width: 350, height: 50)
+                        .background(Color.clear)
                         .cornerRadius(6)
                         .overlay(
                             RoundedRectangle(cornerRadius: 6)
                                 .inset(by: 0.50)
-                                .stroke(Color(red: 0.89, green: 0.89, blue: 0.89), lineWidth: 0.50)
-                        )
-                    Text(dateFormatter.string(from: viewModel.launchDate))
-                        .font(.system(size: 16))
-                        .padding(.leading, 8)
-                        .onTapGesture {
-                            withAnimation {
-                                isDatePickerVisible.toggle()
-                            }
-                        }
-                }
-                
-                if isDatePickerVisible {
-                    DatePicker(
-                        "",
-                        selection: $viewModel.launchDate,
-                        displayedComponents: [.date]
-                    )
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .labelsHidden()
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(8)
-                    .shadow(radius: 5)
-                    .transition(.opacity)
-                }
-                
-                Text("모임 시간")
-                    .font(.system(size: 16,weight: .semibold))
-                    .padding(.horizontal)
-                
-                HStack(spacing: 16) {
-                    Menu {
-                        ForEach(times, id: \.self) { time in
-                            Button(action: {
-                                selectedStartTime = time
-                                viewModel.selectedStartTime = time
-                                if selectedEndTime < time {
-                                    selectedEndTime = time
-                                }
-                            }) {
-                                Text(time)
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    } label: {
-                        HStack {
-                            Text(selectedStartTime.isEmpty ? "시작 시간" : selectedStartTime)
-                                .foregroundColor(selectedStartTime.isEmpty ? .gray : .black)
-                            Spacer()
-                            Image(systemName: "arrowtriangle.down.fill")
-                                .foregroundColor(.gray)
-                        }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
+                                .stroke(Color.gray2)
                         )
                     }
+                    .padding(.bottom, 25)
                     
-                    Menu {
-                        ForEach(times, id: \.self) { time in
-                            Button(action: {
-                                viewModel.selectedEndTime = time
-                                selectedEndTime = time
-                            }) {
-                                Text(time)
-                                    .foregroundColor(filteredEndTimes.contains(time) ? .black : .gray)
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("모임 시간")
+                            .font(.system(size: 18, weight: .semibold))
+                        
+                        HStack(spacing: 16) {
+                            Menu {
+                                ForEach(times, id: \.self) { time in
+                                    Button(action: {
+                                        viewModel.selectedStartTime = time
+                                        if viewModel.selectedEndTime < time {
+                                            viewModel.selectedEndTime = time
+                                        }
+                                    }) {
+                                        Text(time)
+                                            .foregroundColor(Color.gray3)
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text(viewModel.selectedStartTime.isEmpty ? "시작 시간" : viewModel.selectedStartTime)
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundColor(Color.gray3)
+                                    Spacer()
+                                    Image(systemName: "arrowtriangle.down.fill")
+                                        .resizable()
+                                        .frame(width: 16, height: 12)
+                                        .foregroundColor(Color.gray6)
+                                }
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.gray2, lineWidth: 1)
+                                )
                             }
-                            .disabled(!filteredEndTimes.contains(time))
+                            
+                            Menu {
+                                ForEach(times, id: \.self) { time in
+                                    Button(action: {
+                                        viewModel.selectedEndTime = time
+                                    }) {
+                                        Text(time)
+                                            .foregroundColor(Color.gray3)
+                                    }
+                                    .disabled(!filteredEndTimes.contains(time))
+                                }
+                            } label: {
+                                HStack {
+                                    Text(viewModel.selectedEndTime.isEmpty ? "종료 시간" : viewModel.selectedEndTime)
+                                        .font(.system(size: 14, weight: .regular))
+                                        .foregroundColor(Color.gray3)
+                                    Spacer()
+                                    Image(systemName: "arrowtriangle.down.fill")
+                                        .resizable()
+                                        .frame(width: 16, height: 12)
+                                        .foregroundColor(Color.gray6)
+                                }
+                                .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.gray2, lineWidth: 1)
+                                )
+                            }
                         }
-                    } label: {
-                        HStack {
-                            Text(selectedEndTime.isEmpty ? "종료 시간" : selectedEndTime)
-                                .foregroundColor(selectedEndTime.isEmpty ? .gray : .black)
-                            Spacer()
-                            Image(systemName: "arrowtriangle.down.fill")
-                                .foregroundColor(.gray)
-                        }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.gray, lineWidth: 1)
-                        )
                     }
+                    .padding(.bottom, 25)
+                    
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("오픈 채팅")
+                            .font(.system(size: 18, weight: .semibold))
+                            .padding(.bottom, 14)
+                        
+                        TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.gray3)
+                            .padding()
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(
+                                        Color(uiColor: .gray2),
+                                        lineWidth: 1
+                                    )
+                            }
+                            .frame(height: 20)
+                    }
+                    .padding(.bottom, 25)
                 }
-                .frame(maxWidth: .infinity)
-                
-                Text("오픈 채팅")
-                    .font(.system(size: 16, weight: .semibold))
-                    .padding(.horizontal)
-                
-                TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
-                    .font(.system(size: 13))
-                    .foregroundColor(.gray3)
-                    .padding()
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(
-                                Color(uiColor: .gray2),
-                                lineWidth: 1
-                            )
-                    }
-                    .frame(height: 20)
             }
         }
         .sheet(isPresented: $isShowingProfileSelector) {

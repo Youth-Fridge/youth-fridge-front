@@ -10,6 +10,7 @@ import SwiftUI
 struct StepTwoView: View {
     @ObservedObject var viewModel: CreateInviteViewModel
     @State private var selectedImage: String = "invitationImage2"
+    @State private var navigateToMainTabView = false
     @State private var showModal: Bool = false
     
     var body: some View {
@@ -64,17 +65,27 @@ struct StepTwoView: View {
             }
             .padding(.horizontal, 7)
             
-            NavigationLink(destination: MainTabView().navigationBarBackButtonHidden(true)) {
+            Button(action: {
+                viewModel.createInvitation()
+                navigateToMainTabView = true
+            }) {
                 Text("초대장 완성하기")
                     .font(.system(size: 16,weight: .bold))
-                    .foregroundColor(viewModel.imageNumber != -1 ? Color.white : Color.gray6)
+                    .foregroundColor(viewModel.isFormComplete ? Color.white : Color.gray6)
                     .padding()
                     .frame(maxWidth: 324)
-                    .background(viewModel.imageNumber != -1 ? Color.sub2 : Color.gray2)
+                    .background(viewModel.isFormComplete ? Color.sub2 : Color.gray2)
                     .cornerRadius(8)
             }
-            .disabled(viewModel.imageNumber == -1)
+            .disabled(!viewModel.isFormComplete)
             .padding(.top, 15)
+            
+            NavigationLink(
+                destination: MainTabView().navigationBarBackButtonHidden(true),
+                isActive: $navigateToMainTabView
+            ) {
+                EmptyView()
+            }
         }
         .sheet(isPresented: $showModal) {
             ImageGridView(selectedImage: $selectedImage, selectedImageNumber: $viewModel.imageNumber)

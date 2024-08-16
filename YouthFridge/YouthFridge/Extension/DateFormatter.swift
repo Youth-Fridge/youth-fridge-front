@@ -23,6 +23,13 @@ extension DateFormatter {
         return formatter
     }()
     
+    static let generalDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter
+    }()
+    
     static let displayDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "M월 d일 EEEE"

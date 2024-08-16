@@ -83,11 +83,32 @@ struct ProfileResearchView: View {
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
-
-                TextField("15글자 이내 *ex: 365일 식단 조절러", text: $viewModel.introduceMe)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .font(.system(size: 12))
-                    .padding(.horizontal)
+                HStack {
+                    ZStack(alignment: .leading) {
+                        if viewModel.introduceMe.isEmpty {
+                            HStack {
+                                Text("15글자 이내")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray3)
+                                Text("*ex: 365일 식단 조절러")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.gray7)
+                            }
+                            .padding(.leading, 10)
+                        }
+                        
+                        TextField("", text: $viewModel.introduceMe)
+                            .font(.system(size: 12))
+                            .padding(.leading, 10)
+                            .padding(.top, 15)
+                            .padding(.bottom, 15)
+                    }
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray2Color, lineWidth: 1)
+                )
+                .padding(.horizontal)
                 Spacer()
                     .frame(height: 30)
                 HStack {

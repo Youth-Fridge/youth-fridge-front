@@ -45,7 +45,7 @@ struct MapDetailView: View {
                     .padding()
                 
                 Button(action: {
-                    if locationManager.userCity == "천안시" && (locationManager.userDistrict == "동작구" || locationManager.userDistrict == "서북구") {
+                    if locationManager.userCity == "천안시" && (locationManager.userDistrict == "동남구" || locationManager.userDistrict == "서북구") {
                         certifiedRegions.append(region)
                         onCertification(locationManager.userCity, locationManager.userDistrict)
                         print("지역이 인증되었습니다.")
@@ -74,7 +74,7 @@ struct MapDetailView: View {
                     }
                 
                 PopUpView(
-                    message: "천안시 동작구 또는 서북구만\n 인증할 수 있습니다.",
+                    message: "천안시 동남구 또는 서북구만\n 인증할 수 있습니다.",
                     onClose: {
                         withAnimation {
                             showLocationDeletePopup = false

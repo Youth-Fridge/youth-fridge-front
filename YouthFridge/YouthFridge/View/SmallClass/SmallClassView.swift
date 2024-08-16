@@ -38,9 +38,9 @@ struct SmallClassView: View {
                             viewModel: ShowInviteViewModel(),
                             invitationId: cell.id
                         )) {
-                            EmptyView() // This is needed so that the NavigationLink works correctly
+                            EmptyView()
                         }
-                        .opacity(0) // Make the link invisible
+                        .opacity(0)
                         
                         CellView(cell: cell)
                             .padding(.vertical, 15)
@@ -48,7 +48,7 @@ struct SmallClassView: View {
                             .cornerRadius(10)
                             .contentShape(Rectangle())
                             .onAppear {
-                                // Check if the current cell is the last one in the list
+                               
                                 if cell == viewModel.cells.last {
                                     viewModel.fetchInviteCellData()
                                 }
@@ -75,7 +75,6 @@ struct SmallClassView: View {
             }
         }
         .onAppear {
-            // Fetch the initial data when the view appears
             viewModel.fetchInviteCellData()
         }
     }

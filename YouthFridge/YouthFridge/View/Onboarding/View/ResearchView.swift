@@ -70,7 +70,7 @@ struct ResearchView: View {
                 }) {
                     Text("다음")
                         .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(.white)
+                        .foregroundColor(!selectedCategories.isEmpty ? Color.white : Color.black)
                         .padding()
                         .frame(width: 320, height: 60)
                         .background(!selectedCategories.isEmpty ? Color.sub2Color : Color.gray2)

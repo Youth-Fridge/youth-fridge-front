@@ -24,18 +24,27 @@ struct OnboardingStartView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 60, height: 60)
+                        .padding(.top,50)
                     
-                    Text("오직 천안에서만\n청년냉장고를 만나보세요")
+                    Text("오직 천안에서만")
                         .foregroundColor(.black)
                         .font(.system(size: 24, weight: .bold))
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
-                    
+                    HStack {
+                        Image("titleLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 142,height: 27)
+                        Text("를 만나보세요")
+                            .foregroundColor(.black)
+                            .font(.system(size: 26,weight: .bold))
+                    }
                     Text("우리 천안에서 밥 친구할래?")
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .padding(.top, 5)
-                        .padding(.bottom, 30)
+                        .padding(.bottom, 20)
                     
                     Spacer()
                     
@@ -71,7 +80,7 @@ struct OnboardingStartView: View {
                             .cornerRadius(8)
                             .shadow(radius: 5)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                 }
                 .padding()
             }

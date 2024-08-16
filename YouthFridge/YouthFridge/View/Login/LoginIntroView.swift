@@ -143,26 +143,29 @@ struct LoginIntroView: View {
         }
     }
     private func performBackendLogin(userID: String, email: String) {
-        let loginRequest = LoginRequest(email: email, username: userID)
-        print(loginRequest)
-        
-        OnboardingAPI.shared.login(loginRequest) { result in
-            switch result {
-            case .success(()):
-                self.isPresentedLoginView = true
-                
-                print("로그인 성공")
-                
-            case .failure(let error):
-                let nsError = error as NSError
-                switch nsError.code {
-                case 400:
-                    self.isNewUser = true
+        ensureValidTokenAndProceed {
+            
+            let loginRequest = LoginRequest(email: email, username: userID)
+            print(loginRequest)
+            
+            OnboardingAPI.shared.login(loginRequest) { result in
+                switch result {
+                case .success(()):
                     self.isPresentedLoginView = true
-                    print("회원가입 필요")
                     
-                default:
-                    print("로그인 실패: \(nsError.localizedDescription)")
+                    print("로그인 성공")
+                    
+                case .failure(let error):
+                    let nsError = error as NSError
+                    switch nsError.code {
+                    case 400:
+                        self.isNewUser = true
+                        self.isPresentedLoginView = true
+                        print("회원가입 필요")
+                        
+                    default:
+                        print("로그인 실패: \(nsError.localizedDescription)")
+                    }
                 }
             }
         }
@@ -174,12 +177,37 @@ struct LoginIntroView: View {
         coordinator.startSignInWithAppleFlow(onSuccess: {
             self.type = "apple"
             UserDefaults.standard.setValue(self.type, forKey: "loginType")
+            
+            
+            let currentTime = Date()
+            UserDefaults.standard.setValue(currentTime, forKey: "tokenIssueTime")
+            
+            if let expirationTime = Calendar.current.date(byAdding: .day, value: 1, to: currentTime) {
+                UserDefaults.standard.setValue(expirationTime, forKey: "tokenExpirationTime")
+            }
+            
             self.isPresentedLoginView = true
         }, onFailure: { error in
             print("Sign in with Apple failed: \(error.localizedDescription)")
         })
         appleSignInCoordinator = coordinator
     }
+    private func isTokenValid() -> Bool {
+        if let expirationTime = UserDefaults.standard.value(forKey: "tokenExpirationTime") as? Date {
+            return Date() < expirationTime
+        }
+        return false
+    }
+
+    private func ensureValidTokenAndProceed(action: @escaping () -> Void) {
+        if isTokenValid() {
+            action()
+        } else {
+            performAppleSignIn()
+        }
+    }
+
+
 }
 
 class AppleSignInCoordinator: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {

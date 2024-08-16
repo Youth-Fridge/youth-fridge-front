@@ -22,9 +22,9 @@ struct LoginButtonStyle: ButtonStyle {
         configuration.label
             .font(.system(size: 14))
             .foregroundColor(textColor)
-            .frame(maxWidth: .infinity, maxHeight: 40)
+            .frame(maxWidth: .infinity, maxHeight: 48)
             .background(backgroundColor)
-            .cornerRadius(5)
+            .cornerRadius(8)
             .overlay(
                 RoundedRectangle(cornerRadius: 5)
                     .stroke(borderColor, lineWidth: 0.8)

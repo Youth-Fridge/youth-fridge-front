@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CellModel: Identifiable {
-    let id = UUID()
+struct CellModel: Identifiable, Equatable {
+    let id : Int
     let image: String
     let title: String
-    let tag: String
+    let tag: [String]
     let ing: String
     let numberOfPeople: String
 }

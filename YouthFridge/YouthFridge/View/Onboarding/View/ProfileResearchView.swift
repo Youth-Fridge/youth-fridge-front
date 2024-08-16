@@ -83,11 +83,32 @@ struct ProfileResearchView: View {
                     .font(.system(size: 16, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
-
-                TextField("15글자 이내 *ex: 365일 식단 조절러", text: $viewModel.introduceMe)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .font(.system(size: 12))
-                    .padding(.horizontal)
+                HStack {
+                    ZStack(alignment: .leading) {
+                        if viewModel.introduceMe.isEmpty {
+                            HStack {
+                                Text("15글자 이내")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray3)
+                                Text("*ex: 365일 식단 조절러")
+                                    .font(.system(size: 11))
+                                    .foregroundColor(.gray7)
+                            }
+                            .padding(.leading, 10)
+                        }
+                        
+                        TextField("", text: $viewModel.introduceMe)
+                            .font(.system(size: 12))
+                            .padding(.leading, 10)
+                            .padding(.top, 15)
+                            .padding(.bottom, 15)
+                    }
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.gray2Color, lineWidth: 1)
+                )
+                .padding(.horizontal)
                 Spacer()
                     .frame(height: 30)
                 HStack {
@@ -105,31 +126,33 @@ struct ProfileResearchView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
-                Button(action: {
-                    // 버튼 클릭 시 동작 추가
-                }) {
-                    HStack {
-                        Image("locationImage")
-                            .resizable()
-                            .frame(width: 16, height: 22)
-                        VStack(alignment: .leading) {
-                            Text("\(viewModel.userCity)\(viewModel.userDistrict)")
-                                .font(.system(size: 12, weight: .medium))
-                                .foregroundColor(.black)
+                if !viewModel.userCity.isEmpty && !viewModel.userDistrict.isEmpty {
+                    Button(action: {
+                        // 버튼 클릭 시 동작 추가
+                    }) {
+                        HStack {
+                            Image("locationImage")
+                                .resizable()
+                                .frame(width: 16, height: 22)
+                            VStack(alignment: .leading) {
+                                Text("\(viewModel.userCity)\(viewModel.userDistrict)")
+                                    .font(.system(size: 12, weight: .medium))
+                                    .foregroundColor(.black)
+                            }
+                            .frame(alignment: .leading)
                         }
-                        .frame(alignment: .leading)
+                        .padding(7)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.main1Color, lineWidth: 1)
+                        )
                     }
-                    .padding(7)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.main1Color, lineWidth: 1)
-                    )
+                    
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
                 Spacer()
 
-                // Using Button instead of NavigationLink
                 Button(action: {
                     print("다음 버튼 클릭됨")
                     viewModel.signUp()
@@ -139,7 +162,7 @@ struct ProfileResearchView: View {
                 }) {
                     Text("다음")
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(viewModel.isNextButtonEnabled ? Color.white : Color.black)
                         .padding()
                         .frame(maxWidth: 320)
                         .background(viewModel.isNextButtonEnabled ? Color.sub2Color : Color.gray2)

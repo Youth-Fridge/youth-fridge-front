@@ -48,6 +48,7 @@ struct MyPageView: View {
                                     switch result {
                                     case .success(let isSuccess):
                                         if isSuccess {
+                                            UserDefaults.standard.removeObject(forKey: "nickname")
                                             KeychainHandler.shared.accessToken = ""
                                             navigateToLoginIntro = true
                                         } else {

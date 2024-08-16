@@ -12,7 +12,7 @@ enum InvitationAPI {
     case createInvitation(Data)                                           // 초대장 생성
     case getInvitation(invitationId: Int)                                 // 초대장 상세 조회
     case getInvitationsTop5                                               // 초대장 마감임박순 5개 조회
-    case getInvitationsbyKeyword(kewords: [String], page: Int, size: Int) // 키워드로 소모임 구인 글 조회
+    case getInvitationsbyKeyword(kewords: String, page: Int, size: Int) // 키워드로 소모임 구인 글 조회
     case getMyInvitations(page: Int, size: Int)                           // 내가 생성한 초대장 조회
     case getMyDetailInvitation(invitationId: Int)                         // 내가 생성한 초대장 상세 조회
     case getAppliedInvitations(page: Int, size: Int)                      // 내가 신청한 소모임 조회

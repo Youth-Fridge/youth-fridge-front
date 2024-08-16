@@ -48,8 +48,9 @@ class CellViewModel: ObservableObject {
     func fetchKeyWordsList(selectedTags: [String]) {
         guard !isLoading else { return }
         isLoading = true
+        let keywords = selectedTags.joined(separator: ",")
         
-        InvitationService.shared.getInvitationKeyWords(keywords: selectedTags, page: 0, size: 10) { [weak self] result in
+        InvitationService.shared.getInvitationKeyWords(keywords: keywords, page: 0, size: 10) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 

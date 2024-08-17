@@ -206,8 +206,7 @@ struct ActivityDetailView: View {
                 Text("* 문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
             }
             .font(.footnote)
-            
-            .foregroundColor(.black)
+            .foregroundColor(Color.gray4)
         }
         .padding()
     }

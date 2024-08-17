@@ -215,7 +215,7 @@ struct ApplicationDetailView: View {
                              }
                         }
                         .padding(.leading, 17)
-                        .padding(.vertical, -30)
+                        .padding(.vertical, 10)
                         .foregroundColor(Color.gray6)
                     }
                 }
@@ -245,16 +245,15 @@ struct ApplicationDetailView: View {
             ZStack(alignment: .leading) {
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 324, height: 35)
+                    .frame(width: 324)
                     .background(Color.gray1)
                     .cornerRadius(6)
                 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(detailViewModel.kakaoLink)
-                        .font(Font.custom("Pretendard", size: 12))
-                }
-                .padding(20)
-                .foregroundColor(Color.gray6)
+                Text(detailViewModel.kakaoLink)
+                    .font(Font.custom("Pretendard", size: 12))
+                    .padding(.leading, 5)
+                    .padding(12)
+                    .foregroundColor(Color.gray6)
             }
             .padding(.bottom, -10)
         }
@@ -274,6 +273,7 @@ struct ApplicationDetailView: View {
                 Text("모임 2일 전까지만 취소 가능")
                     .font(.subheadline)
                     .fontWeight(.regular)
+                    .padding(.top, -8)
                     .foregroundColor(Color.gray6)
             }
             
@@ -324,14 +324,22 @@ struct ApplicationDetailView: View {
                 Text("운영사항")
                     .font(.subheadline)
                     .fontWeight(.regular)
+                    .foregroundColor(Color.gray6)
+                    .padding(.bottom, 2)
             }
             
             VStack(alignment: .leading, spacing: 12) {
+                Text("* 본인이 오픈채팅에 참여하지 않아 생기는 문제의 경우 책임지지 않습니다. 모임 일자 이전 꼭 ")
+                + Text("오픈채팅 참여")
+                    .fontWeight(.bold)
+                    .underline()
+                + Text("를 통해 원활한 소통 부탁드립니다.")
                 Text("* 모임 참여가 어려울 시, 모임 일자 ")
                 + Text("기준 2일 전까지")
                     .fontWeight(.bold)
                     .underline()
                 + Text(" 미참석 버튼을 눌러 호스트에게 전달해 주세요.")
+                Text("* 만약 모임 당일 참여가 불가피 할 경우 오픈채팅방을 통해 참여 불가능 의사를 호스트에게 전달해 주세요.")
                 Text("* 참여 응답 후 모임 미참석 시, 다음 참여에 불이익이 있을 수 있습니다.")
                 Text("* 호스트의 주도로 소모임 내에서 진행되는 활동을 잘 따라주세요.")
                 Text("* 불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
@@ -343,15 +351,9 @@ struct ApplicationDetailView: View {
             }
             .font(.footnote)
             .foregroundColor(Color.gray4)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .fixedSize(horizontal: false, vertical: true)
         }
         .padding()
-    }
-}
-
-struct ApplicationDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        let services = Services()
-        let container = DIContainer(services: services)
-//        ActivityDetailView(viewModel: ActivityCardViewModel(title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", daysLeft: 21, imageName: "image1"))
     }
 }

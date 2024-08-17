@@ -132,7 +132,7 @@ struct MyPageView: View {
                         
                         Image("right-arrow")
                             .foregroundColor(.gray)
-                            .padding(.trailing, 14)
+                            .padding(.trailing, 10)
                             .onTapGesture {
                                 // TODO: - 초대장 상세보기 API 연동
                                 print("초대장 상세 보기 필요해 !!")
@@ -207,7 +207,8 @@ struct MyPageView: View {
             }
         }
         .listStyle(PlainListStyle())
-        .padding(.horizontal, 12)
+        .padding(.horizontal, 10)
+        .padding(.trailing, 15)
     }
     
     let activityItems = ["내 활동", "문의", "회원탈퇴", "로그아웃"]
@@ -228,6 +229,9 @@ struct ActivityCell: View {
                 Spacer()
                 
                 Image("right-arrow")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.trailing, -18)
             }
             .padding(.vertical, 10)
             

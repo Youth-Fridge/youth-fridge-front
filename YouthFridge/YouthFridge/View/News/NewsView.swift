@@ -10,16 +10,27 @@ import WebKit
 
 struct NewsView: View {
     @State private var isLoading = true
+    @State private var reload = false
     @Binding var urlToLoad: String
+    
+    private let specificURL = "https://m.blog.naver.com/hyangyuloum"
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    BlogWebView(urlToLoad: urlToLoad, scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
-                        .edgesIgnoringSafeArea(.bottom)
-                        .navigationTitle("밥심레터")
-                        .navigationBarTitleDisplayMode(.inline)
+                    BlogWebView(
+                        urlToLoad: urlToLoad,
+                        scrollTo: urlToLoad == specificURL ? CGPoint(x: 0, y: 750) : .zero,
+                        isLoading: $isLoading,
+                        reload: $reload
+                    )
+                    .edgesIgnoringSafeArea(.bottom)
+                    .navigationTitle("밥심레터")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .onAppear {
+                        reload = true
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

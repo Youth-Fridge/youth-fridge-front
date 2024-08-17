@@ -9,13 +9,16 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
-    let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
     @State private var currentIndex = 0
     @State private var selectedImageIndex: Int = 0
+    @Binding var newsUrl: String
+    
+    let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
-    @Binding var newsUrl: String
+    
     var onNewsButtonPress: () -> Void
+    var onLatestNewsFetched: () -> Void
     
     var cards: [Card] {
         viewModel.cards
@@ -189,6 +192,7 @@ struct HomeView: View {
             case .success(let response):
                 DispatchQueue.main.async {
                     self.newsUrl = response.link
+                    self.onLatestNewsFetched()
                     self.onNewsButtonPress()
                 }
             case .failure(let error):

@@ -11,6 +11,7 @@ import WebKit
 struct MainTabView: View {
     @State private var selectedTab: MainTabType = .home
     @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
+    @State private var shouldUpdateUrl = false
     
     var body: some View {
         NavigationView {
@@ -24,6 +25,16 @@ struct MainTabView: View {
                 }
             }
             .tint(.black)
+            .onChange(of: selectedTab) { newTab in
+                if newTab == .news {
+                    if shouldUpdateUrl {
+                        shouldUpdateUrl = false
+                    } else {
+                        shouldUpdateUrl = true
+                        newsUrl = "https://m.blog.naver.com/hyangyuloum"
+                    }
+                }
+            }
             .navigationViewStyle(StackNavigationViewStyle())
         }
     }
@@ -34,6 +45,8 @@ struct MainTabView: View {
         case .home:
             HomeView(viewModel: .init(), newsUrl: $newsUrl, onNewsButtonPress: {
                 self.selectedTab = .news
+            }, onLatestNewsFetched: {
+                self.shouldUpdateUrl = true
             })
         case .smallClass:
             SmallClassView()

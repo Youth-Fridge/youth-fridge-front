@@ -13,24 +13,36 @@ struct BlogWebView: UIViewRepresentable {
     var scrollTo: CGPoint
     
     @Binding var isLoading: Bool
+    @Binding var reload: Bool
 
     func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        if let url = URL(string: urlToLoad) {
-            webView.load(URLRequest(url: url))
-        }
-        webView.navigationDelegate = context.coordinator
-        return webView
-    }
+         let webView = WKWebView()
+         webView.navigationDelegate = context.coordinator
+         webView.scrollView.delegate = context.coordinator
+         return webView
+     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
+        guard let url = URL(string: urlToLoad) else { return }
+        
+        if reload {
+            let request = URLRequest(url: url)
+            uiView.load(request)
+            reload = false
+        }
+        
+        if urlToLoad == "https://m.blog.naver.com/hyangyuloum" {
+            DispatchQueue.main.async {
+                uiView.scrollView.setContentOffset(scrollTo, animated: true)
+            }
+        }
     }
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
 
-    class Coordinator: NSObject, WKNavigationDelegate {
+    class Coordinator: NSObject, WKNavigationDelegate, UIScrollViewDelegate {
         var parent: BlogWebView
 
         init(_ parent: BlogWebView) {
@@ -44,19 +56,30 @@ struct BlogWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            if self.parent.urlToLoad == "https://m.blog.naver.com/hyangyuloum" {
-                let x = self.parent.scrollTo.x
-                let y = self.parent.scrollTo.y
-                let scrollScript = "window.scrollTo(\(x), \(y));"
-
-                webView.evaluateJavaScript(scrollScript) { _, _ in
-                     DispatchQueue.main.async {
-                         self.parent.isLoading = false
-                     }
+             if self.parent.urlToLoad == "https://m.blog.naver.com/hyangyuloum" {
+                 DispatchQueue.main.async {
+                     self.checkScrollPosition(webView: webView)
                  }
+             } else {
+                 DispatchQueue.main.async {
+                     self.parent.isLoading = false
+                 }
+             }
+        }
+
+        private func checkScrollPosition(webView: WKWebView) {
+            let targetOffset = parent.scrollTo
+            let contentOffset = webView.scrollView.contentOffset
+            
+            let offsetX = abs(contentOffset.x - targetOffset.x)
+            let offsetY = abs(contentOffset.y - targetOffset.y)
+            if offsetX < 1 && offsetY < 1 {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.parent.isLoading = false
+                }
             } else {
                 DispatchQueue.main.async {
-                    self.parent.isLoading = false
+                    self.checkScrollPosition(webView: webView)
                 }
             }
         }

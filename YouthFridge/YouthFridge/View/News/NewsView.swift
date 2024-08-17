@@ -10,6 +10,7 @@ import WebKit
 
 struct NewsView: View {
     @State private var isLoading = true
+    @State private var reload = false
     @Binding var urlToLoad: String
     
     private let specificURL = "https://m.blog.naver.com/hyangyuloum"
@@ -21,11 +22,15 @@ struct NewsView: View {
                     BlogWebView(
                         urlToLoad: urlToLoad,
                         scrollTo: urlToLoad == specificURL ? CGPoint(x: 0, y: 750) : .zero,
-                        isLoading: $isLoading
+                        isLoading: $isLoading,
+                        reload: $reload
                     )
                     .edgesIgnoringSafeArea(.bottom)
                     .navigationTitle("밥심레터")
                     .navigationBarTitleDisplayMode(.inline)
+                    .onAppear {
+                        reload = true
+                    }
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

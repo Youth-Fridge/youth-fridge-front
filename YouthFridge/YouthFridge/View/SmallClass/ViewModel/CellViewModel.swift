@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 class CellViewModel: ObservableObject {
     @Published var cells: [CellModel] = []
@@ -13,6 +14,8 @@ class CellViewModel: ObservableObject {
     private var currentPage: Int = 0
     private var canLoadMore: Bool = true
     
+    private var cancellables = Set<AnyCancellable>()
+
     func fetchInviteCellData() {
         guard !isLoading && canLoadMore else { return }
         isLoading = true
@@ -44,12 +47,27 @@ class CellViewModel: ObservableObject {
             }
         }
     }
+
+    func observeSelectedTags(_ selectedTagsSubject: PassthroughSubject<[String], Never>) {
+        selectedTagsSubject
+            .sink { [weak self] newTags in
+                if newTags.isEmpty {
+                    self?.fetchInviteCellData()
+                } else {
+                    self?.fetchKeyWordsList(selectedTags: newTags)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+
     
     func fetchKeyWordsList(selectedTags: [String]) {
         guard !isLoading else { return }
         isLoading = true
+        let keywords = selectedTags.joined(separator: ",")
         
-        InvitationService.shared.getInvitationKeyWords(keywords: selectedTags, page: 0, size: 10) { [weak self] result in
+        InvitationService.shared.getInvitationKeyWords(keywords: keywords, page: 0, size: 10) { [weak self] result in
             DispatchQueue.main.async {
                 self?.isLoading = false
                 

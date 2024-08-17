@@ -152,7 +152,7 @@ struct ApplicationDetailView: View {
     var participantView: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
-                Text("참여자 명")
+                Text("참여 현황")
                     .font(.title3)
                     .fontWeight(.bold)
                 
@@ -178,6 +178,7 @@ struct ApplicationDetailView: View {
                 Text("TO DO")
                     .font(.title3)
                     .fontWeight(.bold)
+                    .padding(.top, -10)
                     .padding(.bottom, 2)
             }
             .padding()
@@ -202,20 +203,21 @@ struct ApplicationDetailView: View {
                     ZStack(alignment: .leading) {
                         Rectangle()
                             .foregroundColor(.clear)
-                            .frame(width: 204, height: 60)
+                            .frame(width: 204)
                             .background(Color.gray1)
                             .cornerRadius(6)
                         
                         VStack(alignment: .leading, spacing: 4) {
                             ForEach(detailViewModel.activities, id: \.self) { activity in
-                                 Text(activity)
+                                 Text("•  \(activity)")
                                      .font(Font.custom("Pretendard", size: 12))
+                                     .padding(.bottom, 5)
                              }
                         }
-                        .padding(20)
+                        .padding(.leading, 17)
+                        .padding(.vertical, -30)
                         .foregroundColor(Color.gray6)
                     }
-                    .padding(.bottom, -10)
                 }
                 .padding(.leading, 5)
             }
@@ -236,13 +238,14 @@ struct ApplicationDetailView: View {
                 
                 Text("원활한 소통을 위해 모임 전 꼭 참여해주세요 !")
                     .font(.caption)
+                    .foregroundColor(Color.gray6)
                     .fontWeight(.regular)
             }
                     
             ZStack(alignment: .leading) {
                 Rectangle()
                     .foregroundColor(.clear)
-                    .frame(width: 324, height: 32)
+                    .frame(width: 324, height: 35)
                     .background(Color.gray1)
                     .cornerRadius(6)
                 

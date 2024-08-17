@@ -6,20 +6,19 @@
 //
 
 import SwiftUI
+import Combine
 
 class CellViewModel: ObservableObject {
     @Published var cells: [CellModel] = []
-    @Published var isLoading: Bool = false
     private var currentPage: Int = 0
     private var canLoadMore: Bool = true
     
+    private var cancellables = Set<AnyCancellable>()
+
     func fetchInviteCellData() {
-        guard !isLoading && canLoadMore else { return }
-        isLoading = true
-        
         InvitationService.shared.getInvitationList(page: currentPage, size: 5) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isLoading = false
+                guard let self = self else { return }
                 
                 switch result {
                 case .success(let invitations):
@@ -33,10 +32,14 @@ class CellViewModel: ObservableObject {
                                       numberOfPeople: "\(invitation.currentMember)/\(invitation.totalMember)")
                         }
                         
-                        self?.cells.append(contentsOf: newCells)
-                        self?.currentPage += 1
+                        self.cells.append(contentsOf: newCells)
+                        self.currentPage += 1
+                        
+                        if newCells.count < 5 {
+                            self.canLoadMore = false
+                        }
                     } else {
-                        self?.canLoadMore = false
+                        self.canLoadMore = false
                     }
                 case .failure(let error):
                     print("Error loading invitations: \(error.localizedDescription)")
@@ -44,18 +47,17 @@ class CellViewModel: ObservableObject {
             }
         }
     }
-    
+
     func fetchKeyWordsList(selectedTags: [String]) {
-        guard !isLoading else { return }
-        isLoading = true
+        let keywords = selectedTags.joined(separator: ",")
         
-        InvitationService.shared.getInvitationKeyWords(keywords: selectedTags, page: 0, size: 10) { [weak self] result in
+        InvitationService.shared.getInvitationKeyWords(keywords: keywords, page: 0, size: 10) { [weak self] result in
             DispatchQueue.main.async {
-                self?.isLoading = false
+                guard let self = self else { return }
                 
                 switch result {
                 case .success(let invitations):
-                    self?.cells = invitations.map { invitation in
+                    self.cells = invitations.map { invitation in
                         CellModel(id: invitation.invitationId,
                                   image: "invitationImage\(invitation.emojiNumber)",
                                   title: invitation.clubName,
@@ -63,16 +65,33 @@ class CellViewModel: ObservableObject {
                                   ing: invitation.currentMember < invitation.totalMember ? "모집 중" : "모집 완료",
                                   numberOfPeople: "\(invitation.currentMember)/\(invitation.totalMember)")
                     }
-                    self?.currentPage = 1
-                    self?.canLoadMore = invitations.count >= 5
+                    self.currentPage = 1
+                    self.canLoadMore = invitations.count >= 5
                 case .failure(let error):
                     print("Error loading invitations: \(error.localizedDescription)")
                 }
             }
         }
     }
-}
+    
+    func observeSelectedTags(_ selectedTagsSubject: PassthroughSubject<[String], Never>) {
+        selectedTagsSubject
+            .sink { [weak self] newTags in
+                guard let self = self else { return }
+                if newTags.isEmpty {
+                    self.currentPage = 0
+                    self.cells.removeAll()
+                    self.canLoadMore = true
+                    self.fetchInviteCellData()
+                } else {
+                    self.cells.removeAll()
+                    self.fetchKeyWordsList(selectedTags: newTags)
+                }
+            }
+            .store(in: &cancellables)
+    }
 
+}
 
 
 

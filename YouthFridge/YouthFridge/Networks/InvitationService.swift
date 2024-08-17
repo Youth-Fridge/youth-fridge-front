@@ -125,7 +125,7 @@ class InvitationService {
         }
     }
     
-    func getInvitationKeyWords(keywords: [String],page: Int, size: Int, completion: @escaping (Result<[InvitationListResponse], NetworkError>) -> Void) {
+    func getInvitationKeyWords(keywords: String, page: Int, size: Int, completion: @escaping (Result<[InvitationListResponse], NetworkError>) -> Void) {
         InvitationService.provider.request(.getInvitationsbyKeyword(kewords: keywords, page: page, size: size)) { result in
             switch result {
             case .success(let response):
@@ -135,7 +135,7 @@ class InvitationService {
             }
         }
     }
-    
+
     func getMyApplicationDetail(invitationId: Int, completion: @escaping (Result<MyAppliedInvitationDetailResponse, NetworkError>) -> Void) {
         InvitationService.provider.request(.getAppliedDetailInvitation(invitationId: invitationId)) { result in
             switch result {

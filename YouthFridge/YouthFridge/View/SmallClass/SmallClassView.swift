@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SmallClassView: View {
     @StateObject private var viewModel = CellViewModel()
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
-    @State private var selectedTags: [String] = []
+    
+    @State private var selectedTags: [String] = [] {
+        didSet {
+            selectedTagsSubject.send(selectedTags)
+        }
+    }
+    
+    private let selectedTagsSubject = PassthroughSubject<[String], Never>()
+    @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
         NavigationView {
@@ -48,7 +57,6 @@ struct SmallClassView: View {
                             .cornerRadius(10)
                             .contentShape(Rectangle())
                             .onAppear {
-                               
                                 if cell == viewModel.cells.last {
                                     viewModel.fetchInviteCellData()
                                 }
@@ -76,30 +84,20 @@ struct SmallClassView: View {
         }
         .onAppear {
             viewModel.fetchInviteCellData()
+            viewModel.observeSelectedTags(selectedTagsSubject)
         }
     }
-}
-
-
-struct AddInviteView: View {
-    var body: some View {
-        HStack {
-            Image("plus-circle")
-                .resizable()
-                .frame(width: 28,height: 28)
-                .padding(.leading,15)
-            Text("초대장 만들기")
-                .font(.system(size: 20,weight: .bold))
-            Spacer()
-            Image("plus_letter")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 150, height: 100)
-                .padding(.top,19)
-        }
-        .background(Color.sub2Color)
-        .frame(maxWidth: .infinity, maxHeight: 100)
-        .cornerRadius(0)
+    
+    private func setupCombine() {
+        selectedTagsSubject
+            .sink { newTags in
+                if newTags.isEmpty {
+                    viewModel.fetchInviteCellData()
+                } else {
+                    viewModel.fetchKeyWordsList(selectedTags: newTags)
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 

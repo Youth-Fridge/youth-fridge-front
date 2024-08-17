@@ -12,14 +12,20 @@ struct NewsView: View {
     @State private var isLoading = true
     @Binding var urlToLoad: String
     
+    private let specificURL = "https://m.blog.naver.com/hyangyuloum"
+    
     var body: some View {
         NavigationView {
             ZStack {
                 VStack(spacing: 0) {
-                    BlogWebView(urlToLoad: urlToLoad, scrollTo: CGPoint(x: 0, y: 750), isLoading: $isLoading)
-                        .edgesIgnoringSafeArea(.bottom)
-                        .navigationTitle("밥심레터")
-                        .navigationBarTitleDisplayMode(.inline)
+                    BlogWebView(
+                        urlToLoad: urlToLoad,
+                        scrollTo: urlToLoad == specificURL ? CGPoint(x: 0, y: 750) : .zero,
+                        isLoading: $isLoading
+                    )
+                    .edgesIgnoringSafeArea(.bottom)
+                    .navigationTitle("밥심레터")
+                    .navigationBarTitleDisplayMode(.inline)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

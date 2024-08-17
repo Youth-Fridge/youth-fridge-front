@@ -24,7 +24,6 @@ struct BlogWebView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        // do nothing here
     }
 
     func makeCoordinator() -> Coordinator {
@@ -45,15 +44,21 @@ struct BlogWebView: UIViewRepresentable {
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            let x = parent.scrollTo.x
-            let y = parent.scrollTo.y
-            let scrollScript = "window.scrollTo(\(x), \(y));"
+            if self.parent.urlToLoad == "https://m.blog.naver.com/hyangyuloum" {
+                let x = self.parent.scrollTo.x
+                let y = self.parent.scrollTo.y
+                let scrollScript = "window.scrollTo(\(x), \(y));"
 
-            webView.evaluateJavaScript(scrollScript) { _, _ in
-                 DispatchQueue.main.async {
-                     self.parent.isLoading = false
+                webView.evaluateJavaScript(scrollScript) { _, _ in
+                     DispatchQueue.main.async {
+                         self.parent.isLoading = false
+                     }
                  }
-             }
+            } else {
+                DispatchQueue.main.async {
+                    self.parent.isLoading = false
+                }
+            }
         }
     }
 }

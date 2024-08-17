@@ -31,7 +31,11 @@ struct TagsView: View {
                             } else {
                                 selectedTags.append(tag)
                             }
-                            viewModel.fetchKeyWordsList(selectedTags: selectedTags)
+                            if selectedTags.isEmpty {
+                                viewModel.fetchInviteCellData()
+                            } else {
+                                viewModel.fetchKeyWordsList(selectedTags: selectedTags)
+                            }
                         }
                         .padding(.leading,5)
                 }

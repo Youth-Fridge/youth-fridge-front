@@ -6,11 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct SmallClassView: View {
     @StateObject private var viewModel = CellViewModel()
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
-    @State private var selectedTags: [String] = []
+    
+    @State private var selectedTags: [String] = [] {
+        didSet {
+            selectedTagsSubject.send(selectedTags)
+        }
+    }
+    
+    private let selectedTagsSubject = PassthroughSubject<[String], Never>()
+    @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
         NavigationView {
@@ -48,7 +57,6 @@ struct SmallClassView: View {
                             .cornerRadius(10)
                             .contentShape(Rectangle())
                             .onAppear {
-                               
                                 if cell == viewModel.cells.last {
                                     viewModel.fetchInviteCellData()
                                 }
@@ -76,9 +84,23 @@ struct SmallClassView: View {
         }
         .onAppear {
             viewModel.fetchInviteCellData()
+            setupCombine()
         }
     }
+    
+    private func setupCombine() {
+        selectedTagsSubject
+            .sink { newTags in
+                if newTags.isEmpty {
+                    viewModel.fetchInviteCellData()
+                } else {
+                    viewModel.fetchKeyWordsList(selectedTags: newTags)
+                }
+            }
+            .store(in: &cancellables)
+    }
 }
+
 
 
 struct AddInviteView: View {

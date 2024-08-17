@@ -96,9 +96,11 @@ struct MyActivityView: View {
                 Image("plus")
                     .resizable()
                     .frame(width: 80, height: 80)
+                    .contentShape(Rectangle())
             }
-            .padding(.trailing, 20)
+            .padding(.trailing, 15)
         }
+        .buttonStyle(PlainButtonStyle())
     }
     
     private func tabButton(title: String, tabIndex: Int) -> some View {

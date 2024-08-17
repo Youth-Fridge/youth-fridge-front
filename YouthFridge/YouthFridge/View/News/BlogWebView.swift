@@ -31,10 +31,8 @@ struct BlogWebView: UIViewRepresentable {
             reload = false
         }
         
-        if urlToLoad == "https://m.blog.naver.com/hyangyuloum" {
-            DispatchQueue.main.async {
-                uiView.scrollView.setContentOffset(scrollTo, animated: true)
-            }
+        DispatchQueue.main.async {
+            uiView.scrollView.setContentOffset(scrollTo, animated: true)
         }
     }
 

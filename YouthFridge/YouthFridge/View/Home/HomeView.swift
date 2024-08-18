@@ -125,15 +125,15 @@ struct HomeView: View {
                     Button(action: {
                         onProfileImageClick()
                     }) {
-                        let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
-                        let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
-                        let profileNumber = UserDefaults.standard.integer(forKey: profileImageKey)
-                        if let profile = ProfileImage.from(rawValue: profileNumber) {
-                            let profileImage = profile.imageName
-                            Image(profileImage)
-                                .resizable()
-                                .frame(width: 36, height: 36)
-                                .clipShape(Circle())
+                        if let profileImageUrl = viewModel.profileImageUrl {
+                            if let profile = ProfileImage.from(rawValue: profileImageUrl) {
+                                let profileImage = profile.imageName
+                                Image(profileImage)
+                                    .resizable()
+                                    .frame(width: 36, height: 36)
+                                    .clipShape(Circle())
+                            }
+                           
                         }
                     }
                 }

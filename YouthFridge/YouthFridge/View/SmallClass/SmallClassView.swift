@@ -10,6 +10,8 @@ import Combine
 
 struct SmallClassView: View {
     @StateObject private var viewModel = CellViewModel()
+    @StateObject private var smallViewModel = SmallClassViewModel()
+
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
     
     @State private var selectedTags: [String] = [] {
@@ -70,22 +72,22 @@ struct SmallClassView: View {
             .navigationBarTitle("생활밥서", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
-                    let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
-                    let profileNumber = UserDefaults.standard.integer(forKey: profileImageKey)
-                    if let profile = ProfileImage.from(rawValue: profileNumber) {
-                        let profileImage = profile.imageName
-                        
-                        Image(profileImage)
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
+                    if let profileImageUrl = smallViewModel.profileImageUrl {
+                        if let profile = ProfileImage.from(rawValue: profileImageUrl) {
+                            let profileImage = profile.imageName
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
+                       
                     }
                 }
             }
         }
         .onAppear {
             viewModel.fetchInviteCellData()
+            smallViewModel.fetchProfileImage()
             viewModel.observeSelectedTags(selectedTagsSubject)
         }
     }
@@ -101,6 +103,7 @@ struct SmallClassView: View {
             }
             .store(in: &cancellables)
     }
+    
 }
 
 #Preview {

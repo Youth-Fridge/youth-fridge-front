@@ -13,11 +13,24 @@ class HomeViewModel: ObservableObject {
     @Published var daysRemaining = 0
     @Published var tabContents: [TabContent] = []
     @Published var showPlaceholder: Bool = false
+    @Published var profileImageUrl: Int?
     let publicMeetingBackground = ["banner1", "banner2", "banner3"]
     init() {
         fetchCards()
         fetchPublicMeeting()
         fetchInvitationData()
+        fetchUserProfile()
+    }
+    
+    func fetchUserProfile() {
+        OnboardingAPI.shared.userInfo { [weak self] result in
+            switch result {
+            case .success(let userInfoResponse):
+                self?.profileImageUrl = userInfoResponse.profileImageNumber
+            case .failure(let error):
+                print("Failed to fetch user info: \(error.localizedDescription)")
+            }
+        }
     }
     
     func fetchPublicMeeting() {

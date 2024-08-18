@@ -54,7 +54,7 @@ struct SmallestCardView: View {
         }
         .fullScreenCover(isPresented: $showCreateInviteView) {
             CreateInviteView()
-                .ignoresSafeArea() 
+                .ignoresSafeArea()
         }
     }
 }

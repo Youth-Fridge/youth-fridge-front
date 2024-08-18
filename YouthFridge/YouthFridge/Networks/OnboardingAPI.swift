@@ -51,6 +51,44 @@ class OnboardingAPI {
             }
         }
     }
+    //MARK: - 사용자 정보 (마이페이지)
+    func userInfo(completion: @escaping (Result<UserInfoResponse, Error>) -> Void) {
+        let target = OnboardingService.userInfo
+        OnboardingAPI.provider.request(target) { result in
+            switch result {
+            case .success(let response):
+                if let responseString = String(data: response.data, encoding: .utf8) {
+                    print("Response Data: \(responseString)")
+                } else {
+                    print("Unable to convert response data to string")
+                }
+                switch response.statusCode {
+                case 200:
+                    do {
+                        let data = try JSONDecoder().decode(BaseResponse<UserInfoResponse>.self, from: response.data)
+                        if let userInfoResponse = data.result {
+                            completion(.success(userInfoResponse))
+                        } else {
+                            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "Invalid response"])))
+                        }
+                    } catch {
+                        completion(.failure(error))
+                    }
+                case 400:
+                    let error = NSError(domain: "", code: 400, userInfo: [NSLocalizedDescriptionKey: "Bad Request"])
+                    completion(.failure(error))
+                case 403:
+                    let error = NSError(domain: "", code: 403, userInfo: [NSLocalizedDescriptionKey: "Forbidden"])
+                    completion(.failure(error))
+                default:
+                    print("오류")
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     // MARK: - 회원탈퇴 (Member Quit)
     func quitMember(completion: @escaping (Result<Bool, Error>) -> Void) {
         let target = OnboardingService.quitMember

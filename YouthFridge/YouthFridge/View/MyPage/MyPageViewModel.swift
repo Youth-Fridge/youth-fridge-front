@@ -12,7 +12,6 @@ class MyPageViewModel: ObservableObject {
     @Published var myUser: User?
     @Published var launchDate: String?
     @Published var startTime: String?
-    let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
     private var container: DIContainer
     let bigProfileImages = ["bigBrocoli", "bigPea", "bigCorn", "bigTomato", "bigBranch", "bigPumpkin"]
     init(container: DIContainer) {
@@ -22,22 +21,22 @@ class MyPageViewModel: ObservableObject {
     }
     
     private func fetchUserData() {
-        let selectedImageIndex = getSelectedImageIndex()
-        let nicknameKey = type == "apple" ? "appleUserNickname" : "kakaoUserNickname"
-        
-        // 가져온 닉네임을 'nickname'이라는 키로 저장
-        let nickname = UserDefaults.standard.string(forKey: nicknameKey) ?? "Unknown"                
-        let profileImage = (selectedImageIndex >= 0 && selectedImageIndex <= bigProfileImages.count)
-            ? bigProfileImages[selectedImageIndex]
+        OnboardingAPI.shared.userInfo { [weak self] result in
+            switch result {
+            case .success(let userInfoResponse):
+                self?.updateUser(with: userInfoResponse)
+            case .failure(let error):
+                print("Failed to fetch user info: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    private func updateUser(with response: UserInfoResponse) {
+        let profileImage = (response.profileImageNumber >= 0 && response.profileImageNumber < bigProfileImages.count)
+            ? bigProfileImages[response.profileImageNumber]
             : "defaultBigProfile"
         
-        myUser = User(name: nickname, profilePicture: profileImage)
-    }
-    
-    private func getSelectedImageIndex() -> Int {
-        let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
-        let profileImageNumber = UserDefaults.standard.integer(forKey: profileImageKey)
-        return profileImageNumber
+        myUser = User(name: response.nickname, profilePicture: profileImage)
     }
     
     private static func convertDate(from dateString: String) -> String {

@@ -14,6 +14,7 @@ enum OnboardingService {
     case login(Data)
     case nicknameCheck(String)
     case quitMember
+    case userInfo //사용자 정보
 }
 
 extension OnboardingService: TargetType {
@@ -27,9 +28,11 @@ extension OnboardingService: TargetType {
             return .requestParameters(parameters: ["nickname": nickname], encoding: URLEncoding.queryString)
         case .quitMember:
             return .requestPlain
+        case .userInfo:
+            return .requestPlain
         }
         
-    
+        
     }
     
     
@@ -47,6 +50,8 @@ extension OnboardingService: TargetType {
             return "/api/member/nickname"
         case .quitMember:
             return "/api/delete-account"
+        case .userInfo:
+            return "/api/member"
         }
     }
     
@@ -58,18 +63,27 @@ extension OnboardingService: TargetType {
             return .get
         case .quitMember:
             return .delete
+        case .userInfo:
+            return .get
         }
     }
     
     var headers: [String : String]? {
-        var headers = ["Content-Type": "application/json"]
+        var headers: [String: String] = ["Content-Type": "application/json"]
         
-        if case .quitMember = self {
-            if let accessToken = KeychainWrapper.standard.string(forKey: "accessToken") {
+        switch self {
+        case .quitMember, .userInfo:
+            if let accessToken = getAccessToken() {
                 headers["Authorization"] = accessToken
             }
+        default:
+            break
         }
         
         return headers
+    }
+    
+    private func getAccessToken() -> String? {
+        return KeychainHandler.shared.accessToken
     }
 }

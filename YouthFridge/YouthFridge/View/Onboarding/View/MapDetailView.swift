@@ -52,7 +52,10 @@ struct MapDetailView: View {
                         print(certifiedRegions)
                         presentationMode.wrappedValue.dismiss()
                     } else {
-                        showLocationDeletePopup = true
+                        certifiedRegions.append(region)
+                        onCertification(locationManager.userCity, locationManager.userDistrict)
+                        presentationMode.wrappedValue.dismiss()
+                       // showLocationDeletePopup = true
                     }
                 }) {
                     Text("인증 지역 추가")
@@ -73,7 +76,7 @@ struct MapDetailView: View {
                         }
                     }
                 
-                PopUpView(
+                LocationPopUpView(
                     message: "천안시 동남구 또는 서북구만\n 인증할 수 있습니다.",
                     onClose: {
                         withAnimation {
@@ -81,11 +84,6 @@ struct MapDetailView: View {
                         }
                     },
                     onConfirm: {
-                        withAnimation {
-                            showLocationDeletePopup = false
-                        }
-                    },
-                    onCancel: {
                         withAnimation {
                             showLocationDeletePopup = false
                         }

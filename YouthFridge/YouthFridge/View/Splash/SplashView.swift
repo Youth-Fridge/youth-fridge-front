@@ -23,7 +23,7 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func isTokenValid(_ token: String) -> Bool {
         let parts = token.split(separator: ".")
         guard parts.count == 3 else { return false }
@@ -41,6 +41,25 @@ struct ContentView: View {
         
         return false
     }
+    private func isAppleTokenValid(_ token: String) -> Bool {
+        let parts = token.split(separator: ".")
+        guard parts.count == 3 else { return false }
+        
+        let payload = parts[1]
+        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payloadDict = json as? [String: Any] else { return false }
+        
+        if let exp = payloadDict["exp"] as? TimeInterval {
+            let expirationDate = Date(timeIntervalSince1970: exp)
+            return expirationDate > Date()
+        }
+        
+        return false
+    }
+
+
 }
 
 struct SplashView: View {

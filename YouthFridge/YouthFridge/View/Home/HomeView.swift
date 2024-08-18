@@ -16,7 +16,7 @@ struct HomeView: View {
     let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
     private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
-    
+    var onProfileImageClick: () -> Void
     var onNewsButtonPress: () -> Void
     var onLatestNewsFetched: () -> Void
     
@@ -108,30 +108,33 @@ struct HomeView: View {
             
             
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(leading:
-                                    HStack {
-                Image("logo")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding(.leading,5)
-                Image("typeLogo")
-                    .resizable()
-                    .frame(width: 80, height: 15)
-                
-                
-            })
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
-                    let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
-                    let profileNumber = UserDefaults.standard.integer(forKey: profileImageKey)
-                    if let profile = ProfileImage.from(rawValue: profileNumber) {
-                        let profileImage = profile.imageName
-                        
-                        Image(profileImage)
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack {
+                        Image("logo")
                             .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
+                            .frame(width: 30, height: 30)
+                            .padding(.leading, 5)
+                        Image("typeLogo")
+                            .resizable()
+                            .frame(width: 80, height: 15)
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        onProfileImageClick()
+                    }) {
+                        let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
+                        let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
+                        let profileNumber = UserDefaults.standard.integer(forKey: profileImageKey)
+                        if let profile = ProfileImage.from(rawValue: profileNumber) {
+                            let profileImage = profile.imageName
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
                     }
                 }
             }
@@ -142,6 +145,7 @@ struct HomeView: View {
         }
     }
     
+
     // Small Card View
     private func newsCardView(content: String) -> some View {
         Button(action: {

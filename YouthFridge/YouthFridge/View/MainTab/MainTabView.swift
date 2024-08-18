@@ -43,11 +43,19 @@ struct MainTabView: View {
     private func tabView(for tab: MainTabType) -> some View {
         switch tab {
         case .home:
-            HomeView(viewModel: .init(), newsUrl: $newsUrl, onNewsButtonPress: {
-                self.selectedTab = .news
-            }, onLatestNewsFetched: {
-                self.shouldUpdateUrl = true
-            })
+            HomeView(
+                viewModel: .init(),
+                newsUrl: $newsUrl,
+                onProfileImageClick: {
+                    self.selectedTab = .mypage 
+                },
+                onNewsButtonPress: {
+                    self.selectedTab = .news
+                },
+                onLatestNewsFetched: {
+                    self.shouldUpdateUrl = true
+                }
+            )
         case .smallClass:
             SmallClassView()
         case .news:

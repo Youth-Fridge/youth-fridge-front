@@ -127,6 +127,7 @@ struct ActivityDetailView: View {
                 Text("참여자 명")
                     .font(.title3)
                     .fontWeight(.bold)
+                    .padding(.leading, 8)
                 
                 Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
                     .font(.subheadline)
@@ -139,7 +140,7 @@ struct ActivityDetailView: View {
                     )
             }
             .padding()
-            .padding(.top, 10)
+            .padding(.top, calculateTopPadding())
             
             if detailViewModel.memberInfoList.isEmpty {
                 // 빈 경우 메시지 표시
@@ -154,6 +155,7 @@ struct ActivityDetailView: View {
                     Spacer()
                         .frame(height: 100)
                 }
+                .padding(.horizontal, 16)
             } else {
                 // 참여자 목록이 있는 경우 표시
                 LazyVGrid(columns: columns, spacing: 16) {
@@ -176,10 +178,10 @@ struct ActivityDetailView: View {
                         }
                     }
                 }
+                .padding(.horizontal, 10)
             }
         }
     }
-
     
     var rulesSection: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -206,17 +208,18 @@ struct ActivityDetailView: View {
                 Text("* 문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
             }
             .font(.footnote)
-            
-            .foregroundColor(.black)
+            .foregroundColor(Color.gray4)
         }
         .padding()
     }
+    
+    // 참여자 수에 따라 여백 조정
+    private func calculateTopPadding() -> CGFloat {
+        let count = detailViewModel.memberInfoList.count
+        if count > 0 && count <= 4 {
+            return -80
+        } else {
+            return 10
+        }
+    }
 }
-
-//struct ActivityDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let services = Services()
-//        let container = DIContainer(services: services)
-//        ActivityDetailView(viewModel: ActivityCardViewModel(invitationId: 1, title: "스시 먹부림", date: "7월 30일 화요일 오후 7시", location: "안서 초등학교", startTime: "15시", daysLeft: 21, emojiNumber: 2), detailViewModel: ActivityDetailModel(totalMember: 5, currentMember: 3, memberInfoList: [MemberInfoList(nickName: "sujin", profileNumber: 2)]))
-//    }
-//}

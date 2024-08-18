@@ -40,13 +40,14 @@ struct ActivityCardView: View {
                 Spacer()
                 
                 Image("division")
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 11)
                 
                 Text("D-\(viewModel.daysLeft)")
                     .font(.headline)
                     .foregroundColor(viewModel.isPast ? Color.gray3.opacity(0) : .black)
+                    .frame(width: 45)
                     .fixedSize()
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 5)
             }
             .padding()
             .background(viewModel.isPast ? Color.gray3.opacity(0.6) : Color.white)

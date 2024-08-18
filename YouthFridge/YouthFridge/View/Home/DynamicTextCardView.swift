@@ -13,28 +13,55 @@ struct DynamicTextCardView: View {
     
     var body: some View {
         ZStack {
-                    Color.white.opacity(0.92)
-                        .cornerRadius(10)
-            VStack(alignment: .leading) {
-                Text("우리 약속까지")
-                    .font(.system(size: 16,weight: .semibold))
-                HStack {
-                    ForEach(Array(String(format: "%02d", viewModel.daysRemaining)), id: \.self) { char in
-                        Text(String(char))
-                            .font(.system(size: 40,weight: .bold))
-                            .bold()
-                            .foregroundColor(Color.sub2Color)
-                            .frame(width: 40, height: 48)
-                            .background(Color.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.gray2Color, lineWidth: 1)
-                            )
+            Color.white.opacity(0.92)
+                .cornerRadius(10)
+            
+            // TODO: - 소모임 날짜 당일일 경우 처리하기
+            if viewModel.daysRemaining == 0 {
+                VStack(alignment: .leading) {
+                    Text("우리 약속이")
+                        .font(.system(size: 16, weight: .semibold))
+                    
+                    HStack {
+                        ForEach(Array(String("D-DAY")), id: \.self) { char in
+                            Text(String(char))
+                                .font(.system(size: 30, weight: .bold))
+                                .bold()
+                                .foregroundColor(Color.sub2Color)
+                                .frame(width: 28, height: 36)
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.gray2Color, lineWidth: 1)
+                                )
+                        }
                     }
-                    Text("일 남았어요")
+                    
+                    Text("로 다가왔어요")
+                        .font(.system(size: 16, weight: .semibold))
+                }
+            } else {
+                VStack(alignment: .leading) {
+                    Text("우리 약속까지")
                         .font(.system(size: 16,weight: .semibold))
-                        .padding(.bottom, -30)
+                    HStack {
+                        ForEach(Array(String(format: "%02d", viewModel.daysRemaining)), id: \.self) { char in
+                            Text(String(char))
+                                .font(.system(size: 40,weight: .bold))
+                                .bold()
+                                .foregroundColor(Color.sub2Color)
+                                .frame(width: 40, height: 48)
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.gray2Color, lineWidth: 1)
+                                )
+                        }
+                        Text("일 남았어요")
+                            .font(.system(size: 16,weight: .semibold))
+                            .padding(.bottom, -30)
                         
+                    }
                 }
             }
         }

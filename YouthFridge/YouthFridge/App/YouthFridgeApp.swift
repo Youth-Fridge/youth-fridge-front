@@ -11,14 +11,17 @@ import KakaoSDKAuth
 
 @main
 struct YouthFridgeApp: App {
+    @State private var showSplash = true
+
     init() {
         KakaoSDK.initSDK(appKey: "a3e8f2efdc9520ebdd35b764bc0e0597")
     }
+
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            ContentView()
                 .onOpenURL { url in
-                    if (AuthApi.isKakaoTalkLoginUrl(url)) {
+                    if AuthApi.isKakaoTalkLoginUrl(url) {
                         _ = AuthController.handleOpenUrl(url: url)
                     }
                 }

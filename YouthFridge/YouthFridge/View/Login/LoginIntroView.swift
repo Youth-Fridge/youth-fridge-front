@@ -143,7 +143,7 @@ struct LoginIntroView: View {
         }
     }
     private func performBackendLogin(userID: String, email: String) {
-        ensureValidTokenAndProceed {
+     //   ensureValidTokenAndProceed {
             
             let loginRequest = LoginRequest(email: email, username: userID)
             print(loginRequest)
@@ -168,7 +168,7 @@ struct LoginIntroView: View {
                     }
                 }
             }
-        }
+       // }
     }
 
 
@@ -192,20 +192,20 @@ struct LoginIntroView: View {
         })
         appleSignInCoordinator = coordinator
     }
-    private func isTokenValid() -> Bool {
-        if let expirationTime = UserDefaults.standard.value(forKey: "tokenExpirationTime") as? Date {
-            return Date() < expirationTime
-        }
-        return false
-    }
-
-    private func ensureValidTokenAndProceed(action: @escaping () -> Void) {
-        if isTokenValid() {
-            action()
-        } else {
-            performAppleSignIn()
-        }
-    }
+//    private func isTokenValid() -> Bool {
+//        if let expirationTime = UserDefaults.standard.value(forKey: "tokenExpirationTime") as? Date {
+//            return Date() < expirationTime
+//        }
+//        return false
+//    }
+//
+//    private func ensureValidTokenAndProceed(action: @escaping () -> Void) {
+//        if isTokenValid() {
+//            action()
+//        } else {
+//            performAppleSignIn()
+//        }
+//    }
 
 
 }

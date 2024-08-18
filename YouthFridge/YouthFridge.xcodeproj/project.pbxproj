@@ -95,6 +95,7 @@
 		58C3165A2C6B41FF001374EC /* InvitationListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316592C6B41FF001374EC /* InvitationListResponse.swift */; };
 		58C316622C6E13BA001374EC /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316612C6E13BA001374EC /* TagsView.swift */; };
 		58C316642C707B31001374EC /* AddInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316632C707B31001374EC /* AddInviteView.swift */; };
+		58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -213,6 +214,7 @@
 		58C316592C6B41FF001374EC /* InvitationListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationListResponse.swift; sourceTree = "<group>"; };
 		58C316612C6E13BA001374EC /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		58C316632C707B31001374EC /* AddInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInviteView.swift; sourceTree = "<group>"; };
+		58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				58EEF7192C43D25400C12C1E /* General */,
 				58EEF7172C43D24000C12C1E /* View */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
+				58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */,
 			);
 			path = YouthFridge;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 			files = (
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
+				58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1109,7 +1113,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1148,7 +1152,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 현재위치를 추가할려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -122,7 +122,9 @@ struct HomeView: View {
             })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                    let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
+                    let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
+                    let profileNumber = UserDefaults.standard.integer(forKey: profileImageKey)
                     if let profile = ProfileImage.from(rawValue: profileNumber) {
                         let profileImage = profile.imageName
                         

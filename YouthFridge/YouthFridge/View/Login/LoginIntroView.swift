@@ -18,7 +18,7 @@ struct LoginIntroView: View {
     @State private var isPresentedMainTabView: Bool = false
     @State private var kakaoToken: String? = nil
     @State private var isNewUser: Bool = false
-
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: 10) {
@@ -89,7 +89,7 @@ struct LoginIntroView: View {
         }
         return text
     }
-
+    
     private func performKakaoSignIn() {
         if UserApi.isKakaoTalkLoginAvailable() {
             UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
@@ -101,7 +101,7 @@ struct LoginIntroView: View {
                     UserDefaults.standard.setValue(self.type, forKey: "loginType")
                     self.kakaoToken = oauthToken?.accessToken
                     self.fetchKakaoUserID()
-
+                    
                 }
             }
         } else {
@@ -137,47 +137,47 @@ struct LoginIntroView: View {
                 }
                 if let token = self.kakaoToken {
                     print("token값:\(token)")
-                    self.performBackendLogin(userID: UserDefaults.standard.string(forKey: "userID") ?? "", email: UserDefaults.standard.string(forKey: "userEmail") ?? "")
+                    self.performBackendLogin(type: UserDefaults.standard.string(forKey: "loginType") ?? "",userID: UserDefaults.standard.string(forKey: "userID") ?? "", email: UserDefaults.standard.string(forKey: "userEmail") ?? "")
                 }
             }
         }
     }
-    private func performBackendLogin(userID: String, email: String) {
-        ensureValidTokenAndProceed {
-            
-            let loginRequest = LoginRequest(email: email, username: userID)
-            print(loginRequest)
-            
-            OnboardingAPI.shared.login(loginRequest) { result in
-                switch result {
-                case .success(()):
+    
+    private func performBackendLogin(type: String, userID: String, email: String) {
+        let loginRequest = LoginRequest(email: email, username: userID)
+        print(loginRequest)
+        let nicknameKey = type == "apple" ? "appleUserNickname" : "kakaoUserNickname"
+        let nickname = UserDefaults.standard.string(forKey: nicknameKey) ?? "Unknown"
+        print("사용자 닉네임: \(nickname)")
+
+        OnboardingAPI.shared.login(loginRequest) { result in
+            switch result {
+            case .success(()):
+                self.isPresentedLoginView = true
+                
+                print("로그인 성공")
+                
+            case .failure(let error):
+                let nsError = error as NSError
+                switch nsError.code {
+                case 400:
+                    self.isNewUser = true
                     self.isPresentedLoginView = true
+                    print("회원가입 필요")
                     
-                    print("로그인 성공")
-                    
-                case .failure(let error):
-                    let nsError = error as NSError
-                    switch nsError.code {
-                    case 400:
-                        self.isNewUser = true
-                        self.isPresentedLoginView = true
-                        print("회원가입 필요")
-                        
-                    default:
-                        print("로그인 실패: \(nsError.localizedDescription)")
-                    }
+                default:
+                    print("로그인 실패: \(nsError.localizedDescription)")
                 }
             }
         }
     }
-
-
+    
+    
     private func performAppleSignIn() {
         let coordinator = AppleSignInCoordinator()
         coordinator.startSignInWithAppleFlow(onSuccess: {
             self.type = "apple"
             UserDefaults.standard.setValue(self.type, forKey: "loginType")
-            
             
             let currentTime = Date()
             UserDefaults.standard.setValue(currentTime, forKey: "tokenIssueTime")
@@ -186,19 +186,22 @@ struct LoginIntroView: View {
                 UserDefaults.standard.setValue(expirationTime, forKey: "tokenExpirationTime")
             }
             
-            self.isPresentedLoginView = true
+            
+            self.performBackendLogin(type: UserDefaults.standard.string(forKey: "loginType") ?? "", userID: UserDefaults.standard.string(forKey: "userID") ?? "", email: UserDefaults.standard.string(forKey: "userEmail") ?? "")
+            
         }, onFailure: { error in
             print("Sign in with Apple failed: \(error.localizedDescription)")
         })
         appleSignInCoordinator = coordinator
     }
+    
     private func isTokenValid() -> Bool {
         if let expirationTime = UserDefaults.standard.value(forKey: "tokenExpirationTime") as? Date {
             return Date() < expirationTime
         }
         return false
     }
-
+    
     private func ensureValidTokenAndProceed(action: @escaping () -> Void) {
         if isTokenValid() {
             action()
@@ -206,8 +209,8 @@ struct LoginIntroView: View {
             performAppleSignIn()
         }
     }
-
-
+    
+    
 }
 
 class AppleSignInCoordinator: NSObject, ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {

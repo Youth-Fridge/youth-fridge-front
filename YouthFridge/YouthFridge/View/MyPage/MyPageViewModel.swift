@@ -12,6 +12,7 @@ class MyPageViewModel: ObservableObject {
     @Published var myUser: User?
     @Published var launchDate: String?
     @Published var startTime: String?
+    let type = UserDefaults.standard.string(forKey: "loginType") ?? ""
     private var container: DIContainer
     let bigProfileImages = ["bigBrocoli", "bigPea", "bigCorn", "bigTomato", "bigBranch", "bigPumpkin"]
     init(container: DIContainer) {
@@ -22,7 +23,10 @@ class MyPageViewModel: ObservableObject {
     
     private func fetchUserData() {
         let selectedImageIndex = getSelectedImageIndex()
-        let nickname = UserDefaults.standard.string(forKey: "nickname") ?? ""
+        let nicknameKey = type == "apple" ? "appleUserNickname" : "kakaoUserNickname"
+        
+        // 가져온 닉네임을 'nickname'이라는 키로 저장
+        let nickname = UserDefaults.standard.string(forKey: nicknameKey) ?? "Unknown"                
         let profileImage = (selectedImageIndex >= 0 && selectedImageIndex <= bigProfileImages.count)
             ? bigProfileImages[selectedImageIndex]
             : "defaultBigProfile"
@@ -31,7 +35,9 @@ class MyPageViewModel: ObservableObject {
     }
     
     private func getSelectedImageIndex() -> Int {
-        return UserDefaults.standard.integer(forKey: "profileImageNumber")
+        let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
+        let profileImageNumber = UserDefaults.standard.integer(forKey: profileImageKey)
+        return profileImageNumber
     }
     
     private static func convertDate(from dateString: String) -> String {

@@ -7,90 +7,118 @@
 
 import SwiftUI
 
-struct SplashView: View {
-    @State private var navigateToSignUp = false
-    @State private var navigateToMain = false
+struct ContentView: View {
+    @State private var showSplash = true
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Color.sub2Color
-                    .ignoresSafeArea()
+        Group {
+            if showSplash {
+                SplashView(showSplash: $showSplash)
+            } else {
+                if isTokenValid(KeychainHandler.shared.accessToken) {
+                    MainTabView()
+                } else {
+                    LoginIntroView()
+                }
+            }
+        }
+    }
+    
+    func isTokenValid(_ token: String) -> Bool {
+        let parts = token.split(separator: ".")
+        guard parts.count == 3 else { return false }
+        
+        let payload = parts[1]
+        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payloadDict = json as? [String: Any] else { return false }
+        
+        if let exp = payloadDict["exp"] as? TimeInterval {
+            let expirationDate = Date(timeIntervalSince1970: exp)
+            return expirationDate > Date()
+        }
+        
+        return false
+    }
+    private func isAppleTokenValid(_ token: String) -> Bool {
+        let parts = token.split(separator: ".")
+        guard parts.count == 3 else { return false }
+        
+        let payload = parts[1]
+        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
+        
+        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payloadDict = json as? [String: Any] else { return false }
+        
+        if let exp = payloadDict["exp"] as? TimeInterval {
+            let expirationDate = Date(timeIntervalSince1970: exp)
+            return expirationDate > Date()
+        }
+        
+        return false
+    }
+
+
+}
+
+struct SplashView: View {
+    @Binding var showSplash: Bool
+    @State private var fadeOut = false
+    
+    var body: some View {
+        ZStack {
+            Color.sub2Color
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center) {
+                Image("whiteLogo")
+                    .resizable()
+                    .frame(width: 84, height: 84)
+                    .padding(.top, 170)
                 
-                VStack {
-                    Spacer().frame(height: 175)
-                    
-                    Image("whiteLogo")
+                Image("titleLogo")
+                    .resizable()
+                    .frame(width: 205, height: 38)
+                    .padding(.top, 36)
+                
+                GeometryReader { geometry in
+                    Image("invitationLogo")
                         .resizable()
-                        .frame(width: 70, height: 70)
-                        .padding(.bottom)
-                    
-                    Image("titleLogo")
-                        .resizable()
-                        .frame(width: 140, height: 26)
-                    
-                    Spacer()
-                    
-                    Text("Copyright © Hyangyuloium. All Rights Reserved.")
-                        .font(.system(size: 12))
-                        .foregroundColor(.black)
-                        .padding(.bottom, 30)
+                        .frame(width: 290, height: 421)
+                        .position(x: geometry.size.width - 130, y: geometry.size.height - 180)
                 }
-                .onAppear {
-                    branchProcessing()
-                }
+                
+                Spacer()
+                
+                Text("Copyright © Hyangyuloium. All Rights Reserved.")
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.gray4)
+                    .padding(.bottom, 30)
             }
-            .navigationDestination(isPresented: $navigateToSignUp) {
-                LoginIntroView().navigationBarBackButtonHidden()
-            }
-            .navigationDestination(isPresented: $navigateToMain) {
-                MainTabView().navigationBarBackButtonHidden()
+            .opacity(fadeOut ? 0 : 1)
+            .onAppear {
+                branchProcessing()
             }
         }
     }
     
     private func branchProcessing() {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-            let accessToken = KeychainHandler.shared.accessToken
-            print("accesstoken: \(accessToken)")
-            if accessToken.isEmpty || !isTokenValid(accessToken) {
-                navigateToSignUp = true
-            } else {
-                navigateToMain = true
+            withAnimation(.easeOut(duration: 1.0)) {
+                fadeOut = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                showSplash = false
             }
         }
     }
-    func isTokenValid(_ token: String) -> Bool {
-        let parts = token.split(separator: ".")
-        guard parts.count == 3 else { return false }
+}
 
-        let payload = parts[1]
-        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
-        
-        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
-              let payloadDict = json as? [String: Any] else { return false }
 
-        // 만료 시간(`exp`)을 확인
-        if let exp = payloadDict["exp"] as? TimeInterval {
-            let expirationDate = Date(timeIntervalSince1970: exp)
-            return expirationDate > Date() // 현재 시간과 비교
-        }
-        
-        return false
-    }
-    
-//    private func logout() {
-//        // 액세스 토큰을 삭제하는 예제
-//        KeychainHandler.shared.accessToken = ""
-//        
-//        // 로그아웃 후 로그인 페이지로 이동
-//        navigateToSignUp = true
+//struct SplashView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SplashView()
 //    }
-}
-
-struct SplashView_Previews: PreviewProvider {
-    static var previews: some View {
-        SplashView()
-    }
-}
+//}
 

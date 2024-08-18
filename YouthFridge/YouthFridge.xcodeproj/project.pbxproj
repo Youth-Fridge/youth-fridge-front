@@ -96,6 +96,7 @@
 		58C316622C6E13BA001374EC /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316612C6E13BA001374EC /* TagsView.swift */; };
 		58C316642C707B31001374EC /* AddInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316632C707B31001374EC /* AddInviteView.swift */; };
 		58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */; };
+		58DA3F5E2C723487002081D9 /* LocationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -215,6 +216,7 @@
 		58C316612C6E13BA001374EC /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		58C316632C707B31001374EC /* AddInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInviteView.swift; sourceTree = "<group>"; };
 		58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 		5817D6202C46547C0081323E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				58DA3F5C2C723471002081D9 /* Components */,
 				5817D6222C46548D0081323E /* ViewModel */,
 				5817D6212C4654870081323E /* View */,
 				58EA96EB2C5281E700166554 /* LocationManager.swift */,
@@ -577,6 +580,14 @@
 				5817D6382C4BFD580081323E /* CellModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		58DA3F5C2C723471002081D9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		58EA96EF2C5380D100166554 /* ViewModel */ = {
@@ -904,6 +915,7 @@
 				58EEF6EE2C43D22500C12C1E /* YouthFridgeApp.swift in Sources */,
 				0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */,
 				0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */,
+				58DA3F5E2C723487002081D9 /* LocationPopUpView.swift in Sources */,
 				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,

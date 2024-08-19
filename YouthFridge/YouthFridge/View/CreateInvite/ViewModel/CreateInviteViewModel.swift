@@ -21,6 +21,7 @@ class CreateInviteViewModel: ObservableObject {
     @Published var emojiNumber: Int = -1
     @Published var imageNumber: Int = -1
     @Published var selectedTab: Int = 0
+    @Published var profileImageUrl: Int?
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -87,6 +88,17 @@ class CreateInviteViewModel: ObservableObject {
                 print(message)
             case .failure(let error):
                 print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func fetchProfileImage() {
+        OnboardingAPI.shared.userInfo { [weak self] result in
+            switch result {
+            case .success(let userInfoResponse):
+                self?.profileImageUrl = userInfoResponse.profileImageNumber
+            case .failure(let error):
+                print("Failed to fetch user info: \(error.localizedDescription)")
             }
         }
     }

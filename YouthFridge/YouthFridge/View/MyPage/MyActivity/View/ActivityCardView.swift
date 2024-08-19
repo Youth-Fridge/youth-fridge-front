@@ -87,10 +87,10 @@ struct ActivityCardView: View {
     }
 }
 
-struct ActivityCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        let services = Services()
-        let container = DIContainer(services: services)
-        MyActivityView(viewModel: MyPageViewModel(container: container))
-    }
-}
+//struct ActivityCardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let services = Services()
+//        let container = DIContainer(services: services)
+//        MyActivityView(viewModel: MyPageViewModel(container: container))
+//    }
+//}

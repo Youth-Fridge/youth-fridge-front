@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct InviteFinalView: View {
+    @StateObject private var smallClassViewModel = SmallClassViewModel()
+
     var body: some View {
         Spacer()
         Image("logo")
@@ -25,26 +27,26 @@ struct InviteFinalView: View {
             .padding()
         
         Spacer()
-        // TODO: - 이동 조정 필요
-        NavigationLink(destination: MainTabView()) {
+        // MARK: -- 나의 신청내역 이동
+        NavigationLink(destination: MyActivityView(selectedTab: 1, viewModel: MyPageViewModel(container: DIContainer(services: Services())), profileViewModel: smallClassViewModel)) {
             Text("신청한 모임 확인하기")
-                .font(.headline)
+                .font(.system(size: 16, weight: .bold))
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: 320)
-                .background(Color.yellow)
+                .background(Color.sub2)
                 .cornerRadius(8)
-                .shadow(radius: 3)
         }
         .padding()
-        Text("*일정 변경으로 참여가 어려울 시 반드시 2일 전에는 응답해 주세요.")
+        Text("* 일정 변경으로 참여가 어려울 시 반드시 2일 전에는 응답해 주세요.")
             .font(.system(size: 11,weight: .medium))
             .foregroundColor(.gray4)
-        Text("*불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 \n모니터링 중입니다.")
+        Text("* 불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 \n모니터링 중입니다.")
             .font(.system(size: 11,weight: .medium))
+            .foregroundColor(.gray4)
             .navigationBarBackButtonHidden(true)
-            .foregroundColor(.gray4)
-        Spacer()
+            .padding(.bottom,75)
+       
     }
     
 }

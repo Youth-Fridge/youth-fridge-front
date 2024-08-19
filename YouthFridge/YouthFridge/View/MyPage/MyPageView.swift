@@ -13,6 +13,8 @@ struct MyPageView: View {
     @State private var navigateToMyActivity = false
     @State private var showLogOutDeletePopup = false
     @State private var navigateToLoginIntro = false
+    @StateObject private var smallClassViewModel = SmallClassViewModel()
+
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -102,7 +104,7 @@ struct MyPageView: View {
                     .zIndex(1)
                 }
                 NavigationLink(
-                    destination: MyActivityView(viewModel: viewModel),
+                    destination: MyActivityView(viewModel: viewModel, profileViewModel: smallClassViewModel),
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )

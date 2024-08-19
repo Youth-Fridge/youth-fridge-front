@@ -12,17 +12,20 @@ struct MyActivityView: View {
     @Environment(\.dismiss) var dismiss
     
     @StateObject var viewModel: MyPageViewModel
-    
+    @StateObject var profileViewModel: SmallClassViewModel
+
     private let selectedTabColor = Color.main1Color
     private let unselectedTabColor = Color.gray1Color
     private let tabTextColorSelected = Color.white
     private let tabTextColorUnselected = Color.black
-    
+    init(selectedTab: Int = 0, viewModel: MyPageViewModel, profileViewModel: SmallClassViewModel) {
+        _selectedTab = State(initialValue: selectedTab)
+        _viewModel = StateObject(wrappedValue: viewModel)
+        _profileViewModel = StateObject(wrappedValue: profileViewModel)
+    }
+
     var body: some View {
-        NavigationStack {
-            ZStack(alignment: .top) {
-                ShadowNavigationBar()
-                
+            ZStack(alignment: .top) {                
                 NavigationView {
                     VStack(spacing: 0) {
                         tabButtons
@@ -54,18 +57,22 @@ struct MyActivityView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
-                    if let profile = ProfileImage.from(rawValue: profileNumber) {
-                        let profileImage = profile.imageName
+                    if let profileImageUrl = profileViewModel.profileImageUrl {
+                        if let profile = ProfileImage.from(rawValue: profileImageUrl) {
+                            let profileImage = profile.imageName
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
                         
-                        Image(profileImage)
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
                     }
                 }
             }
-        }
+            .onAppear {
+                profileViewModel.fetchProfileImage()
+            }
+        
     }
     
     private var tabButtons: some View {
@@ -118,10 +125,10 @@ struct MyActivityView: View {
     }
 }
 
-struct MyActivityView_Previews: PreviewProvider {
-    static var previews: some View {
-        let services = Services()
-        let container = DIContainer(services: services)
-        MyActivityView(viewModel: MyPageViewModel(container: container))
-    }
-}
+//struct MyActivityView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let services = Services()
+//        let container = DIContainer(services: services)
+//        MyActivityView(viewModel: MyPageViewModel(container: container), profileViewModel: <#SmallClassViewModel#>)
+//    }
+//}

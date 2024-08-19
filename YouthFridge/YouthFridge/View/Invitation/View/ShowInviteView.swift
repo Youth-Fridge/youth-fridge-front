@@ -23,7 +23,7 @@ struct ShowInviteView: View {
     var body: some View {
         ZStack {
             Color.sub2
-                .edgesIgnoringSafeArea(.all)
+                .edgesIgnoringSafeArea(.top)
             GeometryReader { geometry in
                 Image("invitationLogo")
                     .resizable()

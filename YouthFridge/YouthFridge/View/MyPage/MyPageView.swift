@@ -14,7 +14,7 @@ struct MyPageView: View {
     @State private var showLogOutDeletePopup = false
     @State private var navigateToLoginIntro = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
-
+    
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
@@ -108,9 +108,12 @@ struct MyPageView: View {
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )
-                .navigationDestination(isPresented: $navigateToLoginIntro) {
-                    LoginIntroView().navigationBarBackButtonHidden()
-                }
+                NavigationLink(
+                    destination: LoginIntroView()
+                        .navigationBarBackButtonHidden(true),// 뒤로 가기 버튼 숨김
+                    isActive: $navigateToLoginIntro,
+                    label: { EmptyView() }
+                )
             }
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
@@ -131,23 +134,15 @@ struct MyPageView: View {
                             .font(.headline)
                         
                         Spacer()
-                        
-                        Image("right-arrow")
-                            .foregroundColor(.gray)
-                            .padding(.trailing, 10)
-                            .onTapGesture {
-                                // TODO: - 초대장 상세보기 API 연동
-                                print("초대장 상세 보기 필요해 !!")
-                            }
                     }
                     Text("초대 모임 예정일")
                         .font(.subheadline)
                         .foregroundColor(.main1Color)
                     Text(viewModel.launchDate != nil && viewModel.startTime != nil
-                        ? "\(viewModel.launchDate!) \(viewModel.startTime!)"
-                        : "예정된 초대 모임이 없습니다")
-                        .font(.caption)
-                        .foregroundColor(.gray6Color)
+                         ? "\(viewModel.launchDate!) \(viewModel.startTime!)"
+                         : "예정된 초대 모임이 없습니다")
+                    .font(.caption)
+                    .foregroundColor(.gray6Color)
                 }
                 .padding(.leading, 15)
             } else {

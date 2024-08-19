@@ -41,30 +41,10 @@ struct ContentView: View {
         
         return false
     }
-    private func isAppleTokenValid(_ token: String) -> Bool {
-        let parts = token.split(separator: ".")
-        guard parts.count == 3 else { return false }
-        
-        let payload = parts[1]
-        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
-        
-        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
-              let payloadDict = json as? [String: Any] else { return false }
-        
-        if let exp = payloadDict["exp"] as? TimeInterval {
-            let expirationDate = Date(timeIntervalSince1970: exp)
-            return expirationDate > Date()
-        }
-        
-        return false
-    }
-
-
 }
 
 struct SplashView: View {
     @Binding var showSplash: Bool
-    @State private var fadeOut = false
     
     var body: some View {
         ZStack {
@@ -96,7 +76,6 @@ struct SplashView: View {
                     .foregroundColor(.gray4)
                     .padding(.bottom, 30)
             }
-            .opacity(fadeOut ? 0 : 1)
             .onAppear {
                 branchProcessing()
             }
@@ -104,13 +83,8 @@ struct SplashView: View {
     }
     
     private func branchProcessing() {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
-            withAnimation(.easeOut(duration: 1.0)) {
-                fadeOut = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                showSplash = false
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            showSplash = false
         }
     }
 }

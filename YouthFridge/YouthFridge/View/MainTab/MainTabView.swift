@@ -55,6 +55,7 @@ struct MainTabView: View {
                 onLatestNewsFetched: {
                     self.shouldUpdateUrl = true
                 }
+                
             )
         case .smallClass:
             SmallClassView()

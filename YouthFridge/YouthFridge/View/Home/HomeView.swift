@@ -103,9 +103,10 @@ struct HomeView: View {
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .padding(.horizontal, 20)
+
                 
             }
-            
+
             
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

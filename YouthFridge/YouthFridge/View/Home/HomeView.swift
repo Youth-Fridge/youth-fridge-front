@@ -14,7 +14,6 @@ struct HomeView: View {
     @Binding var newsUrl: String
     
     let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
-    private let colors: [Color] = [.red, .blue, .green, .orange]
     private let banners = ["banner1","banner2","banner3"]
     var onProfileImageClick: () -> Void
     var onNewsButtonPress: () -> Void
@@ -31,25 +30,22 @@ struct HomeView: View {
         NavigationView {
             VStack {
                 CardScrollView(cards: viewModel.cards)
-                HStack {
+                HStack(spacing: 10) {
                     newsCardView(content: "청년들이\n더위를 이겨내는 법")
-                        .frame(width: 152)
                         .padding(.leading, 20)
-                    
                     VStack(spacing: 10) {
                         DynamicTextCardView(viewModel: viewModel)
                         SmallestCardView()
                     }
-                    .frame(height: 252)
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 20)
                 }
                 
                 HStack {
                     Button(action: {
                     }) {
                         Text("공식소모임")
-                            .font(.headline)
-                            .foregroundColor(.black)
+                            .font(.system(size: 18,weight: .semibold))
+                            .foregroundColor(.gray6)
                             .padding(.leading, 30)
                     }
                     Spacer()
@@ -103,11 +99,7 @@ struct HomeView: View {
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .padding(.horizontal, 20)
-
-                
             }
-
-            
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -115,7 +107,7 @@ struct HomeView: View {
                         Image("logo")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .padding(.leading, 5)
+                            .padding(.leading, 10)
                         Image("typeLogo")
                             .resizable()
                             .frame(width: 80, height: 15)
@@ -145,7 +137,6 @@ struct HomeView: View {
             }
         }
     }
-    
 
     // Small Card View
     private func newsCardView(content: String) -> some View {
@@ -245,10 +236,3 @@ struct CardItemView: View {
     }
 }
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView(viewModel: .init(), newsUrl: $newsUrl, onNewsButtonPress: {
-//            self.selectedTab = .news
-//        })
-//    }
-//}

@@ -41,25 +41,27 @@ struct CardView: View {
                         .padding(.leading, 6)
                         .cornerRadius(4)
                     }
+                    .padding(.bottom,5)
                     Text(viewModel.card.title)
-                        .font(.system(size: 26))
-                        .bold()
+                        .font(.system(size: 26,weight: .bold))
+                        .frame(height: 27)
                         .padding(.leading)
-                    
-                    HStack {
+                    HStack() {
                         Image("clock")
                         Text(viewModel.card.formattedDateAndTime)
-                            .font(.system(size: 10))
+                            .font(.system(size: 10,weight: .semibold))
                     }
                     .padding(.leading)
+                    .padding(.top,5)
                     HStack {
                         Image("map-pin")
                         Text(viewModel.card.location)
-                            .font(.system(size: 10))
+                            .font(.system(size: 10,weight: .semibold))
                     }
                     .padding(.leading)
                 }
             }
+            .padding(.bottom,10)
             .padding(.trailing, 10)
             .frame(width: 350, height: 140)
             .background(viewModel.card.backgroundColor)

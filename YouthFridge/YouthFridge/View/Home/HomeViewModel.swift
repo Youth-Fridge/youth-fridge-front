@@ -14,8 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var tabContents: [TabContent] = []
     @Published var showPlaceholder: Bool = false
     @Published var profileImageUrl: Int?
-    let publicMeetingBackground = ["banner1", "banner2", "banner3"]
-    let publicImage = ["publicImage0","publicImage1","publicImage2"]
+    let publicMeetingBackground = ["banner2", "banner1", "banner3"] //banner1 :김장 ,banner2: 포트락 파티
     init() {
         fetchCards()
         fetchPublicMeeting()

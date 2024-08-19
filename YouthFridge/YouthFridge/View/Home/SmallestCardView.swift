@@ -34,7 +34,7 @@ struct SmallestCardView: View {
                         .foregroundColor(Color.white)
                     
                     Text("만들기")
-                        .font(.system(size: 12))
+                        .font(.system(size: 12,weight: .medium))
                         .bold()
                         .padding(.leading, 15)
                         .padding(.trailing, 15)

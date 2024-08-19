@@ -18,12 +18,17 @@ struct ShowInviteView: View {
     @State private var showAlert: Bool = false
     @State private var alertTitle: String = ""
     @State private var alertMessage: String = ""
+    @State private var showGIF: Bool = true
     @Environment(\.presentationMode) var presentationMode
     private let hapticManager = HapticManager.instance //진동
     var body: some View {
         ZStack {
             Color.sub2
                 .edgesIgnoringSafeArea(.top)
+            if showGIF {
+                GifView(gifName: "motion")
+                    .edgesIgnoringSafeArea(.top)
+            }
             GeometryReader { geometry in
                 Image("invitationLogo")
                     .resizable()
@@ -35,14 +40,13 @@ struct ShowInviteView: View {
                 
                 Text("당신을 초대합니다🎉")
                     .font(.system(size: 30, weight: .bold))
-                    .padding(.top, 20)
+                    .foregroundColor(.gray6)
                 
                 ZStack {
                     Image("invitation")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 320, height: 436)
-                        .padding(.top, 30)
                         .padding(.leading, 30)
                     
                     if isImageVisible {
@@ -55,8 +59,10 @@ struct ShowInviteView: View {
                                     .frame(width: 260, height: 280)
                                 
                                 Text(showDetail.clubName)
-                                    .font(.system(size: 24, weight: .bold))
+                                    .font(.system(size: 20, weight: .semibold))
                                     .padding(.top, 10)
+                                    .foregroundColor(.gray6)
+
                             }
                         }
                         .padding(.bottom, 30)
@@ -84,11 +90,14 @@ struct ShowInviteView: View {
                                     Text("기간")
                                         .font(.system(size: 16, weight: .bold))
                                         .padding(.top,10)
+                                        .foregroundColor(.gray6)
+
                                     
                                     HStack {
                                         Text("우리 약속까지 ")
                                             .font(.system(size: 14, weight: .medium))
-                                        
+                                            .foregroundColor(.gray6)
+
                                         Text(showDetail.dday)
                                             .font(.title)
                                             .fontWeight(.bold)
@@ -96,26 +105,40 @@ struct ShowInviteView: View {
                                         
                                         Text("일 남았어요")
                                             .font(.system(size: 14, weight: .medium))
+                                            .foregroundColor(.gray6)
+
                                     }
                                     
                                     Text("인원")
                                         .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.gray6)
+
                                     
                                     Text("\(showDetail.number)명")
                                         .font(.system(size: 14, weight: .medium))
+                                        .foregroundColor(.gray6)
+
                                     
                                     Text("시간 및 장소")
                                         .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.gray6)
+
                                     
                                     Text(showDetail.time + "\n" + showDetail.place)
                                         .font(.system(size: 14, weight: .medium))
+                                        .foregroundColor(.gray6)
+
                                     
                                     Text("TO DO")
                                         .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.gray6)
+
                                     
                                     VStack(alignment: .leading) {
                                         ForEach(showDetail.todo.split(separator: "\n"), id: \.self) { todo in
                                             Text("• \(todo)")
+                                                .foregroundColor(.gray6)
+
                                         }
                                     }
                                     .font(.system(size: 14, weight: .medium))
@@ -168,7 +191,7 @@ struct ShowInviteView: View {
                         .shadow(radius: 3)
                         .padding(.bottom, 20)
                 }
-                .disabled(isInvitationApplied) // Disable button after application
+                .disabled(isInvitationApplied)
                 
                 NavigationLink(
                     destination: InviteFinalView(),

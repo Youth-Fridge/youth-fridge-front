@@ -99,6 +99,8 @@
 		58DA3F5E2C723487002081D9 /* LocationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */; };
 		58DA3F602C725671002081D9 /* UserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F5F2C725671002081D9 /* UserInfoResponse.swift */; };
 		58DA3F622C725EBE002081D9 /* SmallClassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F612C725EBE002081D9 /* SmallClassViewModel.swift */; };
+		58DA3F642C72FF3F002081D9 /* motion.gif in Resources */ = {isa = PBXBuildFile; fileRef = 58DA3F632C72FF3F002081D9 /* motion.gif */; };
+		58DA3F662C730100002081D9 /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F652C730100002081D9 /* GifView.swift */; };
 		58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96EB2C5281E700166554 /* LocationManager.swift */; };
 		58EA96EE2C5283D400166554 /* ProfilePictureSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */; };
 		58EA96F12C5380E600166554 /* CreateInviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */; };
@@ -221,6 +223,8 @@
 		58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpView.swift; sourceTree = "<group>"; };
 		58DA3F5F2C725671002081D9 /* UserInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoResponse.swift; sourceTree = "<group>"; };
 		58DA3F612C725EBE002081D9 /* SmallClassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallClassViewModel.swift; sourceTree = "<group>"; };
+		58DA3F632C72FF3F002081D9 /* motion.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = motion.gif; sourceTree = "<group>"; };
+		58DA3F652C730100002081D9 /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		58EA96EB2C5281E700166554 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		58EA96F02C5380E600166554 /* CreateInviteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteViewModel.swift; sourceTree = "<group>"; };
@@ -547,6 +551,7 @@
 			children = (
 				58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */,
 				58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */,
+				58DA3F652C730100002081D9 /* GifView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 		58EEF6EC2C43D22500C12C1E /* YouthFridge */ = {
 			isa = PBXGroup;
 			children = (
+				58DA3F632C72FF3F002081D9 /* motion.gif */,
 				5847F15B2C60DCD5001AC04E /* Services */,
 				5847F15A2C60BA78001AC04E /* Networks */,
 				5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */,
@@ -839,6 +845,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
+				58DA3F642C72FF3F002081D9 /* motion.gif in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
 				58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
@@ -925,6 +932,7 @@
 				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
+				58DA3F662C730100002081D9 /* GifView.swift in Sources */,
 				0AB468EB2C68D93F003061CE /* ActivityDetailModel.swift in Sources */,
 				0A42389B2C6BD26C0034DACB /* NewsLetterService.swift in Sources */,
 				5817D62F2C47AAEB0081323E /* CustomProgressViewStyle.swift in Sources */,

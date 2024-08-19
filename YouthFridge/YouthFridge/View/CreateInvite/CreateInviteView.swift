@@ -11,67 +11,69 @@ struct CreateInviteView: View {
     @StateObject private var viewModel = CreateInviteViewModel()
     
     var body: some View {
-        ZStack(alignment: .top) {
-            VStack(alignment: .leading) {
-                HStack(spacing: 14) {
-                    Button(action: {
-                        viewModel.selectedTab = 0
-                    }) {
-                        Text("STEP1")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 60, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 0 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 0 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                    
-                    Button(action: {
-                        viewModel.selectedTab = 1
-                    }) {
-                        Text("STEP2")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 68, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 1 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 1 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                }
-                .padding(.top, 30)
-                
-                if viewModel.selectedTab == 0 {
-                    StepOneView(viewModel: viewModel)
-                        .padding(.horizontal, 5)
-                } else {
-                    StepTwoView(viewModel: viewModel)
-                }
-                
-                Spacer()
-            }
-            .padding(.horizontal, 30)
-            .navigationTitle("초대장 작성")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        dismiss()
-                    }) {
-                        Image("left-arrow")
-                            .resizable()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if let profileImageUrl = viewModel.profileImageUrl {
-                        if let profile = ProfileImage.from(rawValue: profileImageUrl) {
-                            let profileImage = profile.imageName
-                            Image(profileImage)
-                                .resizable()
-                                .frame(width: 36, height: 36)
-                                .clipShape(Circle())
+        NavigationView {
+            ZStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    HStack(spacing: 14) {
+                        Button(action: {
+                            viewModel.selectedTab = 0
+                        }) {
+                            Text("STEP1")
+                                .font(.system(size: 16, weight: .bold))
+                                .frame(width: 60, height: 5)
+                                .padding()
+                                .background(viewModel.selectedTab == 0 ? Color.main1Color : Color.gray1Color)
+                                .foregroundColor(viewModel.selectedTab == 0 ? .white : .black)
+                                .cornerRadius(8)
                         }
                         
+                        Button(action: {
+                            viewModel.selectedTab = 1
+                        }) {
+                            Text("STEP2")
+                                .font(.system(size: 16, weight: .bold))
+                                .frame(width: 68, height: 5)
+                                .padding()
+                                .background(viewModel.selectedTab == 1 ? Color.main1Color : Color.gray1Color)
+                                .foregroundColor(viewModel.selectedTab == 1 ? .white : .black)
+                                .cornerRadius(8)
+                        }
+                    }
+                    .padding(.top, 30)
+                    
+                    if viewModel.selectedTab == 0 {
+                        StepOneView(viewModel: viewModel)
+                            .padding(.horizontal, 5)
+                    } else {
+                        StepTwoView(viewModel: viewModel)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.horizontal, 30)
+                .navigationTitle("초대장 작성")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarBackButtonHidden(true)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            dismiss()
+                        }) {
+                            Image("left-arrow")
+                                .resizable()
+                        }
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        if let profileImageUrl = viewModel.profileImageUrl {
+                            if let profile = ProfileImage.from(rawValue: profileImageUrl) {
+                                let profileImage = profile.imageName
+                                Image(profileImage)
+                                    .resizable()
+                                    .frame(width: 36, height: 36)
+                                    .clipShape(Circle())
+                            }
+                            
+                        }
                     }
                 }
             }

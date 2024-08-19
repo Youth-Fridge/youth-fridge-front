@@ -151,32 +151,33 @@ struct HomeView: View {
         Button(action: {
             fetchLatestNewsUrl()
         }) {
-            VStack {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Today\n뉴스레터")
+            ZStack {
+                Color.sub2Color
+                    .cornerRadius(10)
+                    .frame(width: 152, height: 252)
+                VStack(alignment: .leading, spacing: 5) {
+                    Text("Today")
                         .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.black)
-                        .padding(.top, 10)
-                        .padding(.leading, 15)
-                    
+                        .foregroundColor(.gray6)
+                        .padding(.top,14)
+                    Text("뉴스레터")
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.gray6)
                     if !content.isEmpty {
                         Text(content)
                             .font(.system(size: 14, weight: .medium))
-                            .bold()
-                            .foregroundColor(.black)
-                            .padding()
+                            .foregroundColor(.gray6)
+                            .frame(width: 105,height: 50)
                     }
                     Spacer()
+                    
                     Image("newsIcon")
                         .resizable()
-                        .padding(.leading, 70)
+                        .scaledToFit()
+                        .frame(width: 74, height: 86)
+                        .offset(x: 65, y: 10)
                 }
-                .background(
-                    Color.sub2Color
-                        .cornerRadius(10)
-                )
             }
-            .frame(height: 252)
         }
         .buttonStyle(PlainButtonStyle())
     }

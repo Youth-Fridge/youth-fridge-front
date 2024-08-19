@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var showPlaceholder: Bool = false
     @Published var profileImageUrl: Int?
     let publicMeetingBackground = ["banner1", "banner2", "banner3"]
+    let publicImage = ["publicImage0","publicImage1","publicImage2"]
     init() {
         fetchCards()
         fetchPublicMeeting()

@@ -111,8 +111,8 @@ struct MyPageView: View {
                 
                 NavigationLink(
                     destination: LoginIntroView()
-                        .navigationBarBackButtonHidden(true) // Hide back button
-                        .toolbar(.hidden, for: .tabBar), // Hide the tab bar
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar(.hidden, for: .tabBar),
                     isActive: Binding(
                         get: { navigationManager.currentView == .loginIntro },
                         set: { newValue in

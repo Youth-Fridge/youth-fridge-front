@@ -24,7 +24,7 @@ struct SmallClassView: View {
     @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
                 NavigationLink(destination: CreateInviteView()) {
                     AddInviteView()

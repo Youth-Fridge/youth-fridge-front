@@ -14,7 +14,8 @@ struct MyPageView: View {
     @State private var showLogOutDeletePopup = false
     @State private var navigateToLoginIntro = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
-    
+    @StateObject private var navigationManager = NavigationManager()
+
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
@@ -92,8 +93,7 @@ struct MyPageView: View {
                             withAnimation {
                                 KeychainHandler.shared.accessToken = ""
                                 showLogOutDeletePopup = false
-                                navigateToLoginIntro = true
-                            }
+                                navigationManager.currentView = .loginIntro                            }
                         },
                         onCancel: {
                             withAnimation {
@@ -108,11 +108,19 @@ struct MyPageView: View {
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )
+                
                 NavigationLink(
                     destination: LoginIntroView()
                         .navigationBarBackButtonHidden(true) // Hide back button
                         .toolbar(.hidden, for: .tabBar), // Hide the tab bar
-                    isActive: $navigateToLoginIntro,
+                    isActive: Binding(
+                        get: { navigationManager.currentView == .loginIntro },
+                        set: { newValue in
+                            if !newValue {
+                                navigationManager.currentView = nil
+                            }
+                        }
+                    ),
                     label: { EmptyView() }
                 )
             }

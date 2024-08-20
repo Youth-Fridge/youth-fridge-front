@@ -20,7 +20,7 @@ struct LoginIntroView: View {
     @State private var isNewUser: Bool = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(spacing: 10) {
                 Spacer()
                 

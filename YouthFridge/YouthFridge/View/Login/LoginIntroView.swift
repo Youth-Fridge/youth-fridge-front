@@ -20,7 +20,7 @@ struct LoginIntroView: View {
     @State private var isNewUser: Bool = false
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             VStack(spacing: 10) {
                 Spacer()
                 
@@ -71,15 +71,18 @@ struct LoginIntroView: View {
                     .font(.system(size: 12))
                     .foregroundColor(Color.gray4)
             }
-
-            NavigationLink(
-                destination: destinationView,
-                isActive: $isPresentedLoginView,
-                label: { EmptyView() }
-            )
-            
+            .background(
+                            NavigationLink(
+                                destination: destinationView,
+                                isActive: $isPresentedMainTabView,
+                                label: { EmptyView() }
+                            )
+                            .hidden() // Hide the NavigationLink
+                        )
         }
     }
+    
+    
     private var destinationView: some View {
            Group {
                if isNewUser {
@@ -154,15 +157,14 @@ struct LoginIntroView: View {
     private func performBackendLogin(type: String, userID: String, email: String) {
         let loginRequest = LoginRequest(email: email, username: userID)
         print(loginRequest)
-        let nicknameKey = type == "apple" ? "appleUserNickname" : "kakaoUserNickname"
-        let nickname = UserDefaults.standard.string(forKey: nicknameKey) ?? "Unknown"
-        print("사용자 닉네임: \(nickname)")
 
         OnboardingAPI.shared.login(loginRequest) { result in
             switch result {
             case .success(()):
-                self.isPresentedLoginView = true
-                print("로그인 성공")
+                DispatchQueue.main.async {
+                   self.isPresentedMainTabView = true
+                   print("로그인 성공")
+               }
                 
             case .failure(let error):
                 let nsError = error as NSError

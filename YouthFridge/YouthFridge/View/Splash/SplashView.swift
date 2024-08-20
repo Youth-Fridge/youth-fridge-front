@@ -24,11 +24,17 @@ struct ContentView: View {
                 if let tokenTypeString = UserDefaults.standard.string(forKey: "loginType"),
                    let tokenType = TokenType(rawValue: tokenTypeString) {
                     let accessToken = KeychainHandler.shared.accessToken
-                    // 토큰의 유효성 검사
-                    if isTokenValid(accessToken, type: tokenType) {
-                        MainTabView()
-                    } else {
+                    
+                    // 액세스 토큰이 비어있는지 확인
+                    if accessToken.isEmpty {
                         LoginIntroView()
+                    } else {
+                        // 토큰의 유효성 검사
+                        if isTokenValid(accessToken, type: tokenType) {
+                            MainTabView()
+                        } else {
+                            LoginIntroView()
+                        }
                     }
                 } else {
                     // loginType이 UserDefaults에 없거나 변환에 실패한 경우

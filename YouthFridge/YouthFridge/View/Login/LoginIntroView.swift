@@ -71,10 +71,11 @@ struct LoginIntroView: View {
                     .font(.system(size: 12))
                     .foregroundColor(Color.gray4)
             }
-            .background(
-                NavigationLink(destination: destinationView, isActive: $isPresentedLoginView) {
-                    EmptyView()
-                }
+
+            NavigationLink(
+                destination: destinationView,
+                isActive: $isPresentedLoginView,
+                label: { EmptyView() }
             )
             
         }

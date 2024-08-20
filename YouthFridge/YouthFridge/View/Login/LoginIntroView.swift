@@ -151,10 +151,7 @@ struct LoginIntroView: View {
     private func performBackendLogin(type: String, userID: String, email: String) {
         let loginRequest = LoginRequest(email: email, username: userID)
         print(loginRequest)
-        let nicknameKey = type == "apple" ? "appleUserNickname" : "kakaoUserNickname"
-        let nickname = UserDefaults.standard.string(forKey: nicknameKey) ?? "Unknown"
-        print("사용자 닉네임: \(nickname)")
-
+        
         OnboardingAPI.shared.login(loginRequest) { result in
             switch result {
             case .success(()):

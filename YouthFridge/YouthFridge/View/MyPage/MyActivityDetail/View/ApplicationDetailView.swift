@@ -47,6 +47,7 @@ struct ApplicationDetailView: View {
                     }
                 }
                 .padding(.top, 10)
+                .scrollIndicators(.hidden)
                 
                 GeometryReader { geometry in
                     if showCancelPopup {

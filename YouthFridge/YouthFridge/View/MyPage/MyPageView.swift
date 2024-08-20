@@ -16,7 +16,7 @@ struct MyPageView: View {
     @StateObject private var smallClassViewModel = SmallClassViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .top) {
                 VStack(spacing: 0) {
                     welcomeMessage
@@ -110,7 +110,8 @@ struct MyPageView: View {
                 )
                 NavigationLink(
                     destination: LoginIntroView()
-                        .navigationBarBackButtonHidden(true),// 뒤로 가기 버튼 숨김
+                        .navigationBarBackButtonHidden(true) // Hide back button
+                        .toolbar(.hidden, for: .tabBar), // Hide the tab bar
                     isActive: $navigateToLoginIntro,
                     label: { EmptyView() }
                 )
@@ -182,7 +183,7 @@ struct MyPageView: View {
         List {
             ForEach(activityItems, id: \.self) { item in
                 if item == "내 활동" {
-                    ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역", "스크랩"])
+                    ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역"])
                         .onTapGesture {
                             navigateToMyActivity = true
                         }

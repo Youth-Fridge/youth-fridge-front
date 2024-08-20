@@ -25,8 +25,7 @@ struct MyActivityView: View {
     }
 
     var body: some View {
-            ZStack(alignment: .top) {                
-                NavigationView {
+            ZStack(alignment: .top) {
                     VStack(spacing: 0) {
                         tabButtons
                         ZStack {
@@ -40,7 +39,7 @@ struct MyActivityView: View {
                             }
                         }
                     }
-                }
+                
                 .padding(.top, 30)
                 .padding(.horizontal, 10)
             }

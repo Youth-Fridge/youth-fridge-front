@@ -14,8 +14,8 @@ import SwiftKeychainWrapper
 struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
     @State private var appleSignInCoordinator: AppleSignInCoordinator?
-    @State private var type: String = ""
     @State private var isPresentedMainTabView: Bool = false
+    @State private var type: String = ""
     @State private var kakaoToken: String? = nil
     @State private var isNewUser: Bool = false
     
@@ -71,25 +71,22 @@ struct LoginIntroView: View {
                     .font(.system(size: 12))
                     .foregroundColor(Color.gray4)
             }
-
-            NavigationLink(
-                destination: destinationView,
-                isActive: $isPresentedLoginView,
-                label: { EmptyView() }
-            )
-            
+            .navigationDestination(isPresented: $isPresentedMainTabView) {
+                destinationView
+            }
         }
     }
+    
     private var destinationView: some View {
-           Group {
-               if isNewUser {
-                   OnboardingStartView()
-               } else {
-                   MainTabView()
-               }
-           }
-           .navigationBarBackButtonHidden()
-       }
+        Group {
+            if isNewUser {
+                OnboardingStartView()
+            } else {
+                MainTabView()
+            }
+        }
+        .navigationBarBackButtonHidden()
+    }
     var attributedText: AttributedString {
         var text = AttributedString("1분이면 회원가입 가능해요")
         if let range = text.range(of: "1분") {
@@ -161,7 +158,7 @@ struct LoginIntroView: View {
         OnboardingAPI.shared.login(loginRequest) { result in
             switch result {
             case .success(()):
-                self.isPresentedLoginView = true
+                self.isPresentedMainTabView = true
                 print("로그인 성공")
                 
             case .failure(let error):

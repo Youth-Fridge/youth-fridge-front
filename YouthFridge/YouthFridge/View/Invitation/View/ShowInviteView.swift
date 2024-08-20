@@ -24,7 +24,7 @@ struct ShowInviteView: View {
     var body: some View {
             ZStack {
                 Color.sub2
-                    .edgesIgnoringSafeArea(.top)
+                    .edgesIgnoringSafeArea(.all)
                 if showGIF {
                     GifView(gifName: "motion")
                         .edgesIgnoringSafeArea(.top)

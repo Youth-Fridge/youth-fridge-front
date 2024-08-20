@@ -14,25 +14,23 @@ struct MainTabView: View {
     @State private var shouldUpdateUrl = false
     
     var body: some View {
-        NavigationView {
-            TabView(selection: $selectedTab) {
-                ForEach(MainTabType.allCases, id: \.self) { tab in
-                    tabView(for: tab)
-                        .tabItem {
-                            Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
-                        }
-                        .tag(tab)
-                }
-            }
-            .tint(.black)
-            .onChange(of: selectedTab) { newTab in
-                if newTab == .news {
-                    if shouldUpdateUrl {
-                        shouldUpdateUrl = false
-                    } else {
-                        shouldUpdateUrl = true
-                        newsUrl = "https://m.blog.naver.com/hyangyuloum"
+        TabView(selection: $selectedTab) {
+            ForEach(MainTabType.allCases, id: \.self) { tab in
+                tabView(for: tab)
+                    .tabItem {
+                        Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
                     }
+                    .tag(tab)
+            }
+        }
+        .tint(.black)
+        .onChange(of: selectedTab) { newTab in
+            if newTab == .news {
+                if shouldUpdateUrl {
+                    shouldUpdateUrl = false
+                } else {
+                    shouldUpdateUrl = true
+                    newsUrl = "https://m.blog.naver.com/hyangyuloum"
                 }
             }
         }
@@ -42,26 +40,33 @@ struct MainTabView: View {
     private func tabView(for tab: MainTabType) -> some View {
         switch tab {
         case .home:
-            HomeView(
-                viewModel: .init(),
-                newsUrl: $newsUrl,
-                onProfileImageClick: {
-                    self.selectedTab = .mypage 
-                },
-                onNewsButtonPress: {
-                    self.selectedTab = .news
-                },
-                onLatestNewsFetched: {
-                    self.shouldUpdateUrl = true
-                }
-                
-            )
+            NavigationView {
+                HomeView(
+                    viewModel: .init(),
+                    newsUrl: $newsUrl,
+                    onProfileImageClick: {
+                        self.selectedTab = .mypage
+                    },
+                    onNewsButtonPress: {
+                        self.selectedTab = .news
+                    },
+                    onLatestNewsFetched: {
+                        self.shouldUpdateUrl = true
+                    }
+                )
+            }
         case .smallClass:
-            SmallClassView()
+            NavigationView {
+                SmallClassView()
+            }
         case .news:
-            NewsView(urlToLoad: $newsUrl)
+            NavigationView {
+                NewsView(urlToLoad: $newsUrl)
+            }
         case .mypage:
-            MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services())))
+            NavigationView {
+                MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services())))
+            }
         }
     }
     

@@ -22,7 +22,6 @@ struct ShowInviteView: View {
     @Environment(\.presentationMode) var presentationMode
     private let hapticManager = HapticManager.instance //진동
     var body: some View {
-        NavigationStack {
             ZStack {
                 Color.sub2
                     .edgesIgnoringSafeArea(.top)
@@ -217,7 +216,7 @@ struct ShowInviteView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("알림"), message: Text(alertMessage), dismissButton: .default(Text("확인")))
             }
-        }
+        
     }
     
     

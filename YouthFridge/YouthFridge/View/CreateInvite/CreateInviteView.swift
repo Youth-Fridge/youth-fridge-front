@@ -144,7 +144,7 @@ struct StepOneView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $isShowingProfileSelector) {
-                        EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
+                        EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
                             .presentationDetents([.medium, .large])
                             .presentationDragIndicator(.hidden)
                     }
@@ -440,7 +440,7 @@ struct StepOneView: View {
             }
         }
         .sheet(isPresented: $isShowingProfileSelector) {
-            EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
+            EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
     }

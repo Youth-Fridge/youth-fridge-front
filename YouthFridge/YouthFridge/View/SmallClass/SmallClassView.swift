@@ -70,6 +70,7 @@ struct SmallClassView: View {
                 .listStyle(PlainListStyle())
             }
             .navigationBarTitle("생활밥서", displayMode: .inline)
+            .scrollIndicators(.hidden)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if let profileImageUrl = smallViewModel.profileImageUrl {

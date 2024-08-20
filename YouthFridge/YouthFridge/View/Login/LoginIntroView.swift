@@ -71,9 +71,14 @@ struct LoginIntroView: View {
                     .font(.system(size: 12))
                     .foregroundColor(Color.gray4)
             }
-            .navigationDestination(isPresented: $isPresentedMainTabView) {
-                destinationView
-            }
+            .background(
+                NavigationLink(
+                    destination: destinationView,
+                    isActive: $isPresentedMainTabView,
+                    label: { EmptyView() }
+                )
+                .hidden()
+            )
         }
     }
     

@@ -12,7 +12,6 @@ struct MyPageView: View {
     @State private var showDeletePopup = false
     @State private var navigateToMyActivity = false
     @State private var showLogOutDeletePopup = false
-    @State private var navigateToLoginIntro = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
     @StateObject private var navigationManager = NavigationManager()
 
@@ -53,7 +52,7 @@ struct MyPageView: View {
                                         if isSuccess {
                                             UserDefaults.standard.removeObject(forKey: "nickname")
                                             KeychainHandler.shared.accessToken = ""
-                                            navigateToLoginIntro = true
+                                            navigationManager.currentView = .loginIntro
                                         } else {
                                             print("Failed to quit member.")
                                         }

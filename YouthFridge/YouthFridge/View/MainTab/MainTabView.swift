@@ -14,7 +14,7 @@ struct MainTabView: View {
     @State private var shouldUpdateUrl = false
     
     var body: some View {
-        NavigationView {
+//        NavigationView {
             TabView(selection: $selectedTab) {
                 ForEach(MainTabType.allCases, id: \.self) { tab in
                     tabView(for: tab)
@@ -36,7 +36,7 @@ struct MainTabView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-        }
+//        }
     }
     
     @ViewBuilder

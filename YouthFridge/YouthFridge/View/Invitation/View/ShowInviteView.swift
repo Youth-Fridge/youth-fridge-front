@@ -207,6 +207,8 @@ struct ShowInviteView: View {
             Image(systemName: "chevron.left")
                 .foregroundColor(.black)
         })
+        .navigationViewStyle(StackNavigationViewStyle())
+
         .onAppear {
             viewModel.fetchInviteData(invitationId: invitationId)
         }

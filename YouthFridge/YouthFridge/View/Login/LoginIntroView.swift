@@ -71,17 +71,24 @@ struct LoginIntroView: View {
                     .font(.system(size: 12))
                     .foregroundColor(Color.gray4)
             }
-            .navigationDestination(isPresented: $isPresentedLoginView) {
-                if isNewUser {
-                    OnboardingStartView().navigationBarBackButtonHidden()
-                } else {
-                    MainTabView().navigationBarBackButtonHidden()
+            .background(
+                NavigationLink(destination: destinationView, isActive: $isPresentedLoginView) {
+                    EmptyView()
                 }
-            }
+            )
             
         }
     }
-    
+    private var destinationView: some View {
+           Group {
+               if isNewUser {
+                   OnboardingStartView()
+               } else {
+                   MainTabView()
+               }
+           }
+           .navigationBarBackButtonHidden()
+       }
     var attributedText: AttributedString {
         var text = AttributedString("1분이면 회원가입 가능해요")
         if let range = text.range(of: "1분") {
@@ -154,7 +161,6 @@ struct LoginIntroView: View {
             switch result {
             case .success(()):
                 self.isPresentedLoginView = true
-                
                 print("로그인 성공")
                 
             case .failure(let error):

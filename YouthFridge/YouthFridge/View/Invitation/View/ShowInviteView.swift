@@ -184,15 +184,15 @@ struct ShowInviteView: View {
                     }) {
                         Text("참여하기")
                             .font(.headline)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
                             .padding()
                             .frame(maxWidth: 320)
-                            .background(Color.white)
+                            .background(viewModel.isAvailable ? Color.white: Color.gray2)
                             .cornerRadius(8)
                             .shadow(radius: 3)
                             .padding(.bottom, 20)
                     }
-                    .disabled(isInvitationApplied)
+                    .disabled(isInvitationApplied || !viewModel.isAvailable)
                     
                     NavigationLink(
                         destination: InviteFinalView(),
@@ -222,7 +222,9 @@ struct ShowInviteView: View {
     
     
     private func applyInvitation() {
-        if recruiting == "모집중" {
+        // TODO: - 이미 신청한 소모임인 경우 처리
+        // 모집 중일 경우 소모임 신청
+        if recruiting == "모집 중" {
             InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
                 switch result {
                 case .success(let message):

@@ -47,7 +47,8 @@ struct SmallClassView: View {
                     ZStack {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
-                            invitationId: cell.id
+                            invitationId: cell.id,
+                            recruiting: cell.ing
                         )) {
                             EmptyView()
                         }

@@ -10,6 +10,7 @@ import SwiftUI
 struct ShowInviteView: View {
     @ObservedObject var viewModel: ShowInviteViewModel
     let invitationId: Int
+    let recruiting: String
     
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
@@ -216,17 +217,23 @@ struct ShowInviteView: View {
     }
     
     private func applyInvitation() {
-        InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
-            switch result {
-            case .success(let message):
-                isInvitationApplied = true
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    alertTitle = "오류"
-                    alertMessage = error.localizedDescription
-                    showAlert = true
+        if recruiting == "모집중" {
+            InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
+                switch result {
+                case .success(let message):
+                    isInvitationApplied = true
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        alertTitle = "오류"
+                        alertMessage = error.localizedDescription
+                        showAlert = true
+                    }
                 }
             }
+        } else {
+            alertTitle = "오류"
+            alertMessage = "모집 완료된 소모임입니다."
+            showAlert = true
         }
     }
 }

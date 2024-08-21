@@ -27,7 +27,7 @@ struct HomeView: View {
         viewModel.tabContents
     }
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 CardScrollView(cards: viewModel.cards)
                 HStack(spacing: 10) {

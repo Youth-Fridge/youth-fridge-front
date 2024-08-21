@@ -12,11 +12,11 @@ struct MyPageView: View {
     @State private var showDeletePopup = false
     @State private var navigateToMyActivity = false
     @State private var showLogOutDeletePopup = false
-    @State private var navigateToLoginIntro = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
-    
+    @StateObject private var navigationManager = NavigationManager()
+
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack(alignment: .top) {
                 VStack(spacing: 0) {
                     welcomeMessage
@@ -52,7 +52,7 @@ struct MyPageView: View {
                                         if isSuccess {
                                             UserDefaults.standard.removeObject(forKey: "nickname")
                                             KeychainHandler.shared.accessToken = ""
-                                            navigateToLoginIntro = true
+                                            navigationManager.currentView = .loginIntro
                                         } else {
                                             print("Failed to quit member.")
                                         }
@@ -92,8 +92,7 @@ struct MyPageView: View {
                             withAnimation {
                                 KeychainHandler.shared.accessToken = ""
                                 showLogOutDeletePopup = false
-                                navigateToLoginIntro = true
-                            }
+                                navigationManager.currentView = .loginIntro                            }
                         },
                         onCancel: {
                             withAnimation {
@@ -108,10 +107,19 @@ struct MyPageView: View {
                     isActive: $navigateToMyActivity,
                     label: { EmptyView() }
                 )
+                
                 NavigationLink(
                     destination: LoginIntroView()
-                        .navigationBarBackButtonHidden(true),// 뒤로 가기 버튼 숨김
-                    isActive: $navigateToLoginIntro,
+                        .navigationBarBackButtonHidden(true)
+                        .toolbar(.hidden, for: .tabBar),
+                    isActive: Binding(
+                        get: { navigationManager.currentView == .loginIntro },
+                        set: { newValue in
+                            if !newValue {
+                                navigationManager.currentView = nil
+                            }
+                        }
+                    ),
                     label: { EmptyView() }
                 )
             }
@@ -182,7 +190,7 @@ struct MyPageView: View {
         List {
             ForEach(activityItems, id: \.self) { item in
                 if item == "내 활동" {
-                    ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역", "스크랩"])
+                    ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역"])
                         .onTapGesture {
                             navigateToMyActivity = true
                         }

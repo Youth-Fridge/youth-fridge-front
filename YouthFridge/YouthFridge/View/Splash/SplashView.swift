@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum TokenType: String {
+    case apple
+    case kakao
+}
+
 struct ContentView: View {
     @State private var showSplash = true
     
@@ -15,16 +20,47 @@ struct ContentView: View {
             if showSplash {
                 SplashView(showSplash: $showSplash)
             } else {
-                if isTokenValid(KeychainHandler.shared.accessToken) {
-                    MainTabView()
+                // UserDefaults에서 저장된 loginType 가져오기
+                if let tokenTypeString = UserDefaults.standard.string(forKey: "loginType"),
+                   let tokenType = TokenType(rawValue: tokenTypeString) {
+                    let accessToken = KeychainHandler.shared.accessToken
+                    
+                    // 액세스 토큰이 비어있는지 확인
+                    if accessToken.isEmpty {
+                        LoginIntroView()
+                    } else {
+                        // 토큰의 유효성 검사
+                        if isTokenValid(accessToken, type: tokenType) {
+                            MainTabView()
+                        } else {
+                            LoginIntroView()
+                        }
+                    }
                 } else {
+                    // loginType이 UserDefaults에 없거나 변환에 실패한 경우
                     LoginIntroView()
                 }
             }
         }
     }
     
-    func isTokenValid(_ token: String) -> Bool {
+    private func isTokenValid(_ token: String, type: TokenType) -> Bool {
+        switch type {
+        case .apple:
+            return isAppleTokenValid(token)
+        case .kakao:
+            return isKakaoTokenValid(token)
+        }
+    }
+    
+    private func isAppleTokenValid(_ token: String) -> Bool {
+        if let expirationTime = UserDefaults.standard.value(forKey: "tokenExpirationTime") as? Date {
+            return Date() < expirationTime
+        }
+        return false
+    }
+    
+    private func isKakaoTokenValid(_ token: String) -> Bool {
         let parts = token.split(separator: ".")
         guard parts.count == 3 else { return false }
         

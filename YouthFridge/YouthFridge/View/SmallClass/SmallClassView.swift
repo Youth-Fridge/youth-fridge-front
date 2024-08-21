@@ -24,7 +24,7 @@ struct SmallClassView: View {
     @State private var cancellables = Set<AnyCancellable>()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(spacing: 0) {
                 NavigationLink(destination: CreateInviteView()) {
                     AddInviteView()
@@ -71,6 +71,7 @@ struct SmallClassView: View {
                 .listStyle(PlainListStyle())
             }
             .navigationBarTitle("생활밥서", displayMode: .inline)
+            .scrollIndicators(.hidden)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if let profileImageUrl = smallViewModel.profileImageUrl {

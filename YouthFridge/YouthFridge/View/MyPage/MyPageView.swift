@@ -10,7 +10,7 @@ import SwiftUI
 struct MyPageView: View {
     @ObservedObject var viewModel: MyPageViewModel
     @State private var showDeletePopup = false
-    @State private var navigateToMyActivity = false
+    @State private var isNavigatingToMyActivty = false
     @State private var showLogOutDeletePopup = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
     @StateObject private var navigationManager = NavigationManager()
@@ -105,7 +105,7 @@ struct MyPageView: View {
                 }
                 NavigationLink(
                     destination: MyActivityView(viewModel: viewModel, profileViewModel: smallClassViewModel),
-                    isActive: $navigateToMyActivity,
+                    isActive: $isNavigatingToMyActivty,
                     label: { EmptyView() }
                 )
                 
@@ -123,6 +123,11 @@ struct MyPageView: View {
                     ),
                     label: { EmptyView() }
                 )
+            }
+            .onAppear {
+                if tabSelectionViewModel.shouldNavigateToMyActivity {
+                    isNavigatingToMyActivty = true
+                }
             }
             
             .navigationTitle("마이페이지")
@@ -194,7 +199,7 @@ struct MyPageView: View {
                 if item == "내 활동" {
                     ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역"])
                         .onTapGesture {
-                            navigateToMyActivity = true
+                            isNavigatingToMyActivty = true
                         }
                 } else if item == "회원탈퇴" {
                     Button(action: {

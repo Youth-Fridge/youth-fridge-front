@@ -11,7 +11,6 @@ struct ActivityDetailView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: ActivityCardViewModel
     @StateObject var detailViewModel: ActivityDetailModel
-    
     init(invitationId: Int, viewModel: ActivityCardViewModel) {
         self.viewModel = viewModel
         _detailViewModel = StateObject(wrappedValue: ActivityDetailModel(invitationId: invitationId))

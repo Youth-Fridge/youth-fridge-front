@@ -10,7 +10,7 @@ import SwiftUI
 class TabSelectionViewModel: ObservableObject {
     @Published var selectedTab: MainTabType = .home
     @Published var shouldNavigateToMyActivity: Bool = false
-    @Published var selectedSubTab: Int = 1
+    @Published var selectedSubTab: Int = 0
     
     var mypageViewModel: MyPageViewModel? {
         if selectedTab == .mypage {

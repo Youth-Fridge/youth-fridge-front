@@ -31,9 +31,8 @@ struct InviteFinalView: View {
             Spacer()
             
             Button(action: {
-                // MyPageView로 이동하고 MyActivityView의 신청 내역 탭을 선택
                 tabSelectionViewModel.selectedTab = .mypage
-                tabSelectionViewModel.selectedSubTab = 1  // MyActivityView의 신청 내역 탭 선택
+                tabSelectionViewModel.selectedSubTab = 1
                 tabSelectionViewModel.shouldNavigateToMyActivity = true
             }) {
                 Text("신청한 모임 확인하기")

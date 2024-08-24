@@ -185,7 +185,7 @@ struct ShowInviteView: View {
                             .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
                             .padding()
                             .frame(maxWidth: 320)
-                            .background(Color.white)
+                            .background(viewModel.isAvailable ? Color.white: Color.gray2)
                             .cornerRadius(8)
                             .shadow(radius: 3)
                     }

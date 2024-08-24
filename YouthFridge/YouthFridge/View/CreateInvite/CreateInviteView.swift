@@ -144,7 +144,7 @@ struct StepOneView: View {
                     }
                     .buttonStyle(PlainButtonStyle())
                     .sheet(isPresented: $isShowingProfileSelector) {
-                        EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
+                        EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
                             .presentationDetents([.medium, .large])
                             .presentationDragIndicator(.hidden)
                     }
@@ -188,7 +188,7 @@ struct StepOneView: View {
                         Button(action: {
                             viewModel.addActivityPlan()
                         }) {
-                            ZStack {
+                            ZStack(alignment: .leading) {
                                 Rectangle()
                                     .foregroundColor(Color.gray1)
                                     .cornerRadius(6)
@@ -200,6 +200,7 @@ struct StepOneView: View {
                                         .font(.system(size: 12))
                                         .foregroundColor(Color.gray3)
                                 }
+                                .padding(.leading, 10)
                             }
                         }
                         .frame(width: 350, height: 45)
@@ -440,7 +441,7 @@ struct StepOneView: View {
             }
         }
         .sheet(isPresented: $isShowingProfileSelector) {
-            EmojiSelectionView(selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
+            EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
     }

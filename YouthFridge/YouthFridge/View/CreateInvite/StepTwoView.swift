@@ -17,8 +17,9 @@ struct StepTwoView: View {
         VStack {
             Image(selectedImage)
                 .resizable()
-                .frame(width: 324, height: 384)
+                .frame(height: 384)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
+                .padding(.horizontal, 35)
                 .padding(.top, 20)
                 .padding(.bottom, 12)
             
@@ -63,7 +64,6 @@ struct StepTwoView: View {
                     }
                 }
             }
-            .padding(.horizontal, 7)
             
             Button(action: {
                 viewModel.createInvitation()

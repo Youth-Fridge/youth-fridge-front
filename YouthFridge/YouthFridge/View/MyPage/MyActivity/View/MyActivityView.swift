@@ -46,6 +46,7 @@ struct MyActivityView: View {
             .navigationTitle("내 활동")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
+            .toolbar(.visible, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -123,11 +124,3 @@ struct MyActivityView: View {
         }
     }
 }
-
-//struct MyActivityView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let services = Services()
-//        let container = DIContainer(services: services)
-//        MyActivityView(viewModel: MyPageViewModel(container: container), profileViewModel: <#SmallClassViewModel#>)
-//    }
-//}

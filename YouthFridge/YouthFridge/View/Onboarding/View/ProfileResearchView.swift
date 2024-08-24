@@ -13,7 +13,6 @@ struct ProfileResearchView: View {
     @StateObject private var viewModel = ProfileResearchViewModel()
     @State private var navigateToNextView = false 
     var body: some View {
-        NavigationView {
             VStack {
                 ProgressView(value: 1)
                     .progressViewStyle(CustomProgressViewStyle())
@@ -185,7 +184,7 @@ struct ProfileResearchView: View {
                       message: Text(viewModel.alertMessage),
                       dismissButton: .default(Text("확인")))
             }
-        }
+        
     }
 }
 

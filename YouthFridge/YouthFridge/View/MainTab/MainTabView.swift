@@ -9,22 +9,23 @@ import SwiftUI
 import WebKit
 
 struct MainTabView: View {
-    @State private var selectedTab: MainTabType = .home
     @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
     @State private var shouldUpdateUrl = false
-    
+    @StateObject private var tabSelectionViewModel = TabSelectionViewModel()
+
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $tabSelectionViewModel.selectedTab) {
             ForEach(MainTabType.allCases, id: \.self) { tab in
                 tabView(for: tab)
                     .tabItem {
-                        Label(tab.title, image: tab.imageName(selected: selectedTab == tab))
+                        Label(tab.title, image: tab.imageName(selected: tabSelectionViewModel.selectedTab == tab))
                     }
                     .tag(tab)
             }
         }
         .tint(.black)
-        .onChange(of: selectedTab) { newTab in
+        .environmentObject(tabSelectionViewModel)
+        .onChange(of: tabSelectionViewModel.selectedTab) { newTab in
             if newTab == .news {
                 if shouldUpdateUrl {
                     shouldUpdateUrl = false
@@ -35,7 +36,7 @@ struct MainTabView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private func tabView(for tab: MainTabType) -> some View {
         switch tab {
@@ -45,10 +46,10 @@ struct MainTabView: View {
                     viewModel: .init(),
                     newsUrl: $newsUrl,
                     onProfileImageClick: {
-                        self.selectedTab = .mypage
+                        self.tabSelectionViewModel.selectedTab = .mypage
                     },
                     onNewsButtonPress: {
-                        self.selectedTab = .news
+                        self.tabSelectionViewModel.selectedTab = .news
                     },
                     onLatestNewsFetched: {
                         self.shouldUpdateUrl = true
@@ -69,26 +70,25 @@ struct MainTabView: View {
             }
         }
     }
-    
+
     init() {
         let image = UIImage.gradientImageWithBounds(
-            bounds: CGRect( x: 0, y: 0, width: UIScreen.main.scale, height: 8),
+            bounds: CGRect(x: 0, y: 0, width: UIScreen.main.scale, height: 8),
             colors: [
                 UIColor.clear.cgColor,
                 UIColor.black.withAlphaComponent(0.1).cgColor
             ]
         )
-        
+
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.backgroundColor = UIColor.systemGray6
-        
+
         appearance.backgroundImage = UIImage()
         appearance.shadowImage = image
-        
+
         UITabBar.appearance().standardAppearance = appearance
     }
-    
 }
 
 struct MainTabView_Previews: PreviewProvider {
@@ -96,12 +96,13 @@ struct MainTabView_Previews: PreviewProvider {
         MainTabView()
     }
 }
+
 extension UIImage {
     static func gradientImageWithBounds(bounds: CGRect, colors: [CGColor]) -> UIImage {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = colors
-        
+
         UIGraphicsBeginImageContext(gradientLayer.bounds.size)
         gradientLayer.render(in: UIGraphicsGetCurrentContext()!)
         let image = UIGraphicsGetImageFromCurrentImageContext()

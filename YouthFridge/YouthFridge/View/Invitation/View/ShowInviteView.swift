@@ -11,7 +11,7 @@ struct ShowInviteView: View {
     @ObservedObject var viewModel: ShowInviteViewModel
     let invitationId: Int
     let recruiting: String
-    
+
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false
@@ -53,7 +53,7 @@ struct ShowInviteView: View {
                         if isImageVisible {
                             VStack {
                                 if let showDetail = viewModel.showDetail,
-                                   let invitationImage = InvitationImage.from(rawValue: showDetail.invitationImage) {
+                                   let invitationImage = PublicInvitationImage.from(rawValue: showDetail.invitationImage) {
                                     
                                     Image(invitationImage.imageName)
                                         .resizable()

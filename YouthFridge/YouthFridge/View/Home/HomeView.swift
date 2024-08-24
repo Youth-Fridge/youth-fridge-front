@@ -211,7 +211,7 @@ struct CardScrollView: View {
                     NavigationLink(destination: ShowInviteView(
                         viewModel: ShowInviteViewModel(),
                         invitationId: card.id
-                    )) {
+                    ).toolbar(.hidden, for: .tabBar)) {
                         CardItemView(card: card, backgroundColor: card.backgroundColor)
                     }
                 }

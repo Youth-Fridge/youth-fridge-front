@@ -23,10 +23,14 @@ struct ComplainPopUpView: View {
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .padding([.leading, .trailing], 16)
+            
             Text("자세한 내용은 아래 버튼을 클릭해주세요")
                 .font(.system(size: 12))
                 .multilineTextAlignment(.center)
                 .foregroundColor(.gray3)
+                .padding(.bottom, 7)
+                .padding(.top, -15)
+            
                 Button(action: {
                     onConfirm()
                 }) {
@@ -39,8 +43,9 @@ struct ComplainPopUpView: View {
                         .background(Color.sub2Color)
                         .cornerRadius(6)
                 }
-                .frame(maxWidth: .infinity)
-            
+                .frame(height: 35)
+                .padding(.horizontal, 80)
+                .padding(.bottom, 10)
         }
         .padding(16)
         .background(Color.white)

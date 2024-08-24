@@ -40,7 +40,7 @@ struct ShowInviteView: View {
                     Text("당신을 초대합니다 🎉")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.gray6)
-                        .padding(.top,10)
+                        .padding(.top ,20)
                     
                     ZStack {
                         Image("invitation")
@@ -191,7 +191,7 @@ struct ShowInviteView: View {
                     }
                     .disabled(isInvitationApplied || !viewModel.isAvailable)
                     Button(action: {
-                        showComplainPopupView = true
+                        reportInvitation()
                     }) {
                         Text("커뮤니티 규정에 어긋난 소모임인가요?")
                             .font(.system(size: 12,weight: .semibold))
@@ -245,7 +245,6 @@ struct ShowInviteView: View {
             }
     }
     
-    
     private func applyInvitation() {
         // TODO: - 이미 신청한 소모임인 경우 처리
         // 모집 중일 경우 소모임 신청
@@ -266,6 +265,26 @@ struct ShowInviteView: View {
             alertTitle = "오류"
             alertMessage = "모집 완료된 소모임입니다."
             showAlert = true
+        }
+    }
+    
+    private func reportInvitation() {
+        InvitationService.shared.reportInvitation(invitationId: invitationId) { result in
+            switch result {
+            case .success(let message):
+                showComplainPopupView = true
+                print("소모임 신고가 완료되었습니다")
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    if let customErrorMessage = error.localizedDescription as? String,
+                       customErrorMessage == "이미 신고하였습니다." {
+                        alertTitle = "오류"
+                        alertMessage = "이미 신고한 소모임입니다."
+                        showAlert = true
+                    }
+                }
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class MyPageViewModel: ObservableObject {
+    @Published var isNavigatingToMyActivty = false
     @Published var myUser: User?
     @Published var launchDate: String?
     @Published var startTime: String?
@@ -81,5 +82,9 @@ class MyPageViewModel: ObservableObject {
                 print("Error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    func navigateToMyActivityView() {
+        isNavigatingToMyActivty = true
     }
 }

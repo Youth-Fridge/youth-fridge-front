@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct MyPageView: View {
-    @StateObject var viewModel: MyPageViewModel
+    @ObservedObject var viewModel: MyPageViewModel
     @State private var showDeletePopup = false
     @State private var navigateToMyActivity = false
     @State private var showLogOutDeletePopup = false
     @StateObject private var smallClassViewModel = SmallClassViewModel()
     @StateObject private var navigationManager = NavigationManager()
+    @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
 
     var body: some View {
         NavigationStack {
@@ -123,6 +124,7 @@ struct MyPageView: View {
                     label: { EmptyView() }
                 )
             }
+            
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
         }

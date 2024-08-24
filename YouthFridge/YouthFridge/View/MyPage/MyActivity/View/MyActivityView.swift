@@ -10,10 +10,8 @@ import SwiftUI
 struct MyActivityView: View {
     @State private var selectedTab = 0
     @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: MyPageViewModel
     @StateObject var profileViewModel: SmallClassViewModel
-
     private let selectedTabColor = Color.main1Color
     private let unselectedTabColor = Color.gray1Color
     private let tabTextColorSelected = Color.white

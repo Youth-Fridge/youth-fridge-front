@@ -57,7 +57,7 @@ struct HomeView: View {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
                             invitationId: tabContents[index].invitationId
-                        )) {
+                        ).toolbar(.hidden, for: .tabBar)) {
                             ZStack(alignment: .leading) {
                                 Image(tabContents[index].imageName)
                                     .resizable()

@@ -69,6 +69,7 @@
 		5817D63F2C4D48930081323E /* TabContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D63E2C4D48930081323E /* TabContent.swift */; };
 		58299ADA2C73497D001BBF0F /* NewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299AD92C73497D001BBF0F /* NewsViewModel.swift */; };
 		58299AE12C74FC0A001BBF0F /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299AE02C74FC0A001BBF0F /* NavigationManager.swift */; };
+		58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */; };
 		5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */; };
 		5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */; };
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
@@ -200,6 +201,7 @@
 		5817D63E2C4D48930081323E /* TabContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabContent.swift; sourceTree = "<group>"; };
 		58299AD92C73497D001BBF0F /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		58299AE02C74FC0A001BBF0F /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicInvitationImage.swift; sourceTree = "<group>"; };
 		5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRequest.swift; sourceTree = "<group>"; };
 		5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
@@ -351,12 +353,10 @@
 		5817D5F22C45046A0081323E /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				58299B402C797ED4001BBF0F /* ViewModel */,
+				58299B3F2C797EAB001BBF0F /* Model */,
 				5817D5F62C4504970081323E /* HomeView.swift */,
-				5817D5FE2C4509CF0081323E /* HomeViewModel.swift */,
 				5817D6002C450FA10081323E /* CardView.swift */,
-				5817D6022C450FB60081323E /* Card.swift */,
-				5817D6342C4A79250081323E /* CardViewModel.swift */,
-				5817D63E2C4D48930081323E /* TabContent.swift */,
 				58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */,
 				58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */,
 			);
@@ -511,6 +511,25 @@
 			isa = PBXGroup;
 			children = (
 				58299AD92C73497D001BBF0F /* NewsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		58299B3F2C797EAB001BBF0F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5817D6022C450FB60081323E /* Card.swift */,
+				5817D63E2C4D48930081323E /* TabContent.swift */,
+				58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		58299B402C797ED4001BBF0F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5817D6342C4A79250081323E /* CardViewModel.swift */,
+				5817D5FE2C4509CF0081323E /* HomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -895,6 +914,7 @@
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
 				58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */,
 				0AB468E82C68C480003061CE /* MyActivitiesResponse.swift in Sources */,
+				58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */,
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
 				0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,

@@ -52,7 +52,7 @@ struct ShowInviteView: View {
                         if isImageVisible {
                             VStack {
                                 if let showDetail = viewModel.showDetail,
-                                   let invitationImage = InvitationImage.from(rawValue: showDetail.invitationImage) {
+                                   let invitationImage = PublicInvitationImage.from(rawValue: showDetail.invitationImage) {
                                     
                                     Image(invitationImage.imageName)
                                         .resizable()

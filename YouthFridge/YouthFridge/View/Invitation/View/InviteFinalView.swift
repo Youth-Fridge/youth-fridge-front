@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct InviteFinalView: View {
-    @State private var selectedTab: MainTabType = .mypage
+//    var onLetsGoClick: () -> Void
     @StateObject private var smallClassViewModel = SmallClassViewModel()
-
     var body: some View {
         VStack {
             Spacer()
@@ -40,9 +39,6 @@ struct InviteFinalView: View {
                     .cornerRadius(8)
             }
             .padding()
-            .onTapGesture {
-                selectedTab = .mypage
-            }
             .navigationBarBackButtonHidden(true)
             VStack {
                 Text("* 일정 변경으로 참여가 어려울 시 반드시 2일 전에는 응답해 주세요.")

@@ -79,7 +79,7 @@ struct LoginIntroView: View {
                     )
                     
                     NavigationLink(
-                        destination: LoginIntroView().navigationBarBackButtonHidden(true),
+                        destination: OnboardingStartView().navigationBarBackButtonHidden(true),
                         isActive: $isPresentedLoginView,
                         label: { EmptyView() }
                     )
@@ -88,6 +88,7 @@ struct LoginIntroView: View {
             )
         }
     }
+    
 
     var attributedText: AttributedString {
         var text = AttributedString("1분이면 회원가입 가능해요")

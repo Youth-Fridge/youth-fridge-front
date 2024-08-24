@@ -19,6 +19,7 @@ struct ShowInviteView: View {
     @State private var alertMessage: String = ""
     @State private var showGIF: Bool = true
     @Environment(\.presentationMode) var presentationMode
+    @State private var showComplainPopupView = false
     private let hapticManager = HapticManager.instance //진동
     var body: some View {
             ZStack {
@@ -35,17 +36,16 @@ struct ShowInviteView: View {
                         .position(x: geometry.size.width - 140, y: geometry.size.height - 160)
                 }
                 VStack(alignment: .center) {
-                    Spacer()
-                    
-                    Text("당신을 초대합니다🎉")
+                    Text("당신을 초대합니다 🎉")
                         .font(.system(size: 30, weight: .bold))
                         .foregroundColor(.gray6)
+                        .padding(.top,10)
                     
                     ZStack {
                         Image("invitation")
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 320, height: 436)
+                            .frame(width: 320, height: 490)
                             .padding(.leading, 30)
                         
                         if isImageVisible {
@@ -55,16 +55,16 @@ struct ShowInviteView: View {
                                     
                                     Image(invitationImage.imageName)
                                         .resizable()
-                                        .frame(width: 260, height: 280)
+                                        .frame(width: 260, height: 338)
+                                        .padding(.bottom,10)
                                     
                                     Text(showDetail.clubName)
                                         .font(.system(size: 20, weight: .semibold))
-                                        .padding(.top, 10)
                                         .foregroundColor(.gray6)
                                     
                                 }
                             }
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 60)
                         }
                         
                         // MARK: - 뒷 배경
@@ -175,30 +175,57 @@ struct ShowInviteView: View {
                         }
                     }
                     
-                    Spacer()
                     
                     Button(action: {
                         applyInvitation()
                     }) {
                         Text("참여하기")
-                            .font(.headline)
-                            .foregroundColor(.yellow)
+                            .font(.system(size: 20,weight: .bold))
+                            .foregroundColor(.sub2)
                             .padding()
                             .frame(maxWidth: 320)
                             .background(Color.white)
                             .cornerRadius(8)
                             .shadow(radius: 3)
-                            .padding(.bottom, 20)
                     }
                     .disabled(isInvitationApplied)
-                    
+                    Button(action: {
+                        showComplainPopupView = true
+                    }) {
+                        Text("커뮤니티 규정에 어긋난 소모임인가요?")
+                            .font(.system(size: 12,weight: .semibold))
+                            .foregroundColor(.gray7)
+                            .underline(color: .gray7)
+                            .padding(.top,10)
+                    }
+                    Spacer()
                     NavigationLink(
                         destination: InviteFinalView(),
                         isActive: $isInvitationApplied,
                         label: { EmptyView() }
                     )
                 }
-            }
+                    if showComplainPopupView {
+                        Color.black.opacity(0.4)
+                            .edgesIgnoringSafeArea(.all)
+                            .onTapGesture {
+                                withAnimation {
+                                    showComplainPopupView = false
+                                }
+                            }
+                        ComplainPopUpView(
+                            message: "보다 건강한 커뮤니티를 위한\n 소중한 의견 감사합니다",
+                            onConfirm: {
+                                withAnimation {
+                                    showComplainPopupView = false
+                                }
+                            }
+                        )
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .zIndex(1)
+                    }
+                }
+            
             
             .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading: Button(action: {
@@ -215,7 +242,6 @@ struct ShowInviteView: View {
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("알림"), message: Text(alertMessage), dismissButton: .default(Text("확인")))
             }
-        
     }
     
     

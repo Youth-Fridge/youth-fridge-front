@@ -124,11 +124,3 @@ struct MyActivityView: View {
         }
     }
 }
-
-//struct MyActivityView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let services = Services()
-//        let container = DIContainer(services: services)
-//        MyActivityView(viewModel: MyPageViewModel(container: container), profileViewModel: <#SmallClassViewModel#>)
-//    }
-//}

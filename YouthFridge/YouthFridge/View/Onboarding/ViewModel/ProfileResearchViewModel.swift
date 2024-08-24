@@ -45,12 +45,6 @@ class ProfileResearchViewModel: ObservableObject {
     }
     
     init() {
-        let type = UserDefaults.standard.string(forKey: "loginType") ?? "unknown"
-        let nicknameKey = type == "apple" ? "appleUserNickname" : type == "kakao" ? "kakaoUserNickname" : "nickname"
-        
-        if let savedNickname = UserDefaults.standard.string(forKey: nicknameKey) {
-            self.nickname = savedNickname
-        }
         setupBindings()
     }
     

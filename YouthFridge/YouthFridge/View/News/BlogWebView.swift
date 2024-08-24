@@ -71,13 +71,15 @@ struct BlogWebView: UIViewRepresentable {
             
             let offsetX = abs(contentOffset.x - targetOffset.x)
             let offsetY = abs(contentOffset.y - targetOffset.y)
-            if offsetX < 1 && offsetY < 1 {
+            
+            if offsetX < 10 && offsetY < 10 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.parent.isLoading = false
                 }
             } else {
-                DispatchQueue.main.async {
-                    self.checkScrollPosition(webView: webView)
+                // 일정 시간 후 로딩 종료
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    self.parent.isLoading = false
                 }
             }
         }

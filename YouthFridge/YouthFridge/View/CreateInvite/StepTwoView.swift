@@ -17,8 +17,9 @@ struct StepTwoView: View {
         VStack {
             Image(selectedImage)
                 .resizable()
-                .frame(width: 324, height: 384)
+                .frame(height: 384)
                 .clipShape(RoundedRectangle(cornerRadius: 6))
+                .padding(.horizontal, 30)
                 .padding(.top, 20)
                 .padding(.bottom, 12)
             
@@ -29,11 +30,13 @@ struct StepTwoView: View {
                             ZStack {
                                 Image(imageName)
                                     .resizable()
-                                    .frame(width: 60, height: 80)
+                                    .frame(maxWidth: 63)
+                                    .frame(height: 80)
                                     .cornerRadius(4)
                                 
                                 Color.black
-                                    .frame(width: 60, height: 80)
+                                    .frame(maxWidth: 63)
+                                    .frame(height: 80)
                                     .opacity(0.5)
                                     .cornerRadius(4)
                                 
@@ -48,7 +51,8 @@ struct StepTwoView: View {
                         } else {
                             Image(imageName)
                                 .resizable()
-                                .frame(width: 60, height: 80)
+                                .frame(maxWidth: 63)
+                                .frame(height: 80)
                                 .cornerRadius(4)
                                 .onTapGesture {
                                     selectedImage = imageName
@@ -63,7 +67,6 @@ struct StepTwoView: View {
                     }
                 }
             }
-            .padding(.horizontal, 7)
             
             Button(action: {
                 viewModel.createInvitation()
@@ -73,7 +76,7 @@ struct StepTwoView: View {
                     .font(.system(size: 16,weight: .bold))
                     .foregroundColor(viewModel.isFormComplete ? Color.white : Color.gray6)
                     .padding()
-                    .frame(maxWidth: 324)
+                    .frame(maxWidth: 335)
                     .background(viewModel.isFormComplete ? Color.sub2 : Color.gray2)
                     .cornerRadius(8)
             }

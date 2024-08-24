@@ -13,43 +13,15 @@ struct CreateInviteView: View {
     var body: some View {
         ZStack(alignment: .top) {
             VStack(alignment: .leading) {
-                HStack(spacing: 14) {
-                    Button(action: {
-                        viewModel.selectedTab = 0
-                    }) {
-                        Text("STEP1")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 60, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 0 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 0 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                    
-                    Button(action: {
-                        viewModel.selectedTab = 1
-                    }) {
-                        Text("STEP2")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 68, height: 5)
-                            .padding()
-                            .background(viewModel.selectedTab == 1 ? Color.main1Color : Color.gray1Color)
-                            .foregroundColor(viewModel.selectedTab == 1 ? .white : .black)
-                            .cornerRadius(8)
-                    }
-                }
-                .padding(.top, 30)
-                
+                tabButtons
+
                 if viewModel.selectedTab == 0 {
                     StepOneView(viewModel: viewModel)
-                        .padding(.horizontal, 5)
                 } else {
                     StepTwoView(viewModel: viewModel)
                 }
-                
                 Spacer()
             }
-            .padding(.horizontal, 30)
             .navigationTitle("초대장 작성")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
@@ -60,6 +32,7 @@ struct CreateInviteView: View {
                     }) {
                         Image("left-arrow")
                             .resizable()
+                            .frame(width: 20, height: 20)
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -71,13 +44,38 @@ struct CreateInviteView: View {
                                 .frame(width: 36, height: 36)
                                 .clipShape(Circle())
                         }
-                        
                     }
                 }
             }
         }
         .onAppear {
             viewModel.fetchProfileImage()
+        }
+    }
+    
+    private var tabButtons: some View {
+        HStack(spacing: 16) {
+            tabButton(title: "STEP1", tabIndex: 0)
+            tabButton(title: "STEP2", tabIndex: 1)
+            Spacer()
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 30)
+    }
+
+    private func tabButton(title: String, tabIndex: Int) -> some View {
+        Button(action: {
+            withAnimation(.easeInOut(duration: 0.3)) {
+                viewModel.selectedTab = tabIndex
+            }
+        }) {
+            Text(title)
+                .font(.system(size: 16, weight: .bold))
+                .frame(width: 60, height: 5)
+                .padding()
+                .background(viewModel.selectedTab == tabIndex ? Color.main1Color : Color.gray1Color)
+                .foregroundColor(viewModel.selectedTab == tabIndex ? .white : .black)
+                .cornerRadius(8)
         }
     }
 }
@@ -110,11 +108,12 @@ struct StepOneView: View {
                         }
                     }
                 
-                VStack(alignment: .leading, spacing: 15) {
+                VStack(alignment: .leading) {
                     Text("이모지 내역")
                         .font(.system(size: 18, weight: .semibold))
                         .padding(.top, 15)
                         .padding(.bottom, 2)
+                        .padding(.horizontal, 22)
                     
                     Button(action: {
                         showEmojiModal = true
@@ -150,6 +149,7 @@ struct StepOneView: View {
                     }
                     .animation(.easeInOut, value: isShowingProfileSelector)
                     .padding(.bottom, 20)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 명")
@@ -167,6 +167,7 @@ struct StepOneView: View {
                             }
                     }
                     .padding(.bottom, 35)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("세부 활동 계획")
@@ -206,6 +207,7 @@ struct StepOneView: View {
                         .frame(width: 350, height: 45)
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
@@ -247,6 +249,7 @@ struct StepOneView: View {
                         }
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 장소")
@@ -265,6 +268,7 @@ struct StepOneView: View {
                             }
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 인원")
@@ -296,6 +300,7 @@ struct StepOneView: View {
                         }
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
@@ -351,6 +356,7 @@ struct StepOneView: View {
                         )
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 시간")
@@ -417,6 +423,7 @@ struct StepOneView: View {
                         }
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("오픈 채팅")
@@ -437,6 +444,7 @@ struct StepOneView: View {
                             .frame(height: 20)
                     }
                     .padding(.bottom, 25)
+                    .padding(.horizontal, 22)
                 }
             }
         }

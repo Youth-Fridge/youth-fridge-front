@@ -77,4 +77,3 @@ class ShowInviteViewModel: ObservableObject {
     
 }
 
-

@@ -71,6 +71,7 @@
 		58299AE12C74FC0A001BBF0F /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299AE02C74FC0A001BBF0F /* NavigationManager.swift */; };
 		58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */; };
 		58299B442C79BB11001BBF0F /* TabSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */; };
+		58299B462C79D743001BBF0F /* ComplainPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B452C79D743001BBF0F /* ComplainPopUpView.swift */; };
 		5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */; };
 		5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */; };
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
@@ -204,6 +205,7 @@
 		58299AE02C74FC0A001BBF0F /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicInvitationImage.swift; sourceTree = "<group>"; };
 		58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionViewModel.swift; sourceTree = "<group>"; };
+		58299B452C79D743001BBF0F /* ComplainPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainPopUpView.swift; sourceTree = "<group>"; };
 		5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRequest.swift; sourceTree = "<group>"; };
 		5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */,
 				58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */,
 				58DA3F652C730100002081D9 /* GifView.swift */,
+				58299B452C79D743001BBF0F /* ComplainPopUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -968,6 +971,7 @@
 				0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */,
 				0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */,
 				58DA3F5E2C723487002081D9 /* LocationPopUpView.swift in Sources */,
+				58299B462C79D743001BBF0F /* ComplainPopUpView.swift in Sources */,
 				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,

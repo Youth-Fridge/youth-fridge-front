@@ -14,10 +14,6 @@ enum InvitationImage: Int, CaseIterable {
     case image3
     case image4
     case image5
-    case image6
-    case image7
-    case image8
-    case image9
 
     var imageName: String {
         switch self {
@@ -33,14 +29,6 @@ enum InvitationImage: Int, CaseIterable {
             return "invitationImage4"
         case .image5:
             return "invitationImage5"
-        case .image6:
-            return "invitationImage9" //김장
-        case .image7:
-            return "invitationImage7" //포트락 파티
-        case .image8:
-            return "invitationImage8"
-        case .image9:
-            return "invitationImage9"
         }
     }
 

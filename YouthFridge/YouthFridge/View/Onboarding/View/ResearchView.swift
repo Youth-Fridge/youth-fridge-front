@@ -14,7 +14,6 @@ struct ResearchView: View {
     @State private var navigateToNextView = false
     
     var body: some View {
-        NavigationView {
             VStack {
                 ProgressView(value: 0.5)
                     .progressViewStyle(CustomProgressViewStyle())
@@ -92,7 +91,7 @@ struct ResearchView: View {
                 viewModel.loadCategories()
             }
             .navigationBarHidden(true)
-        }
+        
     }
 }
 

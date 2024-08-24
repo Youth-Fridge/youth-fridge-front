@@ -12,7 +12,6 @@ struct OnboardingStartView: View {
     let images = ["start1", "start2", "start3", "start4", "start5"]
 
     var body: some View {
-        NavigationView {
             ZStack {
                 Color.sub2Color
                     .edgesIgnoringSafeArea(.all)
@@ -85,7 +84,7 @@ struct OnboardingStartView: View {
                 .padding()
             }
             .navigationBarHidden(true)
-        }
+        
     }
 }
 

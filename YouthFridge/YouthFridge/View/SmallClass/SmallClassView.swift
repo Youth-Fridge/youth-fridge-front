@@ -26,7 +26,7 @@ struct SmallClassView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationLink(destination: CreateInviteView()) {
+                NavigationLink(destination: CreateInviteView().toolbar(.hidden, for: .tabBar)) {
                     AddInviteView()
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -48,7 +48,7 @@ struct SmallClassView: View {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
                             invitationId: cell.id
-                        )) {
+                        ).toolbar(.hidden, for: .tabBar)) {
                             EmptyView()
                         }
                         .opacity(0)

@@ -57,7 +57,7 @@ struct HomeView: View {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
                             invitationId: tabContents[index].invitationId
-                        )) {
+                        ).toolbar(.hidden, for: .tabBar)) {
                             ZStack(alignment: .leading) {
                                 Image(tabContents[index].imageName)
                                     .resizable()
@@ -211,7 +211,7 @@ struct CardScrollView: View {
                     NavigationLink(destination: ShowInviteView(
                         viewModel: ShowInviteViewModel(),
                         invitationId: card.id
-                    )) {
+                    ).toolbar(.hidden, for: .tabBar)) {
                         CardItemView(card: card, backgroundColor: card.backgroundColor)
                     }
                 }

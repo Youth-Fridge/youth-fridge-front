@@ -10,7 +10,6 @@ import SwiftUI
 struct ShowInviteView: View {
     @ObservedObject var viewModel: ShowInviteViewModel
     let invitationId: Int
-    
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false

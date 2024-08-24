@@ -10,6 +10,7 @@ import SwiftUI
 struct EmojiSelectionView: View {
     let emojiImages = Emoji.allCases.map { $0.imageName }
     
+    @Binding var nickname: String?
     @Binding var selectedImage: String?
     @Binding var selectedEmojiNumber: Int
     @Binding var isShowing: Bool
@@ -17,7 +18,8 @@ struct EmojiSelectionView: View {
     
     private var imageName: String?
     
-    init(selectedImage: Binding<String?>, selectedEmojiNumber: Binding<Int>, isShowing: Binding<Bool>) {
+    init(nickname: Binding<String?>, selectedImage: Binding<String?>, selectedEmojiNumber: Binding<Int>, isShowing: Binding<Bool>) {
+        self._nickname = nickname
         self._selectedImage = selectedImage
         self._selectedEmojiNumber = selectedEmojiNumber
         self._isShowing = isShowing
@@ -29,7 +31,7 @@ struct EmojiSelectionView: View {
     var body: some View {
         VStack {
             VStack(alignment: .center) {
-                if let userName = UserDefaults.standard.string(forKey: "nickname") {
+                if let userName = nickname {
                     Text("\(userName)님\n이모지를 선택해 주세요")
                         .font(.system(size: 24, weight: .semibold))
                         .multilineTextAlignment(.center)

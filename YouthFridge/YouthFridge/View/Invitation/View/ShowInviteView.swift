@@ -10,6 +10,8 @@ import SwiftUI
 struct ShowInviteView: View {
     @ObservedObject var viewModel: ShowInviteViewModel
     let invitationId: Int
+    let recruiting: String
+
     @State private var isImageVisible: Bool = true
     @State private var rotationAngle: Double = 0
     @State private var isFlipped: Bool = false
@@ -182,15 +184,15 @@ struct ShowInviteView: View {
                     }) {
                         Text("참여하기")
                             .font(.headline)
-                            .foregroundColor(.yellow)
+                            .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
                             .padding()
                             .frame(maxWidth: 320)
-                            .background(Color.white)
+                            .background(viewModel.isAvailable ? Color.white: Color.gray2)
                             .cornerRadius(8)
                             .shadow(radius: 3)
                             .padding(.bottom, 20)
                     }
-                    .disabled(isInvitationApplied)
+                    .disabled(isInvitationApplied || !viewModel.isAvailable)
                     
                     NavigationLink(
                         destination: InviteFinalView(),
@@ -220,17 +222,25 @@ struct ShowInviteView: View {
     
     
     private func applyInvitation() {
-        InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
-            switch result {
-            case .success(let message):
-                isInvitationApplied = true
-            case .failure(let error):
-                DispatchQueue.main.async {
-                    alertTitle = "오류"
-                    alertMessage = error.localizedDescription
-                    showAlert = true
+        // TODO: - 이미 신청한 소모임인 경우 처리
+        // 모집 중일 경우 소모임 신청
+        if recruiting == "모집 중" {
+            InvitationService.shared.applyInvitation(invitationId: invitationId) { result in
+                switch result {
+                case .success(let message):
+                    isInvitationApplied = true
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        alertTitle = "오류"
+                        alertMessage = error.localizedDescription
+                        showAlert = true
+                    }
                 }
             }
+        } else {
+            alertTitle = "오류"
+            alertMessage = "모집 완료된 소모임입니다."
+            showAlert = true
         }
     }
 }

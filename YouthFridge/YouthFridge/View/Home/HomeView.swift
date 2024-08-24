@@ -56,7 +56,7 @@ struct HomeView: View {
                     ForEach(tabContents.indices, id: \.self) { index in
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
-                            invitationId: tabContents[index].invitationId
+                            invitationId: tabContents[index].invitationId, recruiting: tabContents[index].ing
                         ).toolbar(.hidden, for: .tabBar)) {
                             ZStack(alignment: .leading) {
                                 Image(tabContents[index].imageName)
@@ -126,7 +126,7 @@ struct HomeView: View {
                                     .frame(width: 36, height: 36)
                                     .clipShape(Circle())
                             }
-                           
+
                         }
                     }
                 }
@@ -210,7 +210,7 @@ struct CardScrollView: View {
                 ForEach(cards) { card in
                     NavigationLink(destination: ShowInviteView(
                         viewModel: ShowInviteViewModel(),
-                        invitationId: card.id
+                        invitationId: card.id, recruiting: card.ing
                     ).toolbar(.hidden, for: .tabBar)) {
                         CardItemView(card: card, backgroundColor: card.backgroundColor)
                     }
@@ -235,4 +235,3 @@ struct CardItemView: View {
         )
     }
 }
-

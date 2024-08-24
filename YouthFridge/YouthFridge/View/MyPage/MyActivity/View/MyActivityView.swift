@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct MyActivityView: View {
-    @State private var selectedTab = 0
+    @State private var selectedTab : Int
     @Environment(\.dismiss) var dismiss
-    
     @StateObject var viewModel: MyPageViewModel
     @StateObject var profileViewModel: SmallClassViewModel
-
+    @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
     private let selectedTabColor = Color.main1Color
     private let unselectedTabColor = Color.gray1Color
     private let tabTextColorSelected = Color.white
@@ -71,6 +70,7 @@ struct MyActivityView: View {
             }
             .onAppear {
                 profileViewModel.fetchProfileImage()
+                selectedTab = tabSelectionViewModel.selectedSubTab
             }
         
     }

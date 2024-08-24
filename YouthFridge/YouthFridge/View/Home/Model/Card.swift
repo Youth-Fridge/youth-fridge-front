@@ -27,9 +27,9 @@ struct Card: Identifiable {
     
     var ing: String {
         guard let endDate = combinedDateTime() else {
-            return "모집중"
+            return "모집 중"
         }
-        return Date() > endDate ? "모집완료" : "모집중"
+        return Date() > endDate ? "모집완료" : "모집 중"
     }
     
     var formattedDateAndTime: String {

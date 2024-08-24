@@ -46,6 +46,7 @@ struct MyActivityView: View {
             .navigationTitle("내 활동")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
+            .toolbar(.visible, for: .tabBar)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {

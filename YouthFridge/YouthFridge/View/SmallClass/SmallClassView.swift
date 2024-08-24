@@ -48,7 +48,7 @@ struct SmallClassView: View {
                         NavigationLink(destination: ShowInviteView(
                             viewModel: ShowInviteViewModel(),
                             invitationId: cell.id
-                        )) {
+                        ).toolbar(.hidden, for: .tabBar)) {
                             EmptyView()
                         }
                         .opacity(0)

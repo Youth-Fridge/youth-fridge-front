@@ -112,21 +112,19 @@ struct ApplicationDetailView: View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.title)
-                    .font(.title2)
-                    .fontWeight(.semibold)
+                    .font(.pretendardSemiBold20)
                     .padding(.bottom, 6)
                 Text(viewModel.date)
-                    .font(.body)
+                    .font(.pretendardRegular14)
                 Text(viewModel.location)
-                    .font(.body)
+                    .font(.pretendardRegular14)
             }
             .padding()
             
             Spacer()
             
             Text("D - \(viewModel.daysLeft)")
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.pretendardBold20)
                 .padding()
                 .frame(width: 100, height: 60)
                 .background(Color.research)
@@ -156,12 +154,10 @@ struct ApplicationDetailView: View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
                 Text("참여 현황")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                 
                 Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
+                    .font(.pretendardBold12)
                     .padding(.horizontal, 8)
                     .frame(width: 75, height: 30)
                     .overlay(
@@ -179,8 +175,7 @@ struct ApplicationDetailView: View {
             
             HStack {
                 Text("TO DO")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.top, -10)
                     .padding(.bottom, 2)
             }
@@ -199,8 +194,7 @@ struct ApplicationDetailView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(detailViewModel.ownerIntroduce)
-                        .font(.subheadline)
-                        .fontWeight(.medium)
+                        .font(.pretendardMedium14)
                         .padding(.bottom, 10)
                     
                     ZStack(alignment: .leading) {
@@ -213,8 +207,8 @@ struct ApplicationDetailView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             ForEach(detailViewModel.activities, id: \.self) { activity in
                                  Text("•  \(activity)")
-                                     .font(Font.custom("Pretendard", size: 12))
-                                     .padding(.bottom, 3)
+                                    .font(.pretendardRegular12)
+                                    .padding(.bottom, 3)
                              }
                         }
                         .padding(.leading, 17)
@@ -236,12 +230,11 @@ struct ApplicationDetailView: View {
             
             HStack {
                 Text("오픈채팅")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.bottom, 2)
                 
                 Text("원활한 소통을 위해 모임 전 꼭 참여해주세요 !")
-                    .font(.caption)
+                    .font(.pretendardRegular12)
                     .foregroundColor(Color.gray6)
                     .fontWeight(.regular)
             }
@@ -255,7 +248,7 @@ struct ApplicationDetailView: View {
                     .cornerRadius(6)
                 
                 Text(detailViewModel.kakaoLink)
-                    .font(Font.custom("Pretendard", size: 12))
+                    .font(.pretendardRegular12)
                     .padding(.leading, 5)
                     .padding(12)
                     .foregroundColor(Color.gray6)
@@ -272,13 +265,11 @@ struct ApplicationDetailView: View {
             
             VStack(alignment: .leading) {
                 Text("신청 취소")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.top, 8)
                 
                 Text("모임 2일 전까지만 취소 가능")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
+                    .font(.pretendardRegular12)
                     .padding(.top, -8)
                     .foregroundColor(Color.gray6)
             }
@@ -299,8 +290,7 @@ struct ApplicationDetailView: View {
                         showCancelPopup = true
                     }) {
                         Text("미참석")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
+                            .font(.pretendardSemiBold14)
                             .foregroundColor(Color.gray6)
                             .frame(width: 77, height: 29)
                             .background((viewModel.daysLeft <= 1 ? Color.gray2 : Color.sub2))
@@ -323,13 +313,11 @@ struct ApplicationDetailView: View {
             
             HStack {
                 Text("참여자 규칙")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.bottom, 2)
                 
                 Text("운영사항")
-                    .font(.subheadline)
-                    .fontWeight(.regular)
+                    .font(.pretendardRegular12)
                     .foregroundColor(Color.gray6)
                     .padding(.bottom, 2)
             }
@@ -357,7 +345,7 @@ struct ApplicationDetailView: View {
                 + Text("로 문의 부탁드립니다.")
             }
             .padding(.bottom, 40)
-            .font(.footnote)
+            .font(.pretendardMedium11)
             .foregroundColor(Color.gray4)
             .frame(maxWidth: .infinity, alignment: .leading)
             .fixedSize(horizontal: false, vertical: true)

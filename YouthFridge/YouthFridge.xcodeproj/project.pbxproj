@@ -13,7 +13,7 @@
 		0A024F842C7B738E00B81F33 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A024F832C7B738E00B81F33 /* Font+Extension.swift */; };
 		0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */; };
 		0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */; };
-		0A024F8A2C7B79E000B81F33 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F892C7B79E000B81F33 /* Secret.plist */; };
+		0A024F8E2C7B7D8E00B81F33 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F8D2C7B7D8E00B81F33 /* Secret.plist */; };
 		0A0600452C5783130036CD8F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600442C5783130036CD8F /* NewsView.swift */; };
 		0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600462C5784790036CD8F /* BlogWebView.swift */; };
 		0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600482C57894E0036CD8F /* CancelPopUpView.swift */; };
@@ -156,7 +156,7 @@
 		0A024F832C7B738E00B81F33 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		0A024F892C7B79E000B81F33 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
+		0A024F8D2C7B7D8E00B81F33 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		0A0600412C57813E0036CD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0A0600442C5783130036CD8F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		0A0600462C5784790036CD8F /* BlogWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogWebView.swift; sourceTree = "<group>"; };
@@ -714,7 +714,7 @@
 				58EEF7172C43D24000C12C1E /* View */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 				58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */,
-				0A024F892C7B79E000B81F33 /* Secret.plist */,
+				0A024F8D2C7B7D8E00B81F33 /* Secret.plist */,
 			);
 			path = YouthFridge;
 			sourceTree = "<group>";
@@ -922,7 +922,7 @@
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
 				0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */,
 				0A024F7E2C7B72E500B81F33 /* Pretendard-Bold.otf in Resources */,
-				0A024F8A2C7B79E000B81F33 /* Secret.plist in Resources */,
+				0A024F8E2C7B7D8E00B81F33 /* Secret.plist in Resources */,
 				0A024F822C7B72F400B81F33 /* Pretendard-SemiBold.otf in Resources */,
 				58DA3F642C72FF3F002081D9 /* motion.gif in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,

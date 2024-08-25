@@ -10,20 +10,21 @@ import Combine
 
 class MyInvitationsViewModel: ObservableObject {
     @Published var invitationActivities: [ActivityCardViewModel] = []
-    
-    init() {
-        fetchActivities()
-    }
-    
+    @Published var isLoading: Bool = false
+
     func fetchActivities() {
+        isLoading = true
+        
         InvitationService.shared.getMyInvitations { [weak self] result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self?.isLoading = false
+                
+                switch result {
+                case .success(let response):
                     self?.invitationActivities = response.map { ActivityCardViewModel(from: $0) }
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
                 }
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
             }
         }
     }

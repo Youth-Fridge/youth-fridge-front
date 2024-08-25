@@ -70,7 +70,7 @@ struct CreateInviteView: View {
             }
         }) {
             Text(title)
-                .font(.system(size: 16, weight: .bold))
+                .font(viewModel.selectedTab == tabIndex ? .pretendardSemiBold16 : .pretendardMedium16)
                 .frame(width: 60, height: 5)
                 .padding()
                 .background(viewModel.selectedTab == tabIndex ? Color.main1Color : Color.gray1Color)

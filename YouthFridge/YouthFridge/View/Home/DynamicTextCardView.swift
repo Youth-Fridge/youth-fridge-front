@@ -21,9 +21,9 @@ struct DynamicTextCardView: View {
                 VStack(alignment: .leading) {
                     Text("우리 약속의")
                         .font(.pretendardSemiBold16)
-                        .padding(.leading, 5)
+                        .padding(.leading, 4)
                     
-                    HStack(spacing: 2) {
+                    HStack(spacing: 3) {
                         ForEach(Array(String("D-DAY")), id: \.self) { char in
                             Text(String(char))
                                 .font(.pretendardBold32)

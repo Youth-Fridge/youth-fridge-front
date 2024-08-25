@@ -21,7 +21,7 @@ struct CellView: View {
                 .scaledToFit()
                 .frame(width: 100, height: 110)
                 .clipped()
-                .padding(.leading,-8)
+                .padding(.leading,-10)
             
             VStack(alignment: .leading) {
                 HStack {

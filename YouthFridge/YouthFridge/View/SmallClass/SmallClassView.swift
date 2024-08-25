@@ -108,6 +108,3 @@ struct SmallClassView: View {
     
 }
 
-#Preview {
-    SmallClassView()
-}

@@ -12,7 +12,8 @@ struct MainTabView: View {
     @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
     @State private var shouldUpdateUrl = false
     @StateObject private var tabSelectionViewModel = TabSelectionViewModel()
-    
+    @State private var smallClassNavigationPath = NavigationPath()
+    @State private var currentTab: MainTabType = .home
     var body: some View {
         TabView(selection: $tabSelectionViewModel.selectedTab) {
             ForEach(MainTabType.allCases, id: \.self) { tab in
@@ -33,6 +34,10 @@ struct MainTabView: View {
                     shouldUpdateUrl = true
                     newsUrl = "https://m.blog.naver.com/hyangyuloum"
                 }
+            } else if newTab == .smallClass {
+                currentTab = .smallClass
+            } else {
+                currentTab = newTab
             }
         }
     }
@@ -56,18 +61,25 @@ struct MainTabView: View {
                     }
                 )
             }
+            .id(tab == .home ? UUID() : nil)
+            
         case .smallClass:
             NavigationView {
                 SmallClassView()
             }
+            .id(tab == .smallClass ? UUID() : nil)
+            
         case .news:
             NavigationView {
                 NewsView(urlToLoad: $newsUrl)
             }
+            .id(tab == .news ? UUID() : nil)
+            
         case .mypage:
             NavigationView {
                 MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services())))
             }
+            .id(tab == .mypage ? UUID() : nil)
         }
     }
     

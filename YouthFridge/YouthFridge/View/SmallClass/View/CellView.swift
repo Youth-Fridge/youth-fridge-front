@@ -18,9 +18,10 @@ struct CellView: View {
         HStack {
             Image(cell.image)
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .frame(width: 100, height: 110)
                 .clipped()
+                .padding(.leading,-8)
             
             VStack(alignment: .leading) {
                 HStack {
@@ -64,6 +65,3 @@ struct CellView: View {
         .padding(.horizontal)
     }
 }
-
-
-

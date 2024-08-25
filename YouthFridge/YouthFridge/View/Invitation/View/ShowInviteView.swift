@@ -86,6 +86,7 @@ struct ShowInviteView: View {
                                             
                                             Spacer()
                                         }
+                                        .padding(.top,-15)
                                         
                                         VStack(alignment: .leading, spacing: 10) {
                                             Divider()
@@ -119,18 +120,20 @@ struct ShowInviteView: View {
                                             Text("\(showDetail.number)명")
                                                 .font(.system(size: 14, weight: .medium))
                                                 .foregroundColor(.gray6)
-                                            
+                                            Spacer()
                                             
                                             Text("시간 및 장소")
                                                 .font(.system(size: 16, weight: .bold))
                                                 .foregroundColor(.gray6)
                                             
                                             
-                                            Text(showDetail.time + "\n" + showDetail.place)
+                                            Text(showDetail.time)
                                                 .font(.system(size: 14, weight: .medium))
                                                 .foregroundColor(.gray6)
-                                            
-                                            
+                                            Text(showDetail.place)
+                                                .font(.system(size: 14, weight: .medium))
+                                                .foregroundColor(.gray6)
+                                            Spacer()
                                             Text("TO DO")
                                                 .font(.system(size: 16, weight: .bold))
                                                 .foregroundColor(.gray6)
@@ -140,10 +143,13 @@ struct ShowInviteView: View {
                                                 ForEach(showDetail.todo.split(separator: "\n"), id: \.self) { todo in
                                                     Text("• \(todo)")
                                                         .foregroundColor(.gray6)
+                                                        .font(.system(size: 14, weight: .medium))
                                                     
                                                 }
+                                                
                                             }
-                                            .font(.system(size: 14, weight: .medium))
+                                            .frame(height: 50)
+                                            Spacer()
                                         }
                                     }
                                     .padding(30)

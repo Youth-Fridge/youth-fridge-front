@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A024F7E2C7B72E500B81F33 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */; };
+		0A024F802C7B72ED00B81F33 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */; };
+		0A024F822C7B72F400B81F33 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */; };
+		0A024F842C7B738E00B81F33 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A024F832C7B738E00B81F33 /* Font+Extension.swift */; };
+		0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */; };
+		0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */; };
 		0A0600452C5783130036CD8F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600442C5783130036CD8F /* NewsView.swift */; };
 		0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600462C5784790036CD8F /* BlogWebView.swift */; };
 		0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600482C57894E0036CD8F /* CancelPopUpView.swift */; };
@@ -142,6 +148,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		0A024F832C7B738E00B81F33 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		0A0600412C57813E0036CD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0A0600442C5783130036CD8F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		0A0600462C5784790036CD8F /* BlogWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogWebView.swift; sourceTree = "<group>"; };
@@ -289,6 +301,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A024F7C2C7B722900B81F33 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */,
+				0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */,
+				0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */,
+				0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */,
+				0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0A7026FA2C5A9C700083C7A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -746,6 +770,7 @@
 				0ABCD6072C652A1900A726CA /* JSONUtilities.swift */,
 				58C316362C68B964001374EC /* DateFormatter.swift */,
 				0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */,
+				0A024F832C7B738E00B81F33 /* Font+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -753,6 +778,7 @@
 		58EEF71B2C43D26800C12C1E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0A024F7C2C7B722900B81F33 /* Fonts */,
 				58EEF71D2C43EAC000C12C1E /* Colors.xcassets */,
 				58EEF6F12C43D22800C12C1E /* Assets.xcassets */,
 			);
@@ -886,9 +912,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A024F802C7B72ED00B81F33 /* Pretendard-Medium.otf in Resources */,
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
+				0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */,
+				0A024F7E2C7B72E500B81F33 /* Pretendard-Bold.otf in Resources */,
+				0A024F822C7B72F400B81F33 /* Pretendard-SemiBold.otf in Resources */,
 				58DA3F642C72FF3F002081D9 /* motion.gif in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
+				0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */,
 				58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
 			);
@@ -924,6 +955,7 @@
 				58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */,
 				0AB468E82C68C480003061CE /* MyActivitiesResponse.swift in Sources */,
 				58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */,
+				0A024F842C7B738E00B81F33 /* Font+Extension.swift in Sources */,
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
 				0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,

@@ -111,7 +111,7 @@ class HomeViewModel: ObservableObject {
                 } else {
                     // 신청한 소모임이 1개도 없는 경우
                     DispatchQueue.main.async {
-                        self?.daysRemaining = 0
+                        self?.daysRemaining = -1
                     }
                 }
             case .failure(let error):

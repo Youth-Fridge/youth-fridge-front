@@ -38,9 +38,9 @@ enum PublicInvitationImage: Int, CaseIterable {
         case .image7:
             return "invitationImage7" //포트락 파티
         case .image8:
-            return "invitationImage8"
-        case .image9:
             return "invitationImage9"
+        case .image9:
+            return "invitationImage8"
         }
     }
 

@@ -12,8 +12,8 @@ struct MainTabView: View {
     @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
     @State private var shouldUpdateUrl = false
     @StateObject private var tabSelectionViewModel = TabSelectionViewModel()
-    @StateObject private var smallClassViewModel = SmallClassViewModel()
-
+    @State private var smallClassNavigationPath = NavigationPath()
+    @State private var currentTab: MainTabType = .home
     var body: some View {
         TabView(selection: $tabSelectionViewModel.selectedTab) {
             ForEach(MainTabType.allCases, id: \.self) { tab in
@@ -34,6 +34,10 @@ struct MainTabView: View {
                     shouldUpdateUrl = true
                     newsUrl = "https://m.blog.naver.com/hyangyuloum"
                 }
+            } else if newTab == .smallClass {
+                currentTab = .smallClass
+            } else {
+                currentTab = newTab
             }
         }
     }
@@ -57,27 +61,28 @@ struct MainTabView: View {
                     }
                 )
             }
+            .id(tab == .home ? UUID() : nil)
+            
         case .smallClass:
             NavigationView {
                 SmallClassView()
             }
+            .id(tab == .smallClass ? UUID() : nil)
+            
         case .news:
             NavigationView {
                 NewsView(urlToLoad: $newsUrl)
             }
+            .id(tab == .news ? UUID() : nil)
+            
         case .mypage:
             NavigationView {
                 MyPageView(viewModel: MyPageViewModel(container: DIContainer(services: Services())))
             }
+            .id(tab == .mypage ? UUID() : nil)
         }
     }
     
-    private func resetHomeView() {
-        
-    }
-    
-    private func resetSmallClassView() {
-    }
     init() {
         let image = UIImage.gradientImageWithBounds(
             bounds: CGRect(x: 0, y: 0, width: UIScreen.main.scale, height: 8),

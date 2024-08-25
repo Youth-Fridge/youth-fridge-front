@@ -16,7 +16,7 @@ struct NewsView: View {
     private let specificURL = "https://m.blog.naver.com/hyangyuloum"
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 VStack(spacing: 0) {
                     BlogWebView(

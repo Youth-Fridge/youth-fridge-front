@@ -94,6 +94,7 @@ struct MyActivityView: View {
                 }
             }
         }
+        .scrollIndicators(.hidden)
     }
     
     private var plusButton: some View {

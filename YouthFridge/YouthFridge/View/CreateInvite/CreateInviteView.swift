@@ -316,23 +316,6 @@ struct StepOneView: View {
                                 }
                         }
                         
-                        if isDatePickerVisible {
-                            DatePicker(
-                                "",
-                                selection: $viewModel.launchDate,
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(GraphicalDatePickerStyle())
-                            .labelsHidden()
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(8)
-                            .shadow(radius: 5)
-                            .accentColor(Color.accentColor)
-                            .frame(maxWidth: .infinity)
-                            .transition(.opacity)
-                        }
-                        
                         HStack {
                             Text(DateFormatter.generalDateFormatter.string(from: viewModel.launchDate))
                                 .font(.system(size: 14, weight: .regular))
@@ -354,6 +337,23 @@ struct StepOneView: View {
                                 .inset(by: 0.50)
                                 .stroke(Color.gray2)
                         )
+                        
+                        if isDatePickerVisible {
+                            DatePicker(
+                                "",
+                                selection: $viewModel.launchDate,
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .labelsHidden()
+                            .padding()
+                            .background(Color.white)
+                            .cornerRadius(8)
+                            .shadow(radius: 5)
+                            .tint(Color.accentColor)
+                            .frame(maxWidth: .infinity)
+                            .transition(.opacity)
+                        }
                     }
                     .padding(.bottom, 25)
                     .padding(.horizontal, 22)

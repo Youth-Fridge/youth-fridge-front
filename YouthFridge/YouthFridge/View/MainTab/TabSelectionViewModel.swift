@@ -11,7 +11,6 @@ class TabSelectionViewModel: ObservableObject {
     @Published var selectedTab: MainTabType = .home
     @Published var shouldNavigateToMyActivity: Bool = false
     @Published var selectedSubTab: Int = 0
-    
     var mypageViewModel: MyPageViewModel? {
         if selectedTab == .mypage {
             let viewModel = MyPageViewModel(container: DIContainer(services: Services()))

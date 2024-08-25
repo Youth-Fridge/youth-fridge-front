@@ -16,7 +16,6 @@ struct DynamicTextCardView: View {
             Color.white.opacity(0.92)
                 .cornerRadius(10)
             
-            // TODO: - 소모임 날짜 당일일 경우 처리하기
             if viewModel.daysRemaining == 0 {
                 VStack(alignment: .leading) {
                     Text("우리 약속의")
@@ -41,7 +40,8 @@ struct DynamicTextCardView: View {
                 VStack(alignment: .leading) {
                     Text("우리 약속까지")
                         .font(.pretendardSemiBold16)
-                    HStack {
+                    
+                    HStack(spacing: 5) {
                         ForEach(Array(String(format: "00")), id: \.self) { char in
                             Text(String(char))
                                 .font(.pretendardBold40)
@@ -63,7 +63,8 @@ struct DynamicTextCardView: View {
                 VStack(alignment: .leading) {
                     Text("우리 약속까지")
                         .font(.pretendardSemiBold16)
-                    HStack {
+                    
+                    HStack(spacing: 5) {
                         ForEach(Array(String(format: "%02d", viewModel.daysRemaining)), id: \.self) { char in
                             Text(String(char))
                                 .font(.pretendardBold40)

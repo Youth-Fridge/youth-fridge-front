@@ -80,21 +80,19 @@ struct ActivityDetailView: View {
         HStack {
             VStack(alignment: .leading, spacing: 10) {
                 Text(viewModel.title)
-                    .font(.title2)
-                    .fontWeight(.semibold)
+                    .font(.pretendardSemiBold20)
                     .padding(.bottom, 6)
                 Text(viewModel.date)
-                    .font(.body)
+                    .font(.pretendardRegular14)
                 Text(viewModel.location)
-                    .font(.body)
+                    .font(.pretendardRegular14)
             }
             .padding()
             
             Spacer()
             
             Text("D - \(viewModel.daysLeft)")
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.pretendardBold20)
                 .padding()
                 .frame(width: 100, height: 60)
                 .background(Color.research)
@@ -124,13 +122,11 @@ struct ActivityDetailView: View {
         VStack(alignment: .leading) {
             HStack(spacing: 15) {
                 Text("참여자 명")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.leading, 4)
                 
                 Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
+                    .font(.pretendardBold12)
                     .padding(.horizontal, 8)
                     .frame(width: 75, height: 30)
                     .overlay(
@@ -147,8 +143,7 @@ struct ActivityDetailView: View {
                     Spacer()
                         .frame(height: 90)
                     Text("함께할 참여자를 기다리고 있어요 :)")
-                        .font(.body)
-                        .fontWeight(.medium)
+                        .font(.pretendardRegular16)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
@@ -172,7 +167,7 @@ struct ActivityDetailView: View {
                             }
 
                             Text(participant.nickName)
-                                .font(.caption)
+                                .font(.pretendardMedium14)
                                 .padding(.top, 4)
                         }
                     }
@@ -191,13 +186,11 @@ struct ActivityDetailView: View {
             
             HStack {
                 Text("호스트 규칙")
-                    .font(.title3)
-                    .fontWeight(.bold)
+                    .font(.pretendardBold18)
                     .padding(.bottom, 2)
                 
                 Text("운영사항")
-                    .font(.headline)
-                    .fontWeight(.semibold)
+                    .font(.pretendardRegular12)
                     .foregroundColor(.gray)
                     .padding(.bottom, 2)
             }
@@ -208,7 +201,7 @@ struct ActivityDetailView: View {
                 Text("*우수 소모임 호스트로 지정 시 리워드가 주어질 수 있습니다.")
                 Text("*문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
             }
-            .font(.footnote)
+            .font(.pretendardMedium12)
             .foregroundColor(Color.gray4)
         }
         .padding()

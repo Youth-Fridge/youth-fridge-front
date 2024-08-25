@@ -116,7 +116,7 @@ struct MyActivityView: View {
             selectedTab = tabIndex
         }) {
             Text(title)
-                .font(.system(size: 16, weight: .medium))
+                .font(selectedTab == tabIndex ? .pretendardSemiBold16 : .pretendardMedium16)
                 .frame(width: 90, height: 20)
                 .padding(8)
                 .background(selectedTab == tabIndex ? selectedTabColor : unselectedTabColor)

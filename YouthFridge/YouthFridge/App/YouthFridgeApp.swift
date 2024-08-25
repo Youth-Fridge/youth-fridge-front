@@ -14,7 +14,7 @@ struct YouthFridgeApp: App {
     @State private var showSplash = true
 
     init() {
-        KakaoSDK.initSDK(appKey: "")
+        KakaoSDK.initSDK(appKey: Bundle.main.KAKAO_API_KEY)
     }
 
     var body: some Scene {

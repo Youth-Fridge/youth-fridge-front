@@ -28,184 +28,186 @@ struct ShowInviteView: View {
                     .edgesIgnoringSafeArea(.all)
                 if showGIF {
                     GifView(gifName: "motion")
-                        .edgesIgnoringSafeArea(.top)
+                        .edgesIgnoringSafeArea(.all)
                 }
                 GeometryReader { geometry in
                     Image("invitationLogo")
                         .resizable()
                         .frame(width: 280, height: 387)
                         .position(x: geometry.size.width - 140, y: geometry.size.height - 160)
-                }
-                VStack(alignment: .center) {
-                    Text("당신을 초대합니다 🎉")
-                        .font(.system(size: 30, weight: .bold))
-                        .foregroundColor(.gray6)
-                        .padding(.top ,20)
                     
-                    ZStack {
-                        Image("invitation")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 320, height: 490)
-                            .padding(.leading, 30)
+                    VStack(alignment: .center) {
+                        Text("당신을 초대합니다 🎉")
+                            .font(.system(size: 30, weight: .bold))
+                            .foregroundColor(.gray6)
+                            .padding(.top ,20)
                         
-                        if isImageVisible {
-                            VStack {
-                                if let showDetail = viewModel.showDetail,
-                                   let invitationImage = PublicInvitationImage.from(rawValue: showDetail.invitationImage) {
-                                    
-                                    Image(invitationImage.imageName)
-                                        .resizable()
-                                        .frame(width: 260, height: 338)
-                                        .padding(.bottom,10)
-                                    
-                                    Text(showDetail.clubName)
-                                        .font(.system(size: 20, weight: .semibold))
-                                        .foregroundColor(.gray6)
-                                    
-                                }
-                            }
-                            .padding(.bottom, 60)
-                        }
+                        ZStack {
+                            Image("invitation")
+                                .resizable()
+                                .scaledToFit() // 이미지가 프레임 안에 맞도록 비율 유지
+                                .frame(width: geometry.size.width * 0.9, height: (geometry.size.width * 0.9) * 4 / 2)
+                                .position(x: geometry.size.width / 2, y: geometry.size.height / 2 - 100) // 위치 조정
+                                .padding(.leading, 15) // 왼쪽 여백 추가
                         
-                        // MARK: - 뒷 배경
-                        else {
-                            if let showDetail = viewModel.showDetail {
-                                VStack(alignment: .leading, spacing: 10) {
-                                    HStack {
-                                        if let profileImageName = ProfileImage.from(rawValue: showDetail.ownerProfile)?.imageName {
-                                            Image(profileImageName)
-                                                .resizable()
-                                                .frame(width: 54, height: 54)
-                                            
-                                            Text(showDetail.clubName)
-                                                .font(.system(size: 16, weight: .semibold))
-                                        }
+                            
+                            if isImageVisible {
+                                VStack {
+                                    if let showDetail = viewModel.showDetail,
+                                       let invitationImage = PublicInvitationImage.from(rawValue: showDetail.invitationImage) {
                                         
-                                        Spacer()
+                                        Image(invitationImage.imageName)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: geometry.size.width * 0.9, height: (geometry.size.width * 0.9) * 4 / 4)
+                                        Text(showDetail.clubName)
+                                            .font(.system(size: 20, weight: .semibold))
+                                            .foregroundColor(.gray6)
+
                                     }
-                                    
+                                }
+                                .padding(.top,-20)
+                            }
+                            
+                            // MARK: - 뒷 배경
+                            else {
+                                if let showDetail = viewModel.showDetail {
                                     VStack(alignment: .leading, spacing: 10) {
-                                        Divider()
-                                        Text("기간")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .padding(.top,10)
-                                            .foregroundColor(.gray6)
-                                        
-                                        
                                         HStack {
-                                            Text("우리 약속까지 ")
-                                                .font(.system(size: 14, weight: .medium))
-                                                .foregroundColor(.gray6)
+                                            if let profileImageName = ProfileImage.from(rawValue: showDetail.ownerProfile)?.imageName {
+                                                Image(profileImageName)
+                                                    .resizable()
+                                                    .frame(width: 54, height: 54)
+                                                
+                                                Text(showDetail.clubName)
+                                                    .font(.system(size: 16, weight: .semibold))
+                                                    .foregroundColor(.gray6)
+                                            }
                                             
-                                            Text(showDetail.dday)
-                                                .font(.title)
-                                                .fontWeight(.bold)
-                                                .foregroundColor(Color.sub3Color)
-                                            
-                                            Text("일 남았어요")
-                                                .font(.system(size: 14, weight: .medium))
-                                                .foregroundColor(.gray6)
-                                            
+                                            Spacer()
                                         }
                                         
-                                        Text("인원")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .foregroundColor(.gray6)
-                                        
-                                        
-                                        Text("\(showDetail.number)명")
-                                            .font(.system(size: 14, weight: .medium))
-                                            .foregroundColor(.gray6)
-                                        
-                                        
-                                        Text("시간 및 장소")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .foregroundColor(.gray6)
-                                        
-                                        
-                                        Text(showDetail.time + "\n" + showDetail.place)
-                                            .font(.system(size: 14, weight: .medium))
-                                            .foregroundColor(.gray6)
-                                        
-                                        
-                                        Text("TO DO")
-                                            .font(.system(size: 16, weight: .bold))
-                                            .foregroundColor(.gray6)
-                                        
-                                        
-                                        VStack(alignment: .leading) {
-                                            ForEach(showDetail.todo.split(separator: "\n"), id: \.self) { todo in
-                                                Text("• \(todo)")
+                                        VStack(alignment: .leading, spacing: 10) {
+                                            Divider()
+                                            Text("기간")
+                                                .font(.system(size: 16, weight: .bold))
+                                                .padding(.top,10)
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            HStack {
+                                                Text("우리 약속까지 ")
+                                                    .font(.system(size: 14, weight: .medium))
+                                                    .foregroundColor(.gray6)
+                                                
+                                                Text(showDetail.dday)
+                                                    .font(.title)
+                                                    .fontWeight(.bold)
+                                                    .foregroundColor(Color.sub3Color)
+                                                
+                                                Text("일 남았어요")
+                                                    .font(.system(size: 14, weight: .medium))
                                                     .foregroundColor(.gray6)
                                                 
                                             }
+                                            
+                                            Text("인원")
+                                                .font(.system(size: 16, weight: .bold))
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            Text("\(showDetail.number)명")
+                                                .font(.system(size: 14, weight: .medium))
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            Text("시간 및 장소")
+                                                .font(.system(size: 16, weight: .bold))
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            Text(showDetail.time + "\n" + showDetail.place)
+                                                .font(.system(size: 14, weight: .medium))
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            Text("TO DO")
+                                                .font(.system(size: 16, weight: .bold))
+                                                .foregroundColor(.gray6)
+                                            
+                                            
+                                            VStack(alignment: .leading) {
+                                                ForEach(showDetail.todo.split(separator: "\n"), id: \.self) { todo in
+                                                    Text("• \(todo)")
+                                                        .foregroundColor(.gray6)
+                                                    
+                                                }
+                                            }
+                                            .font(.system(size: 14, weight: .medium))
                                         }
-                                        .font(.system(size: 14, weight: .medium))
                                     }
+                                    .padding(30)
+                                    .background(Color.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 3)
+                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 3 / 4)
+                                } else {
+                                    Text("Loading...")
                                 }
-                                .padding(30)
-                                .background(Color.white)
-                                .cornerRadius(10)
+                            }
+                        }
+                        .rotation3DEffect(
+                            .degrees(rotationAngle),
+                            axis: (x: 0.0, y: 1.0, z: 0.0)
+                        )
+                        .scaleEffect(isFlipped ? CGSize(width: -1, height: 1) : CGSize(width: 1, height: 1))
+                        
+                        .onTapGesture {
+                            hapticManager.impact(style: .heavy)
+                            withAnimation(.easeInOut(duration: 0.8)) {
+                                rotationAngle += 180
+                                if rotationAngle == 180 {
+                                    isImageVisible.toggle()
+                                } else if rotationAngle == 360 {
+                                    rotationAngle = 0
+                                    isImageVisible.toggle()
+                                }
+                            }
+                            DispatchQueue.main.async {
+                                isFlipped.toggle()
+                            }
+                        }
+                        
+
+                        Button(action: {
+                            applyInvitation()
+                        }) {
+                            Text("참여하기")
+                                .font(.system(size: 20,weight: .bold))
+                                .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
+                                .padding()
+                                .frame(maxWidth: 320)
+                                .background(viewModel.isAvailable ? Color.white: Color.gray2)
+                                .cornerRadius(8)
                                 .shadow(radius: 3)
-                                .frame(width: 320, height: 436)
-                            } else {
-                                Text("Loading...")
-                            }
                         }
-                    }
-                    .rotation3DEffect(
-                        .degrees(rotationAngle),
-                        axis: (x: 0.0, y: 1.0, z: 0.0)
-                    )
-                    .scaleEffect(isFlipped ? CGSize(width: -1, height: 1) : CGSize(width: 1, height: 1))
-                    
-                    .onTapGesture {
-                        hapticManager.impact(style: .heavy)
-                        withAnimation(.easeInOut(duration: 0.8)) {
-                            rotationAngle += 180
-                            if rotationAngle == 180 {
-                                isImageVisible.toggle()
-                            } else if rotationAngle == 360 {
-                                rotationAngle = 0
-                                isImageVisible.toggle()
-                            }
+                        .disabled(isInvitationApplied || !viewModel.isAvailable)
+                        Button(action: {
+                            reportInvitation()
+                        }) {
+                            Text("커뮤니티 규정에 어긋난 소모임인가요?")
+                                .font(.system(size: 12,weight: .semibold))
+                                .foregroundColor(.gray7)
+                                .underline(color: .gray7)
+                                .padding(.top,10)
                         }
-                        DispatchQueue.main.async {
-                            isFlipped.toggle()
-                        }
-                    }
-                    
-                    
-                    Button(action: {
-                        applyInvitation()
-                    }) {
-                        Text("참여하기")
-                            .font(.system(size: 20,weight: .bold))
-                            .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
-                            .padding()
-                            .frame(maxWidth: 320)
-                            .background(viewModel.isAvailable ? Color.white: Color.gray2)
-                            .cornerRadius(8)
-                            .shadow(radius: 3)
-                    }
-                    .disabled(isInvitationApplied || !viewModel.isAvailable)
-                    Button(action: {
-                        reportInvitation()
-                    }) {
-                        Text("커뮤니티 규정에 어긋난 소모임인가요?")
-                            .font(.system(size: 12,weight: .semibold))
-                            .foregroundColor(.gray7)
-                            .underline(color: .gray7)
-                            .padding(.top,10)
-                    }
-                    Spacer()
-                    NavigationLink(
-                        destination: InviteFinalView(),
-                        isActive: $isInvitationApplied,
-                        label: { EmptyView() }
-                    )
-                }
+                        .padding(.bottom,40)
+                        NavigationLink(
+                            destination: InviteFinalView(),
+                            isActive: $isInvitationApplied,
+                            label: { EmptyView() }
+                        )
+                    }}
                     if showComplainPopupView {
                         Color.black.opacity(0.4)
                             .edgesIgnoringSafeArea(.all)

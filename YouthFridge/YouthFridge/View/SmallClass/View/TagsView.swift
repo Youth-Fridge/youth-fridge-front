@@ -44,7 +44,7 @@ struct TagsView: View {
                                 viewModel.fetchKeyWordsList(selectedTags: selectedTags)
                             }
                         }
-                        .padding(.leading, 5)
+                        .padding([.leading, .bottom], 5)
                 }
             }
         }

@@ -12,6 +12,7 @@ struct MainTabView: View {
     @State private var newsUrl: String = "https://m.blog.naver.com/hyangyuloum"
     @State private var shouldUpdateUrl = false
     @StateObject private var tabSelectionViewModel = TabSelectionViewModel()
+    @StateObject private var smallClassViewModel = SmallClassViewModel()
 
     var body: some View {
         TabView(selection: $tabSelectionViewModel.selectedTab) {
@@ -70,7 +71,13 @@ struct MainTabView: View {
             }
         }
     }
-
+    
+    private func resetHomeView() {
+        
+    }
+    
+    private func resetSmallClassView() {
+    }
     init() {
         let image = UIImage.gradientImageWithBounds(
             bounds: CGRect(x: 0, y: 0, width: UIScreen.main.scale, height: 8),

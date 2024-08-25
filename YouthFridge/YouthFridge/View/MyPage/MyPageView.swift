@@ -194,35 +194,40 @@ struct MyPageView: View {
     }
     
     var activityList: some View {
-        List {
+        VStack(alignment: .leading, spacing: 15) {
             ForEach(activityItems, id: \.self) { item in
                 if item == "내 활동" {
                     ActivityCell(title: item, subTitles: ["나의 초대장", "신청 내역"])
                         .onTapGesture {
                             isNavigatingToMyActivty = true
                         }
+                        .contentShape(Rectangle())
                 } else if item == "회원탈퇴" {
                     Button(action: {
                         showDeletePopup = true
                     }) {
                         ActivityCell(title: item, subTitles: nil)
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    .contentShape(Rectangle())
                 } else if item == "로그아웃" {
                     Button(action: {
                         showLogOutDeletePopup = true
                     }) {
                         ActivityCell(title: item, subTitles: nil)
                     }
+                    .buttonStyle(PlainButtonStyle())
+                    .contentShape(Rectangle())
                 } else {
                     ActivityCell(title: item, subTitles: nil)
+                        .contentShape(Rectangle())
                 }
             }
         }
-        .listStyle(PlainListStyle())
-        .padding(.horizontal, 10)
+        .padding()
+        .padding(.horizontal, 17)
         .padding(.trailing, 15)
     }
-    
     let activityItems = ["내 활동", "문의", "회원탈퇴", "로그아웃"]
 }
 

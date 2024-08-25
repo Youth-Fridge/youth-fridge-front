@@ -34,7 +34,6 @@
 		0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */; };
 		0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
-		0AC027AC2C7B310D00F1DE0D /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AC027AB2C7B310D00F1DE0D /* Secret.plist */; };
 		0AC027AE2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */; };
 		0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
@@ -170,7 +169,6 @@
 		0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppliedInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailModel.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
-		0AC027AB2C7B310D00F1DE0D /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YouthFridge++Bundle.swift"; sourceTree = "<group>"; };
 		0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLetterResponse.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
@@ -687,7 +685,6 @@
 				58EEF7172C43D24000C12C1E /* View */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 				58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */,
-				0AC027AB2C7B310D00F1DE0D /* Secret.plist */,
 			);
 			path = YouthFridge;
 			sourceTree = "<group>";
@@ -889,7 +886,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AC027AC2C7B310D00F1DE0D /* Secret.plist in Resources */,
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
 				58DA3F642C72FF3F002081D9 /* motion.gif in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,

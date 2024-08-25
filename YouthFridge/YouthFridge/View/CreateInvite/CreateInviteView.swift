@@ -106,7 +106,7 @@ struct StepOneView: View {
                         withAnimation {
                             isDatePickerVisible = false
                         }
-                        UIApplication.shared.hideKeyboard()
+                        UIApplication.shared.hideKeyBoard()
                     }
                     .edgesIgnoringSafeArea(.all)
                 
@@ -454,6 +454,12 @@ struct StepOneView: View {
             EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
+    }
+}
+
+extension UIApplication {
+    func hideKeyBoard() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

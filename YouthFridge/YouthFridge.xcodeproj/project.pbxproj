@@ -74,6 +74,7 @@
 		58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */; };
 		58299B442C79BB11001BBF0F /* TabSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */; };
 		58299B462C79D743001BBF0F /* ComplainPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B452C79D743001BBF0F /* ComplainPopUpView.swift */; };
+		58299B482C7B4AF1001BBF0F /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58299B472C7B4AF1001BBF0F /* Secret.plist */; };
 		5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */; };
 		5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */; };
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
@@ -210,6 +211,7 @@
 		58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicInvitationImage.swift; sourceTree = "<group>"; };
 		58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabSelectionViewModel.swift; sourceTree = "<group>"; };
 		58299B452C79D743001BBF0F /* ComplainPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainPopUpView.swift; sourceTree = "<group>"; };
+		58299B472C7B4AF1001BBF0F /* Secret.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingService.swift; sourceTree = "<group>"; };
 		5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingRequest.swift; sourceTree = "<group>"; };
 		5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingAPI.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				5847F15A2C60BA78001AC04E /* Networks */,
 				5847F1342C5D1B39001AC04E /* YouthFridge.entitlements */,
 				0A0600412C57813E0036CD8F /* Info.plist */,
+				58299B472C7B4AF1001BBF0F /* Secret.plist */,
 				5817D6232C4655B60081323E /* App */,
 				58EEF71B2C43D26800C12C1E /* Resource */,
 				58EEF71A2C43D25D00C12C1E /* Extension */,

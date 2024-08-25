@@ -8,16 +8,20 @@
 import SwiftUI
 
 struct MyInvitationsView: View {
-    @ObservedObject var viewModel = MyInvitationsViewModel()
+    @ObservedObject var viewModel: MyInvitationsViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            if !viewModel.invitationActivities.isEmpty {
-                ForEach(viewModel.invitationActivities) { activity in
-                    ActivityCardView(viewModel: activity, detail: "invitation")
-                        .disabled(activity.isPast)
+            if viewModel.isLoading {
+                Spacer()
+                HStack {
+                    Spacer()
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                    Spacer()
                 }
-            } else {
+                Spacer()
+            } else if viewModel.invitationActivities.isEmpty {
                 VStack {
                     Spacer()
                         .frame(height: UIScreen.main.bounds.height * 0.3)
@@ -26,16 +30,13 @@ struct MyInvitationsView: View {
                         .font(.system(size: 18, weight: .regular))
                         .multilineTextAlignment(.center)
                 }
+            } else {
+                ForEach(viewModel.invitationActivities) { activity in
+                    ActivityCardView(viewModel: activity, detail: "invitation")
+                        .disabled(activity.isPast)
+                }
             }
         }
         .padding()
     }
 }
-
-struct MyInvitationsView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyInvitationsView()
-    }
-}
-
-

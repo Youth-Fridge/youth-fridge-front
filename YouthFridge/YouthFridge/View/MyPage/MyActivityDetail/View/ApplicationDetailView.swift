@@ -44,6 +44,8 @@ struct ApplicationDetailView: View {
                             .padding(.horizontal, 15)
                             .padding(.top, 25)
                         }
+                        Spacer()
+                            .padding(.bottom, 22)
                     }
                 }
                 .padding(.top, 10)
@@ -212,11 +214,12 @@ struct ApplicationDetailView: View {
                             ForEach(detailViewModel.activities, id: \.self) { activity in
                                  Text("•  \(activity)")
                                      .font(Font.custom("Pretendard", size: 12))
-                                     .padding(.bottom, 5)
+                                     .padding(.bottom, 3)
                              }
                         }
                         .padding(.leading, 17)
-                        .padding(.vertical, 10)
+                        .padding(.top, 13)
+                        .padding(.bottom, 10)
                         .foregroundColor(Color.gray6)
                     }
                 }
@@ -242,6 +245,7 @@ struct ApplicationDetailView: View {
                     .foregroundColor(Color.gray6)
                     .fontWeight(.regular)
             }
+            .padding(.top, 8)
                     
             ZStack(alignment: .leading) {
                 Rectangle()
@@ -270,6 +274,7 @@ struct ApplicationDetailView: View {
                 Text("신청 취소")
                     .font(.title3)
                     .fontWeight(.bold)
+                    .padding(.top, 8)
                 
                 Text("모임 2일 전까지만 취소 가능")
                     .font(.subheadline)
@@ -306,7 +311,7 @@ struct ApplicationDetailView: View {
                 }
                 .padding(.bottom, -20)
             }
-            .padding(.top, 10)
+            .padding(.top, 8)
         }
         .padding()
     }
@@ -328,6 +333,7 @@ struct ApplicationDetailView: View {
                     .foregroundColor(Color.gray6)
                     .padding(.bottom, 2)
             }
+            .padding(.top, 8)
             
             VStack(alignment: .leading, spacing: 12) {
                 Text("* 본인이 오픈채팅에 참여하지 않아 생기는 문제의 경우 책임지지 않습니다. 모임 일자 이전 꼭 ")
@@ -350,6 +356,7 @@ struct ApplicationDetailView: View {
                     .underline()
                 + Text("로 문의 부탁드립니다.")
             }
+            .padding(.bottom, 50)
             .font(.footnote)
             .foregroundColor(Color.gray4)
             .frame(maxWidth: .infinity, alignment: .leading)

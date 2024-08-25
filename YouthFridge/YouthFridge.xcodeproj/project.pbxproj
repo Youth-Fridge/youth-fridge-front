@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A024F7E2C7B72E500B81F33 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */; };
+		0A024F802C7B72ED00B81F33 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */; };
+		0A024F822C7B72F400B81F33 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */; };
+		0A024F842C7B738E00B81F33 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A024F832C7B738E00B81F33 /* Font+Extension.swift */; };
+		0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */; };
+		0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */; };
+		0A024F8A2C7B79E000B81F33 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F892C7B79E000B81F33 /* Secret.plist */; };
 		0A0600452C5783130036CD8F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600442C5783130036CD8F /* NewsView.swift */; };
 		0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600462C5784790036CD8F /* BlogWebView.swift */; };
 		0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600482C57894E0036CD8F /* CancelPopUpView.swift */; };
@@ -34,6 +41,7 @@
 		0AB468EF2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */; };
 		0AB468F32C690C85003061CE /* ApplicationDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */; };
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
+		0AC027AE2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */; };
 		0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
 		58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */; };
@@ -141,6 +149,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		0A024F832C7B738E00B81F33 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
+		0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		0A024F892C7B79E000B81F33 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		0A0600412C57813E0036CD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0A0600442C5783130036CD8F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		0A0600462C5784790036CD8F /* BlogWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogWebView.swift; sourceTree = "<group>"; };
@@ -168,6 +183,7 @@
 		0AB468EE2C69010D003061CE /* MyAppliedInvitationDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAppliedInvitationDetailResponse.swift; sourceTree = "<group>"; };
 		0AB468F22C690C85003061CE /* ApplicationDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailModel.swift; sourceTree = "<group>"; };
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
+		0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YouthFridge++Bundle.swift"; sourceTree = "<group>"; };
 		0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLetterResponse.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
 		58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallestCardView.swift; sourceTree = "<group>"; };
@@ -287,6 +303,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A024F7C2C7B722900B81F33 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */,
+				0A024F7F2C7B72ED00B81F33 /* Pretendard-Medium.otf */,
+				0A024F7D2C7B72E500B81F33 /* Pretendard-Bold.otf */,
+				0A024F812C7B72F400B81F33 /* Pretendard-SemiBold.otf */,
+				0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0A7026FA2C5A9C700083C7A0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +711,7 @@
 				58EEF7172C43D24000C12C1E /* View */,
 				58EEF6F32C43D22800C12C1E /* Preview Content */,
 				58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */,
+				0A024F892C7B79E000B81F33 /* Secret.plist */,
 			);
 			path = YouthFridge;
 			sourceTree = "<group>";
@@ -743,6 +772,8 @@
 				58EEF71F2C43ECF600C12C1E /* Color+Extension.swift */,
 				0ABCD6072C652A1900A726CA /* JSONUtilities.swift */,
 				58C316362C68B964001374EC /* DateFormatter.swift */,
+				0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */,
+				0A024F832C7B738E00B81F33 /* Font+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -750,6 +781,7 @@
 		58EEF71B2C43D26800C12C1E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0A024F7C2C7B722900B81F33 /* Fonts */,
 				58EEF71D2C43EAC000C12C1E /* Colors.xcassets */,
 				58EEF6F12C43D22800C12C1E /* Assets.xcassets */,
 			);
@@ -883,9 +915,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A024F802C7B72ED00B81F33 /* Pretendard-Medium.otf in Resources */,
 				58EEF71E2C43EAC000C12C1E /* Colors.xcassets in Resources */,
+				0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */,
+				0A024F7E2C7B72E500B81F33 /* Pretendard-Bold.otf in Resources */,
+				0A024F8A2C7B79E000B81F33 /* Secret.plist in Resources */,
+				0A024F822C7B72F400B81F33 /* Pretendard-SemiBold.otf in Resources */,
 				58DA3F642C72FF3F002081D9 /* motion.gif in Resources */,
 				58EEF6F52C43D22800C12C1E /* Preview Assets.xcassets in Resources */,
+				0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */,
 				58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */,
 				58EEF6F22C43D22800C12C1E /* Assets.xcassets in Resources */,
 			);
@@ -921,6 +959,7 @@
 				58EA96EC2C5281E700166554 /* LocationManager.swift in Sources */,
 				0AB468E82C68C480003061CE /* MyActivitiesResponse.swift in Sources */,
 				58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */,
+				0A024F842C7B738E00B81F33 /* Font+Extension.swift in Sources */,
 				5817D63B2C4BFD700081323E /* CellViewModel.swift in Sources */,
 				0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */,
 				5817D6182C463A020081323E /* MyInvitationsViewModel.swift in Sources */,
@@ -1010,6 +1049,7 @@
 				0A12E2242C4EB46200D2D7B9 /* ApplicationHistoryView.swift in Sources */,
 				58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */,
 				5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */,
+				0AC027AE2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift in Sources */,
 				5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1189,6 +1229,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1228,6 +1269,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

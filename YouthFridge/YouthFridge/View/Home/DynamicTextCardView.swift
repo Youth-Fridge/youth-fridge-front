@@ -16,19 +16,18 @@ struct DynamicTextCardView: View {
             Color.white.opacity(0.92)
                 .cornerRadius(10)
             
-            // TODO: - 소모임 날짜 당일일 경우 처리하기
             if viewModel.daysRemaining == 0 {
                 VStack(alignment: .leading) {
-                    Text("우리 약속이")
-                        .font(.system(size: 16, weight: .semibold))
+                    Text("우리 약속의")
+                        .font(.pretendardSemiBold16)
+                        .padding(.leading, 4)
                     
-                    HStack {
+                    HStack(spacing: 3) {
                         ForEach(Array(String("D-DAY")), id: \.self) { char in
                             Text(String(char))
-                                .font(.system(size: 30, weight: .bold))
-                                .bold()
+                                .font(.pretendardBold32)
                                 .foregroundColor(Color.sub2Color)
-                                .frame(width: 28, height: 36)
+                                .frame(width: 32, height: 38)
                                 .background(Color.white)
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 5)
@@ -36,19 +35,16 @@ struct DynamicTextCardView: View {
                                 )
                         }
                     }
-                    
-                    Text("로 다가왔어요")
-                        .font(.system(size: 16, weight: .semibold))
                 }
-            } else {
+            } else if viewModel.daysRemaining == -1 {
                 VStack(alignment: .leading) {
                     Text("우리 약속까지")
-                        .font(.system(size: 16,weight: .semibold))
-                    HStack {
-                        ForEach(Array(String(format: "%02d", viewModel.daysRemaining)), id: \.self) { char in
+                        .font(.pretendardSemiBold16)
+                    
+                    HStack(spacing: 5) {
+                        ForEach(Array(String(format: "00")), id: \.self) { char in
                             Text(String(char))
-                                .font(.system(size: 40,weight: .bold))
-                                .bold()
+                                .font(.pretendardBold40)
                                 .foregroundColor(Color.sub2Color)
                                 .frame(width: 40, height: 48)
                                 .background(Color.white)
@@ -58,7 +54,30 @@ struct DynamicTextCardView: View {
                                 )
                         }
                         Text("일 남았어요")
-                            .font(.system(size: 16,weight: .semibold))
+                            .font(.pretendardSemiBold16)
+                            .padding(.bottom, -30)
+                        
+                    }
+                }
+            } else {
+                VStack(alignment: .leading) {
+                    Text("우리 약속까지")
+                        .font(.pretendardSemiBold16)
+                    
+                    HStack(spacing: 5) {
+                        ForEach(Array(String(format: "%02d", viewModel.daysRemaining)), id: \.self) { char in
+                            Text(String(char))
+                                .font(.pretendardBold40)
+                                .foregroundColor(Color.sub2Color)
+                                .frame(width: 40, height: 48)
+                                .background(Color.white)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.gray2Color, lineWidth: 1)
+                                )
+                        }
+                        Text("일 남았어요")
+                            .font(.pretendardSemiBold16)
                             .padding(.bottom, -30)
                         
                     }

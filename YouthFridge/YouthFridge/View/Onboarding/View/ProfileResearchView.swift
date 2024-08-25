@@ -184,11 +184,8 @@ struct ProfileResearchView: View {
                       message: Text(viewModel.alertMessage),
                       dismissButton: .default(Text("확인")))
             }
-        
     }
 }
-
-
 
 #if canImport(UIKit)
 extension UIApplication {

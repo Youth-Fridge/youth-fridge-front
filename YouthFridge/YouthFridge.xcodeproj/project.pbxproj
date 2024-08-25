@@ -36,6 +36,7 @@
 		0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCD6072C652A1900A726CA /* JSONUtilities.swift */; };
 		0AC027AC2C7B310D00F1DE0D /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0AC027AB2C7B310D00F1DE0D /* Secret.plist */; };
 		0AC027AE2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */; };
+		0AC027B02C7B3EAA00F1DE0D /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC027AF2C7B3EAA00F1DE0D /* UIApplication+Extension.swift */; };
 		0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
 		58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */; };
@@ -172,6 +173,7 @@
 		0ABCD6072C652A1900A726CA /* JSONUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtilities.swift; sourceTree = "<group>"; };
 		0AC027AB2C7B310D00F1DE0D /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
 		0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "YouthFridge++Bundle.swift"; sourceTree = "<group>"; };
+		0AC027AF2C7B3EAA00F1DE0D /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLetterResponse.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
 		58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallestCardView.swift; sourceTree = "<group>"; };
@@ -749,6 +751,7 @@
 				0ABCD6072C652A1900A726CA /* JSONUtilities.swift */,
 				58C316362C68B964001374EC /* DateFormatter.swift */,
 				0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */,
+				0AC027AF2C7B3EAA00F1DE0D /* UIApplication+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -994,6 +997,7 @@
 				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,
 				58C316622C6E13BA001374EC /* TagsView.swift in Sources */,
 				0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */,
+				0AC027B02C7B3EAA00F1DE0D /* UIApplication+Extension.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
 				58C3162C2C650462001374EC /* SplashView.swift in Sources */,
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,

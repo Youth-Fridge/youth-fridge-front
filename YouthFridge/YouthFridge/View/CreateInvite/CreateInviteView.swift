@@ -106,7 +106,9 @@ struct StepOneView: View {
                         withAnimation {
                             isDatePickerVisible = false
                         }
+                        UIApplication.shared.hideKeyboard()
                     }
+                    .edgesIgnoringSafeArea(.all)
                 
                 VStack(alignment: .leading) {
                     Text("이모지 내역")

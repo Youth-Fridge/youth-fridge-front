@@ -126,7 +126,7 @@ struct ActivityDetailView: View {
                 Text("참여자 명")
                     .font(.title3)
                     .fontWeight(.bold)
-                    .padding(.leading, 8)
+                    .padding(.leading, 4)
                 
                 Text("\(detailViewModel.currentMember)/\(detailViewModel.totalMember)명")
                     .font(.subheadline)
@@ -145,14 +145,14 @@ struct ActivityDetailView: View {
                 // 빈 경우 메시지 표시
                 VStack {
                     Spacer()
-                        .frame(height: 100)
+                        .frame(height: 90)
                     Text("함께할 참여자를 기다리고 있어요 :)")
                         .font(.body)
                         .fontWeight(.medium)
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .center)
                     Spacer()
-                        .frame(height: 100)
+                        .frame(height: 90)
                 }
                 .padding(.horizontal, 16)
             } else {
@@ -178,6 +178,7 @@ struct ActivityDetailView: View {
                     }
                 }
                 .padding(.horizontal, 10)
+                .padding(.bottom, -15)
             }
         }
     }
@@ -186,10 +187,11 @@ struct ActivityDetailView: View {
         VStack(alignment: .leading, spacing: 16) {
             Divider()
                 .background(Color.gray.opacity(0.5))
-                .padding(.vertical, 10)
+                .padding(.vertical, 5)
+            
             HStack {
                 Text("호스트 규칙")
-                    .font(.title2)
+                    .font(.title3)
                     .fontWeight(.bold)
                     .padding(.bottom, 2)
                 
@@ -201,24 +203,25 @@ struct ActivityDetailView: View {
             }
             
             VStack(alignment: .leading, spacing: 12) {
-                Text("* 소모임 내에서 진행되는 모든 사항들은 호스트에게 달려있습니다.")
-                Text("* 불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
-                Text("* 우수 소모임 호스트로 지정 시 리워드가 주어질 수 있습니다.")
-                Text("* 문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
+                Text("*소모임 내에서 진행되는 모든 사항들은 호스트에게 달려있습니다.")
+                Text("*불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
+                Text("*우수 소모임 호스트로 지정 시 리워드가 주어질 수 있습니다.")
+                Text("*문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
             }
             .font(.footnote)
             .foregroundColor(Color.gray4)
         }
         .padding()
+        .padding(.leading, 4)
     }
     
     // 참여자 수에 따라 여백 조정
     private func calculateTopPadding() -> CGFloat {
         let count = detailViewModel.memberInfoList.count
         if count > 0 && count <= 4 {
-            return -80
+            return -72
         } else {
-            return 10
+            return 30
         }
     }
 }

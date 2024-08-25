@@ -55,6 +55,11 @@ struct InviteFinalView: View {
                     .foregroundColor(.gray4)
                     .padding(.bottom, 75)
             }
+            .onAppear {
+                if tabSelectionViewModel.selectedTab == .smallClass {
+                    //TODO: - 초기화 
+                }
+            }
         }
     }
 }

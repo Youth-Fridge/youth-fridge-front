@@ -99,7 +99,6 @@ class CreateInviteViewModel: ObservableObject {
             case .success(let userInfoResponse):
                 self?.nickname = userInfoResponse.nickname
                 self?.profileImageUrl = userInfoResponse.profileImageNumber
-                UserDefaults.standard.set(userInfoResponse.nickname, forKey: "nickname")
             case .failure(let error):
                 print("Failed to fetch user info: \(error.localizedDescription)")
             }

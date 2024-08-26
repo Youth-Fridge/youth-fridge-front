@@ -11,7 +11,6 @@ struct MyActivityView: View {
     @State private var selectedTab : Int
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: MyPageViewModel
-    @StateObject var profileViewModel: SmallClassViewModel
     @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
     
     @StateObject private var myInvitationsViewModel = MyInvitationsViewModel()
@@ -22,10 +21,9 @@ struct MyActivityView: View {
     private let tabTextColorSelected = Color.white
     private let tabTextColorUnselected = Color.black
     
-    init(selectedTab: Int = 0, viewModel: MyPageViewModel, profileViewModel: SmallClassViewModel) {
+    init(selectedTab: Int = 0, viewModel: MyPageViewModel) {
         _selectedTab = State(initialValue: selectedTab)
         _viewModel = StateObject(wrappedValue: viewModel)
-        _profileViewModel = StateObject(wrappedValue: profileViewModel)
     }
 
     var body: some View {
@@ -61,20 +59,18 @@ struct MyActivityView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                if let profileImageUrl = profileViewModel.profileImageUrl {
-                    if let profile = ProfileImage.from(rawValue: profileImageUrl) {
-                        let profileImage = profile.imageName
-                        Image(profileImage)
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
-                    }
+                let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                if let profile = ProfileImage.from(rawValue: profileNumber) {
+                    let profileImage = profile.imageName
                     
+                    Image(profileImage)
+                        .resizable()
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
                 }
             }
         }
         .onAppear {
-            profileViewModel.fetchProfileImage()
             selectedTab = tabSelectionViewModel.selectedSubTab
             if selectedTab == 0 {
                 myInvitationsViewModel.fetchActivities()

@@ -12,7 +12,6 @@ struct NewsView: View {
     @State private var isLoading = true
     @State private var reload = false
     @Binding var urlToLoad: String
-    @StateObject private var viewModel = NewsViewModel()
     private let specificURL = "https://m.blog.naver.com/hyangyuloum"
     
     var body: some View {
@@ -34,15 +33,14 @@ struct NewsView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
-                        if let profileImageUrl = viewModel.profileImageUrl {
-                            if let profile = ProfileImage.from(rawValue: profileImageUrl) {
-                                let profileImage = profile.imageName
-                                Image(profileImage)
-                                    .resizable()
-                                    .frame(width: 36, height: 36)
-                                    .clipShape(Circle())
-                            }
-                           
+                        let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                        if let profile = ProfileImage.from(rawValue: profileNumber) {
+                            let profileImage = profile.imageName
+                            
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
                         }
                     }
                 }
@@ -62,8 +60,5 @@ struct NewsView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear {
-            viewModel.fetchProfileImage()
-        }
     }
 }

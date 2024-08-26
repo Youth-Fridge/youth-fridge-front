@@ -46,7 +46,7 @@ struct InviteFinalView: View {
             .padding()
             .navigationBarBackButtonHidden(true)
             
-            VStack {
+            VStack(alignment: .leading) {
                 Text("* 일정 변경으로 참여가 어려울 시 반드시 2일 전에는 응답해 주세요.")
                     .font(.system(size: 11, weight: .medium))
                     .foregroundColor(.gray4)

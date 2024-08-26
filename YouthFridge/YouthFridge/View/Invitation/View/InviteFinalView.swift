@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct InviteFinalView: View {
-    @StateObject private var smallClassViewModel = SmallClassViewModel()
     @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
     var body: some View {
         

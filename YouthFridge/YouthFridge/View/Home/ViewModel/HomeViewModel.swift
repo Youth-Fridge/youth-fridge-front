@@ -27,6 +27,8 @@ class HomeViewModel: ObservableObject {
             switch result {
             case .success(let userInfoResponse):
                 self?.profileImageUrl = userInfoResponse.profileImageNumber
+                UserDefaults.standard.set(userInfoResponse.nickname, forKey: "nickname")
+                UserDefaults.standard.set(userInfoResponse.profileImageNumber, forKey: "profileImageNumber")
             case .failure(let error):
                 print("Failed to fetch user info: \(error.localizedDescription)")
             }

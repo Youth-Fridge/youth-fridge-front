@@ -12,7 +12,6 @@ struct MyPageView: View {
     @State private var showDeletePopup = false
     @State private var isNavigatingToMyActivty = false
     @State private var showLogOutDeletePopup = false
-    @StateObject private var smallClassViewModel = SmallClassViewModel()
     @StateObject private var navigationManager = NavigationManager()
     @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
 
@@ -104,7 +103,7 @@ struct MyPageView: View {
                     .zIndex(1)
                 }
                 NavigationLink(
-                    destination: MyActivityView(viewModel: viewModel, profileViewModel: smallClassViewModel),
+                    destination: MyActivityView(viewModel: viewModel),
                     isActive: $isNavigatingToMyActivty,
                     label: { EmptyView() }
                 )

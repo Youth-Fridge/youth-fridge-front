@@ -16,12 +16,11 @@ class CellViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     func fetchInviteCellData() {
-        // 페이지가 변경되거나 새로 데이터 불러올 때 초기화
         if currentPage == 0 {
             self.cells.removeAll()  // 기존 데이터를 초기화
         }
         
-        guard canLoadMore else { return } // 더 이상 불러올 데이터가 없으면 중단
+        canLoadMore = true
         
         InvitationService.shared.getInvitationList(page: currentPage, size: 5) { [weak self] result in
             DispatchQueue.main.async {

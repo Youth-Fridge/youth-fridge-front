@@ -35,14 +35,6 @@ struct TagsView: View {
                             }
                             
                             print("Current selectedTags: \(selectedTags)")
-                            
-                            if selectedTags.isEmpty {
-                                print("selectedTags is empty, calling fetchInviteCellData()")
-                                //viewModel.fetchInviteCellData()
-                            } else {
-                                print("Calling fetchKeyWordsList with tags: \(selectedTags)")
-                                viewModel.fetchKeyWordsList(selectedTags: selectedTags)
-                            }
                         }
                         .padding([.leading, .bottom], 5)
                 }

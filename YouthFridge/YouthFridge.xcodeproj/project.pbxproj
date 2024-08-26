@@ -22,6 +22,7 @@
 		0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */; };
 		0A4238992C6BD1F60034DACB /* NewsLetterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4238982C6BD1F60034DACB /* NewsLetterAPI.swift */; };
 		0A42389B2C6BD26C0034DACB /* NewsLetterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42389A2C6BD26C0034DACB /* NewsLetterService.swift */; };
+		0A5325C22C7CC870002C815D /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5325C12C7CC870002C815D /* UINavigationController+Extension.swift */; };
 		0A7026ED2C5A768A0083C7A0 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A7026EC2C5A768A0083C7A0 /* Moya */; };
 		0A7026F52C5A81FA0083C7A0 /* GeneralAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */; };
 		0A7026F72C5A82A00083C7A0 /* InvitationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7026F62C5A82A00083C7A0 /* InvitationService.swift */; };
@@ -80,7 +81,6 @@
 		58299B422C797EFC001BBF0F /* PublicInvitationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B412C797EFC001BBF0F /* PublicInvitationImage.swift */; };
 		58299B442C79BB11001BBF0F /* TabSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */; };
 		58299B462C79D743001BBF0F /* ComplainPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58299B452C79D743001BBF0F /* ComplainPopUpView.swift */; };
-		58299B482C7B4AF1001BBF0F /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58299B472C7B4AF1001BBF0F /* Secret.plist */; };
 		5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0B82C5BCDF7001AC04E /* OnboardingService.swift */; };
 		5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0BE2C5BCEC7001AC04E /* OnboardingRequest.swift */; };
 		5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F0C12C5BDBFE001AC04E /* OnboardingAPI.swift */; };
@@ -166,6 +166,7 @@
 		0A2152AC2C4EB8D3001B6875 /* ApplicationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailView.swift; sourceTree = "<group>"; };
 		0A4238982C6BD1F60034DACB /* NewsLetterAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLetterAPI.swift; sourceTree = "<group>"; };
 		0A42389A2C6BD26C0034DACB /* NewsLetterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsLetterService.swift; sourceTree = "<group>"; };
+		0A5325C12C7CC870002C815D /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		0A7026F42C5A81FA0083C7A0 /* GeneralAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPI.swift; sourceTree = "<group>"; };
 		0A7026F62C5A82A00083C7A0 /* InvitationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationService.swift; sourceTree = "<group>"; };
 		0A7026F82C5A82CE0083C7A0 /* InvitationAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationAPI.swift; sourceTree = "<group>"; };
@@ -777,6 +778,7 @@
 				58C316362C68B964001374EC /* DateFormatter.swift */,
 				0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */,
 				0A024F832C7B738E00B81F33 /* Font+Extension.swift */,
+				0A5325C12C7CC870002C815D /* UINavigationController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -972,6 +974,7 @@
 				5817D5F72C4504970081323E /* HomeView.swift in Sources */,
 				58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */,
 				5817D63F2C4D48930081323E /* TabContent.swift in Sources */,
+				0A5325C22C7CC870002C815D /* UINavigationController+Extension.swift in Sources */,
 				5817D62D2C479C890081323E /* ProfileResearchView.swift in Sources */,
 				0ABCD6082C652A1900A726CA /* JSONUtilities.swift in Sources */,
 				5817D6142C462FE70081323E /* ActivityCardView.swift in Sources */,

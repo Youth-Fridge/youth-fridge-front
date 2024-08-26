@@ -96,7 +96,7 @@ class ProfileResearchViewModel: ObservableObject {
         let username = UserDefaults.standard.string(forKey: "userID") ?? "unknown"
         let inquiryNumList = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] ?? []
         let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
-        let profileImageNumber = UserDefaults.standard.integer(forKey: profileImageKey)
+        let profileImageNumber = UserDefaults.standard.integer(forKey: "profileImage")
         let signupRequest = OnboardingRequest(type: type, email: email, username: username, nickname: nickname, introduce: introduceMe, role: "ROLE_USER", profileImageNumber: profileImageNumber, town: "동남구", inquiryNumList: inquiryNumList)
         
         OnboardingAPI.shared.signUp(signupRequest) { result in

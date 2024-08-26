@@ -101,7 +101,7 @@ struct ProfilePictureSelector: View {
         let type = UserDefaults.standard.string(forKey: "loginType") ?? "unknown"
         let profileImageKey = type == "apple" ? "appleProfileImageNumber" : type == "kakao" ? "kakaoProfileImageNumber" : "profileImageNumber"
         UserDefaults.standard.setValue(index, forKey: profileImageKey)
+        UserDefaults.standard.setValue(index, forKey: "profileImage")
         print("Saved image index: \(index)")
-        
     }
 }

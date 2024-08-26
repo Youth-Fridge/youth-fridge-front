@@ -11,12 +11,17 @@ import Combine
 struct SmallClassView: View {
     @StateObject private var viewModel = CellViewModel()
     @StateObject private var smallViewModel = SmallClassViewModel()
-
+    
     let tags = ["건강식", "취미", "요리", "장보기", "메뉴 추천", "식단", "운동", "독서", "레시피", "배달", "과제", "기타"]
     
     @State private var selectedTags: [String] = [] {
         didSet {
-            selectedTagsSubject.send(selectedTags)
+            // selectedTags가 변경될 때마다 viewModel 업데이트
+            if selectedTags.isEmpty {
+                viewModel.fetchInviteCellData()
+            } else {
+                viewModel.fetchKeyWordsList(selectedTags: selectedTags)
+            }
         }
     }
     
@@ -60,8 +65,13 @@ struct SmallClassView: View {
                             .cornerRadius(10)
                             .contentShape(Rectangle())
                             .onAppear {
+                                // 마지막 셀이 나타날 때 추가 데이터 로드
                                 if cell == viewModel.cells.last {
-                                    viewModel.fetchInviteCellData()
+                                    if selectedTags.isEmpty {
+                                        viewModel.fetchInviteCellData()
+                                    } else {
+                                        viewModel.fetchKeyWordsList(selectedTags: selectedTags)
+                                    }
                                 }
                             }
                     }
@@ -82,29 +92,18 @@ struct SmallClassView: View {
                                 .frame(width: 36, height: 36)
                                 .clipShape(Circle())
                         }
-                       
+                        
                     }
                 }
             }
         }
         .onAppear {
-            viewModel.fetchInviteCellData()
+            if selectedTags.isEmpty {
+                viewModel.fetchInviteCellData()
+            }
             smallViewModel.fetchProfileImage()
-            viewModel.observeSelectedTags(selectedTagsSubject)
+           // viewModel.observeSelectedTags(selectedTagsSubject)
         }
     }
-    
-    private func setupCombine() {
-        selectedTagsSubject
-            .sink { newTags in
-                if newTags.isEmpty {
-                    viewModel.fetchInviteCellData()
-                } else {
-                    viewModel.fetchKeyWordsList(selectedTags: newTags)
-                }
-            }
-            .store(in: &cancellables)
-    }
-    
 }
 

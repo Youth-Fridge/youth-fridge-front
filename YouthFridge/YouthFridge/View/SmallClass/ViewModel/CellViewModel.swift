@@ -14,14 +14,22 @@ class CellViewModel: ObservableObject {
     private var canLoadMore: Bool = true
     
     private var cancellables = Set<AnyCancellable>()
-
+    
     func fetchInviteCellData() {
+        // 페이지가 변경되거나 새로 데이터 불러올 때 초기화
+        if currentPage == 0 {
+            self.cells.removeAll()  // 기존 데이터를 초기화
+        }
+        
+        guard canLoadMore else { return } // 더 이상 불러올 데이터가 없으면 중단
+        
         InvitationService.shared.getInvitationList(page: currentPage, size: 5) { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 
                 switch result {
                 case .success(let invitations):
+                    print("Received 최신순: \(invitations)")
                     if !invitations.isEmpty {
                         let newCells = invitations.map { invitation in
                             CellModel(id: invitation.invitationId,
@@ -47,7 +55,26 @@ class CellViewModel: ObservableObject {
             }
         }
     }
-
+    
+    func observeSelectedTags(_ selectedTagsSubject: PassthroughSubject<[String], Never>) {
+        selectedTagsSubject
+            .sink { [weak self] newTags in
+                guard let self = self else { return }
+                
+                // 태그가 비어있을 경우 초기화 후 기존 데이터를 다시 불러옴
+                self.currentPage = 0
+                self.canLoadMore = true
+                if newTags.isEmpty {
+                    self.cells.removeAll() // 기존 데이터 초기화
+                    self.fetchInviteCellData()
+                } else {
+                    self.fetchKeyWordsList(selectedTags: newTags)
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    
     func fetchKeyWordsList(selectedTags: [String]) {
         let keywords = selectedTags.joined(separator: ",")
         
@@ -57,6 +84,7 @@ class CellViewModel: ObservableObject {
                 
                 switch result {
                 case .success(let invitations):
+                    print("Received invitations: \(invitations)")
                     self.cells = invitations.map { invitation in
                         CellModel(id: invitation.invitationId,
                                   image: "invitationImage\(invitation.emojiNumber)",
@@ -73,25 +101,8 @@ class CellViewModel: ObservableObject {
             }
         }
     }
-    
-    func observeSelectedTags(_ selectedTagsSubject: PassthroughSubject<[String], Never>) {
-        selectedTagsSubject
-            .sink { [weak self] newTags in
-                guard let self = self else { return }
-                if newTags.isEmpty {
-                    self.currentPage = 0
-                    self.cells.removeAll()
-                    self.canLoadMore = true
-                    self.fetchInviteCellData()
-                } else {
-                    self.cells.removeAll()
-                    self.fetchKeyWordsList(selectedTags: newTags)
-                }
-            }
-            .store(in: &cancellables)
-    }
-
 }
+
 
 
 

@@ -18,7 +18,7 @@ struct SmallClassView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationLink(destination: CreateInviteView().toolbar(.hidden, for: .tabBar)) {
+                NavigationLink(destination: CreateInviteView()) {
                     AddInviteView()
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -86,7 +86,7 @@ struct SmallClassView: View {
             if selectedTags.isEmpty {
                 viewModel.fetchInviteCellData()
             }
-            smallViewModel.fetchProfileImage()
+            //smallViewModel.fetchProfileImage()
         }
         .onChange(of: selectedTags) { newTags in
             selectedTagsSubject.send(newTags)

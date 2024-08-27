@@ -12,7 +12,7 @@ struct SmallestCardView: View {
     @State private var showCreateInviteView = false
     
     var body: some View {
-        NavigationLink(destination: CreateInviteView().toolbar(.hidden, for: .tabBar), isActive: $showCreateInviteView) {
+        NavigationLink(destination: CreateInviteView(), isActive: $showCreateInviteView) {
             ZStack {
                 Color.sub3Color
                     .cornerRadius(10)

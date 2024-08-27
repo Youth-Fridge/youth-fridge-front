@@ -39,6 +39,7 @@ struct MyActivityView: View {
                                 .padding(.bottom, 20)
                         }
                     }
+                    
                 }
             }
             

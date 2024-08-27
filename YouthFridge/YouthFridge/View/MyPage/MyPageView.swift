@@ -203,6 +203,26 @@ struct MyPageView: View {
                             isNavigatingToMyActivty = true
                         }
                         .contentShape(Rectangle())
+                } else if item == "문의" {
+                    // 문의 항목을 클릭하면 카카오 채널로 이동
+                    Button(action: {
+                        if let url = URL(string: "http://pf.kakao.com/_kxlxjyG") {
+                            UIApplication.shared.open(url)
+                        }
+                    }) {
+                        ActivityCell(title: item, subTitles: [])
+                            .contentShape(Rectangle())
+                    }
+                    // TODO: - 추후 채널 ID로 바로 채팅 연결
+    //                    .onTapGesture {
+    //                        TalkApi.shared.chatChannel(channelPublicId: "YOUR_CHANNEL_ID") { error in
+    //                            if let error = error {
+    //                                print("Failed to open channel: \(error)")
+    //                            } else {
+    //                                print("chatChannel() success.")
+    //                            }
+    //                        }
+    //                    }
                 } else if item == "회원탈퇴" {
                     Button(action: {
                         showDeletePopup = true

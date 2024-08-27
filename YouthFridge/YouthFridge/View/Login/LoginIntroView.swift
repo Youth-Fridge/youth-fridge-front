@@ -10,6 +10,7 @@ import AuthenticationServices
 import KakaoSDKAuth
 import KakaoSDKUser
 import SwiftKeychainWrapper
+import KakaoSDKTalk
 
 struct LoginIntroView: View {
     @State private var isPresentedLoginView: Bool = false
@@ -66,9 +67,25 @@ struct LoginIntroView: View {
                     }
                 }.buttonStyle(LoginButtonStyle(textColor: .white, borderColor: .gray6Color, backgroundColor: .gray6Color))
                 
-                Text("로그인 오류 시 문의 청년냉장고")
-                    .font(.pretendardMedium12)
-                    .foregroundColor(Color.gray4)
+                Link(destination: URL(string: "http://pf.kakao.com/_kxlxjyG")!) {
+                    Text("로그인 오류 시 문의 청년냉장고")
+                        .font(.pretendardMedium12)
+                        .foregroundColor(Color.gray4)
+                }
+                
+                // TODO: - 추후 채널 ID로 바로 채팅 연결
+//                Text("로그인 오류 시 문의 청년냉장고")
+//                    .font(.pretendardMedium12)
+//                    .foregroundColor(Color.gray4)
+//                    .onTapGesture {
+//                        TalkApi.shared.chatChannel(channelPublicId: "YOUR_CHANNEL_ID") { error in
+//                            if let error = error {
+//                                print("Failed to open channel: \(error)")
+//                            } else {
+//                                print("chatChannel() success.")
+//                            }
+//                        }
+//                    }
             }
             .background(
                 Group {

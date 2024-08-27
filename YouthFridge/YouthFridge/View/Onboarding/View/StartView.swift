@@ -19,21 +19,21 @@ struct StartView: View {
                 .resizable()
                 .frame(width: 140,height: 26)
             Text("만나서 반가워요")
-                .font(.system(size: 40, weight: .bold))
+                .font(.pretendardBold40)
                 .multilineTextAlignment(.center)
                 .padding(.top)
             Text("든든히 한 끼 함께 해요!")
-                .font(.system(size: 24, weight: .medium))
+                .font(.pretendardSemiBold24)
                 .multilineTextAlignment(.center)
             
            Spacer()
             NavigationLink(destination: MainTabView().navigationBarBackButtonHidden()) {
                 Text("동네친구 사귀고 함께 시작하기")
-                    .font(.system(size: 16,weight: .bold))
+                    .font(.pretendardBold16)
                     .foregroundColor(.white)
                     .padding()
                     .frame(maxWidth: 320)
-                    .background(Color.yellow)
+                    .background(Color.sub2)
                     .cornerRadius(8)
             }
                 

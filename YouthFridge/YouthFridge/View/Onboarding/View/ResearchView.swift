@@ -20,14 +20,15 @@ struct ResearchView: View {
                     .padding()
                 
                 Text("나의 식생활이\n더 즐겁도록 추천해 드릴게요")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.pretendardBold24)
+                    .foregroundColor(.gray6)
                     .multilineTextAlignment(.leading)
                     .padding(.bottom, 10)
                     .padding([.leading, .top], 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text("관심있는 카테고리를 선택해주세요")
-                    .font(.system(size: 14))
+                    .font(.pretendardRegular14)
                     .multilineTextAlignment(.leading)
                     .padding([.leading, .bottom], 30)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -42,7 +43,7 @@ struct ResearchView: View {
                             }
                         }) {
                             Text(viewModel.categories[index])
-                                .font(.system(size: 16))
+                                .font(.pretendardMedium16)
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -68,7 +69,7 @@ struct ResearchView: View {
                     }
                 }) {
                     Text("다음")
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.pretendardBold20)
                         .foregroundColor(!selectedCategories.isEmpty ? Color.white : Color.black)
                         .padding()
                         .frame(width: 320, height: 60)

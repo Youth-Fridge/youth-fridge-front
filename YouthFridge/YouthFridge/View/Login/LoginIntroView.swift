@@ -35,7 +35,7 @@ struct LoginIntroView: View {
                     .padding(.top,20)
                 
                 Text("천안에 사는 청년들을 위한\n 건강한 밥 한끼")
-                    .font(.system(size: 18,weight: .medium))
+                    .font(.pretendardMedium18)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
                     .padding(.top,5)
@@ -49,10 +49,10 @@ struct LoginIntroView: View {
                     performKakaoSignIn()
                 } label: {
                     HStack {
-                        Image(systemName: "message.fill")
-                            .frame(height: 48)
+                        Image("kakaoLogo")
+                            .frame(width: 20,height: 20)
                         Text("카카오톡 로그인")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.pretendardSemiBold16)
                     }
                 }.buttonStyle(LoginButtonStyle(textColor: .gray6, borderColor: .kakaoColor, backgroundColor: .kakaoColor))
                 
@@ -60,15 +60,15 @@ struct LoginIntroView: View {
                     performAppleSignIn()
                 } label: {
                     HStack {
-                        Image(systemName: "applelogo")
-                            .frame(height: 48)
+                        Image("appleLogo")
+                            .frame(width: 20,height: 20)
                         Text("Apple 로그인")
-                            .font(.system(size: 16, weight: .semibold))
+                            .font(.pretendardSemiBold16)
                     }
                 }.buttonStyle(LoginButtonStyle(textColor: .white, borderColor: .gray6Color, backgroundColor: .gray6Color))
                 
                 Text("로그인 오류 시 문의 청년냉장고")
-                    .font(.system(size: 12))
+                    .font(.pretendardMedium12)
                     .foregroundColor(Color.gray4)
             }
             .background(

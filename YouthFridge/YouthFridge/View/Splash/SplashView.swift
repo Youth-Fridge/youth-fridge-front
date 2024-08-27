@@ -45,6 +45,8 @@ struct ContentView: View {
     }
     
     private func isTokenValid(_ token: String, type: TokenType) -> Bool {
+        let cleanedToken = token.replacingOccurrences(of: "Bearer ", with: "")
+        print("Cleaned Token: \(cleanedToken)")
         switch type {
         case .apple:
             return isAppleTokenValid(token)
@@ -60,19 +62,44 @@ struct ContentView: View {
         return false
     }
     
+
     private func isKakaoTokenValid(_ token: String) -> Bool {
         let parts = token.split(separator: ".")
-        guard parts.count == 3 else { return false }
+        guard parts.count == 3 else {
+                    print("Invalid Kakao token structure.")
+                    return false
+                }
         
-        let payload = parts[1]
-        guard let payloadData = Data(base64Encoded: String(payload)) else { return false }
+        // 페이로드 추출
+                let payload = String(parts[1])
+                print("Extracted Payload: \(payload)")
+                
         
-        guard let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
-              let payloadDict = json as? [String: Any] else { return false }
+        // Base64 URL 인코딩을 일반 Base64 인코딩으로 변환
+                var base64Payload = payload
+                    .replacingOccurrences(of: "-", with: "+")
+                    .replacingOccurrences(of: "_", with: "/")
+                
+                // Base64 문자열의 길이를 4의 배수로 맞추기 위해 패딩 추가
+                while base64Payload.count % 4 != 0 {
+                    base64Payload.append("=")
+                }
+                print("Base64 Payload: \(base64Payload)")
         
+        // 디코딩하여 페이로드를 JSON으로 변환
+        guard let payloadData = Data(base64Encoded: base64Payload),
+              let json = try? JSONSerialization.jsonObject(with: payloadData, options: []),
+              let payloadDict = json as? [String: Any] else {
+            print("Failed to decode payload or parse JSON.")
+            return false
+        }
+        
+        // 만료 시간 체크
         if let exp = payloadDict["exp"] as? TimeInterval {
             let expirationDate = Date(timeIntervalSince1970: exp)
-            return expirationDate > Date()
+            let isValid = expirationDate > Date()
+            print("Kakao token expiration date: \(expirationDate), is valid: \(isValid)")
+            return isValid
         }
         
         return false

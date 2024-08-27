@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KakaoSDKTalk
 
 struct ApplicationDetailView: View {
     @Environment(\.dismiss) var dismiss
@@ -338,11 +339,26 @@ struct ApplicationDetailView: View {
                 Text("*참여 응답 후 모임 미참석 시, 다음 참여에 불이익이 있을 수 있습니다.")
                 Text("*호스트의 주도로 소모임 내에서 진행되는 활동을 잘 따라주세요.")
                 Text("*불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
-                Text("*문의사항 또는 문제 발생 시 ")
-                + Text("문의처")
-                    .fontWeight(.bold)
-                    .underline()
-                + Text("로 문의 부탁드립니다.")
+                HStack(spacing: 0) {
+                    Text("*문의사항 또는 문제 발생 시 ")
+                    Button(action: {
+                        if let url = URL(string: "http://pf.kakao.com/_kxlxjyG") {
+                            UIApplication.shared.open(url)
+                        }
+//                        TalkApi.shared.chatChannel(channelPublicId: "YOUR_CHANNEL_ID") { error in
+//                            if let error = error {
+//                                print("Failed to open channel: \(error)")
+//                            } else {
+//                                print("chatChannel() success.")
+//                            }
+//                        }
+                    }) {
+                        Text("문의처")
+                            .fontWeight(.bold)
+                            .underline()
+                    }
+                    Text("로 문의 부탁드립니다.")
+                }
             }
             .padding(.bottom, 40)
             .font(.pretendardMedium11)

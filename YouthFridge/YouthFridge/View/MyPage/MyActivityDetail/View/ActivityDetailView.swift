@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import KakaoSDKTalk
 
 struct ActivityDetailView: View {
     @Environment(\.dismiss) var dismiss
@@ -199,7 +200,26 @@ struct ActivityDetailView: View {
                 Text("*소모임 내에서 진행되는 모든 사항들은 호스트에게 달려있습니다.")
                 Text("*불건전한 만남 및 문제 상황 발생을 방지하기 위해 관리자가 상시 모니터링 중입니다.")
                 Text("*우수 소모임 호스트로 지정 시 리워드가 주어질 수 있습니다.")
-                Text("*문의사항 또는 문제 발생 시 문의처로 문의 부탁드립니다.")
+                HStack(spacing: 0) {
+                    Text("*문의사항 또는 문제 발생 시 ")
+                    Button(action: {
+                        if let url = URL(string: "http://pf.kakao.com/_kxlxjyG") {
+                            UIApplication.shared.open(url)
+                        }
+//                        TalkApi.shared.chatChannel(channelPublicId: "YOUR_CHANNEL_ID") { error in
+//                            if let error = error {
+//                                print("Failed to open channel: \(error)")
+//                            } else {
+//                                print("chatChannel() success.")
+//                            }
+//                        }
+                    }) {
+                        Text("문의처")
+                            .fontWeight(.bold)
+                            .underline()
+                    }
+                    Text("로 문의 부탁드립니다.")
+                }
             }
             .font(.pretendardMedium12)
             .foregroundColor(Color.gray4)

@@ -20,14 +20,13 @@ struct MyInvitationsView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                     Spacer()
                 }
-                Spacer()
             } else if viewModel.invitationActivities.isEmpty {
                 VStack {
                     Spacer()
                         .frame(height: UIScreen.main.bounds.height * 0.3)
                     Text("소모임을 운영하는 호스트가 되어봐요 :)")
                         .foregroundColor(.gray3)
-                        .font(.system(size: 18, weight: .regular))
+                        .font(.pretendardRegular18)
                         .multilineTextAlignment(.center)
                 }
             } else {

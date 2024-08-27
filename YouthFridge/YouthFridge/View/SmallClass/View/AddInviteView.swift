@@ -16,7 +16,7 @@ struct AddInviteView: View {
                 .frame(width: 28,height: 28)
                 .padding(.leading,15)
             Text("초대장 만들기")
-                .font(.system(size: 20,weight: .bold))
+                .font(.pretendardBold20)
             Spacer()
             Image("plus_letter")
                 .resizable()

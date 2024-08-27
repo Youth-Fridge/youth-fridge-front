@@ -147,17 +147,17 @@ struct MyPageView: View {
                 VStack(alignment: .leading, spacing: 7) {
                     HStack {
                         Text("\(user.name) 님")
-                            .font(.headline)
+                            .font(.pretendardSemiBold18)
                         
                         Spacer()
                     }
                     Text("초대 모임 예정일")
-                        .font(.subheadline)
+                        .font(.pretendardSemiBold14)
                         .foregroundColor(.main1Color)
                     Text(viewModel.launchDate != nil && viewModel.startTime != nil
                          ? "\(viewModel.launchDate!) \(viewModel.startTime!)"
                          : "예정된 초대 모임이 없습니다")
-                    .font(.caption)
+                    .font(.pretendardRegular12)
                     .foregroundColor(.gray6Color)
                 }
                 .padding(.leading, 15)
@@ -174,13 +174,13 @@ struct MyPageView: View {
         VStack(alignment: .leading, spacing: 5) {
             if let user = viewModel.myUser {
                 Text("\(user.name) 님,")
-                    .font(.system(size: 24))
+                    .font(.pretendardBold24)
                     .fontWeight(.bold)
                     .padding(.top, 30)
                     .padding(.leading, 30)
                 
                 Text("오늘도 건강한 식사하세요!")
-                    .font(.system(size: 18))
+                    .font(.pretendardMedium18)
                     .multilineTextAlignment(.leading)
                     .padding(.leading, 30)
             } else {
@@ -260,7 +260,7 @@ struct ActivityCell: View {
         VStack {
             HStack {
                 Text(title)
-                    .font(.system(size: 18, weight: .bold))
+                    .font(.pretendardBold18)
                     .foregroundColor(.black)
                     .listSectionSeparator(.hidden)
                 
@@ -278,7 +278,7 @@ struct ActivityCell: View {
                     ForEach(subTitles, id: \.self) { subTitle in
                         HStack {
                             Text(subTitle)
-                                .font(.system(size: 16))
+                                .font(.pretendardRegular14)
                                 .allowsHitTesting(false)
                             
                             Spacer()

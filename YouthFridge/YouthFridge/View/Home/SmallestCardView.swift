@@ -29,12 +29,12 @@ struct SmallestCardView: View {
                 VStack(alignment: .leading) {
                     
                     Text("초대장")
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.pretendardSemiBold20)
                         .padding(.top, 20)
                         .foregroundColor(Color.white)
                     
                     Text("만들기")
-                        .font(.system(size: 12,weight: .medium))
+                        .font(.pretendardMedium12)
                         .bold()
                         .padding(.leading, 15)
                         .padding(.trailing, 15)

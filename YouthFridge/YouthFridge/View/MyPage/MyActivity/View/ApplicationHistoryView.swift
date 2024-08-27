@@ -20,13 +20,12 @@ struct ApplicationHistoryView: View {
                         .progressViewStyle(CircularProgressViewStyle())
                     Spacer()
                 }
-                Spacer()
             } else if viewModel.applicatedActivities.isEmpty {
                 Spacer()
                     .frame(height: UIScreen.main.bounds.height * 0.3)
                 Text("참여 중인 소모임이 없어요")
                     .foregroundColor(.gray3)
-                    .font(.system(size: 18, weight: .regular))
+                    .font(.pretendardRegular18)
                     .multilineTextAlignment(.center)
             } else {
                 ForEach(viewModel.applicatedActivities) { activity in

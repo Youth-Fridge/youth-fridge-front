@@ -21,7 +21,7 @@ struct CardView: View {
                             .frame(width: 30, height: 30)
                             .padding(.leading)
                         Text(viewModel.card.name)
-                            .font(.system(size: 10))
+                            .font(.pretendardRegular10)
                             .padding(.leading, 5)
                         Spacer()
                         HStack(spacing: 5) {
@@ -43,20 +43,20 @@ struct CardView: View {
                     }
                     .padding(.bottom,5)
                     Text(viewModel.card.title)
-                        .font(.system(size: 26,weight: .bold))
+                        .font(.pretendardBold26)
                         .frame(height: 27)
                         .padding(.leading)
                     HStack() {
                         Image("clock")
                         Text(viewModel.card.formattedDateAndTime)
-                            .font(.system(size: 10,weight: .semibold))
+                            .font(.pretendardSemiBold10)
                     }
                     .padding(.leading)
                     .padding(.top,5)
                     HStack {
                         Image("map-pin")
                         Text(viewModel.card.location)
-                            .font(.system(size: 10,weight: .semibold))
+                            .font(.pretendardSemiBold10)
                     }
                     .padding(.leading)
                 }
@@ -80,7 +80,7 @@ struct CustomViewModifier: ViewModifier {
     var color: Color
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 12,weight: .semibold))
+            .font(.pretendardSemiBold12)
             .padding(.top,5)
             .padding(.bottom,5)
             .padding(.leading,11)
@@ -98,7 +98,7 @@ struct TextWithBackground: View {
 
     var body: some View {
         Text(text)
-            .font(.system(size: 10,weight: .medium))
+            .font(.pretendardMedium10)
             .padding(.top,5)
             .padding(.bottom,5)
             .padding(.leading,11)

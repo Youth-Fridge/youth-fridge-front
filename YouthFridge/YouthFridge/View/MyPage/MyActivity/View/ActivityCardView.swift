@@ -24,16 +24,16 @@ struct ActivityCardView: View {
                 
                 VStack(alignment: .leading) {
                     Text(viewModel.title)
-                        .font(.system(size: 16,weight: .semibold))
+                        .font(.pretendardSemiBold16)
                         .padding(.leading, 10)
                         .padding(.bottom, 5)
                     
                     Text("\(viewModel.date) \(viewModel.startTime)")
-                        .font(.system(size: 12))
+                        .font(.pretendardRegular12)
                         .padding(.leading, 10)
                         .padding(.bottom, 1)
                     Text(viewModel.location)
-                        .font(.system(size: 12))
+                        .font(.pretendardRegular12)
                         .padding(.leading, 10)
                 }
                 
@@ -43,7 +43,7 @@ struct ActivityCardView: View {
                     .padding(.trailing, 11)
                 
                 Text("D-\(viewModel.daysLeft)")
-                    .font(.headline)
+                    .font(.pretendardBold18)
                     .foregroundColor(viewModel.isPast ? Color.gray3.opacity(0) : .black)
                     .frame(width: 45)
                     .fixedSize()
@@ -86,11 +86,3 @@ struct ActivityCardView: View {
         }
     }
 }
-
-//struct ActivityCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let services = Services()
-//        let container = DIContainer(services: services)
-//        MyActivityView(viewModel: MyPageViewModel(container: container))
-//    }
-//}

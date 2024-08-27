@@ -18,7 +18,7 @@ struct TagsView: View {
             HStack() {
                 ForEach(tags, id: \.self) { tag in
                     Text(tag)
-                        .font(.system(size: 12,weight: .semibold))
+                        .font(.pretendardSemiBold12)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .padding(.top, 10)

@@ -18,21 +18,21 @@ struct SmallClassView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                NavigationLink(destination: CreateInviteView().toolbar(.hidden, for: .tabBar)) {
+                NavigationLink(destination: CreateInviteView()) {
                     AddInviteView()
                 }
                 .buttonStyle(PlainButtonStyle())
                 
                 HStack {
                     Text("참여 내역")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.pretendardSemiBold16)
                     Spacer()
                 }
                 .padding(.top, 30)
-                .padding(.leading, 30)
+                .padding(.leading, 20)
                 
                 TagsView(tags: tags, selectedTags: $selectedTags, viewModel: viewModel)
-                    .padding(.leading, 20)
+                    .padding(.leading, 10)
                     .padding(.top, 15)
                 
                 List(viewModel.cells) { cell in

@@ -221,7 +221,7 @@ struct ActivityDetailView: View {
                     Text("로 문의 부탁드립니다.")
                 }
             }
-            .font(.pretendardMedium12)
+            .font(.pretendardMedium11)
             .foregroundColor(Color.gray4)
         }
         .padding()

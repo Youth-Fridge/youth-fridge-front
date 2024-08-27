@@ -29,7 +29,7 @@ struct PopUpView: View {
             .padding([.top, .trailing], -7)
             
             Text(message)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.pretendardSemiBold16)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .padding([.leading, .trailing], 16)
@@ -39,7 +39,7 @@ struct PopUpView: View {
                     onConfirm()
                 }) {
                     Text("예")
-                        .font(.headline)
+                        .font(.pretendardSemiBold16)
                         .foregroundColor(.gray6Color)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 32)
@@ -53,7 +53,7 @@ struct PopUpView: View {
                     onCancel()
                 }) {
                     Text("아니오")
-                        .font(.headline)
+                        .font(.pretendardMedium16)
                         .foregroundColor(.gray6Color)
                         .padding(.vertical, 8)
                         .padding(.horizontal, 32)

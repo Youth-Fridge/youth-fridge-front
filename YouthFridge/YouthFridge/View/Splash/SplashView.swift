@@ -135,7 +135,7 @@ struct SplashView: View {
                 Spacer()
                 
                 Text("Copyright © Hyangyuloium. All Rights Reserved.")
-                    .font(.system(size: 10, weight: .medium))
+                    .font(.pretendardMedium11)
                     .foregroundColor(.gray4)
                     .padding(.bottom, 30)
             }

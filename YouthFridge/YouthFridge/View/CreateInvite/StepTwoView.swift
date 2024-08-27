@@ -41,7 +41,7 @@ struct StepTwoView: View {
                                     .cornerRadius(4)
                                 
                                 Text("더보기")
-                                    .font(.caption)
+                                    .font(.pretendardMedium12)
                                     .foregroundColor(.white)
                                     .bold()
                             }
@@ -73,7 +73,7 @@ struct StepTwoView: View {
                 navigateToMainTabView = true
             }) {
                 Text("초대장 완성하기")
-                    .font(.system(size: 16,weight: .bold))
+                    .font(.pretendardBold16)
                     .foregroundColor(viewModel.isFormComplete ? Color.white : Color.gray6)
                     .padding()
                     .frame(maxWidth: 335)

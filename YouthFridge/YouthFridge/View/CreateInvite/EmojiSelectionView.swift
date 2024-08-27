@@ -33,7 +33,7 @@ struct EmojiSelectionView: View {
             VStack(alignment: .center) {
                 if let userName = nickname {
                     Text("\(userName)님\n이모지를 선택해 주세요")
-                        .font(.system(size: 24, weight: .semibold))
+                        .font(.pretendardSemiBold24)
                         .multilineTextAlignment(.center)
                 }
             }
@@ -70,7 +70,7 @@ struct EmojiSelectionView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.gray.opacity(0.2))
-                .font(.system(size: 16, weight: .medium))
+                .font(.pretendardMedium16)
                 .foregroundColor(Color.gray6)
                 .cornerRadius(4)
                 
@@ -85,7 +85,7 @@ struct EmojiSelectionView: View {
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.sub2)
-                .font(.system(size: 16, weight: .medium))
+                .font(.pretendardMedium16)
                 .foregroundColor(Color.gray6)
                 .cornerRadius(4)
             }

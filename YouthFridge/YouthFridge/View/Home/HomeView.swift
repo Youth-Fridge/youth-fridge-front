@@ -44,7 +44,7 @@ struct HomeView: View {
                     Button(action: {
                     }) {
                         Text("공식소모임")
-                            .font(.system(size: 18,weight: .semibold))
+                            .font(.pretendardSemiBold18)
                             .foregroundColor(.gray6)
                             .padding(.leading, 30)
                     }
@@ -72,7 +72,7 @@ struct HomeView: View {
                                 VStack(alignment: .leading, spacing: 5) {
                                     HStack {
                                         Text(tabContents[index].title)
-                                            .font(.system(size: 16, weight: .bold))
+                                            .font(.pretendardBold16)
                                             .foregroundColor(.white)
                                         Spacer()
                                         HStack {
@@ -149,11 +149,11 @@ struct HomeView: View {
                     .frame(width: 152, height: 252)
                 VStack(alignment: .leading, spacing: 5) {
                     Text("Today")
-                        .font(.system(size: 20, weight: .semibold))
+                        .font(.pretendardSemiBold20)
                         .foregroundColor(.gray6)
                         .padding(.top,14)
                     Text("뉴스레터")
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.pretendardSemiBold16)
                         .foregroundColor(.gray6)
                     if !content.isEmpty {
                         Text(content)
@@ -216,7 +216,7 @@ struct CardScrollView: View {
                             .shadow(radius: 5)
                         HStack {
                             Text("오늘의 밥친구를 구해볼까요?")
-                                .font(.system(size: 20, weight: .semibold))
+                                .font(.pretendardSemiBold20)
                                 .padding(.leading, 20)
                                 .foregroundColor(.black)
                                 .padding(.bottom,40)

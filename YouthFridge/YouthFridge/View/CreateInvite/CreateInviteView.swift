@@ -113,7 +113,7 @@ struct StepOneView: View {
                 
                 VStack(alignment: .leading) {
                     Text("이모지 내역")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.pretendardSemiBold18)
                         .padding(.top, 15)
                         .padding(.bottom, 2)
                         .padding(.horizontal, 22)
@@ -156,10 +156,10 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 명")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                         
                         TextField("10글자 이내", text: $viewModel.name)
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.pretendardRegular14)
                             .padding()
                             .overlay {
                                 RoundedRectangle(cornerRadius: 6)
@@ -174,11 +174,11 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("세부 활동 계획")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                         
                         ForEach(viewModel.activityPlans.indices, id: \.self) { index in
                             TextField("15글자 이내", text: $viewModel.activityPlans[index])
-                                .font(.system(size: 14, weight: .regular))
+                                .font(.pretendardRegular14)
                                 .padding()
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 6)
@@ -201,7 +201,7 @@ struct StepOneView: View {
                                     Image("plus-button")
                                     
                                     Text("추가해 보세요")
-                                        .font(.system(size: 12))
+                                        .font(.pretendardRegular12)
                                         .foregroundColor(Color.gray3)
                                 }
                                 .padding(.leading, 10)
@@ -215,9 +215,9 @@ struct StepOneView: View {
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
                             Text("관심사 키워드 선택")
-                                .font(.system(size: 18, weight: .semibold))
+                                .font(.pretendardSemiBold18)
                             Text("최대 2개")
-                                .font(.system(size: 12))
+                                .font(.pretendardRegular12)
                                 .foregroundColor(.gray3)
                         }
                         
@@ -239,7 +239,7 @@ struct StepOneView: View {
                                                     .padding(.horizontal, 22)
                                                     .padding(.vertical, 10)
                                                     .background(viewModel.selectedKeywords.contains(keyword) ? Color.main1 : Color.gray1)
-                                                    .font(.system(size: 12, weight: .bold))
+                                                    .font(.pretendardSemiBold12)
                                                     .foregroundColor(viewModel.selectedKeywords.contains(keyword) ? .white : .gray6)
                                                     .cornerRadius(20)
                                             }
@@ -256,11 +256,11 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 장소")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                         
                         TextField("8글자 이내", text: $viewModel.launchPlace)
                             .padding()
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.pretendardRegular14)
                             .foregroundColor(.gray3)
                             .overlay {
                                 RoundedRectangle(cornerRadius: 6)
@@ -275,7 +275,7 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 인원")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                         Menu {
                             ForEach(1..<9) { number in
                                 Button(action: {
@@ -287,7 +287,7 @@ struct StepOneView: View {
                         } label: {
                             HStack {
                                 Text("\(viewModel.totalMember)")
-                                    .font(.system(size: 14, weight: .regular))
+                                    .font(.pretendardRegular14)
                                     .foregroundColor(Color.gray3)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
@@ -308,7 +308,7 @@ struct StepOneView: View {
                     VStack(alignment: .leading, spacing: 15) {
                         HStack {
                             Text("모임 일자")
-                                .font(.system(size: 18, weight: .semibold))
+                                .font(.pretendardSemiBold18)
                             Image("calendar")
                                 .resizable()
                                 .frame(width: 16, height: 16)
@@ -321,7 +321,7 @@ struct StepOneView: View {
                         
                         HStack {
                             Text(DateFormatter.generalDateFormatter.string(from: viewModel.launchDate))
-                                .font(.system(size: 14, weight: .regular))
+                                .font(.pretendardRegular14)
                                 .foregroundColor(Color.gray3)
                                 .padding(.leading, 17)
                                 .onTapGesture {
@@ -363,7 +363,7 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("모임 시간")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                         
                         HStack(spacing: 16) {
                             Menu {
@@ -381,7 +381,7 @@ struct StepOneView: View {
                             } label: {
                                 HStack {
                                     Text(viewModel.selectedStartTime.isEmpty ? "시작 시간" : viewModel.selectedStartTime)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.pretendardRegular14)
                                         .foregroundColor(Color.gray3)
                                     Spacer()
                                     Image(systemName: "arrowtriangle.down.fill")
@@ -409,7 +409,7 @@ struct StepOneView: View {
                             } label: {
                                 HStack {
                                     Text(viewModel.selectedEndTime.isEmpty ? "종료 시간" : viewModel.selectedEndTime)
-                                        .font(.system(size: 14, weight: .regular))
+                                        .font(.pretendardRegular14)
                                         .foregroundColor(Color.gray3)
                                     Spacer()
                                     Image(systemName: "arrowtriangle.down.fill")
@@ -430,11 +430,11 @@ struct StepOneView: View {
                     
                     VStack(alignment: .leading, spacing: 15) {
                         Text("오픈 채팅")
-                            .font(.system(size: 18, weight: .semibold))
+                            .font(.pretendardSemiBold18)
                             .padding(.bottom, 14)
                         
                         TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
-                            .font(.system(size: 14, weight: .regular))
+                            .font(.pretendardRegular14)
                             .foregroundColor(.gray3)
                             .padding()
                             .overlay {

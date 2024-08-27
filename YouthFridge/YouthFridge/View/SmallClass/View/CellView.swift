@@ -26,11 +26,11 @@ struct CellView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(cell.title)
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.pretendardBold16)
                         .padding()
                     Spacer()
                     Text(cell.ing)
-                        .font(.system(size: 12, weight: .bold))
+                        .font(.pretendardBold12)
                         .padding(.horizontal, 10)
                         .padding(.vertical, 4)
                         .background(backgroundColor)
@@ -43,7 +43,7 @@ struct CellView: View {
                 HStack {
                     ForEach(cell.tag, id: \.self) { tag in
                         Text(tag)
-                            .font(.system(size: 12, weight: .semibold))
+                            .font(.pretendardSemiBold12)
                             .padding(.top, 2)
                             .padding(.horizontal, 15)
                             .padding(.vertical, 4)
@@ -52,7 +52,7 @@ struct CellView: View {
                     }
                     Spacer()
                     Text(cell.numberOfPeople)
-                        .font(.system(size: 14, weight: .medium))
+                        .font(.pretendardMedium14)
                         .padding(.trailing,-10)
                 }
                 .padding()

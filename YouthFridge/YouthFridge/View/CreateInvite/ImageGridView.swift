@@ -19,7 +19,7 @@ struct ImageGridView: View {
     var body: some View {
         VStack {
             Text("초대장 전체보기")
-                .font(.system(size: 24, weight: .semibold))
+                .font(.pretendardSemiBold24)
                 .padding(.top, 30)
                 .padding(.bottom, 20)
             
@@ -37,7 +37,7 @@ struct ImageGridView: View {
                 presentationMode.wrappedValue.dismiss()
             }) {
                 Text("선택완료")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.pretendardBold16)
                     .foregroundColor(tempSelectedImage != nil ? Color.white : Color.gray6)
                     .padding()
                     .frame(maxWidth: 320)

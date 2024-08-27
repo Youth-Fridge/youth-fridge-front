@@ -29,13 +29,13 @@ struct CancelPopUpView: View {
             .padding([.top, .trailing], -7)
             
             Text(message)
-                .font(.system(size: 16, weight: .semibold))
+                .font(.pretendardSemiBold16)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, -10)
             
             Text(subMessage)
-                .font(.system(size: 11, weight: .regular))
+                .font(.pretendardRegular11)
                 .foregroundColor(Color.gray6)
                 .multilineTextAlignment(.center)
             

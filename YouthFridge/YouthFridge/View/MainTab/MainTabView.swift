@@ -20,6 +20,7 @@ struct MainTabView: View {
                 tabView(for: tab)
                     .tabItem {
                         Label(tab.title, image: tab.imageName(selected: tabSelectionViewModel.selectedTab == tab))
+                            .font(.pretendardMedium12)
                     }
                     .tag(tab)
             }

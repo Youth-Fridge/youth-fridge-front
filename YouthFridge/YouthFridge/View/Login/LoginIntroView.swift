@@ -43,8 +43,7 @@ struct LoginIntroView: View {
                 Spacer()
                 
                 Text(attributedText)
-                    .font(.system(size: 14))
-                
+                    .font(.pretendardSemiBold14)
                 Button {
                     performKakaoSignIn()
                 } label: {
@@ -94,6 +93,7 @@ struct LoginIntroView: View {
         var text = AttributedString("1분이면 회원가입 가능해요")
         if let range = text.range(of: "1분") {
             text[range].foregroundColor = .sub3Color
+            
         }
         return text
     }

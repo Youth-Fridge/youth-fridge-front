@@ -25,14 +25,14 @@ struct SmallClassView: View {
                 
                 HStack {
                     Text("참여 내역")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.pretendardSemiBold16)
                     Spacer()
                 }
                 .padding(.top, 30)
-                .padding(.leading, 30)
+                .padding(.leading, 20)
                 
                 TagsView(tags: tags, selectedTags: $selectedTags, viewModel: viewModel)
-                    .padding(.leading, 20)
+                    .padding(.leading, 10)
                     .padding(.top, 15)
                 
                 List(viewModel.cells) { cell in

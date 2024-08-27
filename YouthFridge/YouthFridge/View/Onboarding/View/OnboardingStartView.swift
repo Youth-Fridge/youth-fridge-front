@@ -27,7 +27,7 @@ struct OnboardingStartView: View {
                     
                     Text("오직 천안에서만")
                         .foregroundColor(.black)
-                        .font(.system(size: 24, weight: .bold))
+                        .font(.pretendardSemiBold24)
                         .multilineTextAlignment(.center)
                         .padding(.top, 20)
                     HStack {
@@ -37,9 +37,10 @@ struct OnboardingStartView: View {
                             .frame(width: 142,height: 27)
                         Text("를 만나보세요")
                             .foregroundColor(.black)
-                            .font(.system(size: 26,weight: .bold))
+                            .font(.pretendardExtraBold26)
                     }
                     Text("우리 천안에서 밥 친구할래?")
+                        .font(.pretendardRegular16)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.center)
                         .padding(.top, 5)
@@ -71,7 +72,7 @@ struct OnboardingStartView: View {
                     
                     NavigationLink(destination: ResearchView().navigationBarBackButtonHidden()) {
                         Text("다음")
-                            .font(.headline)
+                            .font(.pretendardBold20)
                             .foregroundColor(.yellow)
                             .padding()
                             .frame(maxWidth: 320)

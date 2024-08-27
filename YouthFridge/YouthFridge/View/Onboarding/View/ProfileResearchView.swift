@@ -18,7 +18,8 @@ struct ProfileResearchView: View {
                     .progressViewStyle(CustomProgressViewStyle())
                     .padding()
                 Text("프로필 설정")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.pretendardBold24)
+                    .foregroundColor(.gray6)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
                 VStack {
@@ -40,7 +41,7 @@ struct ProfileResearchView: View {
                     .frame(height: 25)
                 HStack(spacing: 0) {
                     Text("닉네임")
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.pretendardBold16)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(viewModel.nicknameMessage)
                         .font(.system(size: 12))
@@ -56,7 +57,7 @@ struct ProfileResearchView: View {
                         viewModel.checkNickname()
                     }) {
                         Text("중복 확인")
-                            .font(.system(size: 12))
+                            .font(.pretendardSemiBold12)
                             .padding(.horizontal, 10)
                             .padding(.vertical, 5)
                             .background(Color.main1Color)

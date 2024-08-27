@@ -38,7 +38,7 @@ struct ShowInviteView: View {
                     
                     VStack(alignment: .center) {
                         Text("당신을 초대합니다 🎉")
-                            .font(.system(size: 30, weight: .bold))
+                            .font(.pretendardBold30)
                             .foregroundColor(.gray6)
                             .padding(.top ,20)
                         
@@ -189,7 +189,7 @@ struct ShowInviteView: View {
                             applyInvitation()
                         }) {
                             Text("참여하기")
-                                .font(.system(size: 20,weight: .bold))
+                                .font(.pretendardBold20)
                                 .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
                                 .padding()
                                 .frame(maxWidth: 320)

@@ -47,6 +47,7 @@ struct CreateInviteView: View {
                     }
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
         }
         .onAppear {
             viewModel.fetchProfileImage()

@@ -93,30 +93,32 @@ class HomeViewModel: ObservableObject {
         InvitationService.shared.getImminentInvitation { [weak self] result in
             switch result {
             case .success(let response):
-                // 신청한 소모임이 있는 경우
                 if let response = response {
+                    // 신청한 소모임이 있는 경우
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     
-                    guard let targetDate = dateFormatter.date(from: response.launchDate) else { return }
-                    
-                    let currentDate = Date()
-                    
-                    let calendar = Calendar.current
-                    let components = calendar.dateComponents([.day], from: currentDate, to: targetDate)
-                    
-                    let dayLeft = components.day ?? 0
-                    
-                    DispatchQueue.main.async {
-                        self?.daysRemaining = dayLeft
+                    let launchDateString = response.launchDate
+                    if let targetDate = dateFormatter.date(from: launchDateString) {
+                        let currentDate = Date()
+                        let calendar = Calendar.current
+                        let components = calendar.dateComponents([.day], from: currentDate, to: targetDate)
+                        let dayLeft = components.day ?? 0
+                        
+                        DispatchQueue.main.async {
+                            self?.daysRemaining = dayLeft
+                        }
                     }
                 } else {
-                    // 신청한 소모임이 1개도 없는 경우
                     DispatchQueue.main.async {
                         self?.daysRemaining = -1
                     }
                 }
             case .failure(let error):
+                // 신청한 소모임이 1개도 없는 경우
+                DispatchQueue.main.async {
+                    self?.daysRemaining = -1
+                }
                 print("Error: \(error.localizedDescription)")
             }
         }

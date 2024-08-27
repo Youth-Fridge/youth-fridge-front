@@ -51,6 +51,7 @@ struct MyPageView: View {
                                     case .success(let isSuccess):
                                         if isSuccess {
                                             UserDefaults.standard.removeObject(forKey: "nickname")
+                                            UserDefaults.standard.removeObject(forKey: "profileImage")
                                             KeychainHandler.shared.accessToken = ""
                                             navigationManager.currentView = .loginIntro
                                         } else {
@@ -92,7 +93,8 @@ struct MyPageView: View {
                             withAnimation {
                                 KeychainHandler.shared.accessToken = ""
                                 showLogOutDeletePopup = false
-                                navigationManager.currentView = .loginIntro                            }
+                                navigationManager.currentView = .loginIntro
+                            }
                         },
                         onCancel: {
                             withAnimation {
@@ -128,9 +130,9 @@ struct MyPageView: View {
                     isNavigatingToMyActivty = true
                 }
             }
-            
             .navigationTitle("마이페이지")
             .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(navigationManager)
         }
     }
     

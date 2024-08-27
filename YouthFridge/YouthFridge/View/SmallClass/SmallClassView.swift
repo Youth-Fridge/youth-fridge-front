@@ -86,7 +86,6 @@ struct SmallClassView: View {
             if selectedTags.isEmpty {
                 viewModel.fetchInviteCellData()
             }
-            //smallViewModel.fetchProfileImage()
         }
         .onChange(of: selectedTags) { newTags in
             selectedTagsSubject.send(newTags)

@@ -124,9 +124,6 @@ struct MyPageView: View {
                     ),
                     label: { EmptyView() }
                 )
-                .onAppear(perform: {
-                    navigationManager.resetNavigation()
-                })
             }
             .onAppear {
                 if tabSelectionViewModel.shouldNavigateToMyActivity {

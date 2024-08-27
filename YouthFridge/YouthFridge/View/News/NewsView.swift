@@ -20,7 +20,7 @@ struct NewsView: View {
                 VStack(spacing: 0) {
                     BlogWebView(
                         urlToLoad: urlToLoad,
-                        scrollTo: urlToLoad == specificURL ? CGPoint(x: 0, y: 750) : CGPoint(x: 0, y: 80),
+                        scrollTo: urlToLoad == specificURL ? CGPoint(x: 0, y: 780) : CGPoint(x: 0, y: 80),
                         isLoading: $isLoading,
                         reload: $reload
                     )

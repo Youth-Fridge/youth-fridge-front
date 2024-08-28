@@ -18,7 +18,6 @@ struct HomeView: View {
     var onProfileImageClick: () -> Void
     var onNewsButtonPress: () -> Void
     var onLatestNewsFetched: () -> Void
-    
     var cards: [Card] {
         viewModel.cards
     }
@@ -136,9 +135,6 @@ struct HomeView: View {
                     }
                 }
             }
-            .setTabBarHidden(false, onViewWillAppear: {
-                // 탭바를 바로 보이게 함
-            })
             .onAppear {
                 self.selectedImageIndex = getSelectedImageIndex()
                 startTimer()

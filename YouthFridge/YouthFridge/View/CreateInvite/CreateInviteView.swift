@@ -9,6 +9,8 @@ import SwiftUI
 struct CreateInviteView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = CreateInviteViewModel()
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -48,6 +50,13 @@ struct CreateInviteView: View {
                 }
             }
             .toolbar(.hidden, for: .tabBar)
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("알림"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("확인"))
+                )
+            }
         }
         .onAppear {
             viewModel.fetchProfileImage()
@@ -56,18 +65,29 @@ struct CreateInviteView: View {
     
     private var tabButtons: some View {
         HStack(spacing: 16) {
-            tabButton(title: "STEP1", tabIndex: 0)
-            tabButton(title: "STEP2", tabIndex: 1)
+            tabButton(title: "STEP1", tabIndex: 0, action: nil)
+            tabButton(title: "STEP2", tabIndex: 1) {
+                if isValidKakaoOpenChatURL(viewModel.kakaoLink) {
+                    viewModel.selectedTab = 1
+                } else {
+                    alertMessage = "유효하지 않은 링크입니다. 올바른 형식의 카카오톡 오픈 채팅방 링크를 입력해주세요."
+                    showAlert = true
+                }
+            }
             Spacer()
         }
         .padding(.horizontal, 20)
         .padding(.top, 30)
     }
 
-    private func tabButton(title: String, tabIndex: Int) -> some View {
+    private func tabButton(title: String, tabIndex: Int, action: (() -> Void)? = nil) -> some View {
         Button(action: {
             withAnimation(.easeInOut(duration: 0.3)) {
-                viewModel.selectedTab = tabIndex
+                if tabIndex != viewModel.selectedTab {
+                    action?()
+                } else {
+                    viewModel.selectedTab = tabIndex
+                }
             }
         }) {
             Text(title)
@@ -78,6 +98,12 @@ struct CreateInviteView: View {
                 .foregroundColor(viewModel.selectedTab == tabIndex ? .white : .black)
                 .cornerRadius(8)
         }
+    }
+    
+    private func isValidKakaoOpenChatURL(_ url: String) -> Bool {
+        let regex = "^https:\\/\\/open\\.kakao\\.com\\/o\\/[a-zA-Z0-9]+$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: url)
     }
 }
 
@@ -173,8 +199,13 @@ struct StepOneView: View {
                     .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
-                        Text("세부 활동 계획")
-                            .font(.pretendardSemiBold18)
+                        HStack {
+                            Text("세부 활동 계획")
+                                .font(.pretendardSemiBold18)
+                            Text("최소 2개")
+                                .font(.pretendardRegular12)
+                                .foregroundColor(.gray3)
+                        }
                         
                         ForEach(viewModel.activityPlans.indices, id: \.self) { index in
                             TextField("15글자 이내", text: $viewModel.activityPlans[index])

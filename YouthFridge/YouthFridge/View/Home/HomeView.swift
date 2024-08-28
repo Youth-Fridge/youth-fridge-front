@@ -28,78 +28,83 @@ struct HomeView: View {
     }
     var body: some View {
         NavigationStack {
-            VStack {
-                CardScrollView(cards: viewModel.cards)
-                HStack(spacing: 10) {
-                    newsCardView(content: "청년들이\n더위를 이겨내는 법")
-                        .padding(.leading, 20)
-                    VStack(spacing: 10) {
-                        DynamicTextCardView(viewModel: viewModel)
-                        SmallestCardView()
+            ZStack(alignment: .top) {
+                ShadowNavigationBar()
+                    .padding(.top,5)
+                VStack {
+                    CardScrollView(cards: viewModel.cards)
+                        .padding(.top,-23)
+                    HStack(spacing: 10) {
+                        newsCardView(content: "청년들이\n더위를 이겨내는 법")
+                            .padding(.leading, 20)
+                        VStack(spacing: 10) {
+                            DynamicTextCardView(viewModel: viewModel)
+                            SmallestCardView()
+                        }
+                        .padding(.trailing, 20)
                     }
-                    .padding(.trailing, 20)
-                }
-                
-                HStack {
-                    Button(action: {
-                    }) {
-                        Text("공식소모임")
-                            .font(.pretendardSemiBold18)
-                            .foregroundColor(.gray6)
-                            .padding(.leading, 30)
+                    
+                    HStack {
+                        Button(action: {
+                        }) {
+                            Text("공식소모임")
+                                .font(.pretendardSemiBold18)
+                                .foregroundColor(.gray6)
+                                .padding(.leading, 30)
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                }
-                .padding(.top, 35)
-                
-                TabView(selection: $currentIndex) {
-                    ForEach(tabContents.indices, id: \.self) { index in
-                        NavigationLink(destination: ShowInviteView(
-                            viewModel: ShowInviteViewModel(),
-                            invitationId: tabContents[index].invitationId, recruiting: tabContents[index].ing
-                        ).toolbar(.hidden, for: .tabBar)) {
-                            ZStack(alignment: .leading) {
-                                Image(tabContents[index].imageName)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 350, height: 105)
-                                    .clipped()
-                                    .overlay(
-                                        Rectangle()
-                                            .fill(Color.black.opacity(0.4))
-                                            .blur(radius: 1)
-                                    )
-                                VStack(alignment: .leading, spacing: 5) {
-                                    HStack {
-                                        Text(tabContents[index].title)
-                                            .font(.pretendardBold16)
-                                            .foregroundColor(.white)
-                                        Spacer()
+                    .padding(.top, 35)
+                    
+                    TabView(selection: $currentIndex) {
+                        ForEach(tabContents.indices, id: \.self) { index in
+                            NavigationLink(destination: ShowInviteView(
+                                viewModel: ShowInviteViewModel(),
+                                invitationId: tabContents[index].invitationId, recruiting: tabContents[index].ing
+                            ).toolbar(.hidden, for: .tabBar)) {
+                                ZStack(alignment: .leading) {
+                                    Image(tabContents[index].imageName)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 350, height: 105)
+                                        .clipped()
+                                        .overlay(
+                                            Rectangle()
+                                                .fill(Color.black.opacity(0.4))
+                                                .blur(radius: 1)
+                                        )
+                                    VStack(alignment: .leading, spacing: 5) {
                                         HStack {
-                                            Text(tabContents[index].ing)
-                                                .background(Color.clear)
+                                            Text(tabContents[index].title)
+                                                .font(.pretendardBold16)
                                                 .foregroundColor(.white)
-                                                .cornerRadius(10)
-                                                .modifier(CustomViewModifier(color: .white))
-                                                .padding([.trailing], 10)
+                                            Spacer()
+                                            HStack {
+                                                Text(tabContents[index].ing)
+                                                    .background(Color.clear)
+                                                    .foregroundColor(.white)
+                                                    .cornerRadius(10)
+                                                    .modifier(CustomViewModifier(color: .white))
+                                                    .padding([.trailing], 10)
+                                            }
                                         }
+                                        .padding(.bottom,35)
+                                        Text(tabContents[index].date)
+                                            .font(.system(size: 10))
+                                            .foregroundColor(.white)
                                     }
-                                    .padding(.bottom,35)
-                                    Text(tabContents[index].date)
-                                        .font(.system(size: 10))
-                                        .foregroundColor(.white)
+                                    .padding(10)
                                 }
-                                .padding(10)
+                                .tag(index)
+                                .cornerRadius(10)
+                                .shadow(radius: 5)
                             }
-                            .tag(index)
-                            .cornerRadius(10)
-                            .shadow(radius: 5)
                         }
                     }
-                }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
-                .padding(.horizontal, 20)
-            }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                    .padding(.horizontal, 20)
+                    .padding(.bottom,30)
+                }}
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {

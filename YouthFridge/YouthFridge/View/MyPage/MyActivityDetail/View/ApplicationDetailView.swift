@@ -13,6 +13,8 @@ struct ApplicationDetailView: View {
     @ObservedObject var viewModel: ActivityCardViewModel
     @State private var showCancelPopup = false
     @StateObject var detailViewModel: ApplicationDetailModel
+    @State private var showToast = false
+    @State private var toastMessage = ""
     
     init(invitationId: Int, viewModel: ActivityCardViewModel) {
         self.viewModel = viewModel
@@ -51,6 +53,7 @@ struct ApplicationDetailView: View {
                 }
                 .padding(.top, 10)
                 .scrollIndicators(.hidden)
+                .toast(isShowing: showToast, message: toastMessage)
                 
                 GeometryReader { geometry in
                     if showCancelPopup {
@@ -248,16 +251,44 @@ struct ApplicationDetailView: View {
                     .background(Color.gray1)
                     .cornerRadius(6)
                 
-                Text(detailViewModel.kakaoLink)
-                    .font(.pretendardRegular12)
-                    .padding(.leading, 5)
-                    .padding(12)
-                    .foregroundColor(Color.gray6)
+                HStack {
+                    Text(detailViewModel.kakaoLink)
+                        .font(.pretendardRegular12)
+                        .padding(.leading, 12)
+                        .padding(.vertical, 10)
+                        .foregroundColor(Color.gray6)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        UIPasteboard.general.string = detailViewModel.kakaoLink
+                        
+                        toastMessage = "복사가 완료되었습니다."
+                        showToast = true
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            showToast = false
+                        }
+                    }) {
+                        HStack(spacing: 4) {
+                            Image("copy")
+                                .resizable()
+                                .frame(width: 16, height: 14)
+                            
+                            Text("복사")
+                                .font(.pretendardRegular10)
+                                .foregroundColor(.gray8)
+                        }
+                        .padding(.trailing, 25)
+                    }
+                }
+                .padding(.horizontal, 5)
             }
             .padding(.bottom, -10)
         }
         .padding(.leading, 20)
     }
+
     
     var responseSection: some View {
         VStack(alignment: .leading, spacing: 16) {

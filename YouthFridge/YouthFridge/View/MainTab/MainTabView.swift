@@ -25,7 +25,7 @@ struct MainTabView: View {
                     .tag(tab)
             }
         }
-        .tint(.black)
+        .tint(.gray5)
         .environmentObject(tabSelectionViewModel)
         .onChange(of: tabSelectionViewModel.selectedTab) { newTab in
             if newTab == .news {

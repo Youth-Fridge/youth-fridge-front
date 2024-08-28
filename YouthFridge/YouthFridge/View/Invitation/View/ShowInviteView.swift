@@ -59,11 +59,19 @@ struct ShowInviteView: View {
                                         Image(invitationImage.imageName)
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: geometry.size.width * 0.9, height: (geometry.size.width * 0.9) * 4 / 4)
-                                        Text(showDetail.clubName)
-                                            .font(.system(size: 20, weight: .semibold))
-                                            .foregroundColor(.gray6)
-
+                                            .frame(width: geometry.size.width * 0.89, height: (geometry.size.width * 0.89) * 4 / 3.8)
+                                            .position(x: geometry.size.width / 2, y: geometry.size.height / 2 - 140)
+                                        if let showDetail = viewModel.showDetail, !showDetail.official {
+                                            Text(showDetail.clubName)
+                                                .font(.pretendardBold20)
+                                                .foregroundColor(.gray6)
+                                                .position(x: geometry.size.width / 2,y: geometry.size.height / 2 - 200)
+                                        } else {
+                                            Text(showDetail.clubName)
+                                                .font(.pretendardBold20)
+                                                .foregroundColor(.gray6)
+                                                .position(x: geometry.size.width / 2,y: geometry.size.height / 2 - 210)
+                                        }
                                     }
                                 }
                                 .padding(.top,-20)

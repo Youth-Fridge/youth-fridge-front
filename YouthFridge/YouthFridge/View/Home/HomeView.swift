@@ -184,6 +184,7 @@ struct HomeView: View {
             }
         }
     }
+    
     private func getSelectedImageIndex() -> Int {
         return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }

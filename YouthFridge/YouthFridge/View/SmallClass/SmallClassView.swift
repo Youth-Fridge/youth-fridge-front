@@ -88,8 +88,12 @@ struct SmallClassView: View {
             }
         }
         .onAppear {
+            viewModel.observeSelectedTags(selectedTagsSubject)
+                        
             if selectedTags.isEmpty {
                 viewModel.fetchInviteCellData()
+            } else {
+                viewModel.fetchKeyWordsList(selectedTags: selectedTags)
             }
         }
         .onChange(of: selectedTags) { newTags in

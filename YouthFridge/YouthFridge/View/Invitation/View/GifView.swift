@@ -22,6 +22,11 @@ struct GifView: UIViewRepresentable {
         webView.isOpaque = false
         webView.scrollView.isScrollEnabled = false
         webView.contentMode = .scaleAspectFill
+        
+        webView.isUserInteractionEnabled = false
+        webView.scrollView.isScrollEnabled = false
+        webView.scrollView.bounces = false
+        
         return webView
     }
     

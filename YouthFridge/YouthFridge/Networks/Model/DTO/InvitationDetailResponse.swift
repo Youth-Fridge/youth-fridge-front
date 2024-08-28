@@ -18,6 +18,7 @@ struct InvitationDetailResponse: Codable {
     let launchPlace : String
     let totalMember: Int
     let currentMember: Int
+    let official: Bool
     let toDoList: [String]
 }
 

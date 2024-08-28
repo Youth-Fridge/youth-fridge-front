@@ -17,4 +17,5 @@ struct ShowDetailModel {
     let todo: String
     let ownerProfile: Int
     let invitationImage: Int
+    let official: Bool
 }

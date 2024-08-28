@@ -30,6 +30,7 @@ struct NewsView: View {
                     .onAppear {
                         reload = true
                     }
+                    Spacer(minLength: 5)
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

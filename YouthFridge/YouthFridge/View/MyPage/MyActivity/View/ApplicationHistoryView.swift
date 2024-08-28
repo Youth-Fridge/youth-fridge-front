@@ -28,6 +28,11 @@ struct ApplicationHistoryView: View {
                     .font(.pretendardRegular18)
                     .multilineTextAlignment(.center)
             } else {
+                Text("초대장을 클릭하여 등록된 오픈채팅방에 꼭 참여해 주세요!")
+                    .font(.pretendardRegular11)
+                    .foregroundColor(.main1)
+                    .padding(.top, -5)
+                    .padding(.bottom, -10)
                 ForEach(viewModel.applicatedActivities) { activity in
                     ActivityCardView(viewModel: activity, detail: "application")
                         .disabled(activity.isPast)

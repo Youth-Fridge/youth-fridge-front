@@ -40,7 +40,7 @@ struct ShowInviteView: View {
                         Text("당신을 초대합니다 🎉")
                             .font(.pretendardBold30)
                             .foregroundColor(.gray6)
-                            .padding(.top ,20)
+                            .padding(.top ,15)
                         
                         ZStack {
                             Image("invitation")
@@ -101,7 +101,7 @@ struct ShowInviteView: View {
 
                                             Text("기간")
                                                 .font(.pretendardBold16)
-                                                .padding(.top,10)
+                                                .padding(.top,6)
                                                 .foregroundColor(.gray6)
 
                                             HStack {
@@ -119,7 +119,7 @@ struct ShowInviteView: View {
                                                     .foregroundColor(.gray6)
                                                 
                                             }
-                                            Spacer()
+                                            .padding(.bottom,5)
                                             
                                             Text("인원")
                                                 .font(.pretendardBold16)
@@ -129,7 +129,7 @@ struct ShowInviteView: View {
                                             Text("\(showDetail.number)명")
                                                 .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
-                                            Spacer()
+                                                .padding(.bottom,7)
                                             
                                             Text("시간 및 장소")
                                                 .font(.pretendardBold16)
@@ -142,10 +142,12 @@ struct ShowInviteView: View {
                                             Text(showDetail.place)
                                                 .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
-                                            Spacer()
+                                                .padding(.top,-4)
+                                            Spacer().frame(height: 5)
                                             Text("TO DO")
                                                 .font(.pretendardBold16)
                                                 .foregroundColor(.gray6)
+                                                .padding(.bottom,3)
                                             
                                             
                                             VStack(alignment: .leading) {
@@ -158,15 +160,24 @@ struct ShowInviteView: View {
                                                 
                                             }
                                             .frame(height: 50)
-                                            Spacer()
+                                            Spacer().frame(height: 5)
+                                            Text("오픈채팅")
+                                                .font(.pretendardBold16)
+                                                .foregroundColor(.gray6)
+                                            Text(showDetail.kakaoLink)
+                                                .font(.pretendardMedium14)
+                                                .foregroundColor(.gray6)
+                                            
                                         }
                                     }
                                     .padding(30)
                                     .background(Color.white)
                                     .cornerRadius(10)
                                     .shadow(radius: 3)
-                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 3
-                                           / 4)
+                                    .frame(width: geometry.size.width * 0.82, height: (geometry.size.width * 0.82) * 4
+                                           / 4.5)
+                                    .padding(.bottom,12)
+
                                 } else {
                                     Text("Loading...")
                                 }
@@ -202,6 +213,7 @@ struct ShowInviteView: View {
                                 .font(.pretendardBold20)
                                 .foregroundColor(viewModel.isAvailable ? Color.sub2: Color.gray6)
                                 .padding()
+                            
                                 .frame(maxWidth: 320)
                                 .background(viewModel.isAvailable ? Color.white: Color.gray2)
                                 .cornerRadius(8)
@@ -213,9 +225,14 @@ struct ShowInviteView: View {
                         }) {
                             if let showDetail = viewModel.showDetail, !showDetail.official {
                                 Text("커뮤니티 규정에 어긋난 소모임인가요?")
-                                    .font(.system(size: 12, weight: .semibold))
+                                    .font(.pretendardSemiBold12)
                                     .foregroundColor(.gray7)
                                     .underline(color: .gray7)
+                                    .padding(.top, 10)
+                            } else {
+                                Text("")
+                                    .font(.system(size: 1, weight: .semibold))
+                                    .foregroundColor(.clear)
                                     .padding(.top, 10)
                             }
                         }

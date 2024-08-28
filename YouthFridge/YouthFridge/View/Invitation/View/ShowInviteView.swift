@@ -165,7 +165,8 @@ struct ShowInviteView: View {
                                     .background(Color.white)
                                     .cornerRadius(10)
                                     .shadow(radius: 3)
-                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 3 / 4)
+                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 3
+                                           / 4)
                                 } else {
                                     Text("Loading...")
                                 }

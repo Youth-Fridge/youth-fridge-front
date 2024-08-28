@@ -20,7 +20,6 @@ struct CardScrollView: View {
                             .fill(Color.gray1)
                             .frame(width: 350, height: 140)
                             .cornerRadius(10)
-                            .shadow(radius: 5)
                         HStack {
                             Text("오늘의 밥친구를 구해볼까요?")
                                 .font(.pretendardSemiBold20)

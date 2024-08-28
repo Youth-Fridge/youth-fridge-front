@@ -173,8 +173,13 @@ struct StepOneView: View {
                     .padding(.horizontal, 22)
                     
                     VStack(alignment: .leading, spacing: 15) {
-                        Text("세부 활동 계획")
-                            .font(.pretendardSemiBold18)
+                        HStack {
+                            Text("세부 활동 계획")
+                                .font(.pretendardSemiBold18)
+                            Text("최소 2개")
+                                .font(.pretendardRegular12)
+                                .foregroundColor(.gray3)
+                        }
                         
                         ForEach(viewModel.activityPlans.indices, id: \.self) { index in
                             TextField("15글자 이내", text: $viewModel.activityPlans[index])

@@ -14,7 +14,8 @@ struct SmallClassView: View {
     @State private var selectedTags: [String] = []
     private let selectedTagsSubject = PassthroughSubject<[String], Never>()
     @State private var cancellables = Set<AnyCancellable>()
-    
+    var onProfileImageClick: () -> Void
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
@@ -70,14 +71,18 @@ struct SmallClassView: View {
             .scrollIndicators(.hidden)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
-                    if let profile = ProfileImage.from(rawValue: profileNumber) {
-                        let profileImage = profile.imageName
-                        
-                        Image(profileImage)
-                            .resizable()
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
+                    Button(action: {
+                        onProfileImageClick()
+                    }) {
+                        let profileNumber = UserDefaults.standard.integer(forKey: "profileImageNumber")
+                        if let profile = ProfileImage.from(rawValue: profileNumber) {
+                            let profileImage = profile.imageName
+                            
+                            Image(profileImage)
+                                .resizable()
+                                .frame(width: 36, height: 36)
+                                .clipShape(Circle())
+                        }
                     }
                 }
             }

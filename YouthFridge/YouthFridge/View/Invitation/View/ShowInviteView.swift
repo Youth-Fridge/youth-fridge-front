@@ -201,11 +201,13 @@ struct ShowInviteView: View {
                         Button(action: {
                             reportInvitation()
                         }) {
-                            Text("커뮤니티 규정에 어긋난 소모임인가요?")
-                                .font(.system(size: 12,weight: .semibold))
-                                .foregroundColor(.gray7)
-                                .underline(color: .gray7)
-                                .padding(.top,10)
+                            if let showDetail = viewModel.showDetail, !showDetail.official {
+                                Text("커뮤니티 규정에 어긋난 소모임인가요?")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundColor(.gray7)
+                                    .underline(color: .gray7)
+                                    .padding(.top, 10)
+                            }
                         }
                         .padding(.bottom,40)
                         NavigationLink(

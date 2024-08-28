@@ -14,12 +14,16 @@ class HomeViewModel: ObservableObject {
     @Published var tabContents: [TabContent] = []
     @Published var showPlaceholder: Bool = false
     @Published var profileImageUrl: Int?
+    @Published var newsTitle: String = ""
+    @Published var newsUrl: String = ""
+    
     let publicMeetingBackground = ["banner2", "banner1", "banner3"] //banner1 :김장 ,banner2: 포트락 파티
     init() {
         fetchCards()
         fetchPublicMeeting()
         fetchInvitationData()
         fetchUserProfile()
+        fetchLatestNewsUrl()
     }
     
     func fetchUserProfile() {
@@ -126,5 +130,19 @@ class HomeViewModel: ObservableObject {
 
     func performAction() {
         print("Button pressed in view model")
+    }
+    
+    private func fetchLatestNewsUrl() {
+        NewsLetterService.shared.getNewsLetter { result in
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self.newsTitle = response.title
+                    self.newsUrl = response.link
+                }
+            case .failure(let error):
+                print("Failed to fetch URL: \(error.localizedDescription)")
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@ struct HomeView: View {
     var tabContents: [TabContent] {
         viewModel.tabContents
     }
+    
     var body: some View {
         NavigationStack {
             ZStack(alignment: .top) {
@@ -34,7 +35,7 @@ struct HomeView: View {
                     CardScrollView(cards: viewModel.cards)
                         .padding(.top,-23)
                     HStack(spacing: 10) {
-                        newsCardView(content: "청년들이\n더위를 이겨내는 법")
+                        newsCardView(content: viewModel.newsTitle)
                             .padding(.leading, 20)
                         VStack(spacing: 10) {
                             DynamicTextCardView(viewModel: viewModel)
@@ -145,7 +146,9 @@ struct HomeView: View {
     // Small Card View
     private func newsCardView(content: String) -> some View {
         Button(action: {
-            fetchLatestNewsUrl()
+            self.newsUrl = viewModel.newsUrl
+            onLatestNewsFetched()
+            onNewsButtonPress()
         }) {
             ZStack {
                 Color.sub2Color
@@ -161,9 +164,11 @@ struct HomeView: View {
                         .foregroundColor(.gray6)
                     if !content.isEmpty {
                         Text(content)
-                            .font(.system(size: 14, weight: .medium))
+                            .font(.pretendardMedium14)
                             .foregroundColor(.gray6)
-                            .frame(width: 105,height: 50)
+                            .frame(width: 105)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
                     }
                     Spacer()
                     
@@ -189,22 +194,4 @@ struct HomeView: View {
     private func getSelectedImageIndex() -> Int {
         return UserDefaults.standard.integer(forKey: "profileImageNumber")
     }
-    
-    private func fetchLatestNewsUrl() {
-        NewsLetterService.shared.getNewsLetter { result in
-            switch result {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    self.newsUrl = response.link
-                    self.onLatestNewsFetched()
-                    self.onNewsButtonPress()
-                }
-            case .failure(let error):
-                print("Failed to fetch URL: \(error.localizedDescription)")
-            }
-        }
-    }
 }
-
-
-

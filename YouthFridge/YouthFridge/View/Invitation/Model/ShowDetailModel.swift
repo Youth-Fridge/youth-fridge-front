@@ -18,4 +18,5 @@ struct ShowDetailModel {
     let ownerProfile: Int
     let invitationImage: Int
     let official: Bool
+    let kakaoLink: String
 }

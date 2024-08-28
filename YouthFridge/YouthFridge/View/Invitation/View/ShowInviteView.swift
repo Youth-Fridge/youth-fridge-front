@@ -119,7 +119,7 @@ struct ShowInviteView: View {
                                                     .foregroundColor(.gray6)
                                                 
                                             }
-                                            Spacer()
+                                            Spacer().frame(height: 5)
                                             
                                             Text("인원")
                                                 .font(.pretendardBold16)
@@ -129,7 +129,7 @@ struct ShowInviteView: View {
                                             Text("\(showDetail.number)명")
                                                 .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
-                                            Spacer()
+                                            Spacer().frame(height: 5)
                                             
                                             Text("시간 및 장소")
                                                 .font(.pretendardBold16)
@@ -142,7 +142,7 @@ struct ShowInviteView: View {
                                             Text(showDetail.place)
                                                 .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
-                                            Spacer()
+                                            Spacer().frame(height: 5)
                                             Text("TO DO")
                                                 .font(.pretendardBold16)
                                                 .foregroundColor(.gray6)
@@ -158,15 +158,23 @@ struct ShowInviteView: View {
                                                 
                                             }
                                             .frame(height: 50)
-                                            Spacer()
+                                            Spacer().frame(height: 5)
+                                            Text("오픈채팅방")
+                                                .font(.pretendardBold16)
+                                                .foregroundColor(.gray6)
+                                            Text(showDetail.kakaoLink)
+                                                .font(.pretendardMedium14)
+                                                .foregroundColor(.gray6)
+                                           
+//                                            Spacer()
                                         }
                                     }
                                     .padding(30)
                                     .background(Color.white)
                                     .cornerRadius(10)
                                     .shadow(radius: 3)
-                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 3
-                                           / 4)
+                                    .frame(width: geometry.size.width * 0.8, height: (geometry.size.width * 0.8) * 4
+                                           / 4.5)
                                 } else {
                                     Text("Loading...")
                                 }

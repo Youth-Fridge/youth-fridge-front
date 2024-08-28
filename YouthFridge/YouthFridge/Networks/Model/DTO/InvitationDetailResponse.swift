@@ -20,5 +20,6 @@ struct InvitationDetailResponse: Codable {
     let currentMember: Int
     let official: Bool
     let toDoList: [String]
+    let kakaoLink: String
 }
 

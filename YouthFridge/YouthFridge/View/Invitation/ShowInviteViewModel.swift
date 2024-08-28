@@ -50,7 +50,8 @@ class ShowInviteViewModel: ObservableObject {
                             todo: invitationDetail.toDoList.joined(separator: "\n"),
                             ownerProfile: invitationDetail.ownerInfo.profileImageNumber,
                             invitationImage: invitationDetail.invitationImageNumber,
-                            official: invitationDetail.official
+                            official: invitationDetail.official,
+                            kakaoLink: invitationDetail.kakaoLink
                         )
                         print("Received invitationImageNumber: \(invitationDetail.invitationImageNumber)")
                         print("Received 초대장아이디: \(invitationDetail.invitationId)")

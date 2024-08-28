@@ -80,7 +80,7 @@ struct ShowInviteView: View {
                                                     .frame(width: 54, height: 54)
                                                 
                                                 Text(showDetail.clubName)
-                                                    .font(.system(size: 16, weight: .semibold))
+                                                    .font(.pretendardSemiBold16)
                                                     .foregroundColor(.gray6)
                                             }
                                             
@@ -90,52 +90,53 @@ struct ShowInviteView: View {
                                         
                                         VStack(alignment: .leading, spacing: 10) {
                                             Divider()
+
                                             Text("기간")
-                                                .font(.system(size: 16, weight: .bold))
+                                                .font(.pretendardBold16)
                                                 .padding(.top,10)
                                                 .foregroundColor(.gray6)
-                                            
-                                            
+
                                             HStack {
                                                 Text("우리 약속까지 ")
-                                                    .font(.system(size: 14, weight: .medium))
+                                                    .font(.pretendardMedium14)
                                                     .foregroundColor(.gray6)
                                                 
                                                 Text(showDetail.dday)
-                                                    .font(.title)
+                                                    .font(.pretendardBold20)
                                                     .fontWeight(.bold)
                                                     .foregroundColor(Color.sub3Color)
                                                 
                                                 Text("일 남았어요")
-                                                    .font(.system(size: 14, weight: .medium))
+                                                    .font(.pretendardMedium14)
                                                     .foregroundColor(.gray6)
                                                 
                                             }
+                                            Spacer()
                                             
                                             Text("인원")
-                                                .font(.system(size: 16, weight: .bold))
+                                                .font(.pretendardBold16)
                                                 .foregroundColor(.gray6)
                                             
                                             
                                             Text("\(showDetail.number)명")
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
                                             Spacer()
                                             
                                             Text("시간 및 장소")
-                                                .font(.system(size: 16, weight: .bold))
+                                                .font(.pretendardBold16)
                                                 .foregroundColor(.gray6)
                                             
                                             
                                             Text(showDetail.time)
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
                                             Text(showDetail.place)
-                                                .font(.system(size: 14, weight: .medium))
+                                                .font(.pretendardMedium14)
                                                 .foregroundColor(.gray6)
                                             Spacer()
                                             Text("TO DO")
-                                                .font(.system(size: 16, weight: .bold))
+                                                .font(.pretendardBold16)
                                                 .foregroundColor(.gray6)
                                             
                                             
@@ -143,7 +144,7 @@ struct ShowInviteView: View {
                                                 ForEach(showDetail.todo.split(separator: "\n"), id: \.self) { todo in
                                                     Text("• \(todo)")
                                                         .foregroundColor(.gray6)
-                                                        .font(.system(size: 14, weight: .medium))
+                                                        .font(.pretendardMedium14)
                                                     
                                                 }
                                                 

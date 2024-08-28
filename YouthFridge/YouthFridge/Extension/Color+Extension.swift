@@ -19,6 +19,7 @@ extension Color {
     static let gray5Color: Color = .init("gray5")
     static let gray6Color: Color = .init("gray6")
     static let gray7Color: Color = .init("gray7")
+    static let gray8Color: Color = .init("gray8")
     static let kakaoColor: Color = .init("kakao")
     static let green1Color: Color = .init("green1")
     static let accentColor: Color = .init("accentColor")

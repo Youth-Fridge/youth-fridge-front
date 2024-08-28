@@ -48,7 +48,7 @@ class HomeViewModel: ObservableObject {
                             invitationId: publicMeeting.invitationId,
                             title: publicMeeting.title,
                             date: formattedDate,
-                            ing: publicMeeting.isRecruiting ? "모집중" : "모집완료",
+                            ing: publicMeeting.isRecruiting ? "모집 중" : "모집완료",
                             imageName: self?.publicMeetingBackground[index % self!.publicMeetingBackground.count] ?? "defaultImage"
                         )
                     }

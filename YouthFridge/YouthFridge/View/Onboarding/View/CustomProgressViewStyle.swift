@@ -11,6 +11,6 @@ import SwiftUI
 struct CustomProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
-            .accentColor(Color.sub2Color)
+            .tint(.sub2Color)
     }
 }

@@ -66,7 +66,11 @@ struct MainTabView: View {
             
         case .smallClass:
             NavigationView {
-                SmallClassView()
+                SmallClassView(
+                    onProfileImageClick: {
+                        self.tabSelectionViewModel.selectedTab = .mypage
+                    }
+                )
             }
             .id(tab == .smallClass ? UUID() : nil)
             

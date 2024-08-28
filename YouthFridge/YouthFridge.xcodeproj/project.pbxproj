@@ -107,7 +107,7 @@
 		58C3165A2C6B41FF001374EC /* InvitationListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316592C6B41FF001374EC /* InvitationListResponse.swift */; };
 		58C316622C6E13BA001374EC /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316612C6E13BA001374EC /* TagsView.swift */; };
 		58C316642C707B31001374EC /* AddInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C316632C707B31001374EC /* AddInviteView.swift */; };
-		58CD962F2C7ECF1300394E6C /* TabBarControllerModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD962E2C7ECF1300394E6C /* TabBarControllerModifier.swift */; };
+		58CD962F2C7ECF1300394E6C /* TabBarAccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD962E2C7ECF1300394E6C /* TabBarAccessor.swift */; };
 		58CD96312C7ED20B00394E6C /* CardScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD96302C7ED20B00394E6C /* CardScrollView.swift */; };
 		58DA3F5B2C7211E0002081D9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */; };
 		58DA3F5E2C723487002081D9 /* LocationPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */; };
@@ -245,7 +245,7 @@
 		58C316592C6B41FF001374EC /* InvitationListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationListResponse.swift; sourceTree = "<group>"; };
 		58C316612C6E13BA001374EC /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		58C316632C707B31001374EC /* AddInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInviteView.swift; sourceTree = "<group>"; };
-		58CD962E2C7ECF1300394E6C /* TabBarControllerModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerModifier.swift; sourceTree = "<group>"; };
+		58CD962E2C7ECF1300394E6C /* TabBarAccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarAccessor.swift; sourceTree = "<group>"; };
 		58CD96302C7ED20B00394E6C /* CardScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardScrollView.swift; sourceTree = "<group>"; };
 		58DA3F5A2C7211E0002081D9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		58DA3F5D2C723487002081D9 /* LocationPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopUpView.swift; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 				5817D5EE2C4502360081323E /* MainTabType.swift */,
 				5817D5F02C4503360081323E /* MainTabView.swift */,
 				58299B432C79BB11001BBF0F /* TabSelectionViewModel.swift */,
-				58CD962E2C7ECF1300394E6C /* TabBarControllerModifier.swift */,
+				58CD962E2C7ECF1300394E6C /* TabBarAccessor.swift */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -1021,7 +1021,7 @@
 				58C316622C6E13BA001374EC /* TagsView.swift in Sources */,
 				0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
-				58CD962F2C7ECF1300394E6C /* TabBarControllerModifier.swift in Sources */,
+				58CD962F2C7ECF1300394E6C /* TabBarAccessor.swift in Sources */,
 				58C3162C2C650462001374EC /* SplashView.swift in Sources */,
 				5817D6392C4BFD580081323E /* CellModel.swift in Sources */,
 				5847F0C22C5BDBFE001AC04E /* OnboardingAPI.swift in Sources */,

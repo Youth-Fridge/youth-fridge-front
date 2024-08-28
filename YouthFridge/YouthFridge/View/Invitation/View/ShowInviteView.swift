@@ -258,7 +258,6 @@ struct ShowInviteView: View {
             .onAppear {
                 viewModel.fetchInviteData(invitationId: invitationId)
             }
-            
             .alert(isPresented: $showAlert) {
                 Alert(title: Text("알림"), message: Text(alertMessage), dismissButton: .default(Text("확인")))
             }

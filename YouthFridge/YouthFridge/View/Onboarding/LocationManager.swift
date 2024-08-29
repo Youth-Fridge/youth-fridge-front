@@ -104,7 +104,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     func isInAuthorizedArea() -> Bool {
         let authorizedCities = ["천안시"]
-      //  let authorizedDistricts = ["동남구", "서북구"]
+        let authorizedDistricts = ["동남구", "서북구"]
         
         let isAuthorizedCity = authorizedCities.contains(userCity)
         

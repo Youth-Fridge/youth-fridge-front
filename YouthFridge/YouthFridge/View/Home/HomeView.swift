@@ -14,7 +14,7 @@ struct HomeView: View {
     @Binding var newsUrl: String
     
     let profileImages = ["broccoli", "pea", "corn", "tomato", "branch", "pumpkin"]
-    private let banners = ["banner1","banner2","banner3"]
+    private let banners = ["banner3","banner2","banner1"]
     var onProfileImageClick: () -> Void
     var onNewsButtonPress: () -> Void
     var onLatestNewsFetched: () -> Void
@@ -187,7 +187,6 @@ struct HomeView: View {
         
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             withAnimation {
-                print(tabContents.count)
                 currentIndex = (currentIndex + 1) % tabContents.count
             }
         }

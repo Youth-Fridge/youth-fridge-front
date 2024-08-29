@@ -16,7 +16,6 @@ struct CreateInviteView: View {
         ZStack(alignment: .top) {
             VStack(alignment: .leading) {
                 tabButtons
-
                 if viewModel.selectedTab == 0 {
                     StepOneView(viewModel: viewModel)
                 } else {
@@ -65,15 +64,13 @@ struct CreateInviteView: View {
     
     private var tabButtons: some View {
         HStack(spacing: 16) {
-            tabButton(title: "STEP1", tabIndex: 0, action: nil)
-            tabButton(title: "STEP2", tabIndex: 1) {
-                if isValidKakaoOpenChatURL(viewModel.kakaoLink) {
-                    viewModel.selectedTab = 1
-                } else {
-                    alertMessage = "유효하지 않은 링크입니다. 올바른 형식의 카카오톡 오픈 채팅방 링크를 입력해주세요."
-                    showAlert = true
-                }
+            tabButton(title: "STEP1", tabIndex: 0) {
+                viewModel.selectedTab = 0
             }
+            tabButton(title: "STEP2", tabIndex: 1) {
+                viewModel.selectedTab = 1
+            }
+
             Spacer()
         }
         .padding(.horizontal, 20)
@@ -100,11 +97,7 @@ struct CreateInviteView: View {
         }
     }
     
-    private func isValidKakaoOpenChatURL(_ url: String) -> Bool {
-        let regex = "^https:\\/\\/open\\.kakao\\.com\\/o\\/[a-zA-Z0-9]+$"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
-        return predicate.evaluate(with: url)
-    }
+
 }
 
 struct StepOneView: View {
@@ -123,7 +116,7 @@ struct StepOneView: View {
     }
     
     @State private var isDatePickerVisible: Bool = false
-    
+
     var body: some View {
         ScrollView {
             ZStack {
@@ -473,12 +466,28 @@ struct StepOneView: View {
                     }
                     .padding(.bottom, 25)
                     .padding(.horizontal, 22)
-                    
                     VStack(alignment: .leading, spacing: 15) {
-                        Text("오픈 채팅")
-                            .font(.pretendardSemiBold18)
-                            .padding(.bottom, 14)
-                        
+                        HStack {
+                            Text("오픈 채팅")
+                                .font(.pretendardSemiBold18)
+                                .padding(.bottom, 14)
+                            Spacer()
+                            if !viewModel.kakaoLink.isEmpty {
+                                        if isValidKakaoOpenChatURL(viewModel.kakaoLink) {
+                                            Text("유효한 링크입니다")
+                                                .font(.pretendardMedium10)
+                                                .padding(.bottom, 14)
+                                        } else {
+                                            Text("유효하지 않은 링크입니다")
+                                                .font(.pretendardMedium10)
+                                                .padding(.bottom, 14)
+                                                .foregroundColor(.red)
+                                        }
+                                    } else {
+                                        Text("")
+                                            .padding(.bottom, 14)
+                                    }
+                                }
                         TextField("소통을 위한 카카오톡 오픈 채팅방 링크를 입력해주세요.", text: $viewModel.kakaoLink)
                             .font(.pretendardRegular14)
                             .foregroundColor(.gray3)
@@ -490,7 +499,10 @@ struct StepOneView: View {
                                         lineWidth: 1
                                     )
                             }
+                        
                             .frame(height: 20)
+
+                            
                     }
                     .padding(.bottom, 25)
                     .padding(.horizontal, 22)
@@ -501,6 +513,11 @@ struct StepOneView: View {
             EmojiSelectionView(nickname: $viewModel.nickname, selectedImage: $selectedProfileImageName, selectedEmojiNumber: $viewModel.emojiNumber, isShowing: $isShowingProfileSelector)
         }
         .scrollIndicators(.never)
+    }
+    func isValidKakaoOpenChatURL(_ url: String) -> Bool {
+        let regex = "^https:\\/\\/open\\.kakao\\.com\\/o\\/[a-zA-Z0-9]+$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: url)
     }
 }
 

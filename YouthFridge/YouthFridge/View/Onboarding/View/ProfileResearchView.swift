@@ -113,7 +113,7 @@ struct ProfileResearchView: View {
                     .frame(height: 30)
                 HStack {
                     Text("우리 동네 인증하기")
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.pretendardBold16)
                         .frame(alignment: .leading)
                     NavigationLink(destination: MapDetailView(onCertification: { city, district in
                         viewModel.userCity = city
@@ -135,7 +135,7 @@ struct ProfileResearchView: View {
                                 .resizable()
                                 .frame(width: 16, height: 22)
                             VStack(alignment: .leading) {
-                                Text("\(viewModel.userCity)\(viewModel.userDistrict)")
+                                Text("\(viewModel.userCity) \(viewModel.userDistrict)")
                                     .font(.system(size: 12, weight: .medium))
                                     .foregroundColor(.black)
                             }

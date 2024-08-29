@@ -11,9 +11,9 @@ import MapKit
 struct MapDetailView: View {
     @ObservedObject var locationManager = LocationManager()
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+            center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        )
     @State private var trackingMode = MapUserTrackingMode.follow
     @Environment(\.presentationMode) var presentationMode
     @State private var showLocationDeletePopup = false
@@ -45,7 +45,7 @@ struct MapDetailView: View {
                     .padding()
                 
                 Button(action: {
-                    if locationManager.userCity == "천안시" && (locationManager.userDistrict == "동남구" || locationManager.userDistrict == "서북구") {
+                    if locationManager.isInAuthorizedArea() {
                         certifiedRegions.append(region)
                         onCertification(locationManager.userCity, locationManager.userDistrict)
                         print("지역이 인증되었습니다.")

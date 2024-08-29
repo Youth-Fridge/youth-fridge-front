@@ -1228,7 +1228,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YouthFridge/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 추가하려고 합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 전부 그리고 사용중에 가져가려고 합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를  매번 추가하려고 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 사용중에 가져가려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1271,7 +1273,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = YouthFridge/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 추가하려고 합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 전부 그리고 사용중에 가져가려고 합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를  매번 추가하려고 합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "청년냉장고에서 천안 내 동네 인증을 하기 위해 사용자의 현재 위치를 사용중에 가져가려고 합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -12,7 +12,8 @@ struct StepTwoView: View {
     @State private var selectedImage: String = "invitationImage2"
     @State private var navigateToMainTabView = false
     @State private var showModal: Bool = false
-    
+    @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
+
     var body: some View {
         VStack {
             Image(selectedImage)
@@ -70,7 +71,8 @@ struct StepTwoView: View {
             
             Button(action: {
                 viewModel.createInvitation()
-                navigateToMainTabView = true
+                tabSelectionViewModel.selectedTab = .home
+                
             }) {
                 Text("초대장 완성하기")
                     .font(.pretendardBold16)
@@ -82,13 +84,6 @@ struct StepTwoView: View {
             }
             .disabled(!viewModel.isFormComplete)
             .padding(.top, 15)
-            
-            NavigationLink(
-                destination: MainTabView().navigationBarBackButtonHidden(true),
-                isActive: $navigateToMainTabView
-            ) {
-                EmptyView()
-            }
         }
         .sheet(isPresented: $showModal) {
             ImageGridView(selectedImage: $selectedImage, selectedImageNumber: $viewModel.imageNumber)

@@ -186,6 +186,11 @@ struct StepOneView: View {
                         
                         TextField("10글자 이내", text: $viewModel.name)
                             .font(.pretendardRegular14)
+                            .onChange(of: viewModel.name) { newValue in
+                                if newValue.count > 10 {
+                                    viewModel.name = String(newValue.prefix(10))
+                                }
+                            }
                             .padding()
                             .overlay {
                                 RoundedRectangle(cornerRadius: 6)
@@ -210,6 +215,11 @@ struct StepOneView: View {
                         ForEach(viewModel.activityPlans.indices, id: \.self) { index in
                             TextField("15글자 이내", text: $viewModel.activityPlans[index])
                                 .font(.pretendardRegular14)
+                                .onChange(of: viewModel.activityPlans[index]) { newValue in
+                                    if newValue.count > 15 {
+                                        viewModel.activityPlans[index] = String(newValue.prefix(15))
+                                    }
+                                }
                                 .padding()
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 6)

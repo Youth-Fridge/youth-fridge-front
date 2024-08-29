@@ -14,7 +14,6 @@
 		0A024F862C7B75F800B81F33 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */; };
 		0A024F882C7B760300B81F33 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */; };
 		0A024F8E2C7B7D8E00B81F33 /* Secret.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A024F8D2C7B7D8E00B81F33 /* Secret.plist */; };
-		0A02F5D52C7F822300595A9A /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02F5D42C7F822300595A9A /* ToastModifier.swift */; };
 		0A0600452C5783130036CD8F /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600442C5783130036CD8F /* NewsView.swift */; };
 		0A0600472C5784790036CD8F /* BlogWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600462C5784790036CD8F /* BlogWebView.swift */; };
 		0A0600492C57894E0036CD8F /* CancelPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0600482C57894E0036CD8F /* CancelPopUpView.swift */; };
@@ -157,7 +156,6 @@
 		0A024F852C7B75F800B81F33 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
 		0A024F872C7B760300B81F33 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		0A024F8D2C7B7D8E00B81F33 /* Secret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secret.plist; sourceTree = "<group>"; };
-		0A02F5D42C7F822300595A9A /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		0A0600412C57813E0036CD8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		0A0600442C5783130036CD8F /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		0A0600462C5784790036CD8F /* BlogWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogWebView.swift; sourceTree = "<group>"; };
@@ -770,7 +768,6 @@
 				58C316362C68B964001374EC /* DateFormatter.swift */,
 				0AC027AD2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift */,
 				0A024F832C7B738E00B81F33 /* Font+Extension.swift */,
-				0A02F5D42C7F822300595A9A /* ToastModifier.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1023,7 +1020,6 @@
 				5847F15D2C60DCE6001AC04E /* Servics.swift in Sources */,
 				58C316622C6E13BA001374EC /* TagsView.swift in Sources */,
 				0AB468E22C689CCE003061CE /* PublicMeetingResponse.swift in Sources */,
-				0A02F5D52C7F822300595A9A /* ToastModifier.swift in Sources */,
 				5847F0B92C5BCDF7001AC04E /* OnboardingService.swift in Sources */,
 				58CD962F2C7ECF1300394E6C /* TabBarAccessor.swift in Sources */,
 				58C3162C2C650462001374EC /* SplashView.swift in Sources */,

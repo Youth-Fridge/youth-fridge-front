@@ -53,7 +53,6 @@ struct ApplicationDetailView: View {
                 }
                 .padding(.top, 10)
                 .scrollIndicators(.hidden)
-                .toast(isShowing: showToast, message: toastMessage)
                 
                 GeometryReader { geometry in
                     if showCancelPopup {
@@ -251,38 +250,22 @@ struct ApplicationDetailView: View {
                     .background(Color.gray1)
                     .cornerRadius(6)
                 
-                HStack {
-                    Text(detailViewModel.kakaoLink)
-                        .font(.pretendardRegular12)
-                        .padding(.leading, 12)
-                        .padding(.vertical, 10)
-                        .foregroundColor(Color.gray6)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        UIPasteboard.general.string = detailViewModel.kakaoLink
-                        
-                        toastMessage = "복사가 완료되었습니다."
-                        showToast = true
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                            showToast = false
-                        }
-                    }) {
-                        HStack(spacing: 4) {
-                            Image("copy")
-                                .resizable()
-                                .frame(width: 16, height: 14)
-                            
-                            Text("복사")
-                                .font(.pretendardRegular10)
-                                .foregroundColor(.gray8)
-                        }
-                        .padding(.trailing, 25)
+                if let url = URL(string: detailViewModel.kakaoLink) {
+                    Link(destination: url) {
+                        Text(detailViewModel.kakaoLink)
+                            .font(.pretendardRegular12)
+                            .padding(.leading, 5)
+                            .padding(12)
+                            .foregroundColor(.blue)
+                            .underline()
                     }
+                } else {
+                    Text("Invalid URL")
+                        .font(.pretendardRegular12)
+                        .padding(.leading, 5)
+                        .padding(12)
+                        .foregroundColor(.gray)
                 }
-                .padding(.horizontal, 5)
             }
             .padding(.bottom, -10)
         }

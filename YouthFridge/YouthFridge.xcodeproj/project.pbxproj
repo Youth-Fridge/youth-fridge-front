@@ -45,6 +45,9 @@
 		0AF6EADF2C6CDD6300417634 /* NewLetterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */; };
 		58036A9C2C63C1FF0022BC8F /* DynamicTextCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */; };
 		58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */; };
+		580665152C803E1E00859B06 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580665142C803E1E00859B06 /* CarouselView.swift */; };
+		580665172C803F1000859B06 /* StepCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580665162C803F1000859B06 /* StepCardView.swift */; };
+		580665192C80424800859B06 /* StepCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580665182C80424800859B06 /* StepCardViewModel.swift */; };
 		5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */; };
 		5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EB2C44F1B10081323E /* LoginIntroView.swift */; };
 		5817D5EF2C4502360081323E /* MainTabType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5817D5EE2C4502360081323E /* MainTabType.swift */; };
@@ -187,6 +190,9 @@
 		0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLetterResponse.swift; sourceTree = "<group>"; };
 		58036A9B2C63C1FF0022BC8F /* DynamicTextCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicTextCardView.swift; sourceTree = "<group>"; };
 		58036A9D2C63D52E0022BC8F /* SmallestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallestCardView.swift; sourceTree = "<group>"; };
+		580665142C803E1E00859B06 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		580665162C803F1000859B06 /* StepCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCardView.swift; sourceTree = "<group>"; };
+		580665182C80424800859B06 /* StepCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepCardViewModel.swift; sourceTree = "<group>"; };
 		5817D5E92C44F18B0081323E /* LoginButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButtonStyle.swift; sourceTree = "<group>"; };
 		5817D5EB2C44F1B10081323E /* LoginIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginIntroView.swift; sourceTree = "<group>"; };
 		5817D5EE2C4502360081323E /* MainTabType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabType.swift; sourceTree = "<group>"; };
@@ -502,6 +508,8 @@
 				5817D62E2C47AAEB0081323E /* CustomProgressViewStyle.swift */,
 				58EA96ED2C5283D400166554 /* ProfilePictureSelector.swift */,
 				5847F15E2C60E5BB001AC04E /* MapDetailView.swift */,
+				580665142C803E1E00859B06 /* CarouselView.swift */,
+				580665162C803F1000859B06 /* StepCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -511,6 +519,7 @@
 			children = (
 				5817D62A2C465B5B0081323E /* ResearchViewModel.swift */,
 				5847F1352C5E589B001AC04E /* ProfileResearchViewModel.swift */,
+				580665182C80424800859B06 /* StepCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -989,6 +998,7 @@
 				5847F15F2C60E5BB001AC04E /* MapDetailView.swift in Sources */,
 				58EA96F72C57798A00166554 /* EmojiSelectionView.swift in Sources */,
 				5817D6032C450FB60081323E /* Card.swift in Sources */,
+				580665192C80424800859B06 /* StepCardViewModel.swift in Sources */,
 				5817D6122C462FD20081323E /* MyInvitationsView.swift in Sources */,
 				58CD96312C7ED20B00394E6C /* CardScrollView.swift in Sources */,
 				5817D6352C4A79250081323E /* CardViewModel.swift in Sources */,
@@ -997,6 +1007,7 @@
 				5817D5FF2C4509CF0081323E /* HomeViewModel.swift in Sources */,
 				58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */,
 				58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */,
+				580665152C803E1E00859B06 /* CarouselView.swift in Sources */,
 				5817D5EC2C44F1B10081323E /* LoginIntroView.swift in Sources */,
 				58EA96F32C57742400166554 /* StepTwoView.swift in Sources */,
 				5817D63D2C4BFD980081323E /* CellView.swift in Sources */,
@@ -1044,6 +1055,7 @@
 				58036A9E2C63D52E0022BC8F /* SmallestCardView.swift in Sources */,
 				5847F0BF2C5BCEC7001AC04E /* OnboardingRequest.swift in Sources */,
 				0AC027AE2C7B31BA00F1DE0D /* YouthFridge++Bundle.swift in Sources */,
+				580665172C803F1000859B06 /* StepCardView.swift in Sources */,
 				5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

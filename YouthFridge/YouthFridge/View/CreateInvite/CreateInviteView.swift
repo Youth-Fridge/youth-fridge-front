@@ -310,6 +310,11 @@ struct StepOneView: View {
                                         lineWidth: 1
                                     )
                             }
+                            .onChange(of: viewModel.launchPlace) { newValue in
+                                        if newValue.count > 8 {
+                                            viewModel.launchPlace = String(newValue.prefix(8))
+                                        }
+                                    }
                     }
                     .padding(.bottom, 25)
                     .padding(.horizontal, 22)

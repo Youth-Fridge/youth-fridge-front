@@ -35,7 +35,7 @@ struct SmallClassView: View {
                 TagsView(tags: tags, selectedTags: $selectedTags, viewModel: viewModel)
                     .padding(.leading, 10)
                     .padding(.top, 15)
-                
+                    .padding(.bottom, 20)
                 List(viewModel.cells) { cell in
                     ZStack {
                         NavigationLink(destination: ShowInviteView(
@@ -48,7 +48,7 @@ struct SmallClassView: View {
                         .opacity(0)
                         
                         CellView(cell: cell)
-                            .padding(.vertical, 15)
+                            .padding(.bottom, 10)
                             .background(Color.white)
                             .cornerRadius(10)
                             .contentShape(Rectangle())
@@ -90,17 +90,17 @@ struct SmallClassView: View {
         .onAppear {
             viewModel.observeSelectedTags(selectedTagsSubject)
             if selectedTags.isEmpty {
-              viewModel.fetchInviteCellData()
-            } else {
-                viewModel.fetchKeyWordsList(selectedTags: selectedTags)
+                viewModel.resetData()
+                viewModel.fetchInviteCellData()
             }
-        }
-        .onChange(of: selectedTags) { newTags in
-            selectedTagsSubject.send(newTags)
         }
         .onReceive(selectedTagsSubject) { newTags in
             viewModel.observeSelectedTags(selectedTagsSubject)
         }
+        .onChange(of: selectedTags) { newTags in
+            selectedTagsSubject.send(newTags)
+        }
+
     }
 }
 

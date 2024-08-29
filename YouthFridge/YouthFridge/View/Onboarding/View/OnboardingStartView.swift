@@ -62,10 +62,10 @@ struct OnboardingStartView: View {
                         StepCardViewModel(number: "4", title: "이 주의\n장금이", subtitle: "나만의 레시피로", subtitle2: "장금이 되기", backgroundColor: .onboarding4),
                         StepCardViewModel(number: "5", title: "밥업\n스토어", subtitle: "찾아가는", subtitle2: "안서동 과일가게", backgroundColor: .onboarding5)
                     ])
-                    .frame(height: 250) // CarouselView의 높이를 설정합니다.
-                    .offset(y: 0) // 이미지 위에 겹치도록 오프셋을 조정합니다.
+                    .frame(height: 250)
+                    .offset(y: 0)
                 }
-                .frame(height: 330) // 전체 높이 조정
+                .frame(height: 330)
                 
                 Spacer()
                 

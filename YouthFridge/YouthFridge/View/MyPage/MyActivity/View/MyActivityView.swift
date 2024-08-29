@@ -28,6 +28,7 @@ struct MyActivityView: View {
 
     var body: some View {
         ZStack(alignment: .top) {
+            ShadowNavigationBar()
             VStack(spacing: 0) {
                 tabButtons
                 ZStack {

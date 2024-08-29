@@ -52,10 +52,10 @@ struct MapDetailView: View {
                         print(certifiedRegions)
                         presentationMode.wrappedValue.dismiss()
                     } else {
-                        certifiedRegions.append(region)
-                        onCertification(locationManager.userCity, locationManager.userDistrict)
-                        presentationMode.wrappedValue.dismiss()
-                       // showLocationDeletePopup = true
+//                        certifiedRegions.append(region)
+//                        onCertification(locationManager.userCity, locationManager.userDistrict)
+//                        presentationMode.wrappedValue.dismiss()
+                        showLocationDeletePopup = true
                     }
                 }) {
                     Text("인증 지역 추가")

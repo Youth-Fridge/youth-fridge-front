@@ -11,7 +11,8 @@ import SwiftUI
 extension Font {
     //ExtraBold
     static let pretendardExtraBold26: Font = .custom("Pretendard-ExtraBold", size: 26)
-
+    static let pretendardExtraBold52: Font = .custom("Pretendard-ExtraBold", size: 52)
+    
     // Bold
     static let pretendardBold40: Font = .custom("Pretendard-Bold", size: 40)
     static let pretendardBold32: Font = .custom("Pretendard-Bold", size: 32)

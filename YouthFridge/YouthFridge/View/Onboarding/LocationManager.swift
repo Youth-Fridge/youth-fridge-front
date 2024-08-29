@@ -12,8 +12,8 @@ import CoreLocation
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
     @Published var userLocation: CLLocationCoordinate2D?
-    @Published var userCity: String = "알 수 없음"
-    @Published var userDistrict: String = "알 수 없음"
+    @Published var userCity: String = ""
+    @Published var userDistrict: String = ""
     
     private var hasRequestedGeocode = false // Geocode 요청 플래그
     

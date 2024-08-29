@@ -184,9 +184,11 @@ struct HomeView: View {
     }
     
     private func startTimer() {
+        
         Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             withAnimation {
-                currentIndex = (currentIndex + 1) % cards.count
+                print(tabContents.count)
+                currentIndex = (currentIndex + 1) % tabContents.count
             }
         }
     }

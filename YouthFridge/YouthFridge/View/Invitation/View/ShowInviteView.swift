@@ -248,7 +248,7 @@ struct ShowInviteView: View {
                         )
 
                         NavigationLink(
-                            destination: ComplainView(),
+                            destination: ComplainView(invitationId: invitationId),
                             isActive: $navigateToComplainView,
                             label: { EmptyView() }
                         )
@@ -311,26 +311,6 @@ struct ShowInviteView: View {
             alertTitle = "오류"
             alertMessage = "모집 완료된 소모임입니다."
             showAlert = true
-        }
-    }
-    
-    private func reportInvitation() {
-        InvitationService.shared.reportInvitation(invitationId: invitationId) { result in
-            switch result {
-            case .success(let message):
-                showComplainPopupView = true
-                print("소모임 신고가 완료되었습니다")
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    if let customErrorMessage = error.localizedDescription as? String,
-                       customErrorMessage == "이미 신고하였습니다." {
-                        alertTitle = "오류"
-                        alertMessage = "이미 신고한 소모임입니다."
-                        showAlert = true
-                    }
-                }
-            }
         }
     }
 }

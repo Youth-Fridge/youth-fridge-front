@@ -98,6 +98,7 @@
 		5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F1712C624922001AC04E /* KeychainHandler.swift */; };
 		58676CF32C8196E4009D04BE /* ComplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676CF22C8196E4009D04BE /* ComplainView.swift */; };
 		58676CF52C819A25009D04BE /* ComplainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676CF42C819A25009D04BE /* ComplainViewModel.swift */; };
+		58676CF72C81DE0B009D04BE /* ReasonListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676CF62C81DE0B009D04BE /* ReasonListRequest.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
@@ -241,6 +242,7 @@
 		5847F1712C624922001AC04E /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		58676CF22C8196E4009D04BE /* ComplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainView.swift; sourceTree = "<group>"; };
 		58676CF42C819A25009D04BE /* ComplainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainViewModel.swift; sourceTree = "<group>"; };
+		58676CF62C81DE0B009D04BE /* ReasonListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonListRequest.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 				58C316592C6B41FF001374EC /* InvitationListResponse.swift */,
 				0AF6EADE2C6CDD6300417634 /* NewLetterResponse.swift */,
 				58DA3F5F2C725671002081D9 /* UserInfoResponse.swift */,
+				58676CF62C81DE0B009D04BE /* ReasonListRequest.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				0AB468E42C68A80D003061CE /* MyInvitationDetailResponse.swift in Sources */,
 				58F6454E2C6266DC00DB1C37 /* InvitationTopFiveResponse.swift in Sources */,
 				5817D5EA2C44F18B0081323E /* LoginButtonStyle.swift in Sources */,
+				58676CF72C81DE0B009D04BE /* ReasonListRequest.swift in Sources */,
 				58DA3F662C730100002081D9 /* GifView.swift in Sources */,
 				58299B442C79BB11001BBF0F /* TabSelectionViewModel.swift in Sources */,
 				0AB468EB2C68D93F003061CE /* ActivityDetailModel.swift in Sources */,

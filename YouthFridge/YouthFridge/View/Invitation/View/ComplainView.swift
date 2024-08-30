@@ -15,17 +15,18 @@ struct ComplainView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var tabSelectionViewModel: TabSelectionViewModel
 
+    let invitationId: Int  // 신고할 초대장의 ID
+
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.sub2
                     .edgesIgnoringSafeArea(.all)
                 VStack {
-                    Spacer()
                     Text("신고하는 이유가 무엇인가요?")
                         .font(.pretendardBold24)
                         .multilineTextAlignment(.center)
-                        .padding(.bottom, 50)
+                        .padding(.vertical,80)
                     VStack(spacing: 10) {
                         ForEach(viewModel.categories.indices, id: \.self) { index in
                             Button(action: {
@@ -54,6 +55,7 @@ struct ComplainView: View {
                     
                     Button(action: {
                         if !selectedCategories.isEmpty {
+                            viewModel.saveSelectedCategories(Array(selectedCategories), invitationId: invitationId)
                             showConfirmationAlert = true
                         } else {
                             showAlert = true
@@ -67,6 +69,7 @@ struct ComplainView: View {
                             .background(!selectedCategories.isEmpty ? Color.white : Color.gray2)
                             .cornerRadius(8)
                     }
+                    .padding(.bottom,50)
                     .disabled(selectedCategories.isEmpty)
                     .alert(isPresented: $showAlert) {
                         Alert(
@@ -75,12 +78,11 @@ struct ComplainView: View {
                             dismissButton: .default(Text("확인"))
                         )
                     }
-                    .alert(isPresented: $showConfirmationAlert) {
+                    .alert(isPresented: $viewModel.showConfirmationAlert) {  
                         Alert(
                             title: Text("신고 완료"),
                             message: Text("24시간 이내 조치가 이루어집니다."),
                             dismissButton: .default(Text("확인")) {
-                                viewModel.saveSelectedCategories(Array(selectedCategories))
                                 tabSelectionViewModel.selectedTab = .home
                             }
                         )
@@ -99,11 +101,10 @@ struct ComplainView: View {
                 Image(systemName: "chevron.left")
                     .foregroundColor(.black)
             })
-            
         }
     }
 }
 
 #Preview {
-    ComplainView()
+    ComplainView(invitationId: 1)
 }

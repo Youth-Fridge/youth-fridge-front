@@ -10,13 +10,14 @@ import SwiftUI
 
 class ComplainViewModel: ObservableObject {
     @Published var categories: [String] = []
+    @Published var showComplainPopupView = false
+    @Published var showAlert = false
+    @Published var alertTitle = ""
+    @Published var alertMessage = ""
+    @Published var showConfirmationAlert = false  // Add this line
+
     private let selectedCategoryKey = "selectedComplain"
     
-    init() {
-        loadCategories()
-    }
-    
-    // Initialize the categories
     func loadCategories() {
         self.categories = [
             "적절하지 않은 주제의 모임입니다.",
@@ -28,21 +29,34 @@ class ComplainViewModel: ObservableObject {
         ]
     }
     
-    func saveSelectedCategories(_ selectedIndices: [Int]) {
+    func saveSelectedCategories(_ selectedIndices: [Int], invitationId: Int) {
         let incrementedIndices = selectedIndices.map { $0 + 1 }
         UserDefaults.standard.set(incrementedIndices, forKey: selectedCategoryKey)
         UserDefaults.standard.synchronize()
         
-        if let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] {
-            print("Saved categories: \(savedCategories)")
-        } else {
-            print("Failed to save categories.")
-        }
+        reportInvitation(invitationId: invitationId, reasonList: incrementedIndices)
     }
-    func loadSelectedCategories() -> [Int] {
-        guard let savedCategories = UserDefaults.standard.array(forKey: selectedCategoryKey) as? [Int] else {
-            return [1]
+
+    private func reportInvitation(invitationId: Int, reasonList: [Int]) {
+        InvitationService.shared.reportInvitation(invitationId: invitationId, reasonList: reasonList) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let message):
+                    self.showConfirmationAlert = true // Show alert on success
+                    print("소모임 신고가 완료되었습니다")
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                    if error.localizedDescription == "이미 신고하였습니다." {
+                        self.alertTitle = "오류"
+                        self.alertMessage = "이미 신고한 소모임입니다."
+                        self.showAlert = true
+                    } else {
+                        self.alertTitle = "오류"
+                        self.alertMessage = "신고에 실패했습니다. 다시 시도해 주세요."
+                        self.showAlert = true
+                    }
+                }
+            }
         }
-        return savedCategories.map { $0 - 1 }
     }
 }

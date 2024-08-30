@@ -244,8 +244,9 @@ class InvitationService {
         .eraseToAnyPublisher() // AnyPublisher 반환
     }
     
-    func reportInvitation(invitationId: Int, completion: @escaping (Result<String, NetworkError>) -> Void) {
-        InvitationService.provider.request(.reportInvitation(invitationId: invitationId)) { result in
+    func reportInvitation(invitationId: Int, reasonList: [Int], completion: @escaping (Result<String, NetworkError>) -> Void) {
+        // API 요청을 위한 Moya 서비스 호출
+        InvitationService.provider.request(.reportInvitation(invitationId: invitationId, reasonList: reasonList)) { result in
             switch result {
             case .success(let response):
                 do {
@@ -291,4 +292,5 @@ class InvitationService {
             }
         }
     }
+
 }

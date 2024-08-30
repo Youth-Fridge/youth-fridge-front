@@ -22,6 +22,8 @@ struct ShowInviteView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showComplainPopupView = false
     private let hapticManager = HapticManager.instance //진동
+    @State private var navigateToComplainView = false
+
     var body: some View {
             ZStack {
                 Color.sub2
@@ -221,7 +223,8 @@ struct ShowInviteView: View {
                         }
                         .disabled(isInvitationApplied || !viewModel.isAvailable)
                         Button(action: {
-                            reportInvitation()
+                            //reportInvitation()
+                            navigateToComplainView = true
                         }) {
                             if let showDetail = viewModel.showDetail, !showDetail.official {
                                 Text("커뮤니티 규정에 어긋난 소모임인가요?")
@@ -237,9 +240,16 @@ struct ShowInviteView: View {
                             }
                         }
                         .padding(.bottom,40)
+                        
                         NavigationLink(
                             destination: InviteFinalView(),
                             isActive: $isInvitationApplied,
+                            label: { EmptyView() }
+                        )
+
+                        NavigationLink(
+                            destination: ComplainView(),
+                            isActive: $navigateToComplainView,
                             label: { EmptyView() }
                         )
                     }}

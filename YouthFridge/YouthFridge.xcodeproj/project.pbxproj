@@ -96,6 +96,8 @@
 		5847F16C2C6245C8001AC04E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F16B2C6245C8001AC04E /* LoginRequest.swift */; };
 		5847F16F2C624869001AC04E /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 5847F16E2C624869001AC04E /* SwiftKeychainWrapper */; };
 		5847F1722C624922001AC04E /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5847F1712C624922001AC04E /* KeychainHandler.swift */; };
+		58676CF32C8196E4009D04BE /* ComplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676CF22C8196E4009D04BE /* ComplainView.swift */; };
+		58676CF52C819A25009D04BE /* ComplainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676CF42C819A25009D04BE /* ComplainViewModel.swift */; };
 		58BEC2C02C4EB1B500C6E524 /* ShowInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */; };
 		58BEC2C62C4EBB7F00C6E524 /* CreateInviteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */; };
 		58BEC2C82C50E40600C6E524 /* InviteFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */; };
@@ -237,6 +239,8 @@
 		5847F15E2C60E5BB001AC04E /* MapDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetailView.swift; sourceTree = "<group>"; };
 		5847F16B2C6245C8001AC04E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		5847F1712C624922001AC04E /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
+		58676CF22C8196E4009D04BE /* ComplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainView.swift; sourceTree = "<group>"; };
+		58676CF42C819A25009D04BE /* ComplainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplainViewModel.swift; sourceTree = "<group>"; };
 		58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C52C4EBB7F00C6E524 /* CreateInviteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateInviteView.swift; sourceTree = "<group>"; };
 		58BEC2C72C50E40600C6E524 /* InviteFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteFinalView.swift; sourceTree = "<group>"; };
@@ -610,6 +614,7 @@
 				58C316542C69FDE1001374EC /* Model */,
 				58BEC2BE2C4EB19800C6E524 /* View */,
 				58C316572C6B2872001374EC /* HapticManager.swift */,
+				58676CF42C819A25009D04BE /* ComplainViewModel.swift */,
 			);
 			path = Invitation;
 			sourceTree = "<group>";
@@ -621,6 +626,7 @@
 				58BEC2BF2C4EB1B500C6E524 /* ShowInviteView.swift */,
 				58DA3F652C730100002081D9 /* GifView.swift */,
 				58299B452C79D743001BBF0F /* ComplainPopUpView.swift */,
+				58676CF22C8196E4009D04BE /* ComplainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -956,6 +962,8 @@
 				0A2152AD2C4EB8D3001B6875 /* ApplicationDetailView.swift in Sources */,
 				5817D6012C450FA10081323E /* CardView.swift in Sources */,
 				0A7026F92C5A82CE0083C7A0 /* InvitationAPI.swift in Sources */,
+				58676CF52C819A25009D04BE /* ComplainViewModel.swift in Sources */,
+				58676CF32C8196E4009D04BE /* ComplainView.swift in Sources */,
 				0A7129D22C4E5CC800D4C08A /* PopUpView.swift in Sources */,
 				0A0600452C5783130036CD8F /* NewsView.swift in Sources */,
 				5817D6252C4656B50081323E /* StartView.swift in Sources */,
@@ -1390,7 +1398,7 @@
 				58EEF70D2C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		58EEF70E2C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridge" */ = {
 			isa = XCConfigurationList;
@@ -1399,7 +1407,7 @@
 				58EEF7102C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		58EEF7112C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeTests" */ = {
 			isa = XCConfigurationList;
@@ -1408,7 +1416,7 @@
 				58EEF7132C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		58EEF7142C43D22800C12C1E /* Build configuration list for PBXNativeTarget "YouthFridgeUITests" */ = {
 			isa = XCConfigurationList;
@@ -1417,7 +1425,7 @@
 				58EEF7162C43D22800C12C1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

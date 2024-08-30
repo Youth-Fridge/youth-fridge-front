@@ -96,9 +96,9 @@ struct ResearchView: View {
     }
 }
 
-struct ResearchView_Previews: PreviewProvider {
-    static var previews: some View {
-        ResearchView()
-    }
-}
+//struct ResearchView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ResearchView()
+//    }
+//}
 

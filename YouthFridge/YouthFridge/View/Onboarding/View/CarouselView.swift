@@ -12,7 +12,7 @@ struct CarouselView: View {
     let items: [StepCardViewModel]
     let sideItemScale: CGFloat = 0.4
     let sideItemAlpha: CGFloat = 1
-    let spacing: CGFloat = -30
+    let spacing: CGFloat = -25
     
     @State private var scrollOffset: CGFloat = 0
     @State private var selectedIndex: Int = 2
@@ -102,7 +102,7 @@ struct CarouselView: View {
         
         // 가운데 있는 항목만 Y 오프셋을 조정, 선택된 인덱스는 더 높이 올리기
         let isSelectedItem = (itemIndex == selectedIndex)
-        return (ratio > 0.8 ? -ratio * offsetRange : 0) - (isSelectedItem ? 70 : 0)
+        return (ratio > 0.8 ? -ratio * offsetRange : 0) - (isSelectedItem ? 0 : 0)
     }
     private func snapToNearestItem(in width: CGFloat) {
         let itemWidth: CGFloat = width * 0.35

@@ -250,15 +250,24 @@ struct ApplicationDetailView: View {
                     .background(Color.gray1)
                     .cornerRadius(6)
                 
-                if let url = URL(string: detailViewModel.kakaoLink) {
+                let linkText = detailViewModel.kakaoLink
+                let url = URL(string: linkText)
+                
+                if let url = url, UIApplication.shared.canOpenURL(url) {
                     Link(destination: url) {
-                        Text(detailViewModel.kakaoLink)
+                        Text(linkText)
                             .font(.pretendardRegular12)
                             .padding(.leading, 5)
                             .padding(12)
                             .foregroundColor(.blue)
                             .underline()
                     }
+                } else if !linkText.isEmpty {
+                    Text(linkText)
+                        .font(.pretendardRegular12)
+                        .padding(.leading, 5)
+                        .padding(12)
+                        .foregroundColor(.gray)
                 } else {
                     Text("Invalid URL")
                         .font(.pretendardRegular12)

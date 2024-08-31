@@ -299,6 +299,30 @@ struct ShowInviteView: View {
                 switch result {
                 case .success(let message):
                     isInvitationApplied = true
+                    
+                    // 초대장 1 - 공식소모임-포트락파티
+                    // 초대장 2 - 공식소모임-김장파티
+                    // 초대장 3 - 공식소모임-뱅쇼모임
+                    
+                    if let showDetail = viewModel.showDetail {
+                        switch showDetail.invitationId {
+                        case 1:
+                            if let url = URL(string: "https://naver.me/xSFn5D9b") {
+                                UIApplication.shared.open(url)
+                            }
+                        case 2:
+                            if let url = URL(string: "https://naver.me/FqWH2XtC") {
+                                UIApplication.shared.open(url)
+                            }
+                        case 3:
+                            if let url = URL(string: "https://naver.me/G1wFVQqW") {
+                                UIApplication.shared.open(url)
+                            }
+                        default:
+                            break
+                        }
+                    }
+
                 case .failure(let error):
                     DispatchQueue.main.async {
                         alertTitle = "오류"

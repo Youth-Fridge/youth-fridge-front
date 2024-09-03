@@ -25,7 +25,8 @@ class ProfileResearchViewModel: ObservableObject {
     @Published var isShowingProfileSelector: Bool = false
     @Published var region: MKCoordinateRegion = MKCoordinateRegion()
     @Published var nicknameMessage: String = "닉네임을 입력하세요."
-    @Published var nicknameMessageColor: Color = Color.main1Color
+    @Published var nicknameMessageColor: Color = Color.gray3Color
+    @Published var nicknameTextFieldBorderColor: Color = Color.gray2Color
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var trackingMode: MapUserTrackingMode = .follow
     @Published var selectedProfileImage: String = "bigBrocoli"
@@ -80,10 +81,13 @@ class ProfileResearchViewModel: ObservableObject {
                     self.isNicknameChecked = isAvailable
                     self.nicknameMessage = isAvailable ? "사용 가능한 닉네임 입니다." : "이미 사용 중인 닉네임 입니다."
                     self.nicknameMessageColor = isAvailable ? Color.main1Color : Color.red
+                    self.nicknameTextFieldBorderColor = isAvailable ? Color.main1Color : Color.red  // 추가된 부분
+
                 case .failure(_):
                     self.isNicknameChecked = false
                     self.nicknameMessage = "사용 불가능한 닉네임 입니다."
                     self.nicknameMessageColor = Color.red
+                    self.nicknameTextFieldBorderColor = Color.red
                 }
             }
         }

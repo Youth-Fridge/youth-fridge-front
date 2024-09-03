@@ -45,14 +45,25 @@ struct ProfileResearchView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     Text(viewModel.nicknameMessage)
                         .font(.system(size: 12))
-                        .foregroundColor(.main1Color)
+                        .foregroundColor(viewModel.nicknameMessageColor)
                 }
                 .padding(.horizontal)
 
                 HStack {
-                    TextField("6글자 이내", text: $viewModel.nickname)
-                        .padding(.leading, 10)
-                        .font(.system(size: 12))
+                    ZStack(alignment: .leading) {
+                        if viewModel.nickname.isEmpty {
+                            HStack {
+                                Text("6글자 이내")
+                                    .font(.system(size: 12))
+                                    .foregroundColor(.gray3)
+                            }
+                            .padding(.leading, 10)
+                        }
+                        
+                        TextField("", text: $viewModel.nickname)
+                            .font(.system(size: 12))
+                            .padding(.leading, 10)
+                    }
                     Button(action: {
                         viewModel.checkNickname()
                     }) {
@@ -68,7 +79,7 @@ struct ProfileResearchView: View {
                 }
                 .background(
                     RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.main1Color, lineWidth: 1)
+                        .stroke(viewModel.nicknameTextFieldBorderColor, lineWidth: 1)
                 )
                 .padding(.horizontal)
 
@@ -80,7 +91,7 @@ struct ProfileResearchView: View {
                 Spacer()
                     .frame(height: 30)
                 Text("한 줄 소개")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.pretendardBold16)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
                 HStack {
